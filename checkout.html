@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<title>Thanh toán - Nhà Sách Skibidus</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Thanh toán Nhà Sách Skibidus – nhập thông tin giao hàng, chọn phương thức thanh toán và xác nhận đơn sách của bạn.">
+		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
+		<link rel="icon" type="image/png" href="./assets/images/logo.png">
+		<!-- Reset CSS -->
+		<link rel="stylesheet" href="./assets/css/reset.css">
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="./assets/css/style.css">
+	</head>
+	<body>
+		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
+		<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+		<!-- ==================== HEADER ==================== -->
+		<header class="site-header">
+			<div class="container site-header__inner">
+				<a class="logo" href="./index.html">
+					<span class="logo__mark" aria-hidden="true">
+						<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+					</span>
+					<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
+				</a>
+
+				<input class="nav-toggle" type="checkbox" id="nav-toggle">
+				<label class="nav-toggle__label" for="nav-toggle">
+					<span class="visually-hidden">Mở / đóng menu</span>
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+				</label>
+
+				<nav class="main-nav" aria-label="Điều hướng chính">
+					<ul class="main-nav__list">
+						<li><a class="main-nav__link" href="./index.html#hero">Trang chủ</a></li>
+						<li><a class="main-nav__link" href="./index.html#featured">Sách mới</a></li>
+						<li><a class="main-nav__link" href="./index.html#categories">Thể loại</a></li>
+						<li><a class="main-nav__link" href="./index.html#promo">Khuyến mãi</a></li>
+						<li><a class="main-nav__link" href="./index.html#reviews">Đánh giá</a></li>
+						<li><a class="main-nav__link" href="./index.html#contact">Liên hệ</a></li>
+					</ul>
+				</nav>
+
+				<div class="header-actions">
+					<form class="search" role="search" action="#" method="get">
+						<label class="visually-hidden" for="site-search">Tìm kiếm sách</label>
+						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+						<input class="search__input" id="site-search" name="q" type="search" placeholder="Tên sách, tác giả...">
+					</form>
+
+					<a class="cart" href="./cart.html" aria-label="Giỏ hàng, đang có 4 sản phẩm">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2l2-8H6"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="16.5" cy="19" r="1.4"/></svg>
+						<span class="cart__count" aria-hidden="true">4</span>
+					</a>
+
+					<a class="btn btn--outline btn--sm" href="./login.html">Đăng nhập</a>
+				</div>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Đường dẫn tới trang đang xem -->
+			<nav class="breadcrumb" aria-label="Đường dẫn">
+				<div class="container">
+					<ol class="breadcrumb__list">
+						<li><a href="./index.html">Trang chủ</a></li>
+						<li><a href="./cart.html">Giỏ hàng</a></li>
+						<li aria-current="page">Thanh toán</li>
+					</ol>
+				</div>
+			</nav>
+
+			<!-- ==================== THANH TOÁN ==================== -->
+			<section class="section" aria-labelledby="thanh-toan">
+				<div class="container">
+					<div class="section__head">
+						<p class="eyebrow">Hoàn tất đơn hàng</p>
+						<h1 class="section__title" id="thanh-toan">Thanh toán</h1>
+						<p class="section__desc">Kiểm tra lại thông tin giao hàng và chọn phương thức thanh toán. Đơn hàng của bạn gồm <strong>4 sản phẩm</strong> với tổng thanh toán <strong>342.000đ</strong>.</p>
+					</div>
+
+					<!-- Tiến trình mua hàng: chọn sách, xem giỏ, điền thông tin, chờ xác nhận -->
+					<ol class="steps" aria-label="Tiến trình mua hàng">
+						<li class="steps__item steps__item--done"><span class="steps__index" aria-hidden="true">1</span><span>Chọn sách</span></li>
+						<li class="steps__item steps__item--done"><span class="steps__index" aria-hidden="true">2</span><span>Giỏ hàng</span></li>
+						<li class="steps__item steps__item--current" aria-current="step"><span class="steps__index" aria-hidden="true">3</span><span>Thanh toán</span></li>
+						<li class="steps__item"><span class="steps__index" aria-hidden="true">4</span><span>Hoàn tất</span></li>
+					</ol>
+
+					<!-- Xác nhận đặt hàng xong, hiện khi bấm nút đặt hàng -->
+					<div class="checkout-notice" id="dat-hang-thanh-cong" tabindex="-1" role="status">
+						<h2 class="checkout-notice__title">Đặt hàng thành công!</h2>
+						<p class="checkout-notice__text">Cảm ơn bạn đã mua sách tại Nhà Sách Skibidus. Mã đơn hàng của bạn là <strong>SKB-2026-0841</strong>. Chúng tôi sẽ gọi điện xác nhận và giao <strong>4 cuốn sách</strong> trong 2 – 4 ngày tới, tổng thu hộ <strong>342.000đ</strong>.</p>
+						<p class="checkout-notice__actions">
+							<a class="btn btn--primary btn--sm" href="./index.html#featured">Tiếp tục mua sắm</a>
+							<a class="btn btn--outline btn--sm" href="./cart.html">Quay lại giỏ hàng</a>
+						</p>
+					</div>
+
+					<div class="checkout-grid">
+						<!-- ==================== THÔNG TIN ĐẶT HÀNG ==================== -->
+						<form class="checkout-form" action="#dat-hang-thanh-cong" method="get">
+							<fieldset class="checkout-block">
+								<legend class="checkout-block__title">1. Thông tin người nhận</legend>
+								<div class="field-grid">
+									<div class="field">
+										<label class="field__label" for="co-ten">Họ và tên <span class="field__required" aria-hidden="true">*</span></label>
+										<input class="field__input" id="co-ten" name="ten" type="text" placeholder="Nguyễn Văn A" autocomplete="name" required>
+									</div>
+									<div class="field">
+										<label class="field__label" for="co-dien-thoai">Số điện thoại <span class="field__required" aria-hidden="true">*</span></label>
+										<input class="field__input" id="co-dien-thoai" name="dien-thoai" type="tel" placeholder="0901 234 567" autocomplete="tel" inputmode="tel" pattern="[0-9 +.-]{9,15}" required>
+									</div>
+									<div class="field">
+										<label class="field__label" for="co-email">Email</label>
+										<input class="field__input" id="co-email" name="email" type="email" placeholder="ban@example.com" autocomplete="email">
+									</div>
+									<div class="field">
+										<label class="field__label" for="co-thanh-pho">Tỉnh / Thành phố <span class="field__required" aria-hidden="true">*</span></label>
+										<select class="field__input" id="co-thanh-pho" name="thanh-pho" required>
+											<option value="" selected>Chọn tỉnh / thành phố</option>
+											<option value="hcm">TP. Hồ Chí Minh</option>
+											<option value="hn">Hà Nội</option>
+											<option value="dn">Đà Nẵng</option>
+											<option value="ct">Cần Thơ</option>
+											<option value="hp">Hải Phòng</option>
+											<option value="khac">Tỉnh / thành khác</option>
+										</select>
+									</div>
+									<div class="field field--full">
+										<label class="field__label" for="co-dia-chi">Địa chỉ nhận hàng <span class="field__required" aria-hidden="true">*</span></label>
+										<input class="field__input" id="co-dia-chi" name="dia-chi" type="text" placeholder="Số nhà, tên đường, phường / xã" autocomplete="street-address" required>
+									</div>
+									<div class="field field--full">
+										<label class="field__label" for="co-ghi-chu">Ghi chú cho người giao hàng</label>
+										<textarea class="field__input field__input--area" id="co-ghi-chu" name="ghi-chu" rows="3" placeholder="Ví dụ: gọi trước khi giao, giao giờ hành chính..."></textarea>
+									</div>
+								</div>
+							</fieldset>
+
+							<fieldset class="checkout-block">
+								<legend class="checkout-block__title">2. Hình thức giao hàng</legend>
+								<ul class="choice-list">
+									<li>
+										<input class="choice__input" type="radio" id="co-tieu-chuan" name="van-chuyen" value="tieu-chuan" checked>
+										<label class="choice" for="co-tieu-chuan">
+
+											<span class="choice__body">
+												<strong class="choice__title">Giao tiêu chuẩn (2 – 4 ngày)</strong>
+												<span class="choice__desc">Miễn phí cho đơn từ 300.000đ — đơn này của bạn đã được miễn phí.</span>
+											</span>
+											<span class="choice__price">Miễn phí</span>
+										
+										</label>
+									</li>
+									<li>
+										<input class="choice__input" type="radio" id="co-nhanh" name="van-chuyen" value="nhanh">
+										<label class="choice" for="co-nhanh">
+
+											<span class="choice__body">
+												<strong class="choice__title">Giao nhanh (trong 24 giờ, nội thành)</strong>
+												<span class="choice__desc">Chỉ áp dụng TP. Hồ Chí Minh và Hà Nội, phụ thu tính khi xác nhận đơn.</span>
+											</span>
+											<span class="choice__price">25.000đ</span>
+										
+										</label>
+									</li>
+								</ul>
+							</fieldset>
+
+							<fieldset class="checkout-block">
+								<legend class="checkout-block__title">3. Phương thức thanh toán</legend>
+								<ul class="choice-list">
+									<li>
+										<input class="choice__input" type="radio" id="co-cod" name="thanh-toan" value="cod" checked>
+										<label class="choice" for="co-cod">
+
+											<span class="choice__body">
+												<strong class="choice__title">Thanh toán khi nhận hàng (COD)</strong>
+												<span class="choice__desc">Kiểm tra sách rồi mới trả tiền mặt cho người giao hàng.</span>
+											</span>
+										
+										</label>
+									</li>
+									<li>
+										<input class="choice__input" type="radio" id="co-chuyen-khoan" name="thanh-toan" value="chuyen-khoan">
+										<label class="choice" for="co-chuyen-khoan">
+
+											<span class="choice__body">
+												<strong class="choice__title">Chuyển khoản ngân hàng</strong>
+												<span class="choice__desc">Nhận số tài khoản và mã đơn SKB-2026-0841 sau khi đặt hàng.</span>
+											</span>
+										
+										</label>
+									</li>
+									<li>
+										<input class="choice__input" type="radio" id="co-vi-dien-tu" name="thanh-toan" value="vi-dien-tu">
+										<label class="choice" for="co-vi-dien-tu">
+
+											<span class="choice__body">
+												<strong class="choice__title">Ví điện tử (MoMo / ZaloPay)</strong>
+												<span class="choice__desc">Quét mã QR trên trang xác nhận để thanh toán ngay.</span>
+											</span>
+										
+										</label>
+									</li>
+								</ul>
+							</fieldset>
+
+							<div class="checkout-form__actions">
+								<button class="btn btn--primary btn--block" type="submit">Đặt hàng · 342.000đ</button>
+								<a class="btn btn--ghost btn--block" href="./cart.html">Quay lại giỏ hàng</a>
+							</div>
+						</form>
+
+						<!-- ==================== TÓM TẮT ĐƠN HÀNG ==================== -->
+						<aside class="cart-summary" aria-labelledby="tom-tat-thanh-toan">
+							<h2 class="cart-summary__title" id="tom-tat-thanh-toan">Tóm tắt đơn hàng</h2>
+							<ol class="mini-list">
+								<li class="mini-item">
+									<a class="mini-item__media" href="./book.html" tabindex="-1" aria-hidden="true">
+										<img src="./assets/images/books/book1.jpg" alt="" width="1352" height="2004" loading="lazy" decoding="async">
+									</a>
+									<div class="mini-item__info">
+										<p class="mini-item__title"><a href="./book.html">Đắc Nhân Tâm</a></p>
+										<p class="mini-item__meta">Dale Carnegie · Số lượng: 2</p>
+									</div>
+									<span class="mini-item__price">178.000đ</span>
+								</li>
+								<li class="mini-item">
+									<a class="mini-item__media" href="./book.html" tabindex="-1" aria-hidden="true">
+										<img src="./assets/images/books/book2.jpg" alt="" width="2800" height="2800" loading="lazy" decoding="async">
+									</a>
+									<div class="mini-item__info">
+										<p class="mini-item__title"><a href="./book.html">Tuổi Trẻ Đáng Giá Bao Nhiêu?</a></p>
+										<p class="mini-item__meta">Rosie Nguyễn · Số lượng: 1</p>
+									</div>
+									<span class="mini-item__price">75.000đ</span>
+								</li>
+								<li class="mini-item">
+									<a class="mini-item__media" href="./book.html" tabindex="-1" aria-hidden="true">
+										<img src="./assets/images/books/book3.jpg" alt="" width="663" height="984" loading="lazy" decoding="async">
+									</a>
+									<div class="mini-item__info">
+										<p class="mini-item__title"><a href="./book.html">Cây Cam Ngọt Của Tôi</a></p>
+										<p class="mini-item__meta">José Mauro de Vasconcelos · Số lượng: 1</p>
+									</div>
+									<span class="mini-item__price">89.000đ</span>
+								</li>
+							</ol>
+
+							<dl class="cart-summary__rows">
+								<div class="cart-summary__row">
+									<dt>Tạm tính (4 sản phẩm)</dt>
+									<dd>342.000đ</dd>
+								</div>
+								<div class="cart-summary__row">
+									<dt>Phí vận chuyển</dt>
+									<dd>Miễn phí</dd>
+								</div>
+							</dl>
+							<p class="cart-summary__saving">Bạn tiết kiệm 111.000đ so với giá bìa</p>
+
+							<div class="cart-summary__total">
+								<span>Tổng thanh toán</span>
+								<span class="price price--total">342.000đ</span>
+							</div>
+
+							<ul class="cart-summary__perks">
+								<li>Giao hàng toàn quốc trong 2 – 4 ngày</li>
+								<li>Đổi trả miễn phí trong 7 ngày</li>
+								<li>100% sách chuẩn bản quyền</li>
+							</ul>
+						</aside>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ==================== FOOTER ==================== -->
+		<footer class="site-footer" id="contact">
+			<div class="container site-footer__inner">
+				<div class="site-footer__col site-footer__col--brand">
+					<a class="logo logo--footer" href="./index.html#hero">
+						<span class="logo__mark" aria-hidden="true">
+							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						</span>
+						<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
+					</a>
+					<p class="site-footer__about">Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận. Sứ mệnh của chúng tôi là mang đến sách chất lượng, khơi gợi niềm vui khám phá mỗi ngày cho thế hệ trẻ.</p>
+					<ul class="social">
+						<li>
+							<a class="social__link" href="#" aria-label="Facebook">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.5c0-.9.3-1.5 1.5-1.5h1.5V5.5c-.3 0-1.3-.1-2.3-.1-2.3 0-3.7 1.3-3.7 3.8v2.1H8v2.8h2.5V21"/></svg>
+							</a>
+						</li>
+						<li>
+							<a class="social__link" href="#" aria-label="Instagram">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.8" cy="7.2" r="1"/></svg>
+							</a>
+						</li>
+						<li>
+							<a class="social__link" href="#" aria-label="YouTube">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m11 9.6 4 2.4-4 2.4Z"/></svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<nav class="site-footer__col" aria-label="Liên kết về chúng tôi">
+					<h2 class="site-footer__title">Về chúng tôi</h2>
+					<ul class="site-footer__links">
+						<li><a href="#">Giới thiệu</a></li>
+						<li><a href="#">Tuyển dụng</a></li>
+						<li><a href="#">Tin tức</a></li>
+						<li><a href="#">Hợp tác</a></li>
+					</ul>
+				</nav>
+
+				<nav class="site-footer__col" aria-label="Liên kết hỗ trợ">
+					<h2 class="site-footer__title">Hỗ trợ</h2>
+					<ul class="site-footer__links">
+						<li><a href="#">Chính sách đổi trả</a></li>
+						<li><a href="#">Chính sách vận chuyển</a></li>
+						<li><a href="#">Câu hỏi thường gặp</a></li>
+						<li><a href="#">Bảo mật thông tin</a></li>
+					</ul>
+				</nav>
+
+				<div class="site-footer__col">
+					<h2 class="site-footer__title">Liên hệ</h2>
+					<address class="site-footer__contact">
+						<span>123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh</span>
+						<a href="tel:+84901234567">0901 234 567</a>
+						<a href="mailto:hotro@nhasachskibidus.vn">hotro@nhasachskibidus.vn</a>
+					</address>
+					<h3 class="site-footer__title site-footer__title--sm">Phương thức thanh toán</h3>
+					<ul class="payments">
+						<li class="payments__item">Visa</li>
+						<li class="payments__item">Mastercard</li>
+						<li class="payments__item">COD</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="site-footer__bottom">
+				<div class="container site-footer__bottom-inner">
+					<p class="site-footer__copy">© 2026 Nhà Sách Skibidus. Bảo lưu mọi quyền.</p>
+					<ul class="legal">
+						<li><a href="#">Điều khoản sử dụng</a></li>
+						<li><a href="#">Chính sách bảo mật</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+
+	</body>
+</html>

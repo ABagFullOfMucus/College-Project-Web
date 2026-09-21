@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<title>Trang quản trị - Nhà Sách Skibidus</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Trang quản trị Nhà Sách Skibidus: theo dõi doanh thu, đơn hàng, kho sách và khách hàng.">
+		<!-- Trang quản trị không cần cho máy tìm kiếm -->
+		<meta name="robots" content="noindex">
+		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
+		<link rel="icon" type="image/png" href="./assets/images/logo.png">
+		<!-- Reset CSS -->
+		<link rel="stylesheet" href="./assets/css/reset.css">
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="./assets/css/style.css">
+	</head>
+	<body class="admin-body">
+		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
+		<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+		<input class="admin-toggle" type="checkbox" id="admin-nav">
+
+
+		<span class="admin-target" id="tong-quan" aria-hidden="true"></span>
+		<span class="admin-target" id="don-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="kho-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="khach-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat" aria-hidden="true"></span>
+
+		<div class="admin">
+
+			<!-- Lớp phủ: bấm ra ngoài để đóng cột điều hướng -->
+			<label class="admin-scrim" for="admin-nav" aria-hidden="true"></label>
+
+			<!-- ==================== CỘT ĐIỀU HƯỚNG ==================== -->
+			<aside class="admin-sidebar" aria-label="Khu vực quản trị">
+				<div class="admin-sidebar__brand">
+					<a class="logo" href="./admin.html">
+						<span class="logo__mark" aria-hidden="true">
+							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						</span>
+						<span class="logo__text">Skibidus</span>
+					</a>
+					<span class="tag tag--soft">Quản trị</span>
+				</div>
+
+				<nav class="admin-nav" aria-label="Điều hướng quản trị">
+					<p class="admin-nav__title">Quản lý</p>
+					<ul class="admin-nav__list">
+						<li>
+							<a class="admin-nav__link admin-nav__link--active" href="#tong-quan">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.6"/><rect x="13.5" y="11" width="7" height="9.5" rx="1.6"/><rect x="3.5" y="13" width="7" height="7.5" rx="1.6"/></svg>
+								Tổng quan
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="#don-hang">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 3.5h12v17l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8.5h5M9.5 12.5h5"/></svg>
+								Đơn hàng
+								<span class="admin-nav__count">12</span>
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="#kho-sach">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5.5A2 2 0 0 1 6 3.5h12v17H6a2 2 0 0 1-2-2z"/><path d="M8 3.5v17"/></svg>
+								Kho sách
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="#khach-hang">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M17 14.8c2 .7 3.5 2.6 3.5 5.2"/></svg>
+								Khách hàng
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="#cai-dat">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 14.6a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-2.9-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H2.9a2 2 0 1 1 0-4h.2A1.7 1.7 0 0 0 4.2 8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3.8a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 2.9 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1z"/></svg>
+								Cài đặt
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<div class="admin-sidebar__foot">
+					<a class="btn btn--outline btn--sm btn--block" href="./index.html">Xem cửa hàng</a>
+				</div>
+			</aside>
+
+			<div class="admin-main">
+				<!-- ==================== THANH TRÊN ==================== -->
+				<header class="admin-topbar">
+					<label class="admin-burger" for="admin-nav">
+						<span class="visually-hidden">Mở / đóng menu quản trị</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+					</label>
+
+					<form class="search admin-topbar__search" role="search" action="#" method="get">
+						<label class="visually-hidden" for="admin-search">Tìm đơn hàng, sách hoặc khách hàng</label>
+						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+						<input class="search__input" id="admin-search" name="q" type="search" placeholder="Tìm đơn hàng, sách, khách hàng...">
+					</form>
+
+					<div class="admin-topbar__actions">
+						<p class="admin-user">
+							<span class="admin-user__avatar" aria-hidden="true">QT</span>
+							<span class="admin-user__info">
+								<strong class="admin-user__name">Quản trị A</strong>
+								<span class="admin-user__role">Quản trị viên</span>
+							</span>
+						</p>
+						<a class="btn btn--ghost btn--sm" href="./login.html">Đăng xuất</a>
+					</div>
+				</header>
+
+				<main class="admin-content" id="main">
+					<h1 class="visually-hidden">Trang quản trị Nhà Sách Skibidus</h1>
+
+					<!-- ==================== ĐƠN HÀNG ==================== -->
+					<div class="admin-view admin-view--don-hang">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Bán hàng</p>
+								<h2 class="admin-head__title">Quản lý đơn hàng</h2>
+								<p class="admin-head__desc">12 đơn đang chờ xử lý · Bấm "Chi tiết" để mở nội dung từng đơn.</p>
+							</div>
+							<div class="admin-head__actions">
+								<a class="btn btn--ghost btn--sm" href="#in-don">In danh sách</a>
+								<a class="btn btn--primary btn--sm" href="#tao-don">Tạo đơn mới</a>
+							</div>
+						</div>
+
+						<p class="admin-notice" id="in-don">Năm đơn hàng đang hiển thị đã được đưa vào hàng đợi in.</p>
+						<p class="admin-notice" id="tao-don"></p>
+
+						<!-- Thanh lọc đơn hàng -->
+						<form class="filter-bar" action="#" method="get">
+							<div class="field">
+								<label class="field__label" for="loc-tu-khoa">Từ khoá</label>
+								<input class="field__input" id="loc-tu-khoa" name="q" type="search" placeholder="Mã đơn hoặc tên khách hàng">
+							</div>
+							<div class="field">
+								<label class="field__label" for="loc-trang-thai">Trạng thái</label>
+								<select class="field__select" id="loc-trang-thai" name="status">
+									<option value="">Tất cả trạng thái</option>
+									<option value="wait">Chờ xử lý</option>
+									<option value="ship">Đang giao</option>
+									<option value="done">Hoàn thành</option>
+									<option value="cancel">Đã hủy</option>
+								</select>
+							</div>
+							<div class="field">
+								<label class="field__label" for="loc-thoi-gian">Thời gian</label>
+								<select class="field__select" id="loc-thoi-gian" name="range">
+									<option value="7">7 ngày gần nhất</option>
+									<option value="30">30 ngày gần nhất</option>
+									<option value="quarter">Quý này</option>
+								</select>
+							</div>
+							<button class="btn btn--primary btn--sm" type="submit">Lọc đơn hàng</button>
+						</form>
+
+						<div class="table-wrap">
+							<table class="admin-table">
+								<caption class="visually-hidden">Năm đơn hàng gần nhất, hàng chi tiết mở ra khi bấm Chi tiết</caption>
+								<thead>
+									<tr>
+										<th scope="col">Mã đơn</th>
+										<th scope="col">Khách hàng</th>
+										<th scope="col">Ngày đặt</th>
+										<th scope="col">Sản phẩm</th>
+										<th scope="col">Tổng tiền</th>
+										<th scope="col">Trạng thái</th>
+										<th scope="col">Thao tác</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="admin-table__strong">#SKB-1024</td>
+										<td>Nguyễn Thu Hà</td>
+										<td class="admin-table__muted">21/09/2026</td>
+										<td class="admin-table__muted">3 cuốn</td>
+										<td class="admin-table__num">267.000đ</td>
+										<td><span class="tag tag--done">Hoàn thành</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="#don-1024">Chi tiết</a>
+											</div>
+										</td>
+									</tr>
+									<tr class="order-detail-row" id="don-1024">
+										<td colspan="7">
+											<dl class="order-detail">
+												<div class="order-detail__item">
+													<dt>Sách trong đơn</dt>
+													<dd>Đắc Nhân Tâm × 2 · Mắt Biếc × 1</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Giao tới</dt>
+													<dd>Nguyễn Thu Hà · 123 Đường Sách, P. Bến Thành, TP. Hồ Chí Minh · 0901 234 567</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Thanh toán</dt>
+													<dd>Ví điện tử · Đã thanh toán ngày 21/09/2026</dd>
+												</div>
+											</dl>
+										</td>
+									</tr>
+									<tr>
+										<td class="admin-table__strong">#SKB-1023</td>
+										<td>Trần Minh Quân</td>
+										<td class="admin-table__muted">21/09/2026</td>
+										<td class="admin-table__muted">1 cuốn</td>
+										<td class="admin-table__num">151.200đ</td>
+										<td><span class="tag tag--ship">Đang giao</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="#don-1023">Chi tiết</a>
+											</div>
+										</td>
+									</tr>
+									<tr class="order-detail-row" id="don-1023">
+										<td colspan="7">
+											<dl class="order-detail">
+												<div class="order-detail__item">
+													<dt>Sách trong đơn</dt>
+													<dd>Atomic Habits × 1</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Giao tới</dt>
+													<dd>Trần Minh Quân · 45 Nguyễn Trãi, Q. 1, TP. Hồ Chí Minh · 0912 345 678</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Thanh toán</dt>
+													<dd>Thanh toán khi nhận hàng (COD) · Chờ thu tiền</dd>
+												</div>
+											</dl>
+										</td>
+									</tr>
+
+									<tr>
+										<td class="admin-table__strong">#SKB-1022</td>
+										<td>Lê Hoàng Anh</td>
+										<td class="admin-table__muted">20/09/2026</td>
+										<td class="admin-table__muted">2 cuốn</td>
+										<td class="admin-table__num">433.400đ</td>
+										<td><span class="tag tag--wait">Chờ xử lý</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="#don-1022">Chi tiết</a>
+											</div>
+										</td>
+									</tr>
+									<tr class="order-detail-row" id="don-1022">
+										<td colspan="7">
+											<dl class="order-detail">
+												<div class="order-detail__item">
+													<dt>Sách trong đơn</dt>
+													<dd>Sapiens: Lược Sử Loài Người × 1 · Muôn Kiếp Nhân Sinh × 1</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Giao tới</dt>
+													<dd>Lê Hoàng Anh · 78 Lê Lợi, Q. 3, TP. Hồ Chí Minh · 0938 765 432</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Thanh toán</dt>
+													<dd>Chuyển khoản ngân hàng · Đã thanh toán 433.400đ</dd>
+												</div>
+											</dl>
+										</td>
+									</tr>
+									<tr>
+										<td class="admin-table__strong">#SKB-1021</td>
+										<td>Phạm Bảo Ngọc</td>
+										<td class="admin-table__muted">20/09/2026</td>
+										<td class="admin-table__muted">2 cuốn</td>
+										<td class="admin-table__num">150.000đ</td>
+										<td><span class="tag tag--done">Hoàn thành</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="#don-1021">Chi tiết</a>
+											</div>
+										</td>
+									</tr>
+									<tr class="order-detail-row" id="don-1021">
+										<td colspan="7">
+											<dl class="order-detail">
+												<div class="order-detail__item">
+													<dt>Sách trong đơn</dt>
+													<dd>Tuổi Trẻ Đáng Giá Bao Nhiêu? × 2</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Giao tới</dt>
+													<dd>Phạm Bảo Ngọc · 12/5 Trần Hưng Đạo, Q. 5, TP. Hồ Chí Minh · 0977 111 222</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Thanh toán</dt>
+													<dd>Thanh toán khi nhận hàng (COD) · Đã thu tiền</dd>
+												</div>
+											</dl>
+										</td>
+									</tr>
+									<tr>
+										<td class="admin-table__strong">#SKB-1020</td>
+										<td>Vũ Đức Thịnh</td>
+										<td class="admin-table__muted">19/09/2026</td>
+										<td class="admin-table__muted">1 cuốn</td>
+										<td class="admin-table__num">89.000đ</td>
+										<td><span class="tag tag--cancel">Đã hủy</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="#don-1020">Chi tiết</a>
+											</div>
+										</td>
+									</tr>
+									<tr class="order-detail-row" id="don-1020">
+										<td colspan="7">
+											<dl class="order-detail">
+												<div class="order-detail__item">
+													<dt>Sách trong đơn</dt>
+													<dd>Cây Cam Ngọt Của Tôi × 1</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Giao tới</dt>
+													<dd>Vũ Đức Thịnh · 210 Phan Xích Long, Q. Phú Nhuận, TP. Hồ Chí Minh · 0966 333 444</dd>
+												</div>
+												<div class="order-detail__item">
+													<dt>Thanh toán</dt>
+													<dd>Ví điện tử · Khách hủy đơn, đã hoàn tiền</dd>
+												</div>
+											</dl>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<!-- Phân trang -->
+						<nav class="pagination" aria-label="Phân trang đơn hàng">
+							<p class="pagination__info">Hiển thị 1 – 5 trong 128 đơn hàng</p>
+							<a class="pagination__link" href="#don-hang" aria-current="page">1</a>
+							<a class="pagination__link" href="#don-hang">2</a>
+							<a class="pagination__link" href="#don-hang">3</a>
+							<a class="pagination__link" href="#don-hang">26</a>
+							<a class="pagination__link" href="#don-hang">Sau →</a>
+						</nav>
+					</div>
+
+					<!-- ==================== KHO SÁCH ==================== -->
+					<div class="admin-view admin-view--kho-sach">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Danh mục</p>
+								<h2 class="admin-head__title">Kho sách</h2>
+								<p class="admin-head__desc">8 tựa sách đang bán.</p>
+							</div>
+							<div class="admin-head__actions">
+								<a class="btn btn--ghost btn--sm" href="#them-sach">Thêm sách mới</a>
+								<a class="btn btn--primary btn--sm" href="#nhap-kho">Nhập kho</a>
+							</div>
+						</div>
+
+						<p class="admin-notice" id="them-sach"></p>
+						<p class="admin-notice" id="nhap-kho">Phiếu nhập kho đã được tạo cho 4 tựa sách sắp hết.</p>
+						<p class="admin-notice" id="sua-sach">Xem cách sách hiển thị với khách hàng ở <a href="./book.html">trang chi tiết sách</a>.</p>
+
+						<div class="table-wrap">
+							<table class="admin-table">
+								<caption class="visually-hidden">Sáu tựa sách trong kho kèm giá bán và số lượng tồn</caption>
+								<thead>
+									<tr>
+										<th scope="col">Sách</th>
+										<th scope="col">Thể loại</th>
+										<th scope="col">Giá bán</th>
+										<th scope="col">Tồn kho</th>
+										<th scope="col">Trạng thái</th>
+										<th scope="col">Thao tác</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="./assets/images/books/book1.jpg" alt="Bìa sách Đắc Nhân Tâm" width="1352" height="2004" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Đắc Nhân Tâm</p>
+													<p class="cell-book__meta">Dale Carnegie</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Kỹ năng sống</td>
+										<td class="admin-table__num">89.000đ</td>
+										<td class="admin-table__num">42 cuốn</td>
+										<td><span class="tag tag--done">Đang bán</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="./assets/images/books/book2.jpg" alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu?" width="2800" height="2800" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Tuổi Trẻ Đáng Giá Bao Nhiêu?</p>
+													<p class="cell-book__meta">Rosie Nguyễn</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Văn học trẻ</td>
+										<td class="admin-table__num">75.000đ</td>
+										<td class="admin-table__num">36 cuốn</td>
+										<td><span class="tag tag--done">Đang bán</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="./assets/images/books/book3.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi" width="663" height="984" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Cây Cam Ngọt Của Tôi</p>
+													<p class="cell-book__meta">José Mauro de Vasconcelos</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Tiểu thuyết nước ngoài</td>
+										<td class="admin-table__num">89.000đ</td>
+										<td class="admin-table__num">28 cuốn</td>
+										<td><span class="tag tag--done">Đang bán</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="./assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Sapiens: Lược Sử Loài Người</p>
+													<p class="cell-book__meta">Yuval Noah Harari</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Lịch sử</td>
+										<td class="admin-table__num">299.000đ</td>
+										<td class="admin-table__num">9 cuốn</td>
+										<td><span class="tag tag--wait">Sắp hết</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+											</div>
+										</td>
+									</tr>
+
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="400" height="600" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Atomic Habits: Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</p>
+													<p class="cell-book__meta">James Clear</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Năng suất</td>
+										<td class="admin-table__num">151.200đ</td>
+										<td class="admin-table__num">4 cuốn</td>
+										<td><span class="tag tag--sale">Sắp hết</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="400" height="600" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Mắt Biếc</p>
+													<p class="cell-book__meta">Nguyễn Nhật Ánh</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Văn học Việt Nam</td>
+										<td class="admin-table__num">89.000đ</td>
+										<td class="admin-table__num">0 cuốn</td>
+										<td><span class="tag tag--cancel">Tạm hết hàng</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="table-note">Hiển thị 6 trong 8 tựa sách · Cập nhật lần cuối lúc 09:30 ngày 21/09/2026.</p>
+					</div>
+
+					<!-- ==================== KHÁCH HÀNG ==================== -->
+					<div class="admin-view admin-view--khach-hang">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Khách hàng</p>
+								<h2 class="admin-head__title">Khách hàng thân thiết</h2>
+								<p class="admin-head__desc">10.000+ tài khoản đã mua sách · Hạng được xếp theo tổng chi tiêu.</p>
+							</div>
+							<div class="admin-head__actions">
+								<a class="btn btn--ghost btn--sm" href="#xuat-khach-hang">Xuất danh sách</a>
+								<a class="btn btn--primary btn--sm" href="#gui-uu-dai">Gửi ưu đãi</a>
+							</div>
+						</div>
+
+						<p class="admin-notice" id="xuat-khach-hang">Tệp CSV gồm 5 khách hàng đang hiển thị đã sẵn sàng để tải.</p>
+						<p class="admin-notice" id="gui-uu-dai">Mã giảm giá SACH10 đã được xếp vào hàng đợi gửi cho nhóm khách hàng hạng Vàng và Kim cương.</p>
+
+						<div class="table-wrap">
+							<table class="admin-table">
+								<caption class="visually-hidden">Năm khách hàng chi tiêu nhiều nhất</caption>
+								<thead>
+									<tr>
+										<th scope="col">Khách hàng</th>
+										<th scope="col">Email</th>
+										<th scope="col">Số đơn</th>
+										<th scope="col">Tổng chi tiêu</th>
+										<th scope="col">Hạng</th>
+										<th scope="col">Tham gia</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<p class="admin-user">
+												<span class="admin-user__avatar" aria-hidden="true">TH</span>
+												<strong class="admin-user__name">Nguyễn Thu Hà</strong>
+											</p>
+										</td>
+										<td class="admin-table__muted">thuha.nguyen@example.com</td>
+										<td class="admin-table__num">14 đơn</td>
+										<td class="admin-table__num">3.482.000đ</td>
+										<td><span class="tag tag--vip">Kim cương</span></td>
+										<td class="admin-table__muted">03/2025</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="admin-user">
+												<span class="admin-user__avatar" aria-hidden="true">MQ</span>
+												<strong class="admin-user__name">Trần Minh Quân</strong>
+											</p>
+										</td>
+										<td class="admin-table__muted">minhquan.tran@example.com</td>
+										<td class="admin-table__num">9 đơn</td>
+										<td class="admin-table__num">1.214.200đ</td>
+										<td><span class="tag tag--soft">Vàng</span></td>
+										<td class="admin-table__muted">07/2025</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="admin-user">
+												<span class="admin-user__avatar" aria-hidden="true">HA</span>
+												<strong class="admin-user__name">Lê Hoàng Anh</strong>
+											</p>
+										</td>
+										<td class="admin-table__muted">hoanganh.le@example.com</td>
+										<td class="admin-table__num">6 đơn</td>
+										<td class="admin-table__num">689.000đ</td>
+										<td><span class="tag tag--muted">Bạc</span></td>
+										<td class="admin-table__muted">11/2025</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="admin-user">
+												<span class="admin-user__avatar" aria-hidden="true">BN</span>
+												<strong class="admin-user__name">Phạm Bảo Ngọc</strong>
+											</p>
+										</td>
+										<td class="admin-table__muted">baongoc.pham@example.com</td>
+										<td class="admin-table__num">3 đơn</td>
+										<td class="admin-table__num">372.000đ</td>
+										<td><span class="tag tag--muted">Đồng</span></td>
+										<td class="admin-table__muted">02/2026</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="admin-user">
+												<span class="admin-user__avatar" aria-hidden="true">ĐT</span>
+												<strong class="admin-user__name">Vũ Đức Thịnh</strong>
+											</p>
+										</td>
+										<td class="admin-table__muted">ducthinh.vu@example.com</td>
+										<td class="admin-table__num">1 đơn</td>
+										<td class="admin-table__num">89.000đ</td>
+										<td><span class="tag tag--muted">Đồng</span></td>
+										<td class="admin-table__muted">09/2026</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="table-note">Hạng Kim cương từ 3.000.000đ · Vàng từ 1.000.000đ · Bạc từ 500.000đ · còn lại là hạng Đồng.</p>
+					</div>
+
+					<!-- ==================== CÀI ĐẶT ==================== -->
+					<div class="admin-view admin-view--cai-dat">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Hệ thống</p>
+								<h2 class="admin-head__title">Cài đặt cửa hàng</h2>
+								<p class="admin-head__desc">Thông tin này hiển thị ở header, footer và email gửi cho khách.</p>
+							</div>
+						</div>
+
+						<p class="admin-notice" id="luu-cai-dat">Đã lưu cài đặt cửa hàng.</p>
+						<p class="admin-notice" id="khoi-phuc">Đã khôi phục các giá trị mặc định của nhà sách.</p>
+
+						<form action="#" method="post">
+							<div class="panel">
+								<div class="panel__head">
+									<h3 class="panel__title">Thông tin cửa hàng</h3>
+									<p class="panel__hint">Bắt buộc: tên cửa hàng và email liên hệ</p>
+								</div>
+
+								<div class="field-grid">
+									<div class="field">
+										<label class="field__label" for="cai-dat-ten">Tên cửa hàng</label>
+										<input class="field__input" id="cai-dat-ten" name="ten-cua-hang" type="text" value="Nhà Sách Skibidus" required>
+									</div>
+									<div class="field">
+										<label class="field__label" for="cai-dat-email">Email liên hệ</label>
+										<input class="field__input" id="cai-dat-email" name="email" type="email" value="hotro@nhasachskibidus.vn" required>
+									</div>
+									<div class="field">
+										<label class="field__label" for="cai-dat-hotline">Hotline</label>
+										<input class="field__input" id="cai-dat-hotline" name="hotline" type="tel" value="0901 234 567" pattern="[0-9 ]{9,15}">
+										<p class="field__hint">Chỉ gồm chữ số và dấu cách, từ 9 đến 15 ký tự.</p>
+									</div>
+									<div class="field">
+										<label class="field__label" for="cai-dat-tien-te">Đơn vị tiền tệ</label>
+										<select class="field__select" id="cai-dat-tien-te" name="tien-te">
+											<option value="vnd" selected>Việt Nam đồng (VNĐ)</option>
+											<option value="usd">Đô la Mỹ (USD)</option>
+										</select>
+									</div>
+									<div class="field field--full">
+										<label class="field__label" for="cai-dat-dia-chi">Địa chỉ</label>
+										<input class="field__input" id="cai-dat-dia-chi" name="dia-chi" type="text" value="123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh">
+									</div>
+									<div class="field field--full">
+										<label class="field__label" for="cai-dat-gioi-thieu">Giới thiệu ngắn</label>
+										<textarea class="field__textarea" id="cai-dat-gioi-thieu" name="gioi-thieu">Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận.</textarea>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel">
+								<div class="panel__head">
+									<h3 class="panel__title">Hiển thị &amp; thông báo</h3>
+								</div>
+
+								<div class="switch-list">
+									<label class="switch">
+										<input class="switch__input" type="checkbox" name="banner" checked>
+										<span class="switch__track" aria-hidden="true"></span>
+										<span class="switch__text">Hiển thị banner khuyến mãi trên trang chủ</span>
+									</label>
+									<label class="switch">
+										<input class="switch__input" type="checkbox" name="gia-bia" checked>
+										<span class="switch__track" aria-hidden="true"></span>
+										<span class="switch__text">Hiển thị giá bìa gạch ngang cạnh giá bán</span>
+									</label>
+									<label class="switch">
+										<input class="switch__input" type="checkbox" name="ban-tin">
+										<span class="switch__track" aria-hidden="true"></span>
+										<span class="switch__text">Gửi email bản tin cho khách hàng mới</span>
+									</label>
+								</div>
+
+								<div class="field">
+									<p class="field__label">Chế độ hiển thị</p>
+									<div class="field__options">
+										<label class="field__radio-label"><input class="field__radio" type="radio" name="che-do" value="sang" checked> Sáng</label>
+										<label class="field__radio-label"><input class="field__radio" type="radio" name="che-do" value="toi"> Tối</label>
+										<label class="field__radio-label"><input class="field__radio" type="radio" name="che-do" value="tu-dong"> Theo hệ thống</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<a class="btn btn--primary" href="#luu-cai-dat">Lưu thay đổi</a>
+								<a class="btn btn--ghost" href="#khoi-phuc">Khôi phục mặc định</a>
+							</div>
+						</form>
+					</div>
+
+					<!-- Mục mặc định, đặt cuối cùng để quy tắc :target ẩn được nó khi mở mục khác -->
+					<!-- ==================== TỔNG QUAN ==================== -->
+					<div class="admin-view admin-view--tong-quan">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Bảng điều khiển</p>
+								<h2 class="admin-head__title">Tổng quan hôm nay</h2>
+								<p class="admin-head__desc">Cập nhật lúc 09:30 ngày 21/09/2026 · Đơn vị tiền tệ: VNĐ.</p>
+							</div>
+							<div class="admin-head__actions">
+								<a class="btn btn--ghost btn--sm" href="./index.html#featured">Xem gian sách</a>
+								<a class="btn btn--primary btn--sm" href="#bao-cao">Xuất báo cáo</a>
+							</div>
+						</div>
+
+						<p class="admin-notice" id="bao-cao">Báo cáo doanh thu tháng 09/2026 đã được tạo và gửi tới <strong>hotro@nhasachskibidus.vn</strong>.</p>
+
+						<!-- Bốn thẻ số liệu chính -->
+						<ul class="metric-grid">
+							<li class="metric">
+								<div class="metric__top">
+									<p class="metric__label">Doanh thu hôm nay</p>
+									<span class="metric__icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="2.4"/><path d="M6.4 9.6v4.8M17.6 9.6v4.8"/></svg>
+									</span>
+								</div>
+								<p class="metric__value">12.480.000đ</p>
+								<p class="metric__delta metric__delta--up">+18,2% so với hôm qua</p>
+							</li>
+							<li class="metric">
+								<div class="metric__top">
+									<p class="metric__label">Đơn hàng mới</p>
+									<span class="metric__icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 4h2l2.4 11h10.2l2-8H6"/><circle cx="9.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg>
+									</span>
+								</div>
+								<p class="metric__value">42 đơn</p>
+								<p class="metric__delta metric__delta--up">+6 đơn so với hôm qua</p>
+							</li>
+							<li class="metric">
+								<div class="metric__top">
+									<p class="metric__label">Sách bán ra</p>
+									<span class="metric__icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5.5A2 2 0 0 1 6 3.5h12v17H6a2 2 0 0 1-2-2z"/><path d="M8 3.5v17"/></svg>
+									</span>
+								</div>
+								<p class="metric__value">128 cuốn</p>
+								<p class="metric__delta metric__delta--up">+12,4% so với tuần trước</p>
+							</li>
+							<li class="metric">
+								<div class="metric__top">
+									<p class="metric__label">Khách hàng mới</p>
+									<span class="metric__icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>
+									</span>
+								</div>
+								<p class="metric__value">17 tài khoản</p>
+								<p class="metric__delta metric__delta--down">−3 so với hôm qua</p>
+							</li>
+						</ul>
+
+						<div class="admin-grid">
+							<!-- Doanh thu 7 ngày gần nhất -->
+							<div class="panel">
+								<div class="panel__head">
+									<h3 class="panel__title">Doanh thu 7 ngày gần nhất</h3>
+									<p class="panel__hint">Đơn vị: triệu đồng</p>
+								</div>
+								<ul class="chart__bars">
+									<li class="chart__bar"><span class="visually-hidden">Thứ 2: 8,2 triệu đồng</span></li>
+									<li class="chart__bar"><span class="visually-hidden">Thứ 3: 9,6 triệu đồng</span></li>
+									<li class="chart__bar"><span class="visually-hidden">Thứ 4: 7,4 triệu đồng</span></li>
+									<li class="chart__bar"><span class="visually-hidden">Thứ 5: 11,8 triệu đồng</span></li>
+									<li class="chart__bar"><span class="visually-hidden">Thứ 6: 10,2 triệu đồng</span></li>
+									<li class="chart__bar chart__bar--peak"><span class="visually-hidden">Thứ 7: 14,6 triệu đồng</span></li>
+									<li class="chart__bar"><span class="visually-hidden">Chủ nhật: 13,1 triệu đồng</span></li>
+								</ul>
+								<ul class="chart__labels">
+									<li>T2</li>
+									<li>T3</li>
+									<li>T4</li>
+									<li>T5</li>
+									<li>T6</li>
+									<li>T7</li>
+									<li>CN</li>
+								</ul>
+								<p class="panel__foot">Tổng tuần: <strong>74,9 triệu đồng</strong> · Cao nhất là thứ 7 với 14,6 triệu.</p>
+							</div>
+
+							<!-- Sách sắp hết hàng -->
+							<div class="panel">
+								<div class="panel__head">
+									<h3 class="panel__title">Sách sắp hết hàng</h3>
+									<p class="panel__hint">Ngưỡng cảnh báo: 15 cuốn</p>
+								</div>
+								<ul class="stock-list">
+									<li class="stock-item">
+										<img class="stock-item__thumb" src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="400" height="600" loading="lazy" decoding="async">
+										<div>
+											<p class="stock-item__title">Atomic Habits</p>
+											<p class="stock-item__meta"><span>Còn 4 cuốn</span><span class="tag tag--sale">Sắp hết</span></p>
+											<p class="stock-bar stock-bar--low" aria-hidden="true"></p>
+										</div>
+									</li>
+									<li class="stock-item">
+										<img class="stock-item__thumb" src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="400" height="600" loading="lazy" decoding="async">
+										<div>
+											<p class="stock-item__title">Mắt Biếc</p>
+											<p class="stock-item__meta"><span>Còn 7 cuốn</span><span class="tag tag--sale">Sắp hết</span></p>
+											<p class="stock-bar" aria-hidden="true"></p>
+										</div>
+									</li>
+									<li class="stock-item">
+										<img class="stock-item__thumb" src="./assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
+										<div>
+											<p class="stock-item__title">Sapiens: Lược Sử Loài Người</p>
+											<p class="stock-item__meta"><span>Còn 9 cuốn</span><span class="tag tag--soft">Cần nhập</span></p>
+											<p class="stock-bar" aria-hidden="true"></p>
+										</div>
+									</li>
+									<li class="stock-item">
+										<img class="stock-item__thumb" src="./assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh" width="400" height="600" loading="lazy" decoding="async">
+										<div>
+											<p class="stock-item__title">Muôn Kiếp Nhân Sinh</p>
+											<p class="stock-item__meta"><span>Còn 12 cuốn</span><span class="tag tag--soft">Cần nhập</span></p>
+											<p class="stock-bar" aria-hidden="true"></p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Đơn hàng gần đây -->
+						<div class="panel">
+							<div class="panel__head">
+								<h3 class="panel__title">Đơn hàng gần đây</h3>
+								<a class="admin-table__link" href="#don-hang">Xem tất cả đơn hàng</a>
+							</div>
+							<div class="table-wrap">
+								<table class="admin-table">
+									<caption class="visually-hidden">Bốn đơn hàng mới nhất</caption>
+									<thead>
+										<tr>
+											<th scope="col">Mã đơn</th>
+											<th scope="col">Khách hàng</th>
+											<th scope="col">Ngày</th>
+											<th scope="col">Trạng thái</th>
+											<th scope="col">Tổng tiền</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="admin-table__strong">#SKB-1024</td>
+											<td>Nguyễn Thu Hà</td>
+											<td class="admin-table__muted">21/09/2026</td>
+											<td><span class="tag tag--done">Hoàn thành</span></td>
+											<td class="admin-table__num">267.000đ</td>
+										</tr>
+										<tr>
+											<td class="admin-table__strong">#SKB-1023</td>
+											<td>Trần Minh Quân</td>
+											<td class="admin-table__muted">21/09/2026</td>
+											<td><span class="tag tag--ship">Đang giao</span></td>
+											<td class="admin-table__num">151.200đ</td>
+										</tr>
+										<tr>
+											<td class="admin-table__strong">#SKB-1022</td>
+											<td>Lê Hoàng Anh</td>
+											<td class="admin-table__muted">20/09/2026</td>
+											<td><span class="tag tag--wait">Chờ xử lý</span></td>
+											<td class="admin-table__num">433.400đ</td>
+										</tr>
+										<tr>
+											<td class="admin-table__strong">#SKB-1021</td>
+											<td>Phạm Bảo Ngọc</td>
+											<td class="admin-table__muted">20/09/2026</td>
+											<td><span class="tag tag--done">Hoàn thành</span></td>
+											<td class="admin-table__num">150.000đ</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</main>
+
+				<!-- ==================== CHÂN TRANG QUẢN TRỊ ==================== -->
+				<footer class="admin-footer">
+					<p>© 2026 Nhà Sách Skibidus</p>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>
