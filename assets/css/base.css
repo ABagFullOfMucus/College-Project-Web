@@ -1,0 +1,114 @@
+/* ==========================================================================
+   BASE - BIẾN & THIẾT LẬP CHUNG
+   Biến màu / font / kích thước, box-sizing và các khai báo nền tảng dùng
+   chung cho mọi trang. Nạp sau reset.css và trước tất cả các file còn lại.
+   ========================================================================== */
+:root {
+	/* Màu sắc chủ đạo */
+	--color-ink: #1d1b16;
+	--color-text: #2f2b26;
+	--color-muted: #7a7168;
+	--color-bg: #fffdf8;
+	--color-surface: #ffffff;
+	--color-surface-alt: #f6f1e7;
+	--color-border: #e8e0d2;
+	--color-border-strong: #d8cdb8;
+	--color-accent: #c8892b;
+	--color-accent-dark: #a86f1c;
+	--color-accent-soft: #fdf3e2;
+	--color-sale: #d1495b;
+	--color-success: #3f9c5a;
+
+	/* --color-primary là tên cũ của --color-accent: khai báo alias để các rule
+	   dùng tên cũ vẫn lấy đúng màu thương hiệu thay vì rơi về giá trị rỗng */
+	--color-primary: var(--color-accent);
+
+	/* Font chữ */
+	--font-body: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+	/* Georgia KHÔNG có ký tự tiếng Việt (ế, ộ, ữ, ạ...). Nếu Georgia đứng đầu,
+	   mỗi chữ có dấu sẽ rơi về một font khác: cả từ bị trộn hai kiểu chữ giữa
+	   chừng, khoảng cách lệch, và mỗi trình duyệt chọn font thay thế khác nhau
+	   nên Chrome/Edge trông khác Firefox. Times New Roman có đủ dấu tiếng Việt
+	   trên cả Windows, macOS lẫn Linux nên chữ thường và chữ có dấu cùng font. */
+	--font-heading: "Times New Roman", Times, serif;
+
+	/* Kích thước & hình khối */
+	--container: 1200px;
+	--gutter: 24px;
+	--radius-sm: 8px;
+	--radius: 14px;
+	--radius-lg: 22px;
+	--radius-pill: 999px;
+
+	/* Đổ bóng */
+	--shadow-sm: 0 2px 8px rgba(29, 27, 22, .06);
+	--shadow: 0 12px 32px rgba(29, 27, 22, .09);
+	--shadow-lg: 0 26px 60px rgba(29, 27, 22, .16);
+
+	--transition: .25s ease;
+}
+
+/* Đặt border-box cho toàn trang: padding và border được tính vào
+   chiều rộng nên nội dung không bị tràn ngang */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	/* iOS Safari tự phóng to chữ khi xoay ngang máy nếu không khai báo */
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	/* Chừa chỗ cho header dính (sticky) khi nhảy tới #id */
+	scroll-padding-top: 96px;
+}
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-body);
+	font-size: 16px;
+	line-height: 1.65;
+	/* Không khai báo -webkit-font-smoothing: antialiased. Chrome/Safari trên macOS
+	   sẽ làm chữ mảnh hơn Firefox (Firefox bỏ qua khai báo đó), dẫn đến chữ
+	   trông khác nhau giữa các trình duyệt. Bỏ trống để độ đậm chữ đồng nhất. */
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--font-heading);
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--color-ink);
+	letter-spacing: -.01em;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: color var(--transition);
+}
+
+img {
+	max-width: 100%;
+	/* height: auto để thuộc tính width/height trong HTML
+	   không ghi đè lên tỉ lệ đã khai báo bằng CSS */
+	height: auto;
+	display: block;
+}
+
+svg {
+	max-width: 100%;
+	display: block;
+}
+
+button {
+	font: inherit;
+	cursor: pointer;
+}
+
+strong {
+	font-weight: 700;
+}

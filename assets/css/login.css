@@ -1,0 +1,186 @@
+/* ==========================================================================
+   LOGIN - TRANG ĐĂNG NHẬP
+   Thẻ đăng nhập, ô nhập liệu và các quy tắc responsive của trang này.
+   ========================================================================== */
+.login-section {
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: grid;
+	place-items: center;
+	padding-block: 40px;
+	background:
+		radial-gradient(900px circle at 50% 16%, var(--color-accent-soft) 0%, transparent 52%),
+		var(--color-bg);	
+}
+
+.login-card {
+	width: 100%;
+	max-width: 360px;
+	padding: 36px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-lg);
+}
+
+.login__brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	margin-bottom: 22px;
+}
+
+.login__brand .logo__text {
+	font-family: var(--font-heading);
+	font-weight: 700;
+	font-size: 1.3rem;
+}
+
+.login__title {
+	margin: 0 0 6px;
+	font-size: 1.7rem;
+	text-align: center;
+}
+
+.login__subtitle {
+	margin: 0 0 26px;
+	font-size: .95rem;
+	text-align: center;
+	color: var(--color-muted);
+}
+
+.login-form__field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 20px;
+}
+
+.login-form__field:last-of-type {
+	margin-bottom: 0;
+}
+
+.login-form__label {
+	font-size: .8rem;
+	font-weight: 600;
+	color: var(--color-ink);
+}
+
+.login-form__input {
+	padding: 12px 16px;
+	background-color: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	font-size: .95rem;
+	color: var(--color-text);
+	transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.login-form__input:focus {
+	outline: none;
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.login-form__input[type="password"] {
+	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.login-form__row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 26px;
+	font-size: .9rem;
+}
+
+/* Hai nút cuối form xếp dọc, có khoảng cách rõ ràng */
+.login-form__cta {
+	display: grid;
+	gap: 12px;
+}
+
+.login-form__link {
+	color: var(--color-accent-dark);
+}
+
+.login-form__link:hover {
+	text-decoration: underline;
+}
+
+/* --- Kiểm tra dữ liệu nhập bằng HTML + CSS thuần (không cần JavaScript) ---
+   Chỉ báo khi người dùng đã nhập gì đó, tránh viền đỏ ngay khi mở trang */
+.login-form__input:not(:placeholder-shown):invalid {
+	border-color: var(--color-sale);
+	box-shadow: 0 0 0 3px rgba(179, 38, 30, .12);
+}
+
+.login-form__input:not(:placeholder-shown):valid {
+	border-color: var(--color-success, #3f9c5a);
+	box-shadow: 0 0 0 3px rgba(63, 156, 90, .14);
+}
+
+/* Lời nhắc lỗi nằm ngay sau ô nhập nên chỉ cần bộ chọn liền kề */
+.login-form__error {
+	display: none;
+	font-size: .8rem;
+	color: var(--color-sale);
+}
+
+.login-form__input:not(:placeholder-shown):invalid + .login-form__error {
+	display: block;
+}
+
+/* Thông báo của hai nút cuối trang: mặc định ẩn, chỉ hiện khi liên kết nhảy
+   tới #id của nó — tương tác hoàn toàn bằng CSS :target */
+.login__notice {
+	display: none;
+	margin-top: 16px;
+	padding: 10px 14px;
+	border: 1px solid var(--color-accent);
+	border-radius: var(--radius-sm);
+	color: var(--color-accent-dark);
+	font-size: .9rem;
+}
+
+.login__notice:target {
+	display: block;
+}
+
+/* Lối vào trang quản trị */
+.login__hint {
+	margin-top: 18px;
+	padding-top: 16px;
+	border-top: 1px solid var(--color-border);
+	text-align: center;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.login__hint a {
+	font-weight: 700;
+	color: var(--color-accent-dark);
+	text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+	.login-card {
+		padding: 28px;
+	}
+}
+
+/* --- Tôn trọng cài đặt giảm chuyển động của người dùng --- */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition-duration: .01ms !important;
+		animation-duration: .01ms !important;
+	}
+}

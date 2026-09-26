@@ -25,6 +25,18 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+/* Ô nhập liệu (input, textarea, select, button) không tự kế thừa font như
+   các thẻ khác. Nếu thiếu khai báo này thì Safari/iOS và các trình duyệt cũ
+   sẽ hiện chữ nhỏ hơn hẳn, lệch với phần còn lại của trang. */
+input,
+button,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+	margin: 0;
+}
+
 /* Thẻ HTML5 hiển thị đúng trên các trình duyệt cũ */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {

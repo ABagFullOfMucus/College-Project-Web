@@ -1,0 +1,449 @@
+/* ==========================================================================
+   HOME - TRANG CHỦ
+   Hero, thể loại, banner khuyến mãi, vì sao chọn, đánh giá khách hàng,
+   đăng ký nhận tin và các quy tắc responsive riêng của trang chủ.
+   ========================================================================== */
+.hero {
+	padding-block: 72px 88px;
+	background-image: linear-gradient(180deg, #fdf6ea 0%, var(--color-bg) 100%);
+}
+
+.hero__inner {
+	display: grid;
+	grid-template-columns: 1.05fr .95fr;
+	align-items: center;
+	gap: 56px;
+}
+
+.hero__content {
+	max-width: 620px;
+}
+
+.hero__title {
+	margin-bottom: 18px;
+	font-size: 2.6rem;
+	font-size: clamp(2.1rem, 5vw, 3.4rem);
+}
+
+.hero__desc {
+	max-width: 52ch;
+	color: var(--color-muted);
+	font-size: 1.05rem;
+}
+
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	margin-top: 28px;
+}
+
+.hero__stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	margin-top: 44px;
+	padding-top: 26px;
+	border-top: 1px solid var(--color-border);
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.stat__value {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.stat__label {
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.hero__media {
+	position: relative;
+}
+
+/* Thẻ nổi trên ảnh hero (nội dung thật thêm sau) */
+.hero__card {
+	position: absolute;
+	left: -20px;
+	bottom: 32px;
+	display: grid;
+	gap: 2px;
+	padding: 16px 22px;
+	background-color: var(--color-surface);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-lg);
+}
+
+.hero__card-label {
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--color-accent-dark);
+}
+
+.hero__card-title {
+	font-family: var(--font-heading);
+	font-size: 1.05rem;
+	color: var(--color-ink);
+}
+
+.hero__card-author {
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+
+.category-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+	gap: 18px;
+}
+
+.category {
+	display: grid;
+	justify-items: center;
+	gap: 8px;
+	height: 100%;
+	padding: 26px 16px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	text-align: center;
+	transition: transform var(--transition), border-color var(--transition),
+		box-shadow var(--transition);
+}
+
+.category:hover,
+.category:focus-visible {
+	transform: translateY(-4px);
+	border-color: var(--color-accent);
+	box-shadow: var(--shadow);
+}
+
+.category__icon {
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	background-color: var(--color-accent-soft);
+	border-radius: 50%;
+	font-size: 1.5rem;
+	line-height: 1;
+}
+
+.category__name {
+	font-family: var(--font-heading);
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.category__count {
+	font-size: .82rem;
+	color: var(--color-muted);
+}
+
+
+.promo {
+	display: grid;
+	grid-template-columns: 1.1fr .9fr;
+	align-items: center;
+	gap: 48px;
+	padding: 56px;
+	overflow: hidden;
+	background-color: var(--color-ink);
+	background-image: radial-gradient(circle at 12% 18%, rgba(200, 137, 43, .38), transparent 58%);
+	border-radius: var(--radius-lg);
+}
+
+.promo__media {
+	width: 100%;
+}
+
+.promo__content {
+	display: grid;
+	justify-items: start;
+	gap: 14px;
+}
+
+.promo__title {
+	font-size: 2rem;
+	font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+	color: #fff;
+}
+
+.promo__desc {
+	max-width: 46ch;
+	color: rgba(255, 255, 255, .78);
+}
+
+.promo__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 6px;
+}
+
+.promo__note {
+	font-size: .85rem;
+	color: rgba(255, 255, 255, .7);
+}
+
+.promo__note strong {
+	color: var(--color-accent);
+	letter-spacing: .12em;
+}
+
+/* Ảnh banner khuyến mãi nằm trên nền tối */
+.promo__photo {
+	display: block;
+	width: 100%;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	background-color: rgba(255, 255, 255, .06);
+	border: 1px solid rgba(255, 255, 255, .2);
+	border-radius: var(--radius);
+}
+
+
+.feature-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+	gap: 24px;
+}
+
+.feature {
+	display: grid;
+	gap: 12px;
+	padding: 30px 26px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.feature:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow);
+}
+
+.feature__icon {
+	display: grid;
+	place-items: center;
+	width: 52px;
+	height: 52px;
+	background-color: var(--color-accent-soft);
+	border-radius: 14px;
+	color: var(--color-accent-dark);
+}
+
+.feature__icon svg {
+	width: 26px;
+	height: 26px;
+}
+
+.feature__title {
+	font-size: 1.1rem;
+}
+
+.feature__desc {
+	font-size: .9rem;
+	color: var(--color-muted);
+}
+
+
+.review-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 24px;
+}
+
+.review {
+	display: grid;
+	gap: 14px;
+	padding: 30px 28px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+}
+
+.review__quote {
+	font-size: .95rem;
+	font-style: italic;
+}
+
+.review__author {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: auto;
+	padding-top: 16px;
+	border-top: 1px solid var(--color-border);
+}
+
+.review__info {
+	display: grid;
+	gap: 2px;
+}
+
+.review__name {
+	font-size: .95rem;
+	color: var(--color-ink);
+}
+
+.review__role {
+	font-size: .8rem;
+	color: var(--color-muted);
+}
+
+
+.newsletter {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 36px;
+	padding: 48px 52px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+}
+
+.newsletter__content {
+	min-width: 0;
+}
+
+.newsletter__title {
+	margin-bottom: 8px;
+	font-size: 1.7rem;
+	font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.newsletter__desc {
+	max-width: 52ch;
+	color: var(--color-muted);
+}
+
+.newsletter__form {
+	display: flex;
+	gap: 10px;
+}
+
+.newsletter__input {
+	width: 300px;
+	padding: 13px 20px;
+	background-color: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	font-size: .95rem;
+	transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Mỗi selector một rule riêng: trình duyệt không hiểu selector nào đó
+   trong danh sách sẽ bỏ cả khối rule, mất luôn cả ::placeholder chuẩn */
+.newsletter__input::-webkit-input-placeholder {
+	color: var(--color-muted);
+}
+
+.newsletter__input::-moz-placeholder {
+	color: var(--color-muted);
+	opacity: 1;
+}
+
+.newsletter__input:-ms-input-placeholder {
+	color: var(--color-muted);
+}
+
+.newsletter__input::placeholder {
+	color: var(--color-muted);
+}
+
+.newsletter__input:focus {
+	outline: none;
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+
+/* --- Laptop nhỏ --- */
+@media (max-width: 1080px) {
+	.hero__inner {
+		grid-template-columns: 1fr;
+		gap: 44px;
+	}
+
+	.hero__media {
+		max-width: 540px;
+	}
+
+	.promo {
+		grid-template-columns: 1fr;
+		padding: 44px;
+	}
+
+	.newsletter {
+		grid-template-columns: 1fr;
+		padding: 40px;
+	}
+}
+
+/* --- Tablet & mobile --- */
+@media (max-width: 900px) {
+	.hero {
+		padding-block: 48px 64px;
+	}
+}
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+	.hero__stats {
+		gap: 22px 28px;
+	}
+
+	.hero__figure {
+		padding: 22px;
+	}
+
+	.hero__photo {
+		max-width: 300px;
+	}
+
+	.hero__card {
+		left: 12px;
+		bottom: 12px;
+		padding: 12px 16px;
+	}
+
+	.category-grid,
+	.feature-grid,
+	.review-grid {
+		gap: 16px;
+	}
+
+	.promo {
+		gap: 28px;
+		padding: 32px 24px;
+	}
+
+	.newsletter {
+		padding: 30px 24px;
+	}
+
+	.newsletter__form {
+		flex-direction: column;
+	}
+
+	.newsletter__input {
+		width: 100%;
+	}
+}

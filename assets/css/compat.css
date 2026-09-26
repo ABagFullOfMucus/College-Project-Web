@@ -1,0 +1,69 @@
+/* ==========================================================================
+   COMPAT - TƯƠNG THÍCH TRÌNH DUYỆT CŨ
+   Fallback cho aspect-ratio, backdrop-filter và :focus-visible. LUÔN nạp CUỐI CÙNG ở mọi trang.
+   ========================================================================== */
+   Các khai báo trong mục này chỉ có tác dụng với trình duyệt chưa hỗ trợ
+   tính năng tương ứng. Trình duyệt mới sẽ bỏ qua chúng và dùng bản hiện đại
+   khai báo ở trên, nên ghi thêm ở đây là hoàn toàn an toàn.
+   ========================================================================== */
+
+/* Safari < 15, Chrome < 88, Firefox < 89 chưa có aspect-ratio. Dùng ô padding
+   tỉ lệ 3:4 cho khung bìa sách để bố cục không bị vỡ, hai khung còn lại chỉ
+   là trang trí nên dùng chiều cao cố định là đủ. */
+@supports not (aspect-ratio: 1 / 1) {
+	.book-card__media {
+		height: 0;
+		padding: 0;
+		padding-bottom: 133.333%;
+	}
+
+	/* cover = (W - 32) x ((W - 32) / 0.75): bù lại phần padding 16px + 26.67px
+	   để khung vẫn đúng tỉ lệ 3:4 chứ không bị méo */
+	.book-cover {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		bottom: 26.67px;
+		left: 16px;
+		width: auto;
+		height: auto;
+	}
+
+	.hero__figure {
+		height: 400px;
+	}
+
+	.promo__photo {
+		height: 260px;
+	}
+}
+
+/* Không có backdrop-filter thì nền phải đục hơn, nếu không chữ ở trang phía
+   dưới sẽ lọt qua và khó đọc */
+@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+	.site-header,
+	.admin-topbar {
+		background-color: var(--color-bg);
+	}
+}
+
+/* Safari < 15.4, Firefox < 85 không hiểu :focus-visible nên khi điều hướng
+   bằng bàn phím sẽ không thấy viền focus. Ở những trình duyệt đó dùng
+   :focus để thay thế (gồm cả các ô nhập vốn đã tắt outline). */
+@supports not selector(:focus-visible) {
+	a:focus,
+	button:focus,
+	select:focus,
+	textarea:focus,
+	summary:focus,
+	[tabindex]:focus,
+	.search__input:focus,
+	.newsletter__input:focus,
+	.login-form__input:focus,
+	.qty__input:focus,
+	.coupon__input:focus,
+	.field__textarea:focus {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 2px;
+	}
+}

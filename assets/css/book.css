@@ -1,0 +1,435 @@
+/* ==========================================================================
+   BOOK - TRANG CHI TIẾT SÁCH
+   Khối ảnh bìa, thông tin sách, đánh giá và các quy tắc responsive.
+   ========================================================================== */
+/* Thẻ sách ở trang chủ: cho phép bấm vào bất kỳ chỗ nào trên thẻ cũng mở
+   được trang chi tiết; nút "Thêm vào giỏ" cũng là liên kết tới đó,
+   nên vẫn bấm riêng được mà không cần JavaScript */
+.book-card {
+	position: relative;
+}
+
+.book-card__title a::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.book-card__body .btn {
+	position: relative;
+	z-index: 1;
+}
+
+/* --- Đường dẫn (breadcrumb) --- */
+.breadcrumb {
+	padding-block: 18px;
+	background-color: var(--color-surface-alt);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumb__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.breadcrumb__list li + li::before {
+	content: "/";
+	margin-right: 8px;
+	color: var(--color-border-strong);
+}
+
+.breadcrumb__list a:hover,
+.breadcrumb__list a:focus-visible {
+	color: var(--color-accent-dark);
+}
+
+.breadcrumb__list [aria-current="page"] {
+	color: var(--color-ink);
+	font-weight: 600;
+}
+
+/* --- Bố cục hai cột: ảnh bìa | thông tin --- */
+.product {
+	display: grid;
+	grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+	gap: 48px;
+	align-items: start;
+}
+
+.product__gallery {
+	display: grid;
+	gap: 20px;
+	align-content: start;
+	/* Bám theo khi người dùng cuộn phần thông tin bên phải */
+	/* -webkit-sticky cho iOS Safari < 13 */
+	position: -webkit-sticky;
+	position: sticky;
+	top: 104px;
+}
+
+.product__frame {
+	position: relative;
+	display: grid;
+	place-items: center;
+	padding: 32px;
+	background-color: var(--color-surface);
+	background-image:
+		radial-gradient(circle at 18% 12%, var(--color-accent-soft), transparent 58%),
+		radial-gradient(circle at 86% 92%, #f2e8d6, transparent 62%);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow);
+}
+
+.product__frame .tag {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 1;
+}
+
+/* Ảnh bìa giữ đúng tỉ lệ thật nên không bị méo dù mỗi cuốn một khổ */
+.product__photo {
+	width: auto;
+	max-height: 420px;
+	border-radius: var(--radius-sm);
+	box-shadow: 0 18px 40px rgba(29, 27, 22, .22);
+}
+
+/* Ba cam kết ngắn dưới ảnh bìa */
+.product__perks {
+	display: grid;
+	gap: 14px;
+	padding: 20px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.product__perk {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	font-size: .875rem;
+	color: var(--color-text);
+}
+
+.product__perk svg {
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+	margin-top: 4px;
+	color: var(--color-accent-dark);
+}
+
+/* --- Cột thông tin --- */
+.product__info {
+	display: grid;
+	gap: 14px;
+	align-content: start;
+}
+
+.product__category {
+	font-size: .78rem;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--color-accent-dark);
+}
+
+.product__title {
+	font-size: 2rem;
+	font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+}
+
+.product__meta {
+	font-size: .9rem;
+	color: var(--color-muted);
+}
+
+.product__meta strong {
+	color: var(--color-ink);
+}
+
+.product__rating {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.product__rating .stars {
+	font-size: 1rem;
+}
+
+.product__rating-value {
+	font-size: .9rem;
+	color: var(--color-muted);
+}
+
+.product__price-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 12px;
+	margin-top: 4px;
+	padding: 18px 20px;
+	background-color: var(--color-accent-soft);
+	border-radius: var(--radius);
+}
+
+.product__price {
+	font-family: var(--font-heading);
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--color-sale);
+}
+
+.product__save {
+	padding: 4px 10px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .78rem;
+	font-weight: 700;
+	color: var(--color-accent-dark);
+}
+
+.product__stock {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: .875rem;
+	color: var(--color-muted);
+}
+
+.product__dot {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background-color: #3f9c5a;
+	box-shadow: 0 0 0 3px rgba(63, 156, 90, .18);
+}
+
+.product__subtitle {
+	margin-top: 6px;
+	font-size: 1.05rem;
+}
+
+.product__summary {
+	color: var(--color-muted);
+}
+
+.product__notice {
+	padding: 12px 16px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-left: 4px solid var(--color-accent);
+	border-radius: var(--radius-sm);
+	font-size: .9rem;
+	font-weight: 600;
+	color: var(--color-accent-dark);
+}
+
+/* Chưa có thông báo thì không chiếm chỗ trong bố cục */
+.product__notice:empty {
+	display: none;
+}
+
+/* Thông báo của hai nút "Thêm vào giỏ" / "Mua ngay": mặc định ẩn, chỉ hiện khi
+   liên kết nhảy tới #id của thông báo — tương tác hoàn toàn bằng CSS :target */
+.product__notice--target {
+	display: none;
+}
+
+.product__notice--target:target {
+	display: block;
+}
+
+/* Liên kết tới giỏ hàng nằm trong thông báo: gạch chân cho thấy rõ là bấm được */
+.product__notice a {
+	text-decoration: underline;
+}
+
+.product__highlights {
+	display: grid;
+	gap: 8px;
+	font-size: .9rem;
+}
+
+.product__highlights li {
+	position: relative;
+	padding-left: 26px;
+}
+
+.product__highlights li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	font-weight: 700;
+	color: var(--color-accent-dark);
+}
+
+/* --- Ô chọn số lượng --- */
+.qty {
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+}
+
+/* Nhãn nằm ngay trong viên thuốc cho rõ nghĩa */
+.qty__label {
+	padding-inline: 18px 14px;
+	font-size: .85rem;
+	color: var(--color-muted);
+	white-space: nowrap;
+}
+
+/* Ô số lượng: giữ nguyên nút tăng / giảm gốc của trình duyệt — đây là cách duy
+   nhất để chọn số lượng mà không cần JavaScript */
+.qty__input {
+	width: 86px;
+	height: 48px;
+	padding-right: 6px;
+	background-color: transparent;
+	border: 0;
+	border-inline-start: 1px solid var(--color-border);
+	text-align: center;
+	font: inherit;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+/* Nút tăng / giảm gốc được phóng to cho dễ bấm */
+.qty__input::-webkit-inner-spin-button,
+.qty__input::-webkit-outer-spin-button {
+	height: 32px;
+	opacity: 1;
+	cursor: pointer;
+}
+
+.qty__input:focus {
+	outline: none;
+	background-color: var(--color-accent-soft);
+}
+
+/* --- Cụm nút mua --- */
+.product__buy {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin-top: 4px;
+}
+
+/* --- Khối mô tả & thông số ấn phẩm --- */
+.detail-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+	gap: 28px;
+	align-items: start;
+}
+
+.detail-block {
+	padding: 28px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.detail-block__title {
+	margin-bottom: 14px;
+	font-size: 1.15rem;
+}
+
+.detail-block__body p + p {
+	margin-top: 12px;
+}
+
+.specs__row {
+	display: grid;
+	grid-template-columns: minmax(0, 140px) minmax(0, 1fr);
+	gap: 12px;
+	padding-block: 12px;
+	border-bottom: 1px dashed var(--color-border);
+	font-size: .9rem;
+}
+
+.specs__row:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.specs__label {
+	color: var(--color-muted);
+}
+
+.specs__value {
+	color: var(--color-ink);
+	font-weight: 600;
+}
+
+/* --- Responsive cho trang chi tiết --- */
+@media (max-width: 1080px) {
+	.product {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	/* Xếp dọc thì không cần bám theo khi cuộn nữa */
+	.product__gallery {
+		position: static;
+	}
+
+	.detail-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 640px) {
+	.breadcrumb {
+		padding-block: 14px;
+	}
+
+	.product__frame {
+		padding: 22px;
+	}
+
+	.product__photo {
+		max-height: 320px;
+	}
+
+	.product__title {
+		font-size: 1.7rem;
+	}
+
+	.product__price {
+		font-size: 1.65rem;
+	}
+
+	/* Ô số lượng co theo nội dung, các nút giãn hết chiều ngang */
+	.product__buy {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.qty {
+		align-self: flex-start;
+	}
+
+	.specs__row {
+		grid-template-columns: 1fr;
+		gap: 2px;
+	}
+}

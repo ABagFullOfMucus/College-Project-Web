@@ -7,10 +7,13 @@
 		<meta name="description" content="Nhà Sách Skibidus - mua sách trực tuyến: hàng ngàn đầu sách chọn lọc, giao hàng toàn quốc, đổi trả trong 7 ngày.">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
 		<link rel="icon" type="image/png" href="./assets/images/logo.png">
-		<!-- Reset CSS -->
+		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
 		<link rel="stylesheet" href="./assets/css/reset.css">
-		<!-- Style CSS -->
-		<link rel="stylesheet" href="./assets/css/style.css">
+		<link rel="stylesheet" href="./assets/css/base.css">
+		<link rel="stylesheet" href="./assets/css/components.css">
+		<link rel="stylesheet" href="./assets/css/layout.css">
+		<link rel="stylesheet" href="./assets/css/home.css">
+		<link rel="stylesheet" href="./assets/css/compat.css">
 	</head>
 	<body>
 		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
@@ -21,7 +24,7 @@
 			<div class="container site-header__inner">
 				<a class="logo" href="#hero">
 					<span class="logo__mark" aria-hidden="true">
-						<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="sync">
 					</span>
 					<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 				</a>
@@ -92,7 +95,7 @@
 
 					<div class="hero__media">
 						<div class="hero__figure">
-							<img class="hero__photo" src="./assets/images/hero/the-alchemist-hero.png" alt="Bìa sách Nhà Giả Kim của tác giả Paulo Coelho" width="324" height="286" decoding="async">
+							<img class="hero__photo" src="./assets/images/hero/the-alchemist-hero.png" alt="Bìa sách Nhà Giả Kim của tác giả Paulo Coelho" width="324" height="286" decoding="sync">
 						</div>
 
 						<div class="hero__card">
@@ -175,7 +178,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--sale">-20%</span>
-								<img class="book-cover" src="./assets/images/books/book1.jpg" alt="Bìa sách Đắc Nhân Tâm của tác giả Dale Carnegie" width="1352" height="2004" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book1.jpg" alt="Bìa sách Đắc Nhân Tâm của tác giả Dale Carnegie" width="1352" height="2004" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Kỹ năng sống</p>
@@ -195,7 +198,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--sale">-15%</span>
-								<img class="book-cover" src="./assets/images/books/book2.jpg" alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu? của tác giả Rosie Nguyễn" width="2800" height="2800" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book2.jpg" alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu? của tác giả Rosie Nguyễn" width="2800" height="2800" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Văn học trẻ</p>
@@ -215,7 +218,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--soft">Mới</span>
-								<img class="book-cover" src="./assets/images/books/book3.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi của tác giả José Mauro de Vasconcelos" width="663" height="984" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book3.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi của tác giả José Mauro de Vasconcelos" width="663" height="984" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Tiểu thuyết nước ngoài</p>
@@ -235,7 +238,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--sale">-30%</span>
-								<img class="book-cover" src="./assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người của tác giả Yuval Noah Harari" width="304" height="472" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người của tác giả Yuval Noah Harari" width="304" height="472" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Lịch sử</p>
@@ -255,7 +258,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--soft">Bán chạy</span>
-								<img class="book-cover" src="./assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh của tác giả Nguyên Phong" width="300" height="414" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh của tác giả Nguyên Phong" width="300" height="414" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Triết lý</p>
@@ -275,7 +278,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--sale">-10%</span>
-								<img class="book-cover" src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits của tác giả James Clear" width="600" height="600" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits của tác giả James Clear" width="600" height="600" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Năng suất</p>
@@ -295,7 +298,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--soft">Mới</span>
-								<img class="book-cover" src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc của tác giả Nguyễn Nhật Ánh" width="781" height="1231" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc của tác giả Nguyễn Nhật Ánh" width="781" height="1231" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Văn học Việt Nam</p>
@@ -315,7 +318,7 @@
 						<li class="book-card">
 							<div class="book-card__media">
 								<span class="tag tag--sale">-25%</span>
-								<img class="book-cover" src="./assets/images/books/book8.jpg" alt="Bìa sách Cho Tôi Xin Một Vé Đi Tuổi Thơ của tác giả Nguyễn Nhật Ánh" width="300" height="508" loading="lazy" decoding="async">
+								<img class="book-cover" src="./assets/images/books/book8.jpg" alt="Bìa sách Cho Tôi Xin Một Vé Đi Tuổi Thơ của tác giả Nguyễn Nhật Ánh" width="300" height="508" loading="lazy" decoding="sync">
 							</div>
 							<div class="book-card__body">
 								<p class="book-card__category">Văn học Việt Nam</p>
@@ -351,7 +354,7 @@
 							<p class="promo__note">Mã ưu đãi: <strong>TR3TSAHUR!</strong></p>
 						</div>
 						<div class="promo__media">
-							<img class="promo__photo" src="./assets/images/promo.jpeg" alt="Banner chương trình giảm 30% cho đơn sách đầu tiên" width="678" height="452" loading="lazy" decoding="async">
+							<img class="promo__photo" src="./assets/images/promo.jpeg" alt="Banner chương trình giảm 30% cho đơn sách đầu tiên" width="678" height="452" loading="lazy" decoding="sync">
 						</div>
 					</div>
 				</div>
@@ -413,7 +416,7 @@
 							<p class="stars" aria-label="Đánh giá 5 trên 5">★★★★</p>
 							<blockquote class="review__quote">Giao diện web dễ tìm sách, đặt hàng cực kỳ nhanh gọn. Sách đóng gói chắc chắn, bọc chống sốc kỹ càng và nhận được chỉ sau 2 ngày. Rất hài lòng!</blockquote>
 							<div class="review__author">
-								<img class="review__avatar" src="./assets/images/reviews/review-ava1.jpeg" alt="Ảnh đại diện của khách hàng Phạm Quang Huy" width="236" height="236" loading="lazy" decoding="async">
+								<img class="review__avatar" src="./assets/images/reviews/review-ava1.jpeg" alt="Ảnh đại diện của khách hàng Phạm Quang Huy" width="236" height="236" loading="lazy" decoding="sync">
 								<span class="review__info">
 									<strong class="review__name">Phạm Quang Huy</strong>
 									<span class="review__role">Lập trình viên — TP. Hồ Chí Minh</span>
@@ -424,7 +427,7 @@
 							<p class="stars" aria-label="Đánh giá 5 trên 5">★★★★★</p>
 							<blockquote class="review__quote">Mình mua mấy cuốn tài liệu chuyên ngành thú y và chăm sóc mèo cưng ở đây, sách chuẩn gốc, mực in rõ nét. Giao hàng nhanh mà đóng gói cẩn thận lắm.</blockquote>
 							<div class="review__author">
-								<img class="review__avatar" src="./assets/images/reviews/review-ava2.jpg" alt="Ảnh đại diện của khách hàng Nguyễn Ngọc Quỳnh Anh" width="640" height="1237" loading="lazy" decoding="async">
+								<img class="review__avatar" src="./assets/images/reviews/review-ava2.jpg" alt="Ảnh đại diện của khách hàng Nguyễn Ngọc Quỳnh Anh" width="640" height="1237" loading="lazy" decoding="sync">
 								<span class="review__info">
 									<strong class="review__name">Nguyễn Ngọc Quỳnh Anh</strong>
 									<span class="review__role">Bác sĩ thú y — Bình Thạnh</span>
@@ -435,7 +438,7 @@
 							<p class="stars" aria-label="Đánh giá 5 trên 5">★★★★★</p>
 							<blockquote class="review__quote">Tìm mua mấy cuốn giáo trình ngoại văn với tài liệu tiếng Anh khá khó kiếm ở ngoài, thế mà shop có đủ cả. Giá cả hợp lý, giao hàng nhanh chóng.</blockquote>
 							<div class="review__author">
-								<img class="review__avatar" src="./assets/images/reviews/review-ava3.jpg" alt="Ảnh đại diện của khách hàng Phạm Khánh Nam" width="640" height="960" loading="lazy" decoding="async">
+								<img class="review__avatar" src="./assets/images/reviews/review-ava3.jpg" alt="Ảnh đại diện của khách hàng Phạm Khánh Nam" width="640" height="960" loading="lazy" decoding="sync">
 								<span class="review__info">
 									<strong class="review__name">Phạm Khánh Nam</strong>
 									<span class="review__role">Sinh viên Ngôn ngữ Anh — TP. Hồ Chí Minh</span>
@@ -471,7 +474,7 @@
 				<div class="site-footer__col site-footer__col--brand">
 					<a class="logo logo--footer" href="#hero">
 						<span class="logo__mark" aria-hidden="true">
-							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="sync">
 						</span>
 						<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 					</a>

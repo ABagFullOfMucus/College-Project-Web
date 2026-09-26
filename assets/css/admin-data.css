@@ -1,0 +1,557 @@
+/* ==========================================================================
+   ADMIN - BẢNG & DANH SÁCH
+   Danh sách sách, bảng dữ liệu, chi tiết đơn hàng, bộ lọc, công tắc và phân trang.
+   ========================================================================== */
+/* --- Danh sách sách sắp hết hàng --- */
+.stock-list {
+	display: grid;
+	gap: 18px;
+}
+
+.stock-item {
+	display: grid;
+	grid-template-columns: 44px minmax(0, 1fr);
+	gap: 12px;
+	align-items: center;
+}
+
+.stock-item__thumb {
+	width: 44px;
+	height: 58px;
+	object-fit: cover;
+	border-radius: 5px;
+	box-shadow: var(--shadow-sm);
+}
+
+.stock-item__title {
+	font-size: .875rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.stock-item__meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 3px;
+	font-size: .78rem;
+	color: var(--color-muted);
+}
+
+/* Thanh tỉ lệ tồn kho: mỗi mục có chiều rộng riêng, không cần JavaScript */
+.stock-bar {
+	height: 6px;
+	margin-top: 8px;
+	background-color: var(--color-surface-alt);
+	border-radius: var(--radius-pill);
+}
+
+.stock-bar::before {
+	content: "";
+	display: block;
+	height: 100%;
+	width: 20%;
+	background-color: var(--color-accent);
+	border-radius: inherit;
+}
+
+.stock-item:nth-child(1) .stock-bar::before {
+	width: 12%;
+}
+
+.stock-item:nth-child(2) .stock-bar::before {
+	width: 22%;
+}
+
+.stock-item:nth-child(3) .stock-bar::before {
+	width: 30%;
+}
+
+.stock-item:nth-child(4) .stock-bar::before {
+	width: 40%;
+}
+
+/* Mức tồn kho thấp nhất được tô đỏ để cảnh báo */
+.stock-bar--low::before {
+	background-color: var(--color-sale);
+}
+
+/* --- Bảng dữ liệu --- */
+.table-wrap {
+	overflow-x: auto;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.admin-table {
+	width: 100%;
+	min-width: 720px;
+	border-collapse: collapse;
+	font-size: .9rem;
+}
+
+.admin-table th {
+	padding: 13px 16px;
+	background-color: var(--color-surface-alt);
+	border-bottom: 1px solid var(--color-border);
+	text-align: left;
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	white-space: nowrap;
+}
+
+.admin-table td {
+	padding: 14px 16px;
+	border-bottom: 1px solid var(--color-border);
+	vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+/* Rê chuột vào dòng để dễ dò theo hàng ngang */
+.admin-table tbody tr:hover td {
+	background-color: var(--color-accent-soft);
+}
+
+.admin-table__strong {
+	font-weight: 700;
+	white-space: nowrap;
+	color: var(--color-ink);
+}
+
+.admin-table__muted {
+	color: var(--color-muted);
+}
+
+/* Số tiền dùng chữ số đều nhau nên các cột thẳng hàng */
+.admin-table__num {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+	white-space: nowrap;
+	color: var(--color-ink);
+}
+
+.admin-table__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.admin-table__link {
+	font-size: .85rem;
+	font-weight: 700;
+	color: var(--color-accent-dark);
+}
+
+.admin-table__link:hover,
+.admin-table__link:focus-visible {
+	text-decoration: underline;
+}
+
+/* Ô hiển thị bìa + tên sách */
+.cell-book {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 220px;
+}
+
+.cell-book img {
+	flex: 0 0 auto;
+	width: 36px;
+	height: 48px;
+	object-fit: cover;
+	border-radius: 4px;
+	box-shadow: var(--shadow-sm);
+}
+
+.cell-book__title {
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.cell-book__meta {
+	font-size: .78rem;
+	color: var(--color-muted);
+}
+
+/* --- Hàng chi tiết đơn hàng: mặc định ẩn, chỉ hiện khi bấm "Chi tiết" --- */
+.order-detail-row {
+	display: none;
+}
+
+.order-detail-row:target {
+	display: table-row;
+}
+
+.order-detail-row td {
+	background-color: var(--color-surface-alt);
+}
+
+.order-detail {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+	padding-block: 4px;
+	font-size: .875rem;
+}
+
+.order-detail__item {
+	display: grid;
+	gap: 3px;
+	align-content: start;
+}
+
+.order-detail dt {
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+
+.order-detail dd {
+	color: var(--color-text);
+}
+
+.order-detail dd + dt {
+	margin-top: 6px;
+}
+
+/* --- Trạng thái đơn hàng & hạng khách hàng --- */
+.tag--done {
+	background-color: #e4f3e8;
+	color: #2f7a48;
+}
+
+.tag--ship {
+	background-color: #e6eefc;
+	color: #2c5aa0;
+}
+
+.tag--wait {
+	background-color: var(--color-accent-soft);
+	color: var(--color-accent-dark);
+}
+
+.tag--cancel {
+	background-color: #fdeaed;
+	color: #a82c3c;
+}
+
+.tag--vip {
+	background-color: var(--color-ink);
+	color: #fff;
+}
+
+.tag--muted {
+	background-color: var(--color-surface-alt);
+	color: var(--color-muted);
+}
+
+/* --- Thanh lọc dữ liệu --- */
+.filter-bar {
+	display: grid;
+	grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr)) auto;
+	gap: 12px;
+	align-items: end;
+	margin-bottom: 20px;
+	padding: 18px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+/* --- Trường nhập liệu dùng chung --- */
+.field {
+	display: grid;
+	gap: 6px;
+}
+
+.field--full {
+	grid-column: 1 / -1;
+}
+
+.field__label {
+	font-size: .8rem;
+	font-weight: 700;
+	color: var(--color-muted);
+}
+
+.field__input,
+.field__select,
+.field__textarea {
+	width: 100%;
+	padding: 10px 14px;
+	background-color: var(--color-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-sm);
+	font: inherit;
+	font-size: .9rem;
+	color: var(--color-ink);
+}
+
+.field__textarea {
+	min-height: 104px;
+	resize: vertical;
+}
+
+.field__input:focus,
+.field__select:focus,
+.field__textarea:focus {
+	outline: none;
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.field__hint {
+	font-size: .78rem;
+	color: var(--color-muted);
+}
+
+/* Nút chọn (radio) dùng màu nhấn của thương hiệu */
+.field__radio {
+	width: 18px;
+	height: 18px;
+	accent-color: var(--color-accent);
+}
+
+.field__radio-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: .9rem;
+	color: var(--color-text);
+	cursor: pointer;
+}
+
+.field__options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+}
+
+.field-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.form-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin-top: 24px;
+	padding-top: 18px;
+	border-top: 1px dashed var(--color-border);
+}
+
+/* --- Công tắc bật / tắt: checkbox ẩn + thanh trượt tự vẽ bằng CSS --- */
+.switch-list {
+	display: grid;
+	gap: 16px;
+}
+
+.switch {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: .9rem;
+	cursor: pointer;
+}
+
+.switch__input {
+	position: absolute;
+	width: 44px;
+	height: 24px;
+	margin: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.switch__track {
+	position: relative;
+	flex: 0 0 auto;
+	width: 44px;
+	height: 24px;
+	background-color: var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	transition: background-color var(--transition);
+}
+
+.switch__track::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 18px;
+	height: 18px;
+	background-color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px rgba(29, 27, 22, .3);
+	transition: transform var(--transition);
+}
+
+.switch__input:checked + .switch__track {
+	background-color: var(--color-accent);
+}
+
+.switch__input:checked + .switch__track::after {
+	transform: translateX(20px);
+}
+
+.switch__input:focus-visible + .switch__track {
+	box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.switch__text {
+	color: var(--color-text);
+}
+
+/* --- Phân trang --- */
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 20px;
+}
+
+.pagination__info {
+	margin-right: auto;
+	font-size: .82rem;
+	color: var(--color-muted);
+}
+
+.pagination__link {
+	display: grid;
+	place-items: center;
+	min-width: 38px;
+	height: 38px;
+	padding-inline: 12px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	font-size: .85rem;
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.pagination__link:hover,
+.pagination__link:focus-visible {
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+.pagination__link[aria-current="page"] {
+	background-color: var(--color-ink);
+	border-color: var(--color-ink);
+	color: #fff;
+}
+
+/* --- Chân trang quản trị --- */
+.admin-footer {
+	padding: 22px 28px;
+	border-top: 1px solid var(--color-border);
+	font-size: .82rem;
+	color: var(--color-muted);
+}
+
+/* --- Responsive cho trang quản trị --- */
+@media (max-width: 1180px) {
+	.metric-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.admin-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.filter-bar {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.order-detail {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 1080px) {
+	.admin {
+		grid-template-columns: 1fr;
+	}
+
+	/* Cột điều hướng trượt vào từ bên trái, mở bằng nút hamburger (chỉ CSS) */
+	.admin-sidebar {
+		position: fixed;
+		/* inset() mới hơn Safari 14.1: ghi rõ từng cạnh cho trình duyệt cũ */
+		top: 0;
+		right: auto;
+		bottom: 0;
+		left: 0;
+		z-index: 50;
+		display: none;
+		width: 272px;
+		height: auto;
+		box-shadow: var(--shadow-lg);
+	}
+
+	.admin-toggle:checked ~ .admin .admin-sidebar {
+		display: grid;
+	}
+
+	.admin-toggle:checked ~ .admin .admin-scrim {
+		display: block;
+	}
+
+	.admin-burger {
+		display: grid;
+	}
+}
+
+@media (max-width: 640px) {
+	.admin-topbar {
+		gap: 10px;
+		padding-inline: 16px;
+	}
+
+	.admin-topbar__search {
+		max-width: none;
+	}
+
+	/* Màn hình nhỏ chỉ giữ ảnh đại diện cho gọn */
+	.admin-user__info {
+		display: none;
+	}
+
+	.admin-content {
+		padding: 20px 16px;
+	}
+
+	.metric-grid,
+	.filter-bar,
+	.field-grid,
+	.order-detail {
+		grid-template-columns: 1fr;
+	}
+
+	.chart__bars {
+		height: 150px;
+	}
+
+	.panel {
+		padding: 18px;
+	}
+
+	.admin-footer {
+		padding: 18px 16px;
+	}
+}
