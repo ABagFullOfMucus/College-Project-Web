@@ -128,7 +128,35 @@
 #don-hang:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #kho-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #khach-hang:target ~ .admin .admin-sidebar .admin-nav__link--active,
-#cai-dat:target ~ .admin .admin-sidebar .admin-nav__link--active {
+#cai-dat:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#in-don:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#da-loc:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#tim-kiem-xong:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#trang-1:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#trang-2:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#trang-3:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#trang-26:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#trang-sau:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#don-1024:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#don-1023:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#don-1022:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#don-1021:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#don-1020:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#sua-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#xuat-khach-hang:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#luu-cai-dat:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#khoi-phuc:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#xac-nhan-luu:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#xac-nhan-khoi-phuc:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#loc-tu-khoa:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#loc-trang-thai:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#loc-thoi-gian:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#cai-dat-ten:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#cai-dat-email:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#cai-dat-hotline:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#cai-dat-tien-te:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#cai-dat-dia-chi:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#cai-dat-gioi-thieu:target ~ .admin .admin-sidebar .admin-nav__link--active {
 	background-color: transparent;
 	color: var(--color-text);
 }
@@ -139,7 +167,35 @@
 #don-hang:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
 #kho-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
 #khach-hang:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"],
-#cai-dat:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"] {
+#cai-dat:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#in-don:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#da-loc:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#tim-kiem-xong:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#trang-1:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#trang-2:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#trang-3:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#trang-26:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#trang-sau:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#don-1024:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#don-1023:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#don-1022:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#don-1021:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#don-1020:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#sua-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
+#xuat-khach-hang:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"],
+#luu-cai-dat:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#khoi-phuc:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#xac-nhan-luu:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#xac-nhan-khoi-phuc:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#loc-tu-khoa:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#loc-trang-thai:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#loc-thoi-gian:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#cai-dat-ten:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#cai-dat-email:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#cai-dat-hotline:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#cai-dat-tien-te:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#cai-dat-dia-chi:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#cai-dat-gioi-thieu:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"] {
 	background-color: var(--color-accent-soft);
 	color: var(--color-accent-dark);
 }
@@ -273,15 +329,115 @@
 #don-hang:target ~ .admin .admin-main .admin-view--don-hang,
 #kho-sach:target ~ .admin .admin-main .admin-view--kho-sach,
 #khach-hang:target ~ .admin .admin-main .admin-view--khach-hang,
-#cai-dat:target ~ .admin .admin-main .admin-view--cai-dat {
+#cai-dat:target ~ .admin .admin-main .admin-view--cai-dat,
+#in-don:target ~ .admin .admin-main .admin-view--don-hang,
+#da-loc:target ~ .admin .admin-main .admin-view--don-hang,
+#tim-kiem-xong:target ~ .admin .admin-main .admin-view--don-hang,
+#trang-1:target ~ .admin .admin-main .admin-view--don-hang,
+#trang-2:target ~ .admin .admin-main .admin-view--don-hang,
+#trang-3:target ~ .admin .admin-main .admin-view--don-hang,
+#trang-26:target ~ .admin .admin-main .admin-view--don-hang,
+#trang-sau:target ~ .admin .admin-main .admin-view--don-hang,
+#don-1024:target ~ .admin .admin-main .admin-view--don-hang,
+#don-1023:target ~ .admin .admin-main .admin-view--don-hang,
+#don-1022:target ~ .admin .admin-main .admin-view--don-hang,
+#don-1021:target ~ .admin .admin-main .admin-view--don-hang,
+#don-1020:target ~ .admin .admin-main .admin-view--don-hang,
+#sua-sach:target ~ .admin .admin-main .admin-view--kho-sach,
+#xuat-khach-hang:target ~ .admin .admin-main .admin-view--khach-hang,
+#luu-cai-dat:target ~ .admin .admin-main .admin-view--cai-dat,
+#khoi-phuc:target ~ .admin .admin-main .admin-view--cai-dat,
+#xac-nhan-luu:target ~ .admin .admin-main .admin-view--cai-dat,
+#xac-nhan-khoi-phuc:target ~ .admin .admin-main .admin-view--cai-dat,
+#loc-tu-khoa:target ~ .admin .admin-main .admin-view--don-hang,
+#loc-trang-thai:target ~ .admin .admin-main .admin-view--don-hang,
+#loc-thoi-gian:target ~ .admin .admin-main .admin-view--don-hang,
+#cai-dat-ten:target ~ .admin .admin-main .admin-view--cai-dat,
+#cai-dat-email:target ~ .admin .admin-main .admin-view--cai-dat,
+#cai-dat-hotline:target ~ .admin .admin-main .admin-view--cai-dat,
+#cai-dat-tien-te:target ~ .admin .admin-main .admin-view--cai-dat,
+#cai-dat-dia-chi:target ~ .admin .admin-main .admin-view--cai-dat,
+#cai-dat-gioi-thieu:target ~ .admin .admin-main .admin-view--cai-dat {
 	display: block;
 }
 
 #don-hang:target ~ .admin .admin-main .admin-view--tong-quan,
 #kho-sach:target ~ .admin .admin-main .admin-view--tong-quan,
 #khach-hang:target ~ .admin .admin-main .admin-view--tong-quan,
-#cai-dat:target ~ .admin .admin-main .admin-view--tong-quan {
+#cai-dat:target ~ .admin .admin-main .admin-view--tong-quan,
+#in-don:target ~ .admin .admin-main .admin-view--tong-quan,
+#da-loc:target ~ .admin .admin-main .admin-view--tong-quan,
+#tim-kiem-xong:target ~ .admin .admin-main .admin-view--tong-quan,
+#trang-1:target ~ .admin .admin-main .admin-view--tong-quan,
+#trang-2:target ~ .admin .admin-main .admin-view--tong-quan,
+#trang-3:target ~ .admin .admin-main .admin-view--tong-quan,
+#trang-26:target ~ .admin .admin-main .admin-view--tong-quan,
+#trang-sau:target ~ .admin .admin-main .admin-view--tong-quan,
+#don-1024:target ~ .admin .admin-main .admin-view--tong-quan,
+#don-1023:target ~ .admin .admin-main .admin-view--tong-quan,
+#don-1022:target ~ .admin .admin-main .admin-view--tong-quan,
+#don-1021:target ~ .admin .admin-main .admin-view--tong-quan,
+#don-1020:target ~ .admin .admin-main .admin-view--tong-quan,
+#sua-sach:target ~ .admin .admin-main .admin-view--tong-quan,
+#xuat-khach-hang:target ~ .admin .admin-main .admin-view--tong-quan,
+#luu-cai-dat:target ~ .admin .admin-main .admin-view--tong-quan,
+#khoi-phuc:target ~ .admin .admin-main .admin-view--tong-quan,
+#xac-nhan-luu:target ~ .admin .admin-main .admin-view--tong-quan,
+#xac-nhan-khoi-phuc:target ~ .admin .admin-main .admin-view--tong-quan,
+#loc-tu-khoa:target ~ .admin .admin-main .admin-view--tong-quan,
+#loc-trang-thai:target ~ .admin .admin-main .admin-view--tong-quan,
+#loc-thoi-gian:target ~ .admin .admin-main .admin-view--tong-quan,
+#cai-dat-ten:target ~ .admin .admin-main .admin-view--tong-quan,
+#cai-dat-email:target ~ .admin .admin-main .admin-view--tong-quan,
+#cai-dat-hotline:target ~ .admin .admin-main .admin-view--tong-quan,
+#cai-dat-tien-te:target ~ .admin .admin-main .admin-view--tong-quan,
+#cai-dat-dia-chi:target ~ .admin .admin-main .admin-view--tong-quan,
+#cai-dat-gioi-thieu:target ~ .admin .admin-main .admin-view--tong-quan {
 	display: none;
+}
+
+/* Phần tử thật nằm trong view không còn giữ id nên không tự hiện được
+   bằng :target nữa — hiện lên nhờ class của mình khi mỏ neo tương ứng
+   (ở đầu trang) được nhắm tới. */
+#in-don:target ~ .admin .admin-main .admin-notice--in-don,
+#da-loc:target ~ .admin .admin-main .admin-notice--da-loc,
+#tim-kiem-xong:target ~ .admin .admin-main .admin-notice--tim-kiem-xong,
+#trang-1:target ~ .admin .admin-main .admin-notice--trang-1,
+#trang-2:target ~ .admin .admin-main .admin-notice--trang-2,
+#trang-3:target ~ .admin .admin-main .admin-notice--trang-3,
+#trang-26:target ~ .admin .admin-main .admin-notice--trang-26,
+#trang-sau:target ~ .admin .admin-main .admin-notice--trang-sau,
+#sua-sach:target ~ .admin .admin-main .admin-notice--sua-sach,
+#xuat-khach-hang:target ~ .admin .admin-main .admin-notice--xuat-khach-hang,
+#luu-cai-dat:target ~ .admin .admin-main .admin-notice--luu-cai-dat,
+#khoi-phuc:target ~ .admin .admin-main .admin-notice--khoi-phuc {
+	display: block;
+}
+
+/* Hàng chi tiết đơn là bảng nên phải là table-row, không phải block */
+#don-1024:target ~ .admin .admin-main .order-detail-row--don-1024,
+#don-1023:target ~ .admin .admin-main .order-detail-row--don-1023,
+#don-1022:target ~ .admin .admin-main .order-detail-row--don-1022,
+#don-1021:target ~ .admin .admin-main .order-detail-row--don-1021,
+#don-1020:target ~ .admin .admin-main .order-detail-row--don-1020 {
+	display: table-row;
+}
+
+/* Khối xác nhận vẫn nhấp nháy một lần như các khối cùng loại ở trang khác */
+#xac-nhan-luu:target ~ .admin .admin-main .confirm--xac-nhan-luu,
+#xac-nhan-khoi-phuc:target ~ .admin .admin-main .confirm--xac-nhan-khoi-phuc {
+	display: block;
+	animation: confirm-flash .9s ease;
+}
+
+/* Các trang con (tạo đơn, thêm sách, nhập kho, gửi ưu đãi) là trang riêng,
+   chỉ có đúng nội dung của mình nên hiện luôn, không cần đợi :target bật lên
+   như các mục của trang quản trị */
+.admin-view--tao-don,
+.admin-view--them-sach,
+.admin-view--nhap-kho,
+.admin-view--gui-uu-dai {
+	display: block;
 }
 
 /* --- Tiêu đề mỗi mục --- */
@@ -445,6 +601,90 @@
 	border-top: 1px dashed var(--color-border);
 	font-size: .85rem;
 	color: var(--color-muted);
+}
+
+/* --- Ô nhập số lượng trong bảng sách của trang tạo đơn ---
+   Bảng đã có padding sẵn nên ô chỉ cần giới hạn bề rộng, không kéo giãn
+   cả cột làm bảng lệch so với những cột khác */
+.order-qty {
+	width: 92px;
+}
+
+/* --- Bảng tổng tiền: mỗi dòng là một hàng nhãn bên trái, số tiền bên phải --- */
+.order-sum {
+	margin: 0 0 16px;
+}
+
+.order-sum__row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 7px 0;
+	font-size: .9rem;
+	color: var(--color-text);
+}
+
+.order-sum__row dt,
+.order-sum__row dd {
+	margin: 0;
+}
+
+.order-sum__row dd {
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+/* Dòng giảm giá tô màu đỏ cho dễ nhận ra đang trừ tiền */
+.order-sum__row--minus dd {
+	color: var(--color-sale);
+}
+
+/* Dòng tổng cộng tách ra bằng đường kẻ và đậm hơn các dòng trên */
+.order-sum__row--total {
+	margin-top: 4px;
+	padding-top: 12px;
+	border-top: 1px solid var(--color-border-strong);
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+/* Danh sách khách hàng sẽ nhận ưu đãi, nằm dưới bảng tổng kết */
+.order-recipients {
+	display: grid;
+	gap: 8px;
+	margin: 0 0 4px;
+	padding: 0;
+	list-style: none;
+}
+
+.order-recipients li {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	font-size: .9rem;
+	color: var(--color-text);
+}
+
+/* Ô chọn tệp ảnh bìa: giữ dáng ô nhập nhưng thêm con trỏ và bớt đệm dọc
+   vì nút "Choose file" của trình duyệt vốn đã cao sẵn */
+.field__input[type="file"] {
+	padding: 8px 10px;
+	cursor: pointer;
+}
+
+.field__input[type="file"]::file-selector-button {
+	margin-right: 10px;
+	padding: 6px 12px;
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-sm);
+	background-color: var(--color-surface);
+	color: var(--color-ink);
+	font: inherit;
+	font-size: .85rem;
+	cursor: pointer;
 }
 
 /* --- Biểu đồ cột doanh thu: chiều cao từng cột đặt sẵn trong CSS --- */

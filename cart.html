@@ -48,7 +48,7 @@
 				</nav>
 
 				<div class="header-actions">
-					<form class="search" role="search" action="#" method="get">
+					<form class="search" role="search" action="#tim-kiem-xong" method="get">
 						<label class="visually-hidden" for="site-search">Tìm kiếm sách</label>
 						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 						<input class="search__input" id="site-search" name="q" type="search" placeholder="Tên sách, tác giả...">
@@ -65,6 +65,13 @@
 		</header>
 
 		<main id="main">
+
+			<!-- Thông báo chung: hiện bằng CSS :target, không cần JavaScript -->
+			<div class="container">
+				<p class="notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể thử tìm theo tên sách hoặc tác giả.</p>
+				<p class="notice" id="chua-san-hang" tabindex="-1">Trang này đang được xây dựng.</p>
+			</div>
+
 			<!-- Đường dẫn tới trang đang xem -->
 			<nav class="breadcrumb" aria-label="Đường dẫn">
 				<div class="container">
@@ -96,15 +103,66 @@
 
 					<div class="cart-page">
 						<div class="cart-main">
-							<form action="#" method="get">
+							<form action="#da-cap-nhat" method="get">
 								<div class="cart-toolbar">
 									<p class="cart-toolbar__count"><strong>4</strong> sản phẩm trong giỏ</p>
-									<a class="cart-toolbar__clear" href="#gio-trong">Xóa toàn bộ giỏ hàng</a>
+									<a class="cart-toolbar__clear" href="#xac-nhan-xoa-het">Xóa toàn bộ giỏ hàng</a>
+							<p class="cart-notice" id="da-cap-nhat">Đã cập nhật giỏ hàng. Số lượng mới sẽ được ghi nhận khi thanh toán.</p>
 								</div>
 
 								<p class="cart-notice" id="xoa-1">Bạn vừa chọn xóa <strong>Đắc Nhân Tâm</strong>.</p>
 								<p class="cart-notice" id="xoa-2">Bạn vừa chọn xóa <strong>Tuổi Trẻ Đáng Giá Bao Nhiêu?</strong>.</p>
 								<p class="cart-notice" id="xoa-3">Bạn vừa chọn xóa <strong>Cây Cam Ngọt Của Tôi</strong>.</p>
+
+								<!-- Bước 2 của “Xóa toàn bộ giỏ hàng”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+								<div class="confirm" id="xac-nhan-xoa-het" role="group" aria-label="Xoá toàn bộ giỏ hàng?">
+									<p class="confirm__title">Xoá toàn bộ giỏ hàng?</p>
+									<p class="confirm__text">Cả 4 sản phẩm trong giỏ sẽ bị bỏ. Thao tác này không hoàn tác được.</p>
+									<div class="confirm__actions">
+										<a class="btn btn--danger btn--sm" href="#gio-trong">Xác nhận xoá hết</a>
+										<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+									</div>
+								</div>
+
+								<!-- Bước 2 của “Xóa”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+								<div class="confirm" id="xac-nhan-xoa-1" role="group" aria-label="Xoá “Đắc Nhân Tâm” khỏi giỏ?">
+									<p class="confirm__title">Xoá “Đắc Nhân Tâm” khỏi giỏ?</p>
+									<p class="confirm__text">Sản phẩm này sẽ được bỏ khỏi giỏ hàng của bạn.</p>
+									<div class="confirm__actions">
+										<a class="btn btn--danger btn--sm" href="#xoa-1">Xác nhận xoá</a>
+										<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+									</div>
+								</div>
+
+								<!-- Bước 2 của “Xóa”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+								<div class="confirm" id="xac-nhan-xoa-2" role="group" aria-label="Xoá “Tuổi Trẻ Đáng Giá Bao Nhiêu?” khỏi giỏ?">
+									<p class="confirm__title">Xoá “Tuổi Trẻ Đáng Giá Bao Nhiêu?” khỏi giỏ?</p>
+									<p class="confirm__text">Sản phẩm này sẽ được bỏ khỏi giỏ hàng của bạn.</p>
+									<div class="confirm__actions">
+										<a class="btn btn--danger btn--sm" href="#xoa-2">Xác nhận xoá</a>
+										<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+									</div>
+								</div>
+
+								<!-- Bước 2 của “Xóa”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+								<div class="confirm" id="xac-nhan-xoa-3" role="group" aria-label="Xoá “Cây Cam Ngọt Của Tôi” khỏi giỏ?">
+									<p class="confirm__title">Xoá “Cây Cam Ngọt Của Tôi” khỏi giỏ?</p>
+									<p class="confirm__text">Sản phẩm này sẽ được bỏ khỏi giỏ hàng của bạn.</p>
+									<div class="confirm__actions">
+										<a class="btn btn--danger btn--sm" href="#xoa-3">Xác nhận xoá</a>
+										<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+									</div>
+								</div>
+
+								<!-- Bước 2 của “Cập nhật giỏ hàng”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+								<div class="confirm" id="xac-nhan-cap-nhat" role="group" aria-label="Cập nhật giỏ hàng?">
+									<p class="confirm__title">Cập nhật giỏ hàng?</p>
+									<p class="confirm__text">Số lượng mới sẽ được ghi nhận và dùng để tính lại tạm tính.</p>
+									<div class="confirm__actions">
+										<button class="btn btn--primary btn--sm" type="submit">Xác nhận cập nhật</button>
+										<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+									</div>
+								</div>
 
 								<ol class="cart-list">
 									<li class="cart-item">
@@ -125,7 +183,7 @@
 												<label class="qty__label" for="qty-1">Số lượng</label>
 												<input class="qty__input" id="qty-1" name="qty-1" type="number" value="2" min="1" max="99" step="1" inputmode="numeric">
 											</div>
-											<a class="cart-item__remove" href="#xoa-1">Xóa<span class="visually-hidden"> Đắc Nhân Tâm khỏi giỏ hàng</span></a>
+											<a class="cart-item__remove" href="#xac-nhan-xoa-1">Xóa<span class="visually-hidden"> Đắc Nhân Tâm khỏi giỏ hàng</span></a>
 										</div>
 										<p class="cart-item__subtotal">
 											<span class="cart-item__subtotal-label">Tạm tính 2 cuốn</span>
@@ -150,7 +208,7 @@
 												<label class="qty__label" for="qty-2">Số lượng</label>
 												<input class="qty__input" id="qty-2" name="qty-2" type="number" value="1" min="1" max="99" step="1" inputmode="numeric">
 											</div>
-											<a class="cart-item__remove" href="#xoa-2">Xóa<span class="visually-hidden"> Tuổi Trẻ Đáng Giá Bao Nhiêu? khỏi giỏ hàng</span></a>
+											<a class="cart-item__remove" href="#xac-nhan-xoa-2">Xóa<span class="visually-hidden"> Tuổi Trẻ Đáng Giá Bao Nhiêu? khỏi giỏ hàng</span></a>
 										</div>
 										<p class="cart-item__subtotal">
 											<span class="cart-item__subtotal-label">Tạm tính 1 cuốn</span>
@@ -175,7 +233,7 @@
 												<label class="qty__label" for="qty-3">Số lượng</label>
 												<input class="qty__input" id="qty-3" name="qty-3" type="number" value="1" min="1" max="99" step="1" inputmode="numeric">
 											</div>
-											<a class="cart-item__remove" href="#xoa-3">Xóa<span class="visually-hidden"> Cây Cam Ngọt Của Tôi khỏi giỏ hàng</span></a>
+											<a class="cart-item__remove" href="#xac-nhan-xoa-3">Xóa<span class="visually-hidden"> Cây Cam Ngọt Của Tôi khỏi giỏ hàng</span></a>
 										</div>
 										<p class="cart-item__subtotal">
 											<span class="cart-item__subtotal-label">Tạm tính 1 cuốn</span>
@@ -186,7 +244,7 @@
 
 								<div class="cart-actions">
 									<a class="btn btn--outline btn--sm" href="./index.html#featured">Tiếp tục mua sắm</a>
-									<button class="btn btn--ghost btn--sm" type="submit">Cập nhật giỏ hàng</button>
+									<a class="btn btn--ghost btn--sm" href="#xac-nhan-cap-nhat">Cập nhật giỏ hàng</a>
 								</div>
 							</form>
 						</div>
@@ -213,11 +271,12 @@
 								<span class="price price--total">342.000đ</span>
 							</div>
 
-							<form class="coupon" action="#" method="get">
+							<form class="coupon" action="#ma-giam-gia" method="get">
 								<label class="visually-hidden" for="coupon-code">Mã giảm giá</label>
 								<input class="coupon__input" id="coupon-code" name="coupon" type="text" placeholder="Mã giảm giá (ví dụ: SACH10)" autocomplete="off">
 								<button class="btn btn--ghost btn--sm" type="submit">Áp dụng</button>
 							</form>
+						<p class="cart-notice" id="ma-giam-gia">Mã <strong>SACH10</strong> hợp lệ! Bạn được giảm thêm 10.000đ cho đơn hàng này. Mã giảm giá sẽ được áp dụng khi thanh toán.</p>
 
 							<a class="btn btn--primary btn--block" href="./checkout.html">Tiến hành thanh toán</a>
 							<p class="cart-summary__note">Nhập thông tin giao hàng và chọn cách thanh toán ở bước tiếp theo.</p>
@@ -246,17 +305,17 @@
 					<p class="site-footer__about">Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận. Sứ mệnh của chúng tôi là mang đến sách chất lượng, khơi gợi niềm vui khám phá mỗi ngày cho thế hệ trẻ.</p>
 					<ul class="social">
 						<li>
-							<a class="social__link" href="#" aria-label="Facebook">
+							<a class="social__link" href="#chua-san-hang" aria-label="Facebook">
 								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.5c0-.9.3-1.5 1.5-1.5h1.5V5.5c-.3 0-1.3-.1-2.3-.1-2.3 0-3.7 1.3-3.7 3.8v2.1H8v2.8h2.5V21"/></svg>
 							</a>
 						</li>
 						<li>
-							<a class="social__link" href="#" aria-label="Instagram">
+							<a class="social__link" href="#chua-san-hang" aria-label="Instagram">
 								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.8" cy="7.2" r="1"/></svg>
 							</a>
 						</li>
 						<li>
-							<a class="social__link" href="#" aria-label="YouTube">
+							<a class="social__link" href="#chua-san-hang" aria-label="YouTube">
 								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m11 9.6 4 2.4-4 2.4Z"/></svg>
 							</a>
 						</li>
@@ -266,20 +325,20 @@
 				<nav class="site-footer__col" aria-label="Liên kết về chúng tôi">
 					<h2 class="site-footer__title">Về chúng tôi</h2>
 					<ul class="site-footer__links">
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Tuyển dụng</a></li>
-						<li><a href="#">Tin tức</a></li>
-						<li><a href="#">Hợp tác</a></li>
+						<li><a href="#chua-san-hang">Giới thiệu</a></li>
+						<li><a href="#chua-san-hang">Tuyển dụng</a></li>
+						<li><a href="#chua-san-hang">Tin tức</a></li>
+						<li><a href="#chua-san-hang">Hợp tác</a></li>
 					</ul>
 				</nav>
 
 				<nav class="site-footer__col" aria-label="Liên kết hỗ trợ">
 					<h2 class="site-footer__title">Hỗ trợ</h2>
 					<ul class="site-footer__links">
-						<li><a href="#">Chính sách đổi trả</a></li>
-						<li><a href="#">Chính sách vận chuyển</a></li>
-						<li><a href="#">Câu hỏi thường gặp</a></li>
-						<li><a href="#">Bảo mật thông tin</a></li>
+						<li><a href="#chua-san-hang">Chính sách đổi trả</a></li>
+						<li><a href="#chua-san-hang">Chính sách vận chuyển</a></li>
+						<li><a href="#chua-san-hang">Câu hỏi thường gặp</a></li>
+						<li><a href="#chua-san-hang">Bảo mật thông tin</a></li>
 					</ul>
 				</nav>
 
@@ -303,8 +362,8 @@
 				<div class="container site-footer__bottom-inner">
 					<p class="site-footer__copy">© 2026 Nhà Sách Skibidus. Bảo lưu mọi quyền.</p>
 					<ul class="legal">
-						<li><a href="#">Điều khoản sử dụng</a></li>
-						<li><a href="#">Chính sách bảo mật</a></li>
+						<li><a href="#chua-san-hang">Điều khoản sử dụng</a></li>
+						<li><a href="#chua-san-hang">Chính sách bảo mật</a></li>
 					</ul>
 				</div>
 			</div>

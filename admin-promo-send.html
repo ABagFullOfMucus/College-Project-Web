@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<title>Gửi ưu đãi - Quản trị Nhà Sách Skibidus</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Gửi ưu đãi: soạn mã giảm giá rồi chọn nhóm khách hàng sẽ nhận email.">
+		<!-- Trang quản trị không cần cho máy tìm kiếm -->
+		<meta name="robots" content="noindex">
+		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
+		<link rel="icon" type="image/png" href="./assets/images/logo.png">
+		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
+		<link rel="stylesheet" href="./assets/css/reset.css">
+		<link rel="stylesheet" href="./assets/css/base.css">
+		<link rel="stylesheet" href="./assets/css/components.css">
+		<link rel="stylesheet" href="./assets/css/layout.css">
+		<link rel="stylesheet" href="./assets/css/admin.css">
+		<link rel="stylesheet" href="./assets/css/admin-data.css">
+		<link rel="stylesheet" href="./assets/css/compat.css">
+	</head>
+	<body class="admin-body">
+		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
+		<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+		<input class="admin-toggle" type="checkbox" id="admin-nav">
+
+		<!-- Mỏ neo :target để điều hướng cột bên vẫn hoạt động ở trang này -->
+		<span class="admin-target" id="tong-quan" aria-hidden="true"></span>
+		<span class="admin-target" id="don-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="kho-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="khach-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat" aria-hidden="true"></span>
+
+		<div class="admin">
+
+			<!-- Lớp phủ: bấm ra ngoài để đóng cột điều hướng -->
+			<label class="admin-scrim" for="admin-nav" aria-hidden="true"></label>
+
+			<!-- ==================== CỘT ĐIỀU HƯỚNG ==================== -->
+			<aside class="admin-sidebar" aria-label="Khu vực quản trị">
+				<div class="admin-sidebar__brand">
+					<a class="logo" href="./admin.html">
+						<span class="logo__mark" aria-hidden="true">
+							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						</span>
+						<span class="logo__text">Skibidus</span>
+					</a>
+					<span class="tag tag--soft">Quản trị</span>
+				</div>
+				<nav class="admin-nav" aria-label="Điều hướng quản trị">
+					<p class="admin-nav__title">Quản lý</p>
+					<ul class="admin-nav__list">
+						<li>
+							<a class="admin-nav__link" href="./admin.html#tong-quan">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.6"/><rect x="13.5" y="11" width="7" height="9.5" rx="1.6"/><rect x="3.5" y="13" width="7" height="7.5" rx="1.6"/></svg>
+								Tổng quan
+							</a>
+						</li>
+						<li>
+								<a class="admin-nav__link" href="./admin.html#don-hang">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 3.5h12v17l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8.5h5M9.5 12.5h5"/></svg>
+								Đơn hàng
+								<span class="admin-nav__count">12</span>
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="./admin.html#kho-sach">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5.5A2 2 0 0 1 6 3.5h12v17H6a2 2 0 0 1-2-2z"/><path d="M8 3.5v17"/></svg>
+								Kho sách
+							</a>
+						</li>
+						<li>
+							<!-- Trang này thuộc mục Khách hàng nên giữ trạng thái active -->
+							<a class="admin-nav__link admin-nav__link--active" href="./admin.html#khach-hang" aria-current="page">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M17 14.8c2 .7 3.5 2.6 3.5 5.2"/></svg>
+								Khách hàng
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="./admin.html#cai-dat">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 14.6a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-2.9-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H2.9a2 2 0 1 1 0-4h.2A1.7 1.7 0 0 0 4.2 8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3.8a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 2.9 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1z"/></svg>
+								Cài đặt
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<div class="admin-sidebar__foot">
+					<a class="btn btn--outline btn--sm btn--block" href="./index.html">Xem cửa hàng</a>
+				</div>
+			</aside>
+			<div class="admin-main">
+				<!-- ==================== THANH TRÊN ==================== -->
+				<header class="admin-topbar">
+					<label class="admin-burger" for="admin-nav">
+						<span class="visually-hidden">Mở / đóng menu quản trị</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+					</label>
+
+					<form class="search admin-topbar__search" role="search" action="#tim-kiem-xong" method="get">
+						<label class="visually-hidden" for="admin-search">Tìm đơn hàng, sách hoặc khách hàng</label>
+						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+						<input class="search__input" id="admin-search" name="q" type="search" placeholder="Tìm đơn hàng, sách, khách hàng...">
+					</form>
+
+					<div class="admin-topbar__actions">
+						<p class="admin-user">
+							<span class="admin-user__avatar" aria-hidden="true">QT</span>
+							<span class="admin-user__info">
+								<strong class="admin-user__name">Quản trị A</strong>
+								<span class="admin-user__role">Quản trị viên</span>
+							</span>
+						</p>
+						<a class="btn btn--ghost btn--sm" href="#xac-nhan-dang-xuat">Đăng xuất</a>
+					</div>
+				</header>
+
+				<main class="admin-content" id="main">
+					<h1 class="visually-hidden">Gửi ưu đãi</h1>
+
+					<!-- Đăng xuất không thể hoàn tác: bấm lần 1 mở khối xác nhận bên dưới,
+					     bấm “Đăng xuất” lần 2 mới thật sự rời trang. -->
+					<div class="confirm" id="xac-nhan-dang-xuat" role="group" aria-label="Xác nhận đăng xuất">
+						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
+						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
+						<div class="confirm__actions">
+							<a class="btn btn--danger btn--sm" href="./login.html">Đăng xuất</a>
+							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
+						</div>
+					</div>
+
+					<!-- ==================== GỬI ƯU ĐÃI ==================== -->
+					<div class="admin-view admin-view--gui-uu-dai">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Khách hàng</p>
+								<h2 class="admin-head__title">Gửi ưu đãi</h2>
+								<p class="admin-head__desc">Soạn mã giảm giá rồi chọn nhóm khách hàng sẽ nhận. Ưu đãi được xếp vào hàng đợi gửi qua email.</p>
+							</div>
+							<div class="admin-head__actions">
+								<a class="btn btn--ghost btn--sm" href="./admin.html#khach-hang">Quay lại khách hàng</a>
+							</div>
+						</div>
+
+						<!-- Gửi form tới chính id của thông báo: bấm "Gửi ưu đãi" thì trình duyệt
+						     nhảy tới #da-gui-uu-dai và khối thông báo cuối trang hiện ra.
+						     Hoạt động nhờ CSS :target, không cần JavaScript. -->
+						<form action="#da-gui-uu-dai" method="get">
+							<div class="admin-grid">
+								<!-- ---------- Cột trái: nội dung ưu đãi + người nhận ---------- -->
+								<div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">1. Nội dung ưu đãi</h3>
+											<p class="panel__hint">Mã và mức giảm là bắt buộc</p>
+										</div>
+
+										<div class="field-grid">
+											<div class="field field--full">
+												<label class="field__label" for="uu-tieu-de">Tiêu đề email</label>
+												<input class="field__input" id="uu-tieu-de" name="tieu-de" type="text" value="Ưu đãi 10.000đ cho đơn sách tiếp theo" required>
+											</div>
+											<div class="field">
+												<label class="field__label" for="uu-ma">Mã giảm giá</label>
+												<input class="field__input" id="uu-ma" name="ma-giam-gia" type="text" value="SACH10" autocomplete="off" required>
+											</div>
+											<div class="field">
+												<label class="field__label" for="uu-muc-giam">Mức giảm</label>
+												<select class="field__select" id="uu-muc-giam" name="muc-giam">
+													<option value="10k" selected>Giảm 10.000đ</option>
+													<option value="20k">Giảm 20.000đ</option>
+													<option value="30k">Giảm 30.000đ</option>
+													<option value="50k">Giảm 50.000đ</option>
+													<option value="10pt">Giảm 10%</option>
+												</select>
+											</div>
+											<div class="field">
+												<label class="field__label" for="uu-don-toi-thieu">Đơn tối thiểu (đ)</label>
+												<input class="field__input" id="uu-don-toi-thieu" name="don-toi-thieu" type="text" value="150.000" inputmode="numeric">
+											</div>
+											<div class="field">
+												<label class="field__label" for="uu-han">Hạn sử dụng</label>
+												<input class="field__input" id="uu-han" name="han-su-dung" type="date" value="2026-10-31">
+											</div>
+											<div class="field field--full">
+												<label class="field__label" for="uu-noi-dung">Nội dung gửi kèm</label>
+												<textarea class="field__textarea" id="uu-noi-dung" name="noi-dung" rows="4">Cảm ơn bạn đã ủng hộ Nhà Sách Skibidus. Nhập mã SACH10 khi thanh toán để được giảm 10.000đ cho đơn từ 150.000đ.</textarea>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">2. Người nhận</h3>
+											<p class="panel__hint">Chọn nhóm khách hàng sẽ nhận ưu đãi</p>
+										</div>
+
+										<div class="field">
+											<p class="field__label">Nhóm nhận</p>
+											<div class="field__options">
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="nhom-nhan" value="tat-ca"> Tất cả khách hàng</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="nhom-nhan" value="theo-hang" checked> Theo hạng</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="nhom-nhan" value="chon-tay"> Chọn từng người</label>
+											</div>
+										</div>
+
+										<div class="field">
+											<p class="field__label">Hạng được nhận</p>
+											<div class="field__options">
+												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="hang-kim-cuong" value="1" checked> Kim cương</label>
+												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="hang-vang" value="1" checked> Vàng</label>
+												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="hang-bac" value="1"> Bạc</label>
+												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="hang-dong" value="1"> Đồng</label>
+											</div>
+										</div>
+
+										<div class="table-wrap">
+											<table class="admin-table">
+												<caption class="visually-hidden">Năm khách hàng chi tiêu nhiều nhất kèm hạng và tình trạng nhận ưu đãi</caption>
+												<thead>
+													<tr>
+														<th scope="col">Khách hàng</th>
+														<th scope="col">Hạng</th>
+														<th scope="col">Tổng chi tiêu</th>
+														<th scope="col">Gửi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<p class="admin-user">
+																<span class="admin-user__avatar" aria-hidden="true">TH</span>
+																<strong class="admin-user__name">Nguyễn Thu Hà</strong>
+															</p>
+														</td>
+														<td><span class="tag tag--vip">Kim cương</span></td>
+														<td class="admin-table__num">3.482.000đ</td>
+														<td><input class="field__radio" type="checkbox" id="gui-th" name="gui-1" value="1" checked aria-label="Gửi cho Nguyễn Thu Hà"></td>
+													</tr>
+													<tr>
+														<td>
+															<p class="admin-user">
+																<span class="admin-user__avatar" aria-hidden="true">MQ</span>
+																<strong class="admin-user__name">Trần Minh Quân</strong>
+															</p>
+														</td>
+														<td><span class="tag tag--soft">Vàng</span></td>
+														<td class="admin-table__num">1.214.200đ</td>
+														<td><input class="field__radio" type="checkbox" id="gui-mq" name="gui-2" value="1" checked aria-label="Gửi cho Trần Minh Quân"></td>
+													</tr>
+													<tr>
+														<td>
+															<p class="admin-user">
+																<span class="admin-user__avatar" aria-hidden="true">HA</span>
+																<strong class="admin-user__name">Lê Hoàng Anh</strong>
+															</p>
+														</td>
+														<td><span class="tag tag--muted">Bạc</span></td>
+														<td class="admin-table__num">689.000đ</td>
+														<td><input class="field__radio" type="checkbox" id="gui-ha" name="gui-3" value="1" aria-label="Gửi cho Lê Hoàng Anh"></td>
+													</tr>
+													<tr>
+														<td>
+															<p class="admin-user">
+																<span class="admin-user__avatar" aria-hidden="true">BN</span>
+																<strong class="admin-user__name">Phạm Bảo Ngọc</strong>
+															</p>
+														</td>
+														<td><span class="tag tag--muted">Đồng</span></td>
+														<td class="admin-table__num">372.000đ</td>
+														<td><input class="field__radio" type="checkbox" id="gui-bn" name="gui-4" value="1" aria-label="Gửi cho Phạm Bảo Ngọc"></td>
+													</tr>
+													<tr>
+														<td>
+															<p class="admin-user">
+																<span class="admin-user__avatar" aria-hidden="true">ĐT</span>
+																<strong class="admin-user__name">Vũ Đức Thịnh</strong>
+															</p>
+														</td>
+														<td><span class="tag tag--muted">Đồng</span></td>
+														<td class="admin-table__num">89.000đ</td>
+														<td><input class="field__radio" type="checkbox" id="gui-dt" name="gui-5" value="1" aria-label="Gửi cho Vũ Đức Thịnh"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+										<div class="panel__foot">
+											<p>Hai khách hàng hạng Kim cương và Vàng đã được tích sẵn theo nhóm đang chọn.</p>
+										</div>
+									</div>
+								</div>
+
+								<!-- ---------- Cột phải: dự kiến gửi + lịch gửi ---------- -->
+								<div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">3. Dự kiến gửi</h3>
+											<p class="panel__hint">Tính theo nhóm khách hàng đã chọn</p>
+										</div>
+
+										<dl class="order-sum">
+											<div class="order-sum__row">
+												<dt>Mã ưu đãi</dt>
+												<dd>SACH10</dd>
+											</div>
+											<div class="order-sum__row">
+												<dt>Mức giảm</dt>
+												<dd>10.000đ</dd>
+											</div>
+											<div class="order-sum__row order-sum__row--total">
+												<dt>Số khách hàng nhận</dt>
+												<dd>2 người</dd>
+											</div>
+										</dl>
+
+										<ul class="order-recipients">
+											<li><span class="tag tag--vip">Kim cương</span> Nguyễn Thu Hà</li>
+											<li><span class="tag tag--soft">Vàng</span> Trần Minh Quân</li>
+										</ul>
+
+										<div class="panel__foot">
+											<p>Hạng Bạc và Đồng không được chọn nên sẽ không nhận email đợt này.</p>
+										</div>
+									</div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">4. Lịch gửi</h3>
+										</div>
+
+										<div class="field">
+											<p class="field__label">Thời điểm gửi</p>
+											<div class="field__options">
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thoi-diem" value="ngay" checked> Gửi ngay</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thoi-diem" value="hen-gio"> Hẹn giờ</label>
+											</div>
+										</div>
+
+										<div class="field">
+											<label class="field__label" for="uu-gio-hen">Giờ hẹn gửi</label>
+											<input class="field__input" id="uu-gio-hen" name="gio-hen" type="time" value="09:00">
+											<p class="field__hint">Chỉ dùng khi bạn chọn "Hẹn giờ" ở trên.</p>
+										</div>
+
+										<div class="field">
+											<label class="field__label" for="uu-ghi-chu">Ghi chú nội bộ</label>
+											<textarea class="field__textarea" id="uu-ghi-chu" name="ghi-chu" rows="3" placeholder="Ví dụ: theo dõi tỉ lệ mở email sau khi gửi."></textarea>
+										</div>
+
+										<div class="panel__foot">
+											<p>Ưu đãi sau khi gửi sẽ nằm trong mục <strong>Khuyến mãi</strong> để theo dõi lượt dùng.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<a class="btn btn--primary" href="#xac-nhan-gui-uu-dai">Gửi ưu đãi</a>
+								<a class="btn btn--ghost" href="./admin.html#khach-hang">Huỷ</a>
+							</div>
+
+							<!-- Bước 2 của “Gửi ưu đãi”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+							<div class="confirm" id="xac-nhan-gui-uu-dai" role="group" aria-label="Gửi ưu đãi cho nhóm khách hàng này?">
+								<p class="confirm__title">Gửi ưu đãi cho nhóm khách hàng này?</p>
+								<p class="confirm__text">Email đã gửi sẽ không thu hồi được, hãy kiểm tra lại nội dung và người nhận.</p>
+								<div class="confirm__actions">
+									<button class="btn btn--danger btn--sm" type="submit">Xác nhận gửi</button>
+									<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+								</div>
+							</div>
+						</form>
+
+						<!-- Điểm neo của form: hiện ra khi bấm "Gửi ưu đãi" -->
+						<p class="admin-notice" id="da-gui-uu-dai" tabindex="-1">Mã giảm giá <strong>SACH10</strong> đã được xếp vào hàng đợi gửi cho <strong>2 khách hàng</strong> hạng Kim cương và Vàng. <a href="./admin.html#khach-hang">Xem danh sách khách hàng</a>.</p>
+
+						<p class="admin-notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể tìm theo mã đơn, tên sách hoặc tên khách hàng.</p>
+					</div>
+
+				</main>
+
+				<footer class="admin-footer">
+					<p>© 2026 Nhà Sách Skibidus</p>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>

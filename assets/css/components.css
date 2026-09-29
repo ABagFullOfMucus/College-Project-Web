@@ -368,6 +368,139 @@
 }
 
 
+/* ==========================================================================
+   THÔNG BÁO DÙNG CHUNG — hiện/ẩn bằng :target, không cần JavaScript
+   --------------------------------------------------------------------------
+   Cách dùng: đặt id cho thẻ thông báo, rồi trỏ action của form hoặc href của
+   nút về đúng id đó. Ví dụ:
+
+       <form action="#da-dang-ky" method="get">...</form>
+       <p class="notice" id="da-dang-ky">Cảm ơn bạn, đã đăng ký!</p>
+
+   Mặc định thông báo ẩn. Chỉ khi đường dẫn trỏ tới #id của nó thì nó hiện,
+   đúng kiểu các khối .cart-notice / .admin-notice đang hoạt động ở từng trang.
+   ========================================================================== */
+
+.notice {
+	display: none;
+	margin-bottom: 16px;
+	padding: 12px 16px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-left: 4px solid var(--color-accent);
+	border-radius: var(--radius-sm);
+	font-size: .9rem;
+	color: var(--color-text);
+}
+
+.notice:target {
+	display: block;
+	/* Nhảy tới giữa khung nhìn thay vì sát mép trên, cho dễ đọc */
+	animation: notice-flash .9s ease;
+}
+
+/* Thông báo nhấp nháy nhẹ một lần để mắt dễ bắt được vừa hiện */
+@keyframes notice-flash {
+	0%, 100% {
+		background-color: var(--color-surface);
+	}
+
+	40% {
+		background-color: var(--color-accent-soft);
+	}
+}
+
+/* Biến thể dùng cho thông báo thành công (màu xanh) */
+.notice--success {
+	border-left-color: var(--color-success);
+}
+
+/* Biến thể dùng cho cảnh báo / thất bại (màu đỏ) */
+.notice--error {
+	border-left-color: var(--color-sale);
+}
+
+/* Liên kết nằm trong thông báo cần gạch chân để thấy rõ là bấm được */
+.notice a {
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   XÁC NHẬN HAI BƯỚC — cũng bằng :target, không cần JavaScript
+   --------------------------------------------------------------------------
+   Bước 1: nút hành động trỏ tới #xac-nhan-... thay vì làm việc ngay.
+   Bước 2: khối .confirm hiện ra, bên trong là nút thật sự thực hiện hành động.
+   Vì mỗi lúc chỉ có MỘT :target, bấm nút xác nhận sẽ tự làm khối này mất
+   :target (ẩn đi) và hiện thông báo kết quả ở bước cuối.
+   ========================================================================== */
+
+.confirm {
+	display: none;
+	margin: 16px 0;
+	padding: 14px 16px;
+	background-color: var(--color-accent-soft);
+	border: 1px solid var(--color-border-strong);
+	border-left: 4px solid var(--color-accent);
+	border-radius: var(--radius-sm);
+}
+
+.confirm:target {
+	display: block;
+	scroll-margin-top: 24px;
+	animation: confirm-flash .9s ease;
+}
+
+/* Nhấp nháy nhẹ một lần để mắt bắt được khối vừa hiện */
+@keyframes confirm-flash {
+	0%, 100% {
+		background-color: var(--color-accent-soft);
+	}
+
+	40% {
+		background-color: #f8e6c4;
+	}
+}
+
+.confirm__title {
+	margin: 0 0 4px;
+	font-size: .95rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.confirm__text {
+	margin: 0 0 12px;
+	font-size: .88rem;
+	color: var(--color-muted);
+}
+
+.confirm__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Nút gửi nằm trong khối xác nhận không cần khoảng cách thừa của form */
+.confirm__actions form {
+	margin: 0;
+}
+
+/* Hành động không thể hoàn tác (đăng xuất, xoá, khôi phục, đặt hàng) */
+.btn--danger {
+	background-color: var(--color-sale);
+	color: #fff;
+	box-shadow: var(--shadow-sm);
+}
+
+.btn--danger:hover,
+.btn--danger:focus-visible {
+	background-color: #b93b4b;
+	box-shadow: var(--shadow);
+}
+
+
 /* --- Tablet & mobile --- */
 @media (max-width: 900px) {
 	.section {

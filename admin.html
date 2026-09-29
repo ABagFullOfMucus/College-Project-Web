@@ -31,6 +31,38 @@
 		<span class="admin-target" id="khach-hang" aria-hidden="true"></span>
 		<span class="admin-target" id="cai-dat" aria-hidden="true"></span>
 
+		<!-- Mỏ neo cho thông báo / hàng chi tiết / khối xác nhận nằm TRONG từng
+		     mục. Id không còn nằm trên phần tử thật (đã chuyển thành class)
+		     nên view không bị đóng khi phần tử đó được nhắm tới. -->
+		<span class="admin-target" id="in-don" aria-hidden="true"></span>
+		<span class="admin-target" id="da-loc" aria-hidden="true"></span>
+		<span class="admin-target" id="tim-kiem-xong" aria-hidden="true"></span>
+		<span class="admin-target" id="trang-1" aria-hidden="true"></span>
+		<span class="admin-target" id="trang-2" aria-hidden="true"></span>
+		<span class="admin-target" id="trang-3" aria-hidden="true"></span>
+		<span class="admin-target" id="trang-26" aria-hidden="true"></span>
+		<span class="admin-target" id="trang-sau" aria-hidden="true"></span>
+		<span class="admin-target" id="don-1024" aria-hidden="true"></span>
+		<span class="admin-target" id="don-1023" aria-hidden="true"></span>
+		<span class="admin-target" id="don-1022" aria-hidden="true"></span>
+		<span class="admin-target" id="don-1021" aria-hidden="true"></span>
+		<span class="admin-target" id="don-1020" aria-hidden="true"></span>
+		<span class="admin-target" id="sua-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="xuat-khach-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="luu-cai-dat" aria-hidden="true"></span>
+		<span class="admin-target" id="khoi-phuc" aria-hidden="true"></span>
+		<span class="admin-target" id="xac-nhan-luu" aria-hidden="true"></span>
+		<span class="admin-target" id="xac-nhan-khoi-phuc" aria-hidden="true"></span>
+		<span class="admin-target" id="loc-tu-khoa" aria-hidden="true"></span>
+		<span class="admin-target" id="loc-trang-thai" aria-hidden="true"></span>
+		<span class="admin-target" id="loc-thoi-gian" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat-ten" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat-email" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat-hotline" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat-tien-te" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat-dia-chi" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat-gioi-thieu" aria-hidden="true"></span>
+
 		<div class="admin">
 
 			<!-- Lớp phủ: bấm ra ngoài để đóng cột điều hướng -->
@@ -98,7 +130,7 @@
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
 					</label>
 
-					<form class="search admin-topbar__search" role="search" action="#" method="get">
+					<form class="search admin-topbar__search" role="search" action="#tim-kiem-xong" method="get">
 						<label class="visually-hidden" for="admin-search">Tìm đơn hàng, sách hoặc khách hàng</label>
 						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 						<input class="search__input" id="admin-search" name="q" type="search" placeholder="Tìm đơn hàng, sách, khách hàng...">
@@ -112,12 +144,23 @@
 								<span class="admin-user__role">Quản trị viên</span>
 							</span>
 						</p>
-						<a class="btn btn--ghost btn--sm" href="./login.html">Đăng xuất</a>
+						<a class="btn btn--ghost btn--sm" href="#xac-nhan-dang-xuat">Đăng xuất</a>
 					</div>
 				</header>
 
 				<main class="admin-content" id="main">
 					<h1 class="visually-hidden">Trang quản trị Nhà Sách Skibidus</h1>
+
+					<!-- Đăng xuất không thể hoàn tác: bấm lần 1 mở khối xác nhận bên dưới,
+					     bấm “Đăng xuất” lần 2 mới thật sự rời trang. -->
+					<div class="confirm" id="xac-nhan-dang-xuat" role="group" aria-label="Xác nhận đăng xuất">
+						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
+						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
+						<div class="confirm__actions">
+							<a class="btn btn--danger btn--sm" href="./login.html">Đăng xuất</a>
+							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
+						</div>
+					</div>
 
 					<!-- ==================== ĐƠN HÀNG ==================== -->
 					<div class="admin-view admin-view--don-hang">
@@ -129,22 +172,19 @@
 							</div>
 							<div class="admin-head__actions">
 								<a class="btn btn--ghost btn--sm" href="#in-don">In danh sách</a>
-								<a class="btn btn--primary btn--sm" href="#tao-don">Tạo đơn mới</a>
+								<a class="btn btn--primary btn--sm" href="./admin-order-new.html">Tạo đơn mới</a>
 							</div>
 						</div>
 
-						<p class="admin-notice" id="in-don">Năm đơn hàng đang hiển thị đã được đưa vào hàng đợi in.</p>
-						<p class="admin-notice" id="tao-don"></p>
+						<p class="admin-notice admin-notice--in-don">Năm đơn hàng đang hiển thị đã được đưa vào hàng đợi in.</p>
 
 						<!-- Thanh lọc đơn hàng -->
-						<form class="filter-bar" action="#" method="get">
+						<form class="filter-bar" action="#da-loc" method="get">
 							<div class="field">
-								<label class="field__label" for="loc-tu-khoa">Từ khoá</label>
-								<input class="field__input" id="loc-tu-khoa" name="q" type="search" placeholder="Mã đơn hoặc tên khách hàng">
+								<label class="field__label">Từ khoá<input class="field__input" name="q" type="search" placeholder="Mã đơn hoặc tên khách hàng"></label>
 							</div>
 							<div class="field">
-								<label class="field__label" for="loc-trang-thai">Trạng thái</label>
-								<select class="field__select" id="loc-trang-thai" name="status">
+								<label class="field__label">Trạng thái<select class="field__select" name="status"></label>
 									<option value="">Tất cả trạng thái</option>
 									<option value="wait">Chờ xử lý</option>
 									<option value="ship">Đang giao</option>
@@ -153,8 +193,7 @@
 								</select>
 							</div>
 							<div class="field">
-								<label class="field__label" for="loc-thoi-gian">Thời gian</label>
-								<select class="field__select" id="loc-thoi-gian" name="range">
+								<label class="field__label">Thời gian<select class="field__select" name="range"></label>
 									<option value="7">7 ngày gần nhất</option>
 									<option value="30">30 ngày gần nhất</option>
 									<option value="quarter">Quý này</option>
@@ -162,6 +201,10 @@
 							</div>
 							<button class="btn btn--primary btn--sm" type="submit">Lọc đơn hàng</button>
 						</form>
+
+						<!-- Hai thông báo chung của trang quản trị -->
+						<p class="admin-notice admin-notice--da-loc">Đang lọc danh sách đơn hàng theo điều kiện bạn chọn. Bạn có thể đổi từ khoá, trạng thái hoặc khoảng thời gian rồi lọc lại.</p>
+						<p class="admin-notice admin-notice--tim-kiem-xong">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể tìm theo mã đơn, tên sách hoặc tên khách hàng.</p>
 
 						<div class="table-wrap">
 							<table class="admin-table">
@@ -191,7 +234,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr class="order-detail-row" id="don-1024">
+									<tr class="order-detail-row order-detail-row--don-1024">
 										<td colspan="7">
 											<dl class="order-detail">
 												<div class="order-detail__item">
@@ -222,7 +265,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr class="order-detail-row" id="don-1023">
+									<tr class="order-detail-row order-detail-row--don-1023">
 										<td colspan="7">
 											<dl class="order-detail">
 												<div class="order-detail__item">
@@ -254,7 +297,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr class="order-detail-row" id="don-1022">
+									<tr class="order-detail-row order-detail-row--don-1022">
 										<td colspan="7">
 											<dl class="order-detail">
 												<div class="order-detail__item">
@@ -285,7 +328,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr class="order-detail-row" id="don-1021">
+									<tr class="order-detail-row order-detail-row--don-1021">
 										<td colspan="7">
 											<dl class="order-detail">
 												<div class="order-detail__item">
@@ -316,7 +359,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr class="order-detail-row" id="don-1020">
+									<tr class="order-detail-row order-detail-row--don-1020">
 										<td colspan="7">
 											<dl class="order-detail">
 												<div class="order-detail__item">
@@ -341,12 +384,20 @@
 						<!-- Phân trang -->
 						<nav class="pagination" aria-label="Phân trang đơn hàng">
 							<p class="pagination__info">Hiển thị 1 – 5 trong 128 đơn hàng</p>
-							<a class="pagination__link" href="#don-hang" aria-current="page">1</a>
-							<a class="pagination__link" href="#don-hang">2</a>
-							<a class="pagination__link" href="#don-hang">3</a>
-							<a class="pagination__link" href="#don-hang">26</a>
-							<a class="pagination__link" href="#don-hang">Sau →</a>
+							<a class="pagination__link" href="#trang-1" aria-current="page">1</a>
+							<a class="pagination__link" href="#trang-2">2</a>
+							<a class="pagination__link" href="#trang-3">3</a>
+							<a class="pagination__link" href="#trang-26">26</a>
+							<a class="pagination__link" href="#trang-sau">Sau →</a>
 						</nav>
+
+							<!-- Mỗi nút trang trỏ tới một thông báo riêng. Các trang sau chỉ có dữ liệu
+							     tĩnh, nên bấm sẽ hiện thông báo này thay vì tải trang mới. -->
+							<p class="admin-notice admin-notice--trang-1">Bạn đang xem trang 1, hiển thị 5 đơn hàng mới nhất (SKB-1024 đến SKB-1020).</p>
+							<p class="admin-notice admin-notice--trang-2">Đã chuyển sang trang 2, hiển thị các đơn từ SKB-1019 đến SKB-1015.</p>
+							<p class="admin-notice admin-notice--trang-3">Đã chuyển sang trang 3, hiển thị các đơn từ SKB-1014 đến SKB-1010.</p>
+							<p class="admin-notice admin-notice--trang-26">Bạn đang ở trang cuối, hiển thị các đơn từ SKB-0004 đến SKB-0000.</p>
+							<p class="admin-notice admin-notice--trang-sau">Đã sang trang tiếp theo, hiển thị các đơn từ SKB-1019 đến SKB-1015.</p>
 					</div>
 
 					<!-- ==================== KHO SÁCH ==================== -->
@@ -358,14 +409,12 @@
 								<p class="admin-head__desc">8 tựa sách đang bán.</p>
 							</div>
 							<div class="admin-head__actions">
-								<a class="btn btn--ghost btn--sm" href="#them-sach">Thêm sách mới</a>
-								<a class="btn btn--primary btn--sm" href="#nhap-kho">Nhập kho</a>
+								<a class="btn btn--ghost btn--sm" href="./admin-book-new.html">Thêm sách mới</a>
+								<a class="btn btn--primary btn--sm" href="./admin-stock-import.html">Nhập kho</a>
 							</div>
 						</div>
 
-						<p class="admin-notice" id="them-sach"></p>
-						<p class="admin-notice" id="nhap-kho">Phiếu nhập kho đã được tạo cho 4 tựa sách sắp hết.</p>
-						<p class="admin-notice" id="sua-sach">Xem cách sách hiển thị với khách hàng ở <a href="./book.html">trang chi tiết sách</a>.</p>
+						<p class="admin-notice admin-notice--sua-sach">Xem cách sách hiển thị với khách hàng ở <a href="./book.html">trang chi tiết sách</a>.</p>
 
 						<div class="table-wrap">
 							<table class="admin-table">
@@ -469,7 +518,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="400" height="600" loading="lazy" decoding="async">
+												<img src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Atomic Habits: Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</p>
 													<p class="cell-book__meta">James Clear</p>
@@ -490,7 +539,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="400" height="600" loading="lazy" decoding="async">
+												<img src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="781" height="1231" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Mắt Biếc</p>
 													<p class="cell-book__meta">Nguyễn Nhật Ánh</p>
@@ -524,12 +573,12 @@
 							</div>
 							<div class="admin-head__actions">
 								<a class="btn btn--ghost btn--sm" href="#xuat-khach-hang">Xuất danh sách</a>
-								<a class="btn btn--primary btn--sm" href="#gui-uu-dai">Gửi ưu đãi</a>
+								<a class="btn btn--primary btn--sm" href="./admin-promo-send.html">Gửi ưu đãi</a>
 							</div>
 						</div>
 
-						<p class="admin-notice" id="xuat-khach-hang">Tệp CSV gồm 5 khách hàng đang hiển thị đã sẵn sàng để tải.</p>
-						<p class="admin-notice" id="gui-uu-dai">Mã giảm giá SACH10 đã được xếp vào hàng đợi gửi cho nhóm khách hàng hạng Vàng và Kim cương.</p>
+						<!-- Điểm neo của nút "Xuất danh sách": bấm là thông báo này hiện ra -->
+						<p class="admin-notice admin-notice--xuat-khach-hang" tabindex="-1">Đã tạo tệp <strong>khach-hang-2026-09-28.csv</strong> gồm <strong>5 khách hàng</strong> đang hiển thị. Tệp đã sẵn sàng trong mục Tải về của trình duyệt.</p>
 
 						<div class="table-wrap">
 							<table class="admin-table">
@@ -626,10 +675,10 @@
 							</div>
 						</div>
 
-						<p class="admin-notice" id="luu-cai-dat">Đã lưu cài đặt cửa hàng.</p>
-						<p class="admin-notice" id="khoi-phuc">Đã khôi phục các giá trị mặc định của nhà sách.</p>
+						<p class="admin-notice admin-notice--luu-cai-dat">Đã lưu cài đặt cửa hàng.</p>
+						<p class="admin-notice admin-notice--khoi-phuc">Đã khôi phục các giá trị mặc định của nhà sách.</p>
 
-						<form action="#" method="post">
+						<form action="#luu-cai-dat" method="get">
 							<div class="panel">
 								<div class="panel__head">
 									<h3 class="panel__title">Thông tin cửa hàng</h3>
@@ -638,32 +687,26 @@
 
 								<div class="field-grid">
 									<div class="field">
-										<label class="field__label" for="cai-dat-ten">Tên cửa hàng</label>
-										<input class="field__input" id="cai-dat-ten" name="ten-cua-hang" type="text" value="Nhà Sách Skibidus" required>
+										<label class="field__label">Tên cửa hàng<input class="field__input" name="ten-cua-hang" type="text" value="Nhà Sách Skibidus" required></label>
 									</div>
 									<div class="field">
-										<label class="field__label" for="cai-dat-email">Email liên hệ</label>
-										<input class="field__input" id="cai-dat-email" name="email" type="email" value="hotro@nhasachskibidus.vn" required>
+										<label class="field__label">Email liên hệ<input class="field__input" name="email" type="email" value="hotro@nhasachskibidus.vn" required></label>
 									</div>
 									<div class="field">
-										<label class="field__label" for="cai-dat-hotline">Hotline</label>
-										<input class="field__input" id="cai-dat-hotline" name="hotline" type="tel" value="0901 234 567" pattern="[0-9 ]{9,15}">
+										<label class="field__label">Hotline<input class="field__input" name="hotline" type="tel" value="0901 234 567" pattern="[0-9 ]{9,15}"></label>
 										<p class="field__hint">Chỉ gồm chữ số và dấu cách, từ 9 đến 15 ký tự.</p>
 									</div>
 									<div class="field">
-										<label class="field__label" for="cai-dat-tien-te">Đơn vị tiền tệ</label>
-										<select class="field__select" id="cai-dat-tien-te" name="tien-te">
+										<label class="field__label">Đơn vị tiền tệ<select class="field__select" name="tien-te"></label>
 											<option value="vnd" selected>Việt Nam đồng (VNĐ)</option>
 											<option value="usd">Đô la Mỹ (USD)</option>
 										</select>
 									</div>
 									<div class="field field--full">
-										<label class="field__label" for="cai-dat-dia-chi">Địa chỉ</label>
-										<input class="field__input" id="cai-dat-dia-chi" name="dia-chi" type="text" value="123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh">
+										<label class="field__label">Địa chỉ<input class="field__input" name="dia-chi" type="text" value="123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh"></label>
 									</div>
 									<div class="field field--full">
-										<label class="field__label" for="cai-dat-gioi-thieu">Giới thiệu ngắn</label>
-										<textarea class="field__textarea" id="cai-dat-gioi-thieu" name="gioi-thieu">Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận.</textarea>
+										<label class="field__label">Giới thiệu ngắn<textarea class="field__textarea" name="gioi-thieu"></label>Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận.</textarea>
 									</div>
 								</div>
 							</div>
@@ -702,8 +745,28 @@
 							</div>
 
 							<div class="form-actions">
-								<a class="btn btn--primary" href="#luu-cai-dat">Lưu thay đổi</a>
-								<a class="btn btn--ghost" href="#khoi-phuc">Khôi phục mặc định</a>
+								<a class="btn btn--primary" href="#xac-nhan-luu">Lưu thay đổi</a>
+								<a class="btn btn--ghost" href="#xac-nhan-khoi-phuc">Khôi phục mặc định</a>
+							</div>
+
+							<!-- Bước 2 của “Lưu thay đổi”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+							<div class="confirm confirm--xac-nhan-luu" role="group" aria-label="Lưu thay đổi cài đặt?">
+								<p class="confirm__title">Lưu thay đổi cài đặt?</p>
+								<p class="confirm__text">Các thiết lập cửa hàng sẽ được cập nhật ngay cho toàn bộ gian sách.</p>
+								<div class="confirm__actions">
+									<button class="btn btn--primary btn--sm" type="submit">Xác nhận lưu</button>
+									<a class="btn btn--ghost btn--sm" href="#cai-dat">Huỷ</a>
+								</div>
+							</div>
+
+							<!-- Bước 2 của “Khôi phục mặc định”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+							<div class="confirm confirm--xac-nhan-khoi-phuc" role="group" aria-label="Khôi phục giá trị mặc định?">
+								<p class="confirm__title">Khôi phục giá trị mặc định?</p>
+								<p class="confirm__text">Toàn bộ thiết lập bạn đã sửa sẽ trở về mặc định của nhà sách. Thao tác này không hoàn tác được.</p>
+								<div class="confirm__actions">
+									<button class="btn btn--danger btn--sm" type="submit" formaction="#khoi-phuc">Xác nhận khôi phục</button>
+									<a class="btn btn--ghost btn--sm" href="#cai-dat">Huỷ</a>
+								</div>
 							</div>
 						</form>
 					</div>
@@ -805,7 +868,7 @@
 								</div>
 								<ul class="stock-list">
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="400" height="600" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Atomic Habits</p>
 											<p class="stock-item__meta"><span>Còn 4 cuốn</span><span class="tag tag--sale">Sắp hết</span></p>
@@ -813,7 +876,7 @@
 										</div>
 									</li>
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="400" height="600" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="781" height="1231" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Mắt Biếc</p>
 											<p class="stock-item__meta"><span>Còn 7 cuốn</span><span class="tag tag--sale">Sắp hết</span></p>
@@ -829,7 +892,7 @@
 										</div>
 									</li>
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh" width="400" height="600" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="./assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh" width="300" height="414" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Muôn Kiếp Nhân Sinh</p>
 											<p class="stock-item__meta"><span>Còn 12 cuốn</span><span class="tag tag--soft">Cần nhập</span></p>

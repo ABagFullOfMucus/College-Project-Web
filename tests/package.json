@@ -1,0 +1,12 @@
+{
+  "name": "skibidus-static-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kiem tra tinh (khong can trinh duyet) cho cac trang tinh: :target/display, mỏ neo, nhan bao quan dieu khien, lien ket noi bo.",
+  "scripts": {
+    "test": "bash run-all.sh"
+  },
+  "devDependencies": {
+    "jsdom": "^22.1.0"
+  }
+}

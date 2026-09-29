@@ -280,6 +280,10 @@
 }
 
 .field__label {
+	/* Hien tai cac nhan bao quan truc tiep dieu khien (khong con la dong rieng
+	   cua .field) nen chinh no phai la grid de van giu khoang cach 6px. */
+	display: grid;
+	gap: 6px;
 	font-size: .8rem;
 	font-weight: 700;
 	color: var(--color-muted);
@@ -294,6 +298,8 @@
 	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius-sm);
 	font: inherit;
+	/* font: inherit se ke thua font-weight 700 cua nhan — dieu khien van phai regular */
+	font-weight: 400;
 	font-size: .9rem;
 	color: var(--color-ink);
 }
