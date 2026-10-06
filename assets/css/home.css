@@ -102,9 +102,11 @@
 }
 
 
+/* 6 thẻ thể loại = 6 cột khi rộng, 3 x 2 khi vừa, 2 x 3 khi nhỏ và 1 cột
+   khi hẹp — luôn chia hết cho 6 nên không bao giờ sót lại một thẻ lẻ. */
 .category-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+	grid-template-columns: repeat(6, minmax(0, 1fr));
 	gap: 18px;
 }
 
@@ -150,6 +152,35 @@
 .category__count {
 	font-size: .82rem;
 	color: var(--color-muted);
+}
+
+/* Liên kết "Xem tất cả thể loại" dưới lưới: căn giữa như phần đầu section */
+.category-more {
+	margin-top: 28px;
+	text-align: center;
+}
+
+.category-more a {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 600;
+	color: var(--color-accent-dark);
+}
+
+.category-more a::after {
+	content: "→";
+	transition: transform var(--transition);
+}
+
+.category-more a:hover,
+.category-more a:focus-visible {
+	color: var(--color-ink);
+}
+
+.category-more a:hover::after,
+.category-more a:focus-visible::after {
+	transform: translateX(4px);
 }
 
 
@@ -377,6 +408,11 @@
 
 /* --- Laptop nhỏ --- */
 @media (max-width: 1080px) {
+	/* 6 cột xuống 3 cột: 6 thẻ vẫn chia đều 3 x 2, không sót thẻ lẻ */
+	.category-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
 	.hero__inner {
 		grid-template-columns: 1fr;
 		gap: 44px;
@@ -424,7 +460,11 @@
 		padding: 12px 16px;
 	}
 
-	.category-grid,
+	.category-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+	}
+
 	.feature-grid,
 	.review-grid {
 		gap: 16px;

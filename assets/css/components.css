@@ -115,6 +115,9 @@
 	font-weight: 600;
 	line-height: 1.2;
 	text-align: center;
+	/* Nút là một cụm chữ ngắn, không bao giờ nên bị xuống dòng khi bị bóp
+	   chiều rộng (ví dụ trong header khi màn hình vừa đủ). */
+	white-space: nowrap;
 	transition: background-color var(--transition), color var(--transition),
 		border-color var(--transition), transform var(--transition),
 		box-shadow var(--transition);
@@ -178,6 +181,37 @@
 
 .btn--block {
 	width: 100%;
+}
+
+/* Nút quay lại đầu trang ------------------------------------------------
+   Dùng trên trang thể loại và trang chi tiết sách. Site không có JavaScript
+   nên nút là liên kết thật tới trang cha, không gọi history.back(). */
+.page-back {
+	padding-top: 22px;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 18px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	color: var(--color-ink);
+	font-size: .9rem;
+	font-weight: 600;
+	white-space: nowrap;
+	transition: border-color var(--transition), color var(--transition),
+		transform var(--transition), box-shadow var(--transition);
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+	box-shadow: var(--shadow-sm);
+	transform: translateX(-3px);
 }
 
 /* Nhãn nhỏ: giảm giá, trạng thái sách... ----------------------------- */
@@ -517,6 +551,20 @@
 
 	.book-card__body {
 		padding: 14px;
+	}
+
+	/* Ở lưới 2 cột, cụm "4,9 (4.680 đánh giá)" không vừa một dòng nên chữ bị
+	   cắt. Cho nó xuống dòng riêng thay vì ép nowrap, vẫn giữ nguyên một dòng
+	   cho cụm số + số đánh giá. */
+	.book-card__rating {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2px;
+		font-size: .75rem;
+	}
+
+	.book-card__rating-value {
+		white-space: nowrap;
 	}
 
 	.section__head {

@@ -56,7 +56,8 @@
 	color: var(--color-accent-dark);
 }
 
-/* Menu chính */
+/* Menu chính: giữ dạng chữ thuần trên nền, chỉ khác ở typeface — dùng
+   font tiêu đề (serif) của thương hiệu để menu hài hòa với logo. */
 .main-nav {
 	margin-inline: auto;
 }
@@ -64,16 +65,22 @@
 .main-nav__list {
 	display: flex;
 	align-items: center;
-	gap: 22px;
+	gap: 16px;
 }
 
 .main-nav__link {
 	position: relative;
 	display: inline-block;
 	padding-block: 6px;
-	font-size: .95rem;
-	font-weight: 500;
+	/* Font serif rộng hơn font chữ thường: giữ mỗi mục trên một dòng
+	   để không đẩy header xuống hai hàng khi màn hình vừa đủ. */
+	white-space: nowrap;
+	font-family: var(--font-heading);
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: .01em;
 	color: var(--color-text);
+	transition: color var(--transition);
 }
 
 .main-nav__link::after {
@@ -371,6 +378,20 @@
 	.search__input {
 		width: 180px;
 	}
+
+	/* Font serif của menu rộng hơn chữ thường: ở màn hình vừa phải thu gap
+	   của menu và ô tìm kiếm lại để nút "Đăng nhập" không tràn ra ngoài. */
+	.main-nav__list {
+		gap: 10px;
+	}
+
+	.main-nav__link {
+		font-size: .95rem;
+	}
+
+	.search__input {
+		width: 130px;
+	}
 }
 
 /* --- Tablet & mobile: dùng menu hamburger (chỉ CSS) --- */
@@ -410,12 +431,16 @@
 		gap: 0;
 	}
 
+	/* Xếp dọc thì mỗi mục là một hàng full-width có đường kẻ ngăn, dễ bấm
+	   trên màn hình cảm ứng. */
 	.main-nav__link {
 		display: block;
 		padding-block: 14px;
 		border-bottom: 1px solid var(--color-border);
+		font-size: 1.1rem;
 	}
 
+	/* Ở chiều dọc, vạch gạch chân sát mép dưới trông lạc lõng nên bỏ đi */
 	.main-nav__link::after {
 		display: none;
 	}

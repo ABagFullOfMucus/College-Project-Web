@@ -8,15 +8,15 @@
 		<!-- Trang quản trị không cần cho máy tìm kiếm -->
 		<meta name="robots" content="noindex">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
-		<link rel="icon" type="image/png" href="./assets/images/logo.png">
+		<link rel="icon" type="image/png" href="../assets/images/logo.png">
 		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
-		<link rel="stylesheet" href="./assets/css/reset.css">
-		<link rel="stylesheet" href="./assets/css/base.css">
-		<link rel="stylesheet" href="./assets/css/components.css">
-		<link rel="stylesheet" href="./assets/css/layout.css">
-		<link rel="stylesheet" href="./assets/css/admin.css">
-		<link rel="stylesheet" href="./assets/css/admin-data.css">
-		<link rel="stylesheet" href="./assets/css/compat.css">
+		<link rel="stylesheet" href="../assets/css/reset.css">
+		<link rel="stylesheet" href="../assets/css/base.css">
+		<link rel="stylesheet" href="../assets/css/components.css">
+		<link rel="stylesheet" href="../assets/css/layout.css">
+		<link rel="stylesheet" href="../assets/css/admin.css">
+		<link rel="stylesheet" href="../assets/css/admin-data.css">
+		<link rel="stylesheet" href="../assets/css/compat.css">
 	</head>
 	<body class="admin-body">
 		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
@@ -53,6 +53,7 @@
 		<span class="admin-target" id="khoi-phuc" aria-hidden="true"></span>
 		<span class="admin-target" id="xac-nhan-luu" aria-hidden="true"></span>
 		<span class="admin-target" id="xac-nhan-khoi-phuc" aria-hidden="true"></span>
+		<span class="admin-target" id="xac-nhan-xem-gian-sach" aria-hidden="true"></span>
 		<span class="admin-target" id="loc-tu-khoa" aria-hidden="true"></span>
 		<span class="admin-target" id="loc-trang-thai" aria-hidden="true"></span>
 		<span class="admin-target" id="loc-thoi-gian" aria-hidden="true"></span>
@@ -73,7 +74,7 @@
 				<div class="admin-sidebar__brand">
 					<a class="logo" href="./admin.html">
 						<span class="logo__mark" aria-hidden="true">
-							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+							<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
 						</span>
 						<span class="logo__text">Skibidus</span>
 					</a>
@@ -118,7 +119,7 @@
 				</nav>
 
 				<div class="admin-sidebar__foot">
-					<a class="btn btn--outline btn--sm btn--block" href="./index.html">Xem cửa hàng</a>
+					<a class="btn btn--outline btn--sm btn--block" href="../index.html">Xem cửa hàng</a>
 				</div>
 			</aside>
 
@@ -157,7 +158,7 @@
 						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
 						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
 						<div class="confirm__actions">
-							<a class="btn btn--danger btn--sm" href="./login.html">Đăng xuất</a>
+							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
 							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
 						</div>
 					</div>
@@ -184,20 +185,20 @@
 								<label class="field__label">Từ khoá<input class="field__input" name="q" type="search" placeholder="Mã đơn hoặc tên khách hàng"></label>
 							</div>
 							<div class="field">
-								<label class="field__label">Trạng thái<select class="field__select" name="status"></label>
+								<label class="field__label">Trạng thái<select class="field__select" name="status">
 									<option value="">Tất cả trạng thái</option>
 									<option value="wait">Chờ xử lý</option>
 									<option value="ship">Đang giao</option>
 									<option value="done">Hoàn thành</option>
 									<option value="cancel">Đã hủy</option>
-								</select>
+								</select></label>
 							</div>
 							<div class="field">
-								<label class="field__label">Thời gian<select class="field__select" name="range"></label>
+								<label class="field__label">Thời gian<select class="field__select" name="range">
 									<option value="7">7 ngày gần nhất</option>
 									<option value="30">30 ngày gần nhất</option>
 									<option value="quarter">Quý này</option>
-								</select>
+								</select></label>
 							</div>
 							<button class="btn btn--primary btn--sm" type="submit">Lọc đơn hàng</button>
 						</form>
@@ -414,7 +415,7 @@
 							</div>
 						</div>
 
-						<p class="admin-notice admin-notice--sua-sach">Xem cách sách hiển thị với khách hàng ở <a href="./book.html">trang chi tiết sách</a>.</p>
+						<p class="admin-notice admin-notice--sua-sach">Xem cách sách hiển thị với khách hàng ở <a href="../books/book-dac-nhan-tam.html">trang chi tiết sách</a>.</p>
 
 						<div class="table-wrap">
 							<table class="admin-table">
@@ -433,7 +434,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book1.jpg" alt="Bìa sách Đắc Nhân Tâm" width="1352" height="2004" loading="lazy" decoding="async">
+												<img src="../assets/images/books/book1.jpg" alt="Bìa sách Đắc Nhân Tâm" width="1352" height="2004" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Đắc Nhân Tâm</p>
 													<p class="cell-book__meta">Dale Carnegie</p>
@@ -446,7 +447,7 @@
 										<td><span class="tag tag--done">Đang bán</span></td>
 										<td>
 											<div class="admin-table__actions">
-												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
 												<a class="admin-table__link" href="#sua-sach">Sửa</a>
 											</div>
 										</td>
@@ -454,7 +455,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book2.jpg" alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu?" width="2800" height="2800" loading="lazy" decoding="async">
+												<img src="../assets/images/books/book2.jpg" alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu?" width="2800" height="2800" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Tuổi Trẻ Đáng Giá Bao Nhiêu?</p>
 													<p class="cell-book__meta">Rosie Nguyễn</p>
@@ -467,7 +468,7 @@
 										<td><span class="tag tag--done">Đang bán</span></td>
 										<td>
 											<div class="admin-table__actions">
-												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
 												<a class="admin-table__link" href="#sua-sach">Sửa</a>
 											</div>
 										</td>
@@ -475,7 +476,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book3.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi" width="663" height="984" loading="lazy" decoding="async">
+												<img src="../assets/images/books/book3.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi" width="663" height="984" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Cây Cam Ngọt Của Tôi</p>
 													<p class="cell-book__meta">José Mauro de Vasconcelos</p>
@@ -488,7 +489,7 @@
 										<td><span class="tag tag--done">Đang bán</span></td>
 										<td>
 											<div class="admin-table__actions">
-												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
 												<a class="admin-table__link" href="#sua-sach">Sửa</a>
 											</div>
 										</td>
@@ -496,7 +497,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
+												<img src="../assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Sapiens: Lược Sử Loài Người</p>
 													<p class="cell-book__meta">Yuval Noah Harari</p>
@@ -509,7 +510,7 @@
 										<td><span class="tag tag--wait">Sắp hết</span></td>
 										<td>
 											<div class="admin-table__actions">
-												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
 												<a class="admin-table__link" href="#sua-sach">Sửa</a>
 											</div>
 										</td>
@@ -518,7 +519,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
+												<img src="../assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Atomic Habits: Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</p>
 													<p class="cell-book__meta">James Clear</p>
@@ -531,7 +532,7 @@
 										<td><span class="tag tag--sale">Sắp hết</span></td>
 										<td>
 											<div class="admin-table__actions">
-												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
 												<a class="admin-table__link" href="#sua-sach">Sửa</a>
 											</div>
 										</td>
@@ -539,7 +540,7 @@
 									<tr>
 										<td>
 											<div class="cell-book">
-												<img src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="781" height="1231" loading="lazy" decoding="async">
+												<img src="../assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="781" height="1231" loading="lazy" decoding="async">
 												<div>
 													<p class="cell-book__title">Mắt Biếc</p>
 													<p class="cell-book__meta">Nguyễn Nhật Ánh</p>
@@ -552,7 +553,7 @@
 										<td><span class="tag tag--cancel">Tạm hết hàng</span></td>
 										<td>
 											<div class="admin-table__actions">
-												<a class="admin-table__link" href="./book.html">Xem</a>
+												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
 												<a class="admin-table__link" href="#sua-sach">Sửa</a>
 											</div>
 										</td>
@@ -697,16 +698,16 @@
 										<p class="field__hint">Chỉ gồm chữ số và dấu cách, từ 9 đến 15 ký tự.</p>
 									</div>
 									<div class="field">
-										<label class="field__label">Đơn vị tiền tệ<select class="field__select" name="tien-te"></label>
+										<label class="field__label">Đơn vị tiền tệ<select class="field__select" name="tien-te">
 											<option value="vnd" selected>Việt Nam đồng (VNĐ)</option>
 											<option value="usd">Đô la Mỹ (USD)</option>
-										</select>
+										</select></label>
 									</div>
 									<div class="field field--full">
 										<label class="field__label">Địa chỉ<input class="field__input" name="dia-chi" type="text" value="123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh"></label>
 									</div>
 									<div class="field field--full">
-										<label class="field__label">Giới thiệu ngắn<textarea class="field__textarea" name="gioi-thieu"></label>Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận.</textarea>
+										<label class="field__label">Giới thiệu ngắn<textarea class="field__textarea" name="gioi-thieu">Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận.</textarea></label>
 									</div>
 								</div>
 							</div>
@@ -781,12 +782,22 @@
 								<p class="admin-head__desc">Cập nhật lúc 09:30 ngày 21/09/2026 · Đơn vị tiền tệ: VNĐ.</p>
 							</div>
 							<div class="admin-head__actions">
-								<a class="btn btn--ghost btn--sm" href="./index.html#featured">Xem gian sách</a>
+								<a class="btn btn--ghost btn--sm" href="#xac-nhan-xem-gian-sach">Xem gian sách</a>
 								<a class="btn btn--primary btn--sm" href="#bao-cao">Xuất báo cáo</a>
 							</div>
 						</div>
 
-						<p class="admin-notice" id="bao-cao">Báo cáo doanh thu tháng 09/2026 đã được tạo và gửi tới <strong>hotro@nhasachskibidus.vn</strong>.</p>
+						<!-- Bước 2 của “Xem gian sách”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự rời trang quản trị. -->
+					<div class="confirm confirm--xem-gian-sach" role="group" aria-label="Rời trang quản trị để xem gian sách?">
+						<p class="confirm__title">Rời trang quản trị để xem gian sách?</p>
+						<p class="confirm__text">Bạn sẽ sang trang chủ của Nhà Sách Skibidus. Mục Tổng quan đang mở sẽ được đóng lại.</p>
+						<div class="confirm__actions">
+							<a class="btn btn--primary btn--sm" href="../index.html#featured">Vẫn xem gian sách</a>
+							<a class="btn btn--ghost btn--sm" href="#tong-quan">Huỷ</a>
+						</div>
+					</div>
+
+					<p class="admin-notice" id="bao-cao">Báo cáo doanh thu tháng 09/2026 đã được tạo và gửi tới <strong>hotro@nhasachskibidus.vn</strong>.</p>
 
 						<!-- Bốn thẻ số liệu chính -->
 						<ul class="metric-grid">
@@ -868,7 +879,7 @@
 								</div>
 								<ul class="stock-list">
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="../assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Atomic Habits</p>
 											<p class="stock-item__meta"><span>Còn 4 cuốn</span><span class="tag tag--sale">Sắp hết</span></p>
@@ -876,7 +887,7 @@
 										</div>
 									</li>
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="781" height="1231" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="../assets/images/books/book7.jpg" alt="Bìa sách Mắt Biếc" width="781" height="1231" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Mắt Biếc</p>
 											<p class="stock-item__meta"><span>Còn 7 cuốn</span><span class="tag tag--sale">Sắp hết</span></p>
@@ -884,7 +895,7 @@
 										</div>
 									</li>
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="../assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Sapiens: Lược Sử Loài Người</p>
 											<p class="stock-item__meta"><span>Còn 9 cuốn</span><span class="tag tag--soft">Cần nhập</span></p>
@@ -892,7 +903,7 @@
 										</div>
 									</li>
 									<li class="stock-item">
-										<img class="stock-item__thumb" src="./assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh" width="300" height="414" loading="lazy" decoding="async">
+										<img class="stock-item__thumb" src="../assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh" width="300" height="414" loading="lazy" decoding="async">
 										<div>
 											<p class="stock-item__title">Muôn Kiếp Nhân Sinh</p>
 											<p class="stock-item__meta"><span>Còn 12 cuốn</span><span class="tag tag--soft">Cần nhập</span></p>

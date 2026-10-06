@@ -6,16 +6,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Thanh toán Nhà Sách Skibidus – nhập thông tin giao hàng, chọn phương thức thanh toán và xác nhận đơn sách của bạn.">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
-		<link rel="icon" type="image/png" href="./assets/images/logo.png">
+		<link rel="icon" type="image/png" href="../assets/images/logo.png">
 		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
-		<link rel="stylesheet" href="./assets/css/reset.css">
-		<link rel="stylesheet" href="./assets/css/base.css">
-		<link rel="stylesheet" href="./assets/css/components.css">
-		<link rel="stylesheet" href="./assets/css/layout.css">
-		<link rel="stylesheet" href="./assets/css/book.css">
-		<link rel="stylesheet" href="./assets/css/cart.css">
-		<link rel="stylesheet" href="./assets/css/checkout.css">
-		<link rel="stylesheet" href="./assets/css/compat.css">
+		<link rel="stylesheet" href="../assets/css/reset.css">
+		<link rel="stylesheet" href="../assets/css/base.css">
+		<link rel="stylesheet" href="../assets/css/components.css">
+		<link rel="stylesheet" href="../assets/css/layout.css">
+		<link rel="stylesheet" href="../assets/css/book.css">
+		<link rel="stylesheet" href="../assets/css/cart.css">
+		<link rel="stylesheet" href="../assets/css/checkout.css">
+		<link rel="stylesheet" href="../assets/css/compat.css">
 	</head>
 	<body>
 		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
@@ -24,9 +24,9 @@
 		<!-- ==================== HEADER ==================== -->
 		<header class="site-header">
 			<div class="container site-header__inner">
-				<a class="logo" href="./index.html">
+				<a class="logo" href="../index.html">
 					<span class="logo__mark" aria-hidden="true">
-						<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
 					</span>
 					<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 				</a>
@@ -39,17 +39,17 @@
 
 				<nav class="main-nav" aria-label="Điều hướng chính">
 					<ul class="main-nav__list">
-						<li><a class="main-nav__link" href="./index.html#hero">Trang chủ</a></li>
-						<li><a class="main-nav__link" href="./index.html#featured">Sách mới</a></li>
-						<li><a class="main-nav__link" href="./index.html#categories">Thể loại</a></li>
-						<li><a class="main-nav__link" href="./index.html#promo">Khuyến mãi</a></li>
-						<li><a class="main-nav__link" href="./index.html#reviews">Đánh giá</a></li>
-						<li><a class="main-nav__link" href="./index.html#contact">Liên hệ</a></li>
+						<li><a class="main-nav__link" href="../index.html#hero">Trang chủ</a></li>
+						<li><a class="main-nav__link" href="../index.html#featured">Sách mới</a></li>
+						<li><a class="main-nav__link" href="../categories/the-loai.html">Thể loại</a></li>
+						<li><a class="main-nav__link" href="../index.html#promo">Khuyến mãi</a></li>
+						<li><a class="main-nav__link" href="../index.html#reviews">Đánh giá</a></li>
+						<li><a class="main-nav__link" href="../info/contact.html">Liên hệ</a></li>
 					</ul>
 				</nav>
 
 				<div class="header-actions">
-					<form class="search" role="search" action="#tim-kiem-xong" method="get">
+					<form class="search" role="search" action="../search/search.html" method="get">
 						<label class="visually-hidden" for="site-search">Tìm kiếm sách</label>
 						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 						<input class="search__input" id="site-search" name="q" type="search" placeholder="Tên sách, tác giả...">
@@ -60,7 +60,7 @@
 						<span class="cart__count" aria-hidden="true">4</span>
 					</a>
 
-					<a class="btn btn--outline btn--sm" href="./login.html">Đăng nhập</a>
+					<a class="btn btn--outline btn--sm" href="../account/login.html">Đăng nhập</a>
 				</div>
 			</div>
 		</header>
@@ -77,7 +77,7 @@
 			<nav class="breadcrumb" aria-label="Đường dẫn">
 				<div class="container">
 					<ol class="breadcrumb__list">
-						<li><a href="./index.html">Trang chủ</a></li>
+						<li><a href="../index.html">Trang chủ</a></li>
 						<li><a href="./cart.html">Giỏ hàng</a></li>
 						<li aria-current="page">Thanh toán</li>
 					</ol>
@@ -106,7 +106,7 @@
 						<h2 class="checkout-notice__title">Đặt hàng thành công!</h2>
 						<p class="checkout-notice__text">Cảm ơn bạn đã mua sách tại Nhà Sách Skibidus. Mã đơn hàng của bạn là <strong>SKB-2026-0841</strong>. Chúng tôi sẽ gọi điện xác nhận và giao <strong>4 cuốn sách</strong> trong 2 – 4 ngày tới, tổng thu hộ <strong>342.000đ</strong>.</p>
 						<p class="checkout-notice__actions">
-							<a class="btn btn--primary btn--sm" href="./index.html#featured">Tiếp tục mua sắm</a>
+							<a class="btn btn--primary btn--sm" href="../index.html#featured">Tiếp tục mua sắm</a>
 							<a class="btn btn--outline btn--sm" href="./cart.html">Quay lại giỏ hàng</a>
 						</p>
 					</div>
@@ -243,31 +243,31 @@
 							<h2 class="cart-summary__title" id="tom-tat-thanh-toan">Tóm tắt đơn hàng</h2>
 							<ol class="mini-list">
 								<li class="mini-item">
-									<a class="mini-item__media" href="./book.html" tabindex="-1" aria-hidden="true">
-										<img src="./assets/images/books/book1.jpg" alt="" width="1352" height="2004" loading="lazy" decoding="async">
+									<a class="mini-item__media" href="../books/book-dac-nhan-tam.html" tabindex="-1" aria-hidden="true">
+										<img src="../assets/images/books/book1.jpg" alt="" width="1352" height="2004" loading="lazy" decoding="async">
 									</a>
 									<div class="mini-item__info">
-										<p class="mini-item__title"><a href="./book.html">Đắc Nhân Tâm</a></p>
+										<p class="mini-item__title"><a href="../books/book-dac-nhan-tam.html">Đắc Nhân Tâm</a></p>
 										<p class="mini-item__meta">Dale Carnegie · Số lượng: 2</p>
 									</div>
 									<span class="mini-item__price">178.000đ</span>
 								</li>
 								<li class="mini-item">
-									<a class="mini-item__media" href="./book.html" tabindex="-1" aria-hidden="true">
-										<img src="./assets/images/books/book2.jpg" alt="" width="2800" height="2800" loading="lazy" decoding="async">
+									<a class="mini-item__media" href="../books/book-dac-nhan-tam.html" tabindex="-1" aria-hidden="true">
+										<img src="../assets/images/books/book2.jpg" alt="" width="2800" height="2800" loading="lazy" decoding="async">
 									</a>
 									<div class="mini-item__info">
-										<p class="mini-item__title"><a href="./book.html">Tuổi Trẻ Đáng Giá Bao Nhiêu?</a></p>
+										<p class="mini-item__title"><a href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html">Tuổi Trẻ Đáng Giá Bao Nhiêu?</a></p>
 										<p class="mini-item__meta">Rosie Nguyễn · Số lượng: 1</p>
 									</div>
 									<span class="mini-item__price">75.000đ</span>
 								</li>
 								<li class="mini-item">
-									<a class="mini-item__media" href="./book.html" tabindex="-1" aria-hidden="true">
-										<img src="./assets/images/books/book3.jpg" alt="" width="663" height="984" loading="lazy" decoding="async">
+									<a class="mini-item__media" href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html" tabindex="-1" aria-hidden="true">
+										<img src="../assets/images/books/book3.jpg" alt="" width="663" height="984" loading="lazy" decoding="async">
 									</a>
 									<div class="mini-item__info">
-										<p class="mini-item__title"><a href="./book.html">Cây Cam Ngọt Của Tôi</a></p>
+										<p class="mini-item__title"><a href="../books/book-cay-cam-ngot-cua-toi.html">Cây Cam Ngọt Của Tôi</a></p>
 										<p class="mini-item__meta">José Mauro de Vasconcelos · Số lượng: 1</p>
 									</div>
 									<span class="mini-item__price">89.000đ</span>
@@ -306,9 +306,9 @@
 		<footer class="site-footer" id="contact">
 			<div class="container site-footer__inner">
 				<div class="site-footer__col site-footer__col--brand">
-					<a class="logo logo--footer" href="./index.html#hero">
+					<a class="logo logo--footer" href="../index.html#hero">
 						<span class="logo__mark" aria-hidden="true">
-							<img src="./assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+							<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
 						</span>
 						<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 					</a>
@@ -335,7 +335,7 @@
 				<nav class="site-footer__col" aria-label="Liên kết về chúng tôi">
 					<h2 class="site-footer__title">Về chúng tôi</h2>
 					<ul class="site-footer__links">
-						<li><a href="#chua-san-hang">Giới thiệu</a></li>
+						<li><a href="../categories/the-loai.html">Giới thiệu</a></li>
 						<li><a href="#chua-san-hang">Tuyển dụng</a></li>
 						<li><a href="#chua-san-hang">Tin tức</a></li>
 						<li><a href="#chua-san-hang">Hợp tác</a></li>

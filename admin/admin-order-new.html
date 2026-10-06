@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<title>Tạo đơn mới - Quản trị Nhà Sách Skibidus</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Tạo đơn hàng mới: chọn khách hàng, thêm sách cần giao và chốt tổng tiền.">
+		<!-- Trang quản trị không cần cho máy tìm kiếm -->
+		<meta name="robots" content="noindex">
+		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
+		<link rel="icon" type="image/png" href="../assets/images/logo.png">
+		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
+		<link rel="stylesheet" href="../assets/css/reset.css">
+		<link rel="stylesheet" href="../assets/css/base.css">
+		<link rel="stylesheet" href="../assets/css/components.css">
+		<link rel="stylesheet" href="../assets/css/layout.css">
+		<link rel="stylesheet" href="../assets/css/admin.css">
+		<link rel="stylesheet" href="../assets/css/admin-data.css">
+		<link rel="stylesheet" href="../assets/css/compat.css">
+	</head>
+	<body class="admin-body">
+		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
+		<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+		<input class="admin-toggle" type="checkbox" id="admin-nav">
+
+		<!-- Mỏ neo :target để điều hướng cột bên vẫn hoạt động ở trang này -->
+		<span class="admin-target" id="tong-quan" aria-hidden="true"></span>
+		<span class="admin-target" id="don-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="kho-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="khach-hang" aria-hidden="true"></span>
+		<span class="admin-target" id="cai-dat" aria-hidden="true"></span>
+
+		<div class="admin">
+
+			<!-- Lớp phủ: bấm ra ngoài để đóng cột điều hướng -->
+			<label class="admin-scrim" for="admin-nav" aria-hidden="true"></label>
+
+			<!-- ==================== CỘT ĐIỀU HƯỚNG ==================== -->
+			<aside class="admin-sidebar" aria-label="Khu vực quản trị">
+				<div class="admin-sidebar__brand">
+					<a class="logo" href="./admin.html">
+						<span class="logo__mark" aria-hidden="true">
+							<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						</span>
+						<span class="logo__text">Skibidus</span>
+					</a>
+					<span class="tag tag--soft">Quản trị</span>
+				</div>
+				<nav class="admin-nav" aria-label="Điều hướng quản trị">
+					<p class="admin-nav__title">Quản lý</p>
+					<ul class="admin-nav__list">
+						<li>
+							<a class="admin-nav__link" href="./admin.html#tong-quan">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.6"/><rect x="13.5" y="11" width="7" height="9.5" rx="1.6"/><rect x="3.5" y="13" width="7" height="7.5" rx="1.6"/></svg>
+								Tổng quan
+							</a>
+						</li>
+						<li>
+							<!-- Trang này nằm trong mục Đơn hàng nên giữ trạng thái active -->
+							<a class="admin-nav__link admin-nav__link--active" href="./admin.html#don-hang" aria-current="page">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 3.5h12v17l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8.5h5M9.5 12.5h5"/></svg>
+								Đơn hàng
+								<span class="admin-nav__count">12</span>
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="./admin.html#kho-sach">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5.5A2 2 0 0 1 6 3.5h12v17H6a2 2 0 0 1-2-2z"/><path d="M8 3.5v17"/></svg>
+								Kho sách
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="./admin.html#khach-hang">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M17 14.8c2 .7 3.5 2.6 3.5 5.2"/></svg>
+								Khách hàng
+							</a>
+						</li>
+						<li>
+							<a class="admin-nav__link" href="./admin.html#cai-dat">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 14.6a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-2.9-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H2.9a2 2 0 1 1 0-4h.2A1.7 1.7 0 0 0 4.2 8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3.8a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 2.9 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1z"/></svg>
+								Cài đặt
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<div class="admin-sidebar__foot">
+					<a class="btn btn--outline btn--sm btn--block" href="../index.html">Xem cửa hàng</a>
+				</div>
+			</aside>
+			<div class="admin-main">
+				<!-- ==================== THANH TRÊN ==================== -->
+				<header class="admin-topbar">
+					<label class="admin-burger" for="admin-nav">
+						<span class="visually-hidden">Mở / đóng menu quản trị</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+					</label>
+
+					<form class="search admin-topbar__search" role="search" action="#tim-kiem-xong" method="get">
+						<label class="visually-hidden" for="admin-search">Tìm đơn hàng, sách hoặc khách hàng</label>
+						<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+						<input class="search__input" id="admin-search" name="q" type="search" placeholder="Tìm đơn hàng, sách, khách hàng...">
+					</form>
+
+					<div class="admin-topbar__actions">
+						<p class="admin-user">
+							<span class="admin-user__avatar" aria-hidden="true">QT</span>
+							<span class="admin-user__info">
+								<strong class="admin-user__name">Quản trị A</strong>
+								<span class="admin-user__role">Quản trị viên</span>
+							</span>
+						</p>
+						<a class="btn btn--ghost btn--sm" href="#xac-nhan-dang-xuat">Đăng xuất</a>
+					</div>
+				</header>
+
+				<main class="admin-content" id="main">
+					<h1 class="visually-hidden">Tạo đơn hàng mới</h1>
+
+					<!-- Đăng xuất không thể hoàn tác: bấm lần 1 mở khối xác nhận bên dưới,
+					     bấm “Đăng xuất” lần 2 mới thật sự rời trang. -->
+					<div class="confirm" id="xac-nhan-dang-xuat" role="group" aria-label="Xác nhận đăng xuất">
+						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
+						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
+						<div class="confirm__actions">
+							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
+							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
+						</div>
+					</div>
+
+					<!-- ==================== TẠO ĐƠN MỚI ==================== -->
+					<div class="admin-view admin-view--tao-don">
+						<div class="admin-head">
+							<div>
+								<p class="eyebrow">Bán hàng</p>
+								<h2 class="admin-head__title">Tạo đơn mới</h2>
+								<p class="admin-head__desc">Chọn khách hàng, thêm sách cần giao rồi chốt tổng tiền. Mã đơn sẽ được sinh tự động.</p>
+							</div>
+							<div class="admin-head__actions">
+								<a class="btn btn--ghost btn--sm" href="./admin.html#don-hang">Quay lại danh sách</a>
+							</div>
+						</div>
+
+						<!-- Gửi form tới chính id của thông báo: bấm "Tạo đơn" thì trình
+						     duyệt nhảy tới #da-tao-don và khối thông báo cuối trang hiện ra.
+						     Hoạt động nhờ CSS :target, không cần JavaScript. -->
+						<form action="#da-tao-don" method="get">
+							<div class="admin-grid">
+								<!-- ---------- Cột trái: khách hàng + sách trong đơn ---------- -->
+								<div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">1. Khách hàng</h3>
+											<p class="panel__hint">Bắt buộc: chọn khách hàng nhận hàng</p>
+										</div>
+
+										<div class="field-grid">
+											<div class="field field--full">
+												<label class="field__label" for="don-khach-hang">Khách hàng</label>
+												<select class="field__select" id="don-khach-hang" name="khach-hang" required>
+													<option value="" selected>Chọn khách hàng</option>
+													<option value="1">Nguyễn Thu Hà — thuha.nguyen@example.com</option>
+													<option value="2">Trần Minh Quân — minhquan.tran@example.com</option>
+													<option value="3">Lê Hoàng Anh — hoanganh.le@example.com</option>
+													<option value="4">Phạm Bảo Ngọc — baongoc.pham@example.com</option>
+													<option value="5">Vũ Đức Thịnh — ducthinh.vu@example.com</option>
+													<option value="khach-le">Khách lẻ — không lưu vào danh sách</option>
+												</select>
+											</div>
+											<div class="field">
+												<label class="field__label" for="don-dien-thoai">Số điện thoại</label>
+												<input class="field__input" id="don-dien-thoai" name="dien-thoai" type="tel" value="0901 234 567" pattern="[0-9 ]{9,15}">
+												<p class="field__hint">Chỉ gồm chữ số và dấu cách, từ 9 đến 15 ký tự.</p>
+											</div>
+											<div class="field">
+												<label class="field__label" for="don-tinh-thanh">Tỉnh / Thành phố</label>
+												<select class="field__select" id="don-tinh-thanh" name="tinh-thanh">
+													<option value="hcm" selected>TP. Hồ Chí Minh</option>
+													<option value="hn">Hà Nội</option>
+													<option value="dn">Đà Nẵng</option>
+													<option value="hp">Hải Phòng</option>
+													<option value="ct">Cần Thơ</option>
+												</select>
+											</div>
+											<div class="field field--full">
+												<label class="field__label" for="don-dia-chi">Địa chỉ giao hàng</label>
+												<input class="field__input" id="don-dia-chi" name="dia-chi" type="text" value="123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh">
+											</div>
+										</div>
+									</div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">2. Sách trong đơn</h3>
+											<p class="panel__hint">Để số lượng bằng 0 nếu không giao tựa đó</p>
+										</div>
+
+										<div class="table-wrap">
+											<table class="admin-table">
+												<caption class="visually-hidden">Danh sách sách đang có trong kho kèm số lượng bán</caption>
+												<thead>
+													<tr>
+														<th scope="col">Tựa sách</th>
+														<th scope="col">Tồn kho</th>
+														<th scope="col">Đơn giá</th>
+														<th scope="col">Số lượng</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<div class="cell-book">
+																<img src="../assets/images/books/book1.jpg" alt="Bìa sách Đắc Nhân Tâm" width="1352" height="2004" loading="lazy" decoding="async">
+																<div>
+																	<p class="cell-book__title">Đắc Nhân Tâm</p>
+																	<p class="cell-book__meta">Dale Carnegie</p>
+																</div>
+															</div>
+														</td>
+														<td class="admin-table__muted">42 cuốn</td>
+														<td class="admin-table__num">89.000đ</td>
+														<td><input class="field__input order-qty" id="sl-1" name="sl-1" type="number" value="2" min="0" max="42" step="1" inputmode="numeric" aria-label="Số lượng Đắc Nhân Tâm"></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="cell-book">
+																<img src="../assets/images/books/book2.jpg" alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu?" width="2800" height="2800" loading="lazy" decoding="async">
+																<div>
+																	<p class="cell-book__title">Tuổi Trẻ Đáng Giá Bao Nhiêu?</p>
+																	<p class="cell-book__meta">Rosie Nguyễn</p>
+																</div>
+															</div>
+														</td>
+														<td class="admin-table__muted">36 cuốn</td>
+														<td class="admin-table__num">75.000đ</td>
+														<td><input class="field__input order-qty" id="sl-2" name="sl-2" type="number" value="1" min="0" max="36" step="1" inputmode="numeric" aria-label="Số lượng Tuổi Trẻ Đáng Giá Bao Nhiêu?"></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="cell-book">
+																<img src="../assets/images/books/book3.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi" width="663" height="984" loading="lazy" decoding="async">
+																<div>
+																	<p class="cell-book__title">Cây Cam Ngọt Của Tôi</p>
+																	<p class="cell-book__meta">José Mauro de Vasconcelos</p>
+																</div>
+															</div>
+														</td>
+														<td class="admin-table__muted">28 cuốn</td>
+														<td class="admin-table__num">89.000đ</td>
+														<td><input class="field__input order-qty" id="sl-3" name="sl-3" type="number" value="0" min="0" max="28" step="1" inputmode="numeric" aria-label="Số lượng Cây Cam Ngọt Của Tôi"></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="cell-book">
+																<img src="../assets/images/books/book4.jpg" alt="Bìa sách Sapiens: Lược Sử Loài Người" width="304" height="472" loading="lazy" decoding="async">
+																<div>
+																	<p class="cell-book__title">Sapiens: Lược Sử Loài Người</p>
+																	<p class="cell-book__meta">Yuval Noah Harari</p>
+																</div>
+															</div>
+														</td>
+														<td class="admin-table__muted">9 cuốn</td>
+														<td class="admin-table__num">299.000đ</td>
+														<td><input class="field__input order-qty" id="sl-4" name="sl-4" type="number" value="0" min="0" max="9" step="1" inputmode="numeric" aria-label="Số lượng Sapiens"></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="cell-book">
+																<img src="../assets/images/books/book6.jpeg" alt="Bìa sách Atomic Habits" width="600" height="600" loading="lazy" decoding="async">
+																<div>
+																	<p class="cell-book__title">Atomic Habits</p>
+																	<p class="cell-book__meta">James Clear</p>
+																</div>
+															</div>
+														</td>
+														<td class="admin-table__muted">4 cuốn</td>
+														<td class="admin-table__num">151.200đ</td>
+														<td><input class="field__input order-qty" id="sl-5" name="sl-5" type="number" value="0" min="0" max="4" step="1" inputmode="numeric" aria-label="Số lượng Atomic Habits"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+										<div class="panel__foot">
+											<p>Tổng cộng 3 cuốn. Số lượng vượt quá tồn kho sẽ không được gửi đi.</p>
+										</div>
+									</div>
+								</div>
+								<!-- ---------- Cột phải: thanh toán + tổng tiền ---------- -->
+								<div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">3. Thanh toán &amp; giao hàng</h3>
+										</div>
+
+										<div class="field">
+											<p class="field__label">Phương thức thanh toán</p>
+											<div class="field__options">
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="cod" checked> COD</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="chuyen-khoan"> Chuyển khoản</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="vi-dien-tu"> Ví điện tử</label>
+											</div>
+										</div>
+
+										<div class="field">
+											<p class="field__label">Phí vận chuyển</p>
+											<div class="field__options">
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="phi-van-chuyen" value="30k" checked> 30.000đ</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="phi-van-chuyen" value="0"> Miễn phí</label>
+											</div>
+										</div>
+
+										<div class="field">
+											<label class="field__label" for="don-ngay-giao">Ngày giao dự kiến</label>
+											<input class="field__input" id="don-ngay-giao" name="ngay-giao" type="date" value="2026-09-28">
+										</div>
+									</div>
+
+									<div class="panel">
+										<div class="panel__head">
+											<h3 class="panel__title">4. Tổng tiền</h3>
+											<p class="panel__hint">Ô nhập có sẵn số tiền để sửa nhanh</p>
+										</div>
+
+										<!-- Số tiền viết sẵn theo đúng số lượng ở bảng bên trái:
+										     2 × 89.000đ + 1 × 75.000đ = 253.000đ, cộng 30.000đ ship,
+										     trừ 10.000đ mã SACH10 = 273.000đ -->
+										<dl class="order-sum">
+											<div class="order-sum__row">
+												<dt>Tạm tính</dt>
+												<dd>253.000đ</dd>
+											</div>
+											<div class="order-sum__row">
+												<dt>Phí vận chuyển</dt>
+												<dd>30.000đ</dd>
+											</div>
+											<div class="order-sum__row order-sum__row--minus">
+												<dt>Giảm giá</dt>
+												<dd>− 10.000đ</dd>
+											</div>
+											<div class="order-sum__row order-sum__row--total">
+												<dt>Tổng cộng</dt>
+												<dd>273.000đ</dd>
+											</div>
+										</dl>
+
+										<div class="field">
+											<label class="field__label" for="don-ma-giam-gia">Mã giảm giá</label>
+											<input class="field__input" id="don-ma-giam-gia" name="ma-giam-gia" type="text" placeholder="Ví dụ: SACH10" autocomplete="off">
+											<p class="field__hint">Mã SACH10 giảm thêm 10.000đ cho đơn hàng này.</p>
+										</div>
+
+										<div class="field">
+											<label class="field__label" for="don-tong-tien">Tổng tiền thu hộ</label>
+											<input class="field__input" id="don-tong-tien" name="tong-tien" type="text" value="273.000" inputmode="numeric">
+											<p class="field__hint">Sửa ô này nếu bạn đổi số lượng hoặc mã giảm giá.</p>
+										</div>
+
+										<div class="field">
+											<label class="field__label" for="don-ghi-chu">Ghi chú nội bộ</label>
+											<textarea class="field__textarea" id="don-ghi-chu" name="ghi-chu" rows="3" placeholder="Chỉ nhân viên nhìn thấy nội dung này."></textarea>
+										</div>
+
+										<div class="panel__foot">
+											<p>Sau khi tạo, đơn ở trạng thái <strong>Chờ xử lý</strong> và số lượng tồn kho sẽ được trừ đi.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<a class="btn btn--primary" href="#xac-nhan-tao-don">Tạo đơn hàng</a>
+								<a class="btn btn--ghost" href="./admin.html#don-hang">Huỷ</a>
+							</div>
+
+							<!-- Bước 2 của “Tạo đơn hàng”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+							<div class="confirm" id="xac-nhan-tao-don" role="group" aria-label="Tạo đơn hàng này?">
+								<p class="confirm__title">Tạo đơn hàng này?</p>
+								<p class="confirm__text">Đơn sẽ được ghi vào hệ thống ở trạng thái Chờ xử lý và trừ tồn kho tương ứng.</p>
+								<div class="confirm__actions">
+									<button class="btn btn--primary btn--sm" type="submit">Xác nhận tạo đơn</button>
+									<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+								</div>
+							</div>
+						</form>
+
+						<!-- Điểm neo của form: hiện ra khi bấm "Tạo đơn hàng" -->
+						<p class="admin-notice" id="da-tao-don" tabindex="-1">Đơn hàng <strong>#SKB-1025</strong> đã được tạo. Tổng tiền thu hộ <strong>273.000đ</strong>, trạng thái <strong>Chờ xử lý</strong>. <a href="./admin.html#don-hang">Xem trong danh sách đơn hàng</a>.</p>
+
+						<p class="admin-notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể tìm theo mã đơn, tên sách hoặc tên khách hàng.</p>
+					</div>
+				</main>
+
+				<!-- ==================== CHÂN TRANG QUẢN TRỊ ==================== -->
+				<footer class="admin-footer">
+					<p>© 2026 Nhà Sách Skibidus</p>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>

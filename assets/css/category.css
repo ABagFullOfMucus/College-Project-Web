@@ -1,0 +1,196 @@
+/* ==========================================================================
+   CATEGORY - TRANG THỂ LOẠI
+   Dùng lại .book-card (components.css), .breadcrumb và .detail-block
+   (book.css) nên file này chỉ bổ sung phần còn thiếu: lưới thẻ thể loại,
+   thanh phân trang và các khối ghi chú kỹ thuật.
+   ========================================================================== */
+
+/* --- Lưới thẻ thể loại ----------------------------------------------- */
+.category-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 22px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.category {
+	display: grid;
+	gap: 8px;
+	height: 100%;
+	padding: 26px 22px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	transition: transform var(--transition), border-color var(--transition),
+		box-shadow var(--transition);
+}
+
+.category:hover,
+.category:focus-visible {
+	transform: translateY(-4px);
+	border-color: var(--color-accent);
+	box-shadow: var(--shadow);
+}
+
+.category__icon {
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.category__name {
+	font-family: var(--font-heading);
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.category__count {
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+/* --- Thanh phân trang ------------------------------------------------- */
+/* Khai báo lại vì trang này không nạp search.css (file chứa .pagination) */
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 34px;
+}
+
+.pagination__link {
+	display: grid;
+	place-items: center;
+	min-width: 40px;
+	height: 40px;
+	padding-inline: 10px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-sm);
+	font-size: .9rem;
+	color: var(--color-text);
+	transition: color var(--transition), background-color var(--transition),
+		border-color var(--transition);
+}
+
+.pagination__link:hover,
+.pagination__link:focus-visible {
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+.pagination__link[aria-current="page"] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+	font-weight: 700;
+}
+
+.pagination__link--disabled {
+	color: var(--color-muted);
+	background-color: var(--color-surface-alt);
+}
+
+/* --- Dòng thông báo số lượng ------------------------------------------ */
+.results__count {
+	margin-bottom: 20px;
+	font-size: .95rem;
+	color: var(--color-muted);
+}
+
+.results__count strong {
+	color: var(--color-ink);
+}
+
+/* --- Khối ghi chú kỹ thuật -------------------------------------------- */
+/* .detail-block / .specs khai báo trong book.css, trang này nạp chung book.css */
+.detail-block code {
+	padding: 1px 5px;
+	background-color: var(--color-surface-alt);
+	border-radius: 4px;
+	font-size: .85em;
+}
+
+/* --- Bảng liệt kê chức năng (trang chuc-nang-va-gioi-han.html) --------- */
+.doc-cols {
+	display: grid;
+	gap: 24px;
+}
+
+.doc-list {
+	display: grid;
+	gap: 14px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.doc__row {
+	padding-bottom: 14px;
+	border-bottom: 1px dashed var(--color-border);
+}
+
+.doc__row:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.doc__name {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	font-weight: 600;
+	color: var(--color-ink);
+}
+
+.doc__badge {
+	padding: 2px 8px;
+	background-color: var(--color-surface-alt);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .68rem;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	white-space: nowrap;
+}
+
+.doc__badge--ok {
+	background-color: var(--color-accent-soft);
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+.doc__note {
+	margin: 4px 0 0;
+	font-size: .9rem;
+	line-height: 1.6;
+	color: var(--color-muted);
+}
+
+.doc__note code {
+	padding: 1px 5px;
+	background-color: var(--color-surface-alt);
+	border-radius: 4px;
+	font-size: .85em;
+	color: var(--color-ink);
+}
+
+/* --- Responsive ------------------------------------------------------- */
+@media (max-width: 640px) {
+	.category-grid {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	.pagination__link {
+		min-width: 36px;
+		height: 36px;
+	}
+}
