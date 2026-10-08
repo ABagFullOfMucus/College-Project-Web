@@ -261,6 +261,13 @@
 	color: var(--color-ink);
 }
 
+.contact-done__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0;
+}
+
 /* --- Câu hỏi thường gặp: dùng <details> nên không cần JavaScript --- */
 .faq {
 	display: grid;

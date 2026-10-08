@@ -74,6 +74,10 @@
 	color: var(--color-muted);
 }
 
+.admin-nav {
+	display: block;
+}
+
 .admin-nav__title {
 	margin-bottom: 10px;
 	font-size: .7rem;
@@ -209,7 +213,14 @@
 #cai-dat-hotline:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #cai-dat-tien-te:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #cai-dat-dia-chi:target ~ .admin .admin-sidebar .admin-nav__link--active,
-#cai-dat-gioi-thieu:target ~ .admin .admin-sidebar .admin-nav__link--active {
+#cai-dat-gioi-thieu:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#da-thong-ke:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#xac-nhan-an-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#da-an-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#xac-nhan-xoa-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#da-xoa-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#xac-nhan-khoa-user:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#da-khoa-user:target ~ .admin .admin-sidebar .admin-nav__link--active {
 	background-color: transparent;
 	color: var(--color-text);
 	font-weight: 600;
@@ -252,7 +263,14 @@
 #cai-dat-hotline:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
 #cai-dat-tien-te:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
 #cai-dat-dia-chi:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
-#cai-dat-gioi-thieu:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"] {
+#cai-dat-gioi-thieu:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
+#da-thong-ke:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
+#xac-nhan-an-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
+#da-an-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
+#xac-nhan-xoa-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
+#da-xoa-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
+#xac-nhan-khoa-user:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"],
+#da-khoa-user:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"] {
 	background-color: var(--color-accent-soft);
 	color: var(--color-accent-dark);
 	/* Giống hệt .admin-nav__link--active: sọc trái + chữ đậm + nhún nhẹ */
@@ -498,7 +516,11 @@
 #trang-sau:target ~ .admin .admin-main .admin-notice--trang-sau,
 #xuat-khach-hang:target ~ .admin .admin-main .admin-notice--xuat-khach-hang,
 #luu-cai-dat:target ~ .admin .admin-main .admin-notice--luu-cai-dat,
-#khoi-phuc:target ~ .admin .admin-main .admin-notice--khoi-phuc {
+#khoi-phuc:target ~ .admin .admin-main .admin-notice--khoi-phuc,
+#da-thong-ke:target ~ .admin .admin-main .admin-notice--da-thong-ke,
+#da-an-sach:target ~ .admin .admin-main .admin-notice--da-an-sach,
+#da-xoa-sach:target ~ .admin .admin-main .admin-notice--da-xoa-sach,
+#da-khoa-user:target ~ .admin .admin-main .admin-notice--da-khoa-user {
 	display: block;
 }
 

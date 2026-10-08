@@ -10,6 +10,10 @@
 	align-items: start;
 }
 
+.cart-main {
+	min-width: 0;
+}
+
 /* --- Thanh công cụ phía trên danh sách --- */
 .cart-toolbar {
 	display: flex;

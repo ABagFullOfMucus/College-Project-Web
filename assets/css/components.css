@@ -389,12 +389,27 @@
 	color: var(--color-sale);
 }
 
-.price--old {
+.price--old,
+.price__old {
 	font-family: var(--font-body);
 	font-size: .875rem;
 	font-weight: 500;
 	color: var(--color-muted);
 	text-decoration: line-through;
+}
+
+.rating {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: .8rem;
+	color: var(--color-muted);
+}
+
+.rating [aria-hidden="true"] {
+	color: #e2a72e;
+	font-size: .9rem;
+	letter-spacing: 2px;
 }
 
 .book-card__body .btn {

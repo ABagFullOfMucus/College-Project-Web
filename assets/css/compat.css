@@ -1,7 +1,6 @@
 /* ==========================================================================
    COMPAT - TƯƠNG THÍCH TRÌNH DUYỆT CŨ
    Fallback cho aspect-ratio, backdrop-filter và :focus-visible. LUÔN nạp CUỐI CÙNG ở mọi trang.
-   ========================================================================== */
    Các khai báo trong mục này chỉ có tác dụng với trình duyệt chưa hỗ trợ
    tính năng tương ứng. Trình duyệt mới sẽ bỏ qua chúng và dùng bản hiện đại
    khai báo ở trên, nên ghi thêm ở đây là hoàn toàn an toàn.

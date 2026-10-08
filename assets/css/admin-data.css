@@ -674,3 +674,13 @@
 	flex: 1 1 160px;
 	max-width: 220px;
 }
+
+/* Đẩy nút sang mép phải của panel: nếu không nút sẽ nằm ngay sau hai ô
+   ngày và cả hàng bị dồn về bên trái, trong khi tiêu đề và bảng bên dưới
+   đều trải hết chiều rộng khung. */
+.stats-bar .btn {
+	padding: 15px 18px;   /* 48px = cùng chiều cao 2 ô date (top + bottom
+                           trùng khớp; nút .btn--sm 37px cũ sẽ lọt thừa 11px
+                           ở trên và trôi xuống). */
+	margin-inline-start: auto;
+}

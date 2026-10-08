@@ -12,7 +12,7 @@ theo từng trang để dễ đọc, dễ sửa và dễ tìm kiếm.
 | 3 | `components.css` | 402 | `.container`, `.section`, `.btn`, `.tag`, khung ảnh, **thẻ sách** + responsive |
 | 4 | `layout.css` | 445 | Header, menu, ô tìm kiếm, footer + responsive của chúng |
 | 5 | `home.css` | 449 | Hero, thể loại, banner, vì sao chọn, đánh giá, nhận tin (chỉ trang chủ) |
-| 6 | `login.css` | 186 | Trang đăng nhập và đăng ký (`account/login.html`, `account/register.html`, `admin/admin-login.html`) |
+| 6 | `login.css` | 186 | Trang đăng nhập và đăng ký (`account/login.html`, `account/register.html`) |
 | 7 | `book.css` | 435 | Trang chi tiết sách (chứa cả `.breadcrumb` và `.qty` dùng lại) |
 | 8 | `cart.css` | ~480 | Trang giỏ hàng (khối `.cart-summary` dùng lại + `.cart-account` “đang đăng nhập”) |
 | 9 | `orders.css` | ~230 | Trang lịch sử mua hàng: thẻ đơn, nhãn trạng thái, dòng sách trong đơn |
@@ -39,8 +39,7 @@ theo từng trang để dễ đọc, dễ sửa và dễ tìm kiếm.
 | `account/login.html` | base → components → layout → login → compat |
 | `account/register.html` | như `account/login.html` (trang đăng ký người mua) |
 | `account/orders.html` | base → components → layout → **book** → **cart** → orders → compat |
-| `admin/admin*.html` (trừ `admin-login`) | base → components → layout → admin → admin-data → compat |
-| `admin/admin-login.html` | base → components → layout → login → compat (URL riêng, không nạp `admin.css`) |
+| `admin/admin*.html` | base → components → layout → admin → admin-data → compat |
 | `search/search.html` | base → components → layout → search → compat |
 | `categories/the-loai.html` | base → components → layout → **book** → category → compat |
 | `categories/the-loai-*.html` | như trên |

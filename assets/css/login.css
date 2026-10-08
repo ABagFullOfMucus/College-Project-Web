@@ -16,6 +16,9 @@
 .login-card {
 	width: 100%;
 	max-width: 360px;
+	/* Card nằm trong .container rộng tới 1200px nên cần tự căn giữa,
+	   nếu không sẽ bị dồn về mép trái như một form bị lệch */
+	margin-inline: auto;
 	padding: 36px;
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
@@ -87,6 +90,10 @@
 	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
+.login-form {
+	display: block;
+}
+
 .login-form__row {
 	display: flex;
 	align-items: center;
@@ -94,6 +101,14 @@
 	gap: 16px;
 	margin-bottom: 26px;
 	font-size: .9rem;
+}
+
+.login-form__check {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	color: var(--color-text);
 }
 
 /* Hai nút cuối form xếp dọc, có khoảng cách rõ ràng */

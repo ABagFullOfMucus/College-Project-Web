@@ -147,6 +147,10 @@
 	border-radius: var(--radius);
 }
 
+.filters__form {
+	display: block;
+}
+
 .filters__title {
 	margin-bottom: 14px;
 	font-family: var(--font-heading);

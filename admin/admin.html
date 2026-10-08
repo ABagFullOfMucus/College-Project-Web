@@ -160,6 +160,14 @@
 
 					<!-- Đăng xuất không thể hoàn tác: bấm lần 1 mở khối xác nhận bên dưới,
 					     bấm “Đăng xuất” lần 2 mới thật sự rời trang. -->
+					<div class="confirm" id="xac-nhan-dang-xuat" role="group" aria-label="Xác nhận đăng xuất">
+						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
+						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
+						<div class="confirm__actions">
+							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
+							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
+						</div>
+					</div>
 					
 
 					<!-- ==================== ĐƠN HÀNG ==================== -->
@@ -214,7 +222,6 @@
 									<option value="">Tất cả quận / huyện</option>
 									<option value="q1">Quận 1</option>
 									<option value="q3">Quận 3</option>
-									option-placeholder
 									<option value="q5">Quận 5</option>
 									<option value="binh-thanh">Quận Bình Thạnh</option>
 									<option value="phu-nhuan">Quận Phú Nhuận</option>
@@ -424,7 +431,6 @@
 							<p class="admin-notice admin-notice--trang-3">Đã chuyển sang trang 3, hiển thị các đơn từ SKB-1014 đến SKB-1010.</p>
 							<p class="admin-notice admin-notice--trang-26">Bạn đang ở trang cuối, hiển thị các đơn từ SKB-0004 đến SKB-0000.</p>
 							<p class="admin-notice admin-notice--trang-sau">Đã sang trang tiếp theo, hiển thị các đơn từ SKB-1019 đến SKB-1015.</p>
-					</div>
 
 					<!-- ==================== THỐNG KÊ KHÁCH HÀNG ==================== -->
 					<section class="panel" aria-labelledby="thong-ke-title">
@@ -524,6 +530,7 @@
 						</div>
 						<p class="table-note">Chỉ tính các đơn phát sinh trong khoảng thời gian đã nhập · Tổng kỳ này: <strong>3.524.800đ</strong>.</p>
 					</section>
+				</div>
 
 					<!-- ==================== KHO SÁCH ==================== -->
 					<div class="admin-view admin-view--kho-sach">
