@@ -91,6 +91,23 @@
 						<p class="section__desc">Kiểm tra lại sách đã chọn, chỉnh số lượng rồi tiến hành thanh toán. Sách trong giỏ được giữ chỗ cho bạn tới khi hoàn tất đơn hàng.</p>
 					</div>
 
+					<!-- Thông tin người đang đăng nhập: giỏ hàng yêu cầu đăng nhập và tự hiển thị người mua -->
+					<div class="cart-account">
+						<p class="cart-account__label">Bạn đang đăng nhập</p>
+						<p class="cart-account__user">
+							<span class="cart-account__avatar" aria-hidden="true">NA</span>
+							<span>
+								<strong>Nguyễn Văn A</strong>
+								<span class="cart-account__email">nguyenvana@example.com · 0901 234 567</span>
+							</span>
+						</p>
+						<p class="cart-account__hint">Giỏ hàng, địa chỉ giao hàng và lịch sử mua đều được lưu theo tài khoản này.</p>
+						<div class="cart-account__actions">
+							<a class="btn btn--outline btn--sm" href="../account/orders.html">Lịch sử mua hàng</a>
+							<a class="cart-account__logout" href="../account/login.html">Đăng xuất</a>
+						</div>
+					</div>
+
 					<!-- Trạng thái giỏ trống: mặc định ẩn, chỉ hiện khi đường dẫn trỏ tới #gio-trong -->
 					<div class="cart-empty" id="gio-trong">
 						<span class="cart-empty__icon" aria-hidden="true">

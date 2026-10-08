@@ -412,3 +412,84 @@
 		padding: 20px;
 	}
 }
+
+/* ==========================================================================
+   CART-ACCOUNT - KHỐI "ĐANG ĐĂNG NHẬP"
+   Hiển thị người mua đang đăng nhập ở giỏ hàng và trang thanh toán.
+   ========================================================================== */
+.cart-account {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 18px;
+	margin-bottom: 20px;
+	padding: 16px 18px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-left: 4px solid var(--color-success);
+	border-radius: var(--radius-sm);
+}
+
+.cart-account__label {
+	width: 100%;
+	margin: 0;
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+
+.cart-account__user {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+}
+
+.cart-account__avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--color-accent-soft);
+	color: var(--color-accent-dark);
+	font-size: .9rem;
+	font-weight: 700;
+	display: grid;
+	place-items: center;
+}
+
+.cart-account__user strong {
+	display: block;
+	font-size: .98rem;
+	color: var(--color-ink);
+}
+
+.cart-account__email {
+	font-size: .84rem;
+	color: var(--color-muted);
+}
+
+.cart-account__hint {
+	flex: 1 1 220px;
+	margin: 0;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.cart-account__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+}
+
+.cart-account__logout {
+	font-size: .85rem;
+	color: var(--color-sale);
+	text-decoration: underline;
+}
+
+.cart-account__logout:hover {
+	color: var(--color-ink);
+}

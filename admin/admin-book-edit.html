@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Thêm sách mới - Quản trị Nhà Sách Skibidus</title>
+		<title>Sửa sách - Quản trị Nhà Sách Skibidus</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Thêm sách mới vào kho: khai báo thông tin, giá bán, tồn kho ban đầu và ảnh bìa.">
+		<meta name="description" content="Sửa thông tin sách Đắc Nhân Tâm: giá bán, tồn kho, mô tả và ảnh bìa.">
 		<!-- Trang quản trị không cần cho máy tìm kiếm -->
 		<meta name="robots" content="noindex">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
@@ -116,7 +116,7 @@
 				</header>
 
 				<main class="admin-content" id="main">
-					<h1 class="visually-hidden">Thêm sách mới</h1>
+					<h1 class="visually-hidden">Sửa sách Đắc Nhân Tâm</h1>
 
 					<!-- Đăng xuất không thể hoàn tác: bấm lần 1 mở khối xác nhận bên dưới,
 					     bấm “Đăng xuất” lần 2 mới thật sự rời trang. -->
@@ -124,28 +124,28 @@
 						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
 						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
 						<div class="confirm__actions">
-							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
+							<a class="btn btn--danger btn--sm" href="./admin-login.html">Đăng xuất</a>
 							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
 						</div>
 					</div>
 
 					<!-- ==================== THÊM SÁCH MỚI ==================== -->
-					<div class="admin-view admin-view--them-sach">
+					<div class="admin-view admin-view--sua-sach">
 						<div class="admin-head">
 							<div>
-								<p class="eyebrow">Kho sách</p>
-								<h2 class="admin-head__title">Thêm sách mới</h2>
-								<p class="admin-head__desc">Khai báo thông tin tựa sách mới. Sau khi lưu, sách xuất hiện trong kho và trên gian sách.</p>
+								<p class="eyebrow">Kho sách · Đắc Nhân Tâm</p>
+								<h2 class="admin-head__title">Sửa sách</h2>
+								<p class="admin-head__desc">Đang sửa <strong>Đắc Nhân Tâm</strong> · Dale Carnegie · tồn kho hiện tại <strong>42 cuốn</strong>.</p>
 							</div>
 							<div class="admin-head__actions">
 								<a class="btn btn--ghost btn--sm" href="./admin.html#kho-sach">Quay lại kho sách</a>
 							</div>
 						</div>
 
-						<!-- Gửi form tới chính id của thông báo: bấm "Thêm sách" thì trình duyệt
-						     nhảy tới #da-them-sach và khối thông báo cuối trang hiện ra.
+						<!-- Gửi form tới chính id của thông báo: bấm "Lưu thay đổi" thì trình duyệt
+						     nhảy tới #da-sua-sach và khối thông báo cuối trang hiện ra.
 						     Hoạt động nhờ CSS :target, không cần JavaScript. -->
-						<form action="#da-them-sach" method="get">
+						<form action="#da-sua-sach" method="get">
 							<div class="admin-grid">
 								<!-- ---------- Cột trái: thông tin sách + giá ---------- -->
 								<div>
@@ -159,17 +159,17 @@
 										<div class="field-grid">
 											<div class="field field--full">
 												<label class="field__label" for="sach-ten">Tên sách</label>
-												<input class="field__input" id="sach-ten" name="ten-sach" type="text" placeholder="Ví dụ: Nhà Giả Kim" required>
+												<input class="field__input" id="sach-ten" name="ten-sach" type="text" value="Đắc Nhân Tâm" required>
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-tac-gia">Tác giả</label>
-												<input class="field__input" id="sach-tac-gia" name="tac-gia" type="text" placeholder="Ví dụ: Paulo Coelho" required>
+												<input class="field__input" id="sach-tac-gia" name="tac-gia" type="text" value="Dale Carnegie" required>
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-the-loai">Thể loại</label>
 												<select class="field__select" id="sach-the-loai" name="the-loai">
-													<option value="" selected>Chọn thể loại</option>
-													<option value="ky-nang-song">Kỹ năng sống</option>
+													<option value="">Chọn thể loại</option>
+													<option value="ky-nang-song" selected>Kỹ năng sống</option>
 													<option value="van-hoc-tre">Văn học trẻ</option>
 													<option value="tieu-thuyet-nuoc-ngoai">Tiểu thuyết nước ngoài</option>
 													<option value="van-hoc-viet-nam">Văn học Việt Nam</option>
@@ -183,23 +183,23 @@
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-nxb">Nhà xuất bản</label>
-												<input class="field__input" id="sach-nxb" name="nha-xuat-ban" type="text" placeholder="Ví dụ: NXB Hội Nhà Văn">
+												<input class="field__input" id="sach-nxb" name="nha-xuat-ban" type="text" value="NXB Tổng hợp TP. Hồ Chí Minh">
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-nam">Năm xuất bản</label>
-												<input class="field__input" id="sach-nam" name="nam-xuat-ban" type="number" value="2026" min="1900" max="2026" step="1" inputmode="numeric">
+												<input class="field__input" id="sach-nam" name="nam-xuat-ban" type="number" value="2023" min="1900" max="2026" step="1" inputmode="numeric">
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-trang">Số trang</label>
-												<input class="field__input" id="sach-trang" name="so-trang" type="number" min="1" step="1" inputmode="numeric" placeholder="Ví dụ: 320">
+												<input class="field__input" id="sach-trang" name="so-trang" type="number" value="320" min="1" step="1" inputmode="numeric">
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-isbn">Mã ISBN</label>
-												<input class="field__input" id="sach-isbn" name="isbn" type="text" placeholder="Ví dụ: 978-604-1-23456-7" autocomplete="off">
+												<input class="field__input" id="sach-isbn" name="isbn" type="text" value="978-604-58-1405-9" autocomplete="off">
 											</div>
 											<div class="field field--full">
 												<label class="field__label" for="sach-mo-ta">Mô tả ngắn</label>
-												<textarea class="field__textarea" id="sach-mo-ta" name="mo-ta" rows="4" placeholder="Vài dòng giới thiệu nội dung sách, hiện ở trang chi tiết sách."></textarea>
+												<textarea class="field__textarea" id="sach-mo-ta" name="mo-ta" rows="4">Nghệ thuật thu phục lòng người: lắng nghe, thấu hiểu và xây dựng mối quan hệ bền vững trong công việc lẫn cuộc sống.</textarea>
 											</div>
 										</div>
 									</div>
@@ -217,11 +217,11 @@
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-gia-ban">Giá bán (đ)</label>
-												<input class="field__input" id="sach-gia-ban" name="gia-ban" type="text" value="96.000" inputmode="numeric">
+												<input class="field__input" id="sach-gia-ban" name="gia-ban" type="text" value="89.000" inputmode="numeric">
 											</div>
 											<div class="field">
 												<label class="field__label" for="sach-ton">Số lượng nhập ban đầu</label>
-												<input class="field__input" id="sach-ton" name="ton-kho" type="number" value="30" min="0" step="1" inputmode="numeric">
+												<input class="field__input" id="sach-ton" name="ton-kho" type="number" value="42" min="0" step="1" inputmode="numeric">
 											</div>
 											<div class="field">
 												<p class="field__label">Trạng thái</p>
@@ -252,7 +252,7 @@
 										</div>
 
 										<div class="panel__foot">
-											<p>Chưa chọn ảnh thì sách dùng bìa mặc định cho tới khi bạn cập nhật lại.</p>
+											<p>Đang dùng ảnh bìa hiện tại (<strong>book1.jpg</strong>). Chỉ chọn tệp mới nếu bạn muốn thay bìa.</p>
 										</div>
 									</div>
 
@@ -262,7 +262,7 @@
 											<p class="panel__hint">Số tiền viết sẵn theo giá ở ô bên trái</p>
 										</div>
 
-										<!-- Giá bìa 120.000đ, giá bán 96.000đ nên giảm 24.000đ -->
+										<!-- Giá bìa 120.000đ, giá bán 89.000đ nên giảm 31.000đ -->
 										<dl class="order-sum">
 											<div class="order-sum__row">
 												<dt>Giá bìa</dt>
@@ -270,11 +270,11 @@
 											</div>
 											<div class="order-sum__row order-sum__row--minus">
 												<dt>Giảm giá</dt>
-												<dd>− 24.000đ</dd>
+												<dd>− 31.000đ</dd>
 											</div>
 											<div class="order-sum__row order-sum__row--total">
 												<dt>Giá bán</dt>
-												<dd>96.000đ</dd>
+												<dd>89.000đ</dd>
 											</div>
 										</dl>
 
@@ -282,40 +282,40 @@
 											<p class="field__label">Hiển thị</p>
 											<div class="field__options">
 												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="hien-gian-sach" value="1" checked> Hiện trên gian sách</label>
-												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="noi-bat" value="1"> Vào mục nổi bật</label>
+												<label class="field__radio-label"><input class="field__radio" type="checkbox" name="noi-bat" value="1" checked> Vào mục nổi bật</label>
 											</div>
 										</div>
 
 										<div class="field">
 											<label class="field__label" for="sach-ghi-chu">Ghi chú nội bộ</label>
-											<textarea class="field__textarea" id="sach-ghi-chu" name="ghi-chu" rows="3" placeholder="Ví dụ: nhập đợt đầu 30 cuốn, chờ duyệt ảnh bìa."></textarea>
+											<textarea class="field__textarea" id="sach-ghi-chu" name="ghi-chu" rows="3">Giá cập nhật theo đợt giảm tháng 9; giữ 42 cuốn tồn, ưu tiên hiển thị nổi bật.</textarea>
 										</div>
 
 										<div class="panel__foot">
-											<p>Sách mới sẽ ở trạng thái <strong>Đang bán</strong> và xuất hiện ngay trong kho sách.</p>
+											<p>Sách đang ở trạng thái <strong>Đang bán</strong> với <strong>42 cuốn</strong> tồn kho.</p>
 										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="form-actions">
-								<a class="btn btn--primary" href="#xac-nhan-them-sach">Thêm sách</a>
+								<a class="btn btn--primary" href="#xac-nhan-sua-sach">Lưu thay đổi</a>
 								<a class="btn btn--ghost" href="./admin.html#kho-sach">Huỷ</a>
 							</div>
 
-							<!-- Bước 2 của “Thêm sách”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
-							<div class="confirm" id="xac-nhan-them-sach" role="group" aria-label="Thêm sách này vào kho?">
-								<p class="confirm__title">Thêm sách này vào kho?</p>
-								<p class="confirm__text">Sách sẽ xuất hiện trong kho và trên gian sách ngay sau khi xác nhận.</p>
+							<!-- Bước 2 của “Sửa sách”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+							<div class="confirm" id="xac-nhan-sua-sach" role="group" aria-label="Lưu thay đổi cho sách này?">
+								<p class="confirm__title">Lưu thay đổi cho sách này?</p>
+								<p class="confirm__text">Thông tin, giá bán và tồn kho mới của Đắc Nhân Tâm sẽ được áp dụng ngay sau khi xác nhận.</p>
 								<div class="confirm__actions">
-									<button class="btn btn--primary btn--sm" type="submit">Xác nhận thêm</button>
+									<button class="btn btn--primary btn--sm" type="submit">Xác nhận lưu</button>
 									<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
 								</div>
 							</div>
 						</form>
 
-						<!-- Điểm neo của form: hiện ra khi bấm "Thêm sách" -->
-						<p class="admin-notice" id="da-them-sach" tabindex="-1">Đã thêm sách <strong>Nhà Giả Kim</strong> vào kho với <strong>30 cuốn</strong>, giá bán <strong>96.000đ</strong>. <a href="./admin.html#kho-sach">Xem trong kho sách</a>.</p>
+						<!-- Điểm neo của form: hiện ra khi bấm "Lưu thay đổi" -->
+						<p class="admin-notice" id="da-sua-sach" tabindex="-1">Đã lưu thay đổi cho sách <strong>Đắc Nhân Tâm</strong>: giá bán <strong>89.000đ</strong>, tồn kho <strong>42 cuốn</strong>. <a href="./admin.html#kho-sach">Xem trong kho sách</a>.</p>
 
 						<p class="admin-notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể tìm theo mã đơn, tên sách hoặc tên khách hàng.</p>
 					</div>

@@ -124,7 +124,7 @@
 						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
 						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
 						<div class="confirm__actions">
-							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
+							<a class="btn btn--danger btn--sm" href="./admin-login.html">Đăng xuất</a>
 							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
 						</div>
 					</div>
@@ -249,10 +249,16 @@
 											<label class="field__label" for="sach-anh">Tệp ảnh bìa</label>
 											<input class="field__input" id="sach-anh" name="anh-bia" type="file" accept="image/png,image/jpeg">
 											<p class="field__hint">Ảnh JPG hoặc PNG, nên có tỉ lệ 2:3 giống các bìa sách khác trong kho.</p>
+
+										<!-- Xem trước ảnh bìa trước khi thêm sách -->
+										<div class="cover-preview">
+											<img src="../assets/images/books/book8.jpg" alt="Ảnh xem trước bìa sách sắp thêm" width="300" height="508" decoding="async">
+											<p class="cover-preview__caption">Xem trước: ảnh bạn chọn ở ô trên sẽ hiển thị tại đây trước khi thêm sách.</p>
+										</div>
 										</div>
 
 										<div class="panel__foot">
-											<p>Chưa chọn ảnh thì sách dùng bìa mặc định cho tới khi bạn cập nhật lại.</p>
+											<p>Xác nhận “Thêm sách” chỉ thành công khi đã chọn ảnh bìa. Chưa chọn thì sách dùng bìa mặc định cho tới khi bạn cập nhật lại.</p>
 										</div>
 									</div>
 

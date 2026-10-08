@@ -196,7 +196,6 @@
 #don-1022:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #don-1021:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #don-1020:target ~ .admin .admin-sidebar .admin-nav__link--active,
-#sua-sach:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #xuat-khach-hang:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #luu-cai-dat:target ~ .admin .admin-sidebar .admin-nav__link--active,
 #khoi-phuc:target ~ .admin .admin-sidebar .admin-nav__link--active,
@@ -240,7 +239,6 @@
 #don-1022:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
 #don-1021:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
 #don-1020:target ~ .admin .admin-sidebar .admin-nav__link[href="#don-hang"],
-#sua-sach:target ~ .admin .admin-sidebar .admin-nav__link[href="#kho-sach"],
 #xuat-khach-hang:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"],
 #luu-cai-dat:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
 #khoi-phuc:target ~ .admin .admin-sidebar .admin-nav__link[href="#cai-dat"],
@@ -358,10 +356,15 @@
 	height: 38px;
 	background-color: var(--color-ink);
 	border-radius: 50%;
-	font-size: .72rem;
-	font-weight: 700;
-	letter-spacing: .04em;
-	color: #fff;
+	overflow: hidden;
+	box-shadow: 0 0 0 2px var(--color-surface);
+}
+.admin-user__avatar img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
 }
 
 .admin-user__info {
@@ -417,7 +420,6 @@
 #don-1022:target ~ .admin .admin-main .admin-view--don-hang,
 #don-1021:target ~ .admin .admin-main .admin-view--don-hang,
 #don-1020:target ~ .admin .admin-main .admin-view--don-hang,
-#sua-sach:target ~ .admin .admin-main .admin-view--kho-sach,
 #xuat-khach-hang:target ~ .admin .admin-main .admin-view--khach-hang,
 #luu-cai-dat:target ~ .admin .admin-main .admin-view--cai-dat,
 #khoi-phuc:target ~ .admin .admin-main .admin-view--cai-dat,
@@ -431,6 +433,13 @@
 #cai-dat-hotline:target ~ .admin .admin-main .admin-view--cai-dat,
 #cai-dat-tien-te:target ~ .admin .admin-main .admin-view--cai-dat,
 #cai-dat-dia-chi:target ~ .admin .admin-main .admin-view--cai-dat,
+#da-thong-ke:target ~ .admin .admin-main .admin-view--don-hang,
+#xac-nhan-an-sach:target ~ .admin .admin-main .admin-view--kho-sach,
+#da-an-sach:target ~ .admin .admin-main .admin-view--kho-sach,
+#xac-nhan-xoa-sach:target ~ .admin .admin-main .admin-view--kho-sach,
+#da-xoa-sach:target ~ .admin .admin-main .admin-view--kho-sach,
+#xac-nhan-khoa-user:target ~ .admin .admin-main .admin-view--khach-hang,
+#da-khoa-user:target ~ .admin .admin-main .admin-view--khach-hang,
 #cai-dat-gioi-thieu:target ~ .admin .admin-main .admin-view--cai-dat {
 	display: block;
 }
@@ -452,7 +461,6 @@
 #don-1022:target ~ .admin .admin-main .admin-view--tong-quan,
 #don-1021:target ~ .admin .admin-main .admin-view--tong-quan,
 #don-1020:target ~ .admin .admin-main .admin-view--tong-quan,
-#sua-sach:target ~ .admin .admin-main .admin-view--tong-quan,
 #xuat-khach-hang:target ~ .admin .admin-main .admin-view--tong-quan,
 #luu-cai-dat:target ~ .admin .admin-main .admin-view--tong-quan,
 #khoi-phuc:target ~ .admin .admin-main .admin-view--tong-quan,
@@ -466,6 +474,13 @@
 #cai-dat-hotline:target ~ .admin .admin-main .admin-view--tong-quan,
 #cai-dat-tien-te:target ~ .admin .admin-main .admin-view--tong-quan,
 #cai-dat-dia-chi:target ~ .admin .admin-main .admin-view--tong-quan,
+#da-thong-ke:target ~ .admin .admin-main .admin-view--tong-quan,
+#xac-nhan-an-sach:target ~ .admin .admin-main .admin-view--tong-quan,
+#da-an-sach:target ~ .admin .admin-main .admin-view--tong-quan,
+#xac-nhan-xoa-sach:target ~ .admin .admin-main .admin-view--tong-quan,
+#da-xoa-sach:target ~ .admin .admin-main .admin-view--tong-quan,
+#xac-nhan-khoa-user:target ~ .admin .admin-main .admin-view--tong-quan,
+#da-khoa-user:target ~ .admin .admin-main .admin-view--tong-quan,
 #cai-dat-gioi-thieu:target ~ .admin .admin-main .admin-view--tong-quan {
 	display: none;
 }
@@ -481,7 +496,6 @@
 #trang-3:target ~ .admin .admin-main .admin-notice--trang-3,
 #trang-26:target ~ .admin .admin-main .admin-notice--trang-26,
 #trang-sau:target ~ .admin .admin-main .admin-notice--trang-sau,
-#sua-sach:target ~ .admin .admin-main .admin-notice--sua-sach,
 #xuat-khach-hang:target ~ .admin .admin-main .admin-notice--xuat-khach-hang,
 #luu-cai-dat:target ~ .admin .admin-main .admin-notice--luu-cai-dat,
 #khoi-phuc:target ~ .admin .admin-main .admin-notice--khoi-phuc {
@@ -503,18 +517,26 @@
    vào cả hai sẽ khiến display:none ở danh sách sau thắng do cùng độ ưu tiên. */
 #xac-nhan-luu:target ~ .admin .admin-main .confirm--xac-nhan-luu,
 #xac-nhan-khoi-phuc:target ~ .admin .admin-main .confirm--xac-nhan-khoi-phuc,
+#xac-nhan-an-sach:target ~ .admin .admin-main .confirm--xac-nhan-an-sach,
+#xac-nhan-xoa-sach:target ~ .admin .admin-main .confirm--xac-nhan-xoa-sach,
+#xac-nhan-khoa-user:target ~ .admin .admin-main .confirm--xac-nhan-khoa-user,
 #xac-nhan-xem-gian-sach:target ~ .admin .admin-main .confirm--xem-gian-sach {
 	display: block;
 	animation: confirm-flash .9s ease;
 }
 
-/* Các trang con (tạo đơn, thêm sách, nhập kho, gửi ưu đãi) là trang riêng,
-   chỉ có đúng nội dung của mình nên hiện luôn, không cần đợi :target bật lên
-   như các mục của trang quản trị */
+/* Các trang con (tạo đơn, thêm sách, sách mới, sửa sách, sửa đơn, sửa khách
+   hàng, nhập kho, gửi ưu đãi) là trang riêng, chỉ có đúng nội dung của mình
+   nên hiện luôn, không cần đợi :target bật lên như các mục của trang quản trị */
 .admin-view--tao-don,
 .admin-view--them-sach,
+.admin-view--sach-moi,
+.admin-view--sua-sach,
+.admin-view--sua-don,
+.admin-view--sua-khach-hang,
 .admin-view--nhap-kho,
-.admin-view--gui-uu-dai {
+.admin-view--gui-uu-dai,
+.admin-view--them-user {
 	display: block;
 }
 

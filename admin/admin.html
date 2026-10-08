@@ -47,8 +47,7 @@
 		<span class="admin-target" id="don-1022" aria-hidden="true"></span>
 		<span class="admin-target" id="don-1021" aria-hidden="true"></span>
 		<span class="admin-target" id="don-1020" aria-hidden="true"></span>
-		<span class="admin-target" id="sua-sach" aria-hidden="true"></span>
-		<span class="admin-target" id="xuat-khach-hang" aria-hidden="true"></span>
+			<span class="admin-target" id="xuat-khach-hang" aria-hidden="true"></span>
 		<span class="admin-target" id="luu-cai-dat" aria-hidden="true"></span>
 		<span class="admin-target" id="khoi-phuc" aria-hidden="true"></span>
 		<span class="admin-target" id="xac-nhan-luu" aria-hidden="true"></span>
@@ -57,6 +56,13 @@
 		<span class="admin-target" id="loc-tu-khoa" aria-hidden="true"></span>
 		<span class="admin-target" id="loc-trang-thai" aria-hidden="true"></span>
 		<span class="admin-target" id="loc-thoi-gian" aria-hidden="true"></span>
+		<span class="admin-target" id="da-thong-ke" aria-hidden="true"></span>
+		<span class="admin-target" id="xac-nhan-an-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="da-an-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="xac-nhan-xoa-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="da-xoa-sach" aria-hidden="true"></span>
+		<span class="admin-target" id="xac-nhan-khoa-user" aria-hidden="true"></span>
+		<span class="admin-target" id="da-khoa-user" aria-hidden="true"></span>
 		<span class="admin-target" id="cai-dat-ten" aria-hidden="true"></span>
 		<span class="admin-target" id="cai-dat-email" aria-hidden="true"></span>
 		<span class="admin-target" id="cai-dat-hotline" aria-hidden="true"></span>
@@ -139,7 +145,7 @@
 
 					<div class="admin-topbar__actions">
 						<p class="admin-user">
-							<span class="admin-user__avatar" aria-hidden="true">QT</span>
+							<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
 							<span class="admin-user__info">
 								<strong class="admin-user__name">Quản trị A</strong>
 								<span class="admin-user__role">Quản trị viên</span>
@@ -158,7 +164,7 @@
 						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
 						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
 						<div class="confirm__actions">
-							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
+							<a class="btn btn--danger btn--sm" href="./admin-login.html">Đăng xuất</a>
 							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
 						</div>
 					</div>
@@ -180,24 +186,45 @@
 						<p class="admin-notice admin-notice--in-don">Năm đơn hàng đang hiển thị đã được đưa vào hàng đợi in.</p>
 
 						<!-- Thanh lọc đơn hàng -->
-						<form class="filter-bar" action="#da-loc" method="get">
+<form class="filter-bar" action="#da-loc" method="get">
 							<div class="field">
 								<label class="field__label">Từ khoá<input class="field__input" name="q" type="search" placeholder="Mã đơn hoặc tên khách hàng"></label>
 							</div>
 							<div class="field">
-								<label class="field__label">Trạng thái<select class="field__select" name="status">
-									<option value="">Tất cả trạng thái</option>
-									<option value="wait">Chờ xử lý</option>
+								<label class="field__label">Tình trạng<select class="field__select" name="status">
+									<option value="">Tất cả tình trạng</option>
+									<option value="wait">Chưa xác nhận</option>
+									<option value="confirm">Đã xác nhận</option>
 									<option value="ship">Đang giao</option>
-									<option value="done">Hoàn thành</option>
-									<option value="cancel">Đã hủy</option>
+									<option value="done">Đã giao thành công</option>
+									<option value="cancel">Đã huỷ</option>
 								</select></label>
 							</div>
 							<div class="field">
-								<label class="field__label">Thời gian<select class="field__select" name="range">
-									<option value="7">7 ngày gần nhất</option>
-									<option value="30">30 ngày gần nhất</option>
-									<option value="quarter">Quý này</option>
+								<label class="field__label">Từ ngày<input class="field__input" type="date" name="tu-ngay" value="2026-09-01"></label>
+							</div>
+							<div class="field">
+								<label class="field__label">Đến ngày<input class="field__input" type="date" name="den-ngay" value="2026-09-21"></label>
+							</div>
+							<div class="field">
+								<label class="field__label">Thành phố<select class="field__select" name="thanh-pho">
+									<option value="">Toàn quốc</option>
+									<option value="hcm">TP. Hồ Chí Minh</option>
+									<option value="hn">Hà Nội</option>
+									<option value="dn">Đà Nẵng</option>
+									<option value="ct">Cần Thơ</option>
+									<option value="hp">Hải Phòng</option>
+								</select></label>
+							</div>
+							<div class="field">
+								<label class="field__label">Quận / Huyện<select class="field__select" name="quan">
+									<option value="">Tất cả quận / huyện</option>
+									<option value="q1">Quận 1</option>
+									<option value="q3">Quận 3</option>
+									option-placeholder
+									<option value="q5">Quận 5</option>
+									<option value="binh-thanh">Quận Bình Thạnh</option>
+									<option value="phu-nhuan">Quận Phú Nhuận</option>
 								</select></label>
 							</div>
 							<button class="btn btn--primary btn--sm" type="submit">Lọc đơn hàng</button>
@@ -232,6 +259,7 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="#don-1024">Chi tiết</a>
+												<a class="admin-table__link" href="./admin-order-edit.html">Sửa</a>
 											</div>
 										</td>
 									</tr>
@@ -263,6 +291,7 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="#don-1023">Chi tiết</a>
+												<a class="admin-table__link" href="./admin-order-edit.html">Sửa</a>
 											</div>
 										</td>
 									</tr>
@@ -295,6 +324,7 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="#don-1022">Chi tiết</a>
+												<a class="admin-table__link" href="./admin-order-edit.html">Sửa</a>
 											</div>
 										</td>
 									</tr>
@@ -326,6 +356,7 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="#don-1021">Chi tiết</a>
+												<a class="admin-table__link" href="./admin-order-edit.html">Sửa</a>
 											</div>
 										</td>
 									</tr>
@@ -357,6 +388,7 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="#don-1020">Chi tiết</a>
+												<a class="admin-table__link" href="./admin-order-edit.html">Sửa</a>
 											</div>
 										</td>
 									</tr>
@@ -401,25 +433,146 @@
 							<p class="admin-notice admin-notice--trang-sau">Đã sang trang tiếp theo, hiển thị các đơn từ SKB-1019 đến SKB-1015.</p>
 					</div>
 
+					<!-- ==================== THỐNG KÊ KHÁCH HÀNG ==================== -->
+					<section class="panel" aria-labelledby="thong-ke-title">
+						<div class="panel__head">
+							<h3 class="panel__title" id="thong-ke-title">Thống kê: 5 khách mua cao nhất</h3>
+							<p class="panel__hint">Nhập khoảng thời gian rồi bấm Thống kê</p>
+						</div>
+
+						<!-- Quản trị nhập khoảng thời gian, kết quả hiện bên dưới bằng CSS :target -->
+						<form class="stats-bar" action="#da-thong-ke" method="get">
+							<div class="field">
+								<label class="field__label">Từ ngày<input class="field__input" type="date" name="tu-ngay" value="2026-09-01" required></label>
+							</div>
+							<div class="field">
+								<label class="field__label">Đến ngày<input class="field__input" type="date" name="den-ngay" value="2026-09-21" required></label>
+							</div>
+							<button class="btn btn--primary btn--sm" type="submit">Thống kê</button>
+						</form>
+
+						<p class="admin-notice admin-notice--da-thong-ke">Kết quả thống kê từ <strong>01/09/2026</strong> đến <strong>21/09/2026</strong>: 5 khách mua nhiều nhất, sắp xếp <strong>giảm dần theo tổng tiền mua</strong>. Bấm từng mã đơn để xem chi tiết.</p>
+
+						<div class="table-wrap">
+							<table class="admin-table">
+								<caption class="visually-hidden">Top 5 khách hàng theo tổng tiền mua trong khoảng thời gian đã chọn, sắp xếp giảm dần</caption>
+								<thead>
+									<tr>
+										<th scope="col">Hạng</th>
+										<th scope="col">Khách hàng</th>
+										<th scope="col">Các đơn trong kỳ</th>
+										<th scope="col">Số đơn</th>
+										<th scope="col">Tổng mua</th>
+									</tr>
+								</thead>
+								<tbody>
+						<tr>
+							<td class="admin-table__strong">1</td>
+							<td>
+								<p class="admin-user">
+									<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
+									<strong class="admin-user__name">Nguyễn Thu Hà</strong>
+								</p>
+							</td>
+							<td><a class="admin-table__link" href="./admin-order-edit.html">SKB-1024</a> · <a class="admin-table__link" href="./admin-order-edit.html">SKB-1018</a> · <a class="admin-table__link" href="./admin-order-edit.html">SKB-1011</a></td>
+							<td class="admin-table__num">3 đơn</td>
+							<td class="admin-table__num">1.245.000đ</td>
+						</tr>
+						<tr>
+							<td class="admin-table__strong">2</td>
+							<td>
+								<p class="admin-user">
+									<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
+									<strong class="admin-user__name">Trần Minh Quân</strong>
+								</p>
+							</td>
+							<td><a class="admin-table__link" href="./admin-order-edit.html">SKB-1023</a> · <a class="admin-table__link" href="./admin-order-edit.html">SKB-1016</a></td>
+							<td class="admin-table__num">2 đơn</td>
+							<td class="admin-table__num">812.400đ</td>
+						</tr>
+						<tr>
+							<td class="admin-table__strong">3</td>
+							<td>
+								<p class="admin-user">
+									<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
+									<strong class="admin-user__name">Lê Hoàng Anh</strong>
+								</p>
+							</td>
+							<td><a class="admin-table__link" href="./admin-order-edit.html">SKB-1022</a> · <a class="admin-table__link" href="./admin-order-edit.html">SKB-1013</a></td>
+							<td class="admin-table__num">2 đơn</td>
+							<td class="admin-table__num">745.000đ</td>
+						</tr>
+						<tr>
+							<td class="admin-table__strong">4</td>
+							<td>
+								<p class="admin-user">
+									<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
+									<strong class="admin-user__name">Phạm Bảo Ngọc</strong>
+								</p>
+							</td>
+							<td><a class="admin-table__link" href="./admin-order-edit.html">SKB-1021</a></td>
+							<td class="admin-table__num">1 đơn</td>
+							<td class="admin-table__num">433.400đ</td>
+						</tr>
+						<tr>
+							<td class="admin-table__strong">5</td>
+							<td>
+								<p class="admin-user">
+									<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
+									<strong class="admin-user__name">Vũ Đức Thịnh</strong>
+								</p>
+							</td>
+							<td><a class="admin-table__link" href="./admin-order-edit.html">SKB-1020</a> · <a class="admin-table__link" href="./admin-order-edit.html">SKB-1009</a></td>
+							<td class="admin-table__num">2 đơn</td>
+							<td class="admin-table__num">289.000đ</td>
+						</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="table-note">Chỉ tính các đơn phát sinh trong khoảng thời gian đã nhập · Tổng kỳ này: <strong>3.524.800đ</strong>.</p>
+					</section>
+
 					<!-- ==================== KHO SÁCH ==================== -->
 					<div class="admin-view admin-view--kho-sach">
 						<div class="admin-head">
 							<div>
 								<p class="eyebrow">Danh mục</p>
 								<h2 class="admin-head__title">Kho sách</h2>
-								<p class="admin-head__desc">8 tựa sách đang bán.</p>
+								<p class="admin-head__desc">8 tựa sách đang bán · Sách <strong>đã bán ra</strong> chỉ được ẩn, sách <strong>chưa bán</strong> mới được xoá.</p>
 							</div>
 							<div class="admin-head__actions">
-								<a class="btn btn--ghost btn--sm" href="./admin-book-new.html">Thêm sách mới</a>
+									<a class="btn btn--ghost btn--sm" href="./admin-book-new.html">Thêm sách mới</a>
 								<a class="btn btn--primary btn--sm" href="./admin-stock-import.html">Nhập kho</a>
 							</div>
 						</div>
 
-						<p class="admin-notice admin-notice--sua-sach">Xem cách sách hiển thị với khách hàng ở <a href="../books/book-dac-nhan-tam.html">trang chi tiết sách</a>.</p>
+						<!-- Thông báo của 2 thao tác xoá / ẩn (hiện bằng CSS :target) -->
+						<p class="admin-notice admin-notice--da-an-sach">Đã <strong>ẩn sản phẩm khỏi gian sách</strong>. Sản phẩm đã bán ra nên không xoá được — khách vẫn thấy trong lịch sử mua hàng.</p>
+						<p class="admin-notice admin-notice--da-xoa-sach">Đã <strong>xoá sản phẩm khỏi kho</strong>. Sản phẩm chưa từng bán nên xoá vĩnh viễn được, không để lại dấu trên web.</p>
+
+						<!-- Nhánh 1: sản phẩm ĐÃ bán -> chỉ được ẩn -->
+						<div class="confirm confirm--xac-nhan-an-sach" role="group" aria-label="Ẩn sản phẩm đã bán ra?">
+							<p class="confirm__title">Sản phẩm này đã bán ra — chỉ có thể ẩn?</p>
+							<p class="confirm__text">Sản phẩm đã có đơn mua nên không được xoá. Xác nhận sẽ gỡ sản phẩm khỏi gian sách, dữ liệu đơn hàng cũ giữ nguyên.</p>
+							<div class="confirm__actions">
+								<a class="btn btn--danger btn--sm" href="#da-an-sach">Ẩn khỏi gian sách</a>
+								<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+							</div>
+						</div>
+
+						<!-- Nhánh 2: sản phẩm CHƯA bán -> hỏi lại rồi xoá -->
+						<div class="confirm confirm--xac-nhan-xoa-sach" role="group" aria-label="Xoá sản phẩm chưa bán?">
+							<p class="confirm__title">Xoá vĩnh viễn sản phẩm chưa bán?</p>
+							<p class="confirm__text">Sản phẩm này chưa từng có đơn mua nên xoá được. Hành động không hoàn tác được.</p>
+							<div class="confirm__actions">
+								<a class="btn btn--danger btn--sm" href="#da-xoa-sach">Xác nhận xoá</a>
+								<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+							</div>
+						</div>
 
 						<div class="table-wrap">
 							<table class="admin-table">
-								<caption class="visually-hidden">Sáu tựa sách trong kho kèm giá bán và số lượng tồn</caption>
+								<caption class="visually-hidden">Bảy tựa sách trong kho kèm giá bán và số lượng tồn</caption>
 								<thead>
 									<tr>
 										<th scope="col">Sách</th>
@@ -448,7 +601,8 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
-												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+										<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-an-sach">Xoá</a>
 											</div>
 										</td>
 									</tr>
@@ -469,7 +623,8 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
-												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+										<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-an-sach">Xoá</a>
 											</div>
 										</td>
 									</tr>
@@ -490,7 +645,8 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
-												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+										<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-an-sach">Xoá</a>
 											</div>
 										</td>
 									</tr>
@@ -511,7 +667,8 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
-												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+										<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-an-sach">Xoá</a>
 											</div>
 										</td>
 									</tr>
@@ -533,7 +690,8 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
-												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+										<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-an-sach">Xoá</a>
 											</div>
 										</td>
 									</tr>
@@ -554,14 +712,37 @@
 										<td>
 											<div class="admin-table__actions">
 												<a class="admin-table__link" href="../books/book-dac-nhan-tam.html">Xem</a>
-												<a class="admin-table__link" href="#sua-sach">Sửa</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+										<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-an-sach">Xoá</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="cell-book">
+												<img src="../assets/images/hero/the-alchemist-hero.png" alt="Bìa sách Nhà Giả Kim" width="324" height="286" loading="lazy" decoding="async">
+												<div>
+													<p class="cell-book__title">Nhà Giả Kim</p>
+													<p class="cell-book__meta">Paulo Coelho</p>
+												</div>
+											</div>
+										</td>
+										<td class="admin-table__muted">Văn học nước ngoài</td>
+										<td class="admin-table__num">95.000đ</td>
+										<td class="admin-table__num">30 cuốn</td>
+										<td><span class="tag tag--soft">Chưa bán</span></td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="../index.html#hero">Xem</a>
+												<a class="admin-table__link" href="./admin-book-edit.html">Sửa</a>
+												<a class="admin-table__link admin-table__link--danger" href="#xac-nhan-xoa-sach">Xoá</a>
 											</div>
 										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						<p class="table-note">Hiển thị 6 trong 8 tựa sách · Cập nhật lần cuối lúc 09:30 ngày 21/09/2026.</p>
+						<p class="table-note">Hiển thị 7 trong 8 tựa sách · Cập nhật lần cuối lúc 09:30 ngày 21/09/2026.</p>
 					</div>
 
 					<!-- ==================== KHÁCH HÀNG ==================== -->
@@ -573,6 +754,7 @@
 								<p class="admin-head__desc">10.000+ tài khoản đã mua sách · Hạng được xếp theo tổng chi tiêu.</p>
 							</div>
 							<div class="admin-head__actions">
+								<a class="btn btn--outline btn--sm" href="./admin-user-new.html">Thêm user</a>
 								<a class="btn btn--ghost btn--sm" href="#xuat-khach-hang">Xuất danh sách</a>
 								<a class="btn btn--primary btn--sm" href="./admin-promo-send.html">Gửi ưu đãi</a>
 							</div>
@@ -580,6 +762,17 @@
 
 						<!-- Điểm neo của nút "Xuất danh sách": bấm là thông báo này hiện ra -->
 						<p class="admin-notice admin-notice--xuat-khach-hang" tabindex="-1">Đã tạo tệp <strong>khach-hang-2026-09-28.csv</strong> gồm <strong>5 khách hàng</strong> đang hiển thị. Tệp đã sẵn sàng trong mục Tải về của trình duyệt.</p>
+
+							<!-- Khóa / mở user: xác nhận 2 bước, hiện bằng CSS :target -->
+							<p class="admin-notice admin-notice--da-khoa-user">Đã <strong>khóa tài khoản</strong>: người dùng không đăng nhập được cho tới khi quản trị mở khóa lại. Dữ liệu đơn hàng vẫn giữ nguyên.</p>
+							<div class="confirm confirm--xac-nhan-khoa-user" role="group" aria-label="Khóa tài khoản người dùng?">
+								<p class="confirm__title">Khóa tài khoản người dùng?</p>
+								<p class="confirm__text">Người dùng sẽ không đăng nhập được và không đặt đơn mới. Muốn mở lại, bấm “Mở khóa” ở cùng dòng này.</p>
+								<div class="confirm__actions">
+									<a class="btn btn--danger btn--sm" href="#da-khoa-user">Xác nhận khóa</a>
+									<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
+								</div>
+							</div>
 
 						<div class="table-wrap">
 							<table class="admin-table">
@@ -592,13 +785,14 @@
 										<th scope="col">Tổng chi tiêu</th>
 										<th scope="col">Hạng</th>
 										<th scope="col">Tham gia</th>
+										<th scope="col">Thao tác</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td>
 											<p class="admin-user">
-												<span class="admin-user__avatar" aria-hidden="true">TH</span>
+												<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
 												<strong class="admin-user__name">Nguyễn Thu Hà</strong>
 											</p>
 										</td>
@@ -607,11 +801,17 @@
 										<td class="admin-table__num">3.482.000đ</td>
 										<td><span class="tag tag--vip">Kim cương</span></td>
 										<td class="admin-table__muted">03/2025</td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./admin-customer-edit.html">Sửa</a>
+										<a class="admin-table__link" href="#xac-nhan-khoa-user">Khóa</a>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>
 											<p class="admin-user">
-												<span class="admin-user__avatar" aria-hidden="true">MQ</span>
+												<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
 												<strong class="admin-user__name">Trần Minh Quân</strong>
 											</p>
 										</td>
@@ -620,11 +820,17 @@
 										<td class="admin-table__num">1.214.200đ</td>
 										<td><span class="tag tag--soft">Vàng</span></td>
 										<td class="admin-table__muted">07/2025</td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./admin-customer-edit.html">Sửa</a>
+										<a class="admin-table__link" href="#xac-nhan-khoa-user">Khóa</a>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>
 											<p class="admin-user">
-												<span class="admin-user__avatar" aria-hidden="true">HA</span>
+												<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
 												<strong class="admin-user__name">Lê Hoàng Anh</strong>
 											</p>
 										</td>
@@ -633,11 +839,17 @@
 										<td class="admin-table__num">689.000đ</td>
 										<td><span class="tag tag--muted">Bạc</span></td>
 										<td class="admin-table__muted">11/2025</td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./admin-customer-edit.html">Sửa</a>
+										<a class="admin-table__link" href="#xac-nhan-khoa-user">Khóa</a>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>
 											<p class="admin-user">
-												<span class="admin-user__avatar" aria-hidden="true">BN</span>
+												<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
 												<strong class="admin-user__name">Phạm Bảo Ngọc</strong>
 											</p>
 										</td>
@@ -646,11 +858,17 @@
 										<td class="admin-table__num">372.000đ</td>
 										<td><span class="tag tag--muted">Đồng</span></td>
 										<td class="admin-table__muted">02/2026</td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./admin-customer-edit.html">Sửa</a>
+										<a class="admin-table__link" href="#xac-nhan-khoa-user">Khóa</a>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>
 											<p class="admin-user">
-												<span class="admin-user__avatar" aria-hidden="true">ĐT</span>
+												<span class="admin-user__avatar" aria-hidden="true"><img src="../assets/images/admin-avatar.png" alt=""></span>
 												<strong class="admin-user__name">Vũ Đức Thịnh</strong>
 											</p>
 										</td>
@@ -659,6 +877,12 @@
 										<td class="admin-table__num">89.000đ</td>
 										<td><span class="tag tag--muted">Đồng</span></td>
 										<td class="admin-table__muted">09/2026</td>
+										<td>
+											<div class="admin-table__actions">
+												<a class="admin-table__link" href="./admin-customer-edit.html">Sửa</a>
+										<a class="admin-table__link" href="#xac-nhan-khoa-user">Khóa</a>
+											</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>

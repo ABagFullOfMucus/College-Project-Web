@@ -382,3 +382,119 @@
 		flex: 1 1 100%;
 	}
 }
+
+/* ==========================================================================
+   ADDRESS-CHOICE - CHỌN ĐỊA CHÍ CỦA TÀI KHOẢN HOẶC NHẬP MỚI
+   Hai ô radio là anh em ruột đứng TRƯỚC các khối .address-saved / .address-new
+   nên dùng ~  để ẩn/hiện. Hoàn toàn bằng CSS :checked, không cần JavaScript.
+   ========================================================================== */
+.address-choice__label {
+	margin: 20px 0 8px;
+	font-size: .8rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+/* Radio điều khiển bị ẩn đi nhưng vẫn nhận focus bằng bàn phím */
+.address-choice__radio {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.address-choice__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.address-choice__tab {
+	padding: 8px 16px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .88rem;
+	color: var(--color-text);
+	cursor: pointer;
+	transition: border-color var(--transition), background-color var(--transition),
+		color var(--transition);
+}
+
+.address-choice__tab:hover {
+	border-color: var(--color-accent);
+}
+
+/* Tab đang chọn được tô nhấn */
+#dia-chi-luu:checked ~ .address-choice__tabs label[for="dia-chi-luu"],
+#dia-chi-moi:checked ~ .address-choice__tabs label[for="dia-chi-moi"] {
+	background-color: var(--color-accent-soft);
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+	font-weight: 700;
+}
+
+#dia-chi-luu:focus-visible ~ .address-choice__tabs label[for="dia-chi-luu"],
+#dia-chi-moi:focus-visible ~ .address-choice__tabs label[for="dia-chi-moi"] {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* Ẩn khối không được chọn (chỉ display:none nên ô nhập bên trong không còn
+   required — vì vậy ô địa chỉ trong .address-new không khai required) */
+#dia-chi-luu:checked ~ .address-new,
+#dia-chi-moi:checked ~ .address-saved {
+	display: none;
+}
+
+/* Thẻ địa chỉ đã lưu */
+.address-saved {
+	display: grid;
+	gap: 10px;
+	margin-bottom: 18px;
+}
+
+.address-card {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 14px 16px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+	transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Trạng thái chọn thể hiện bằng chính radio gốc (.field__radio) bên trong thẻ,
+   không dùng :has() — dự án phải chạy trên Firefox ESR 115 */
+.address-card__body {
+	display: grid;
+	gap: 2px;
+}
+
+.address-card__title {
+	font-size: .95rem;
+	color: var(--color-ink);
+}
+
+.address-card__desc {
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.address-new {
+	margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+	.address-choice__tabs {
+		flex-direction: column;
+	}
+
+	.address-choice__tab {
+		text-align: center;
+	}
+}

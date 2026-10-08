@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Đăng nhập - Nhà Sách Skibidus</title>
+		<title>Đăng ký - Nhà Sách Skibidus</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Đăng nhập tài khoản Nhà Sách Skibidus để theo dõi đơn hàng, quản lý sách yêu thích và khám phá hàng ngàn tựa sách chất lượng.">
+		<meta name="description" content="Đăng ký tài khoản người mua hàng tại Nhà Sách Skibidus để đặt sách, lưu địa chỉ giao hàng và theo dõi lịch sử mua.">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
 		<link rel="icon" type="image/png" href="../assets/images/logo.png">
 		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
@@ -58,7 +58,7 @@
 						<span class="cart__count" aria-hidden="true">4</span>
 					</a>
 
-					<a class="btn btn--outline btn--sm" href="../index.html">Trang chủ</a>
+					<a class="btn btn--outline btn--sm" href="./login.html">Đăng nhập</a>
 				</div>
 			</div>
 		</header>
@@ -71,8 +71,8 @@
 				<p class="notice" id="chua-san-hang" tabindex="-1">Trang này đang được xây dựng.</p>
 			</div>
 
-			<!-- ==================== ĐĂNG NHẬP ==================== -->
-			<section class="login-section" aria-label="Đăng nhập tài khoản">
+			<!-- ==================== ĐĂNG KÝ ==================== -->
+			<section class="login-section" aria-label="Đăng ký tài khoản người mua hàng">
 				<div class="container">
 					<div class="login-card">
 						<div class="login__brand">
@@ -84,38 +84,56 @@
 							<span class="logo__text">Skibidus</span>
 						</div>
 
-						<h1 class="login__title">Chào mừng bạn trở lại</h1>
-						<p class="login__subtitle">Đăng nhập để theo dõi đơn hàng và khám phá những tựa sách hay.</p>
+						<h1 class="login__title">Tạo tài khoản người mua</h1>
+						<p class="login__subtitle">Đăng ký để giỏ hàng được lưu theo tài khoản và theo dõi lịch sử mua hàng.</p>
 
-						<form class="login-form" id="login-form" action="#da-dang-nhap" method="get" autocomplete="on">
+						<form class="login-form" id="register-form" action="#da-dang-ky-thanh-cong" method="get" autocomplete="on">
 							<div class="login-form__field">
-								<label class="login-form__label" for="login-email">Email</label>
-								<input class="login-form__input" type="email" id="login-email" name="email" placeholder="email@cua-ban.com" autocomplete="email" required>
+								<label class="login-form__label" for="reg-name">Họ và tên</label>
+								<input class="login-form__input" type="text" id="reg-name" name="ho-ten" placeholder="Nguyễn Văn A" autocomplete="name" required>
+								<p class="login-form__error">Vui lòng nhập họ và tên của bạn.</p>
+							</div>
+
+							<div class="login-form__field">
+								<label class="login-form__label" for="reg-email">Email</label>
+								<input class="login-form__input" type="email" id="reg-email" name="email" placeholder="email@cua-ban.com" autocomplete="email" required>
 								<p class="login-form__error">Email chưa đúng định dạng, ví dụ: email@cua-ban.com</p>
 							</div>
 
 							<div class="login-form__field">
-								<label class="login-form__label" for="login-password">Mật khẩu</label>
-								<input class="login-form__input" type="password" id="login-password" name="password" placeholder="Nhập mật khẩu!" autocomplete="current-password" required minlength="6" pattern=".{6,}" title="Mật khẩu cần ít nhất 6 ký tự">
+								<label class="login-form__label" for="reg-phone">Số điện thoại</label>
+								<input class="login-form__input" type="tel" id="reg-phone" name="dien-thoai" placeholder="0901 234 567" autocomplete="tel" inputmode="tel" pattern="[0-9 +.-]{9,15}" required>
+								<p class="login-form__error">Số điện thoại gồm 9 – 15 ký tự, chỉ chứa chữ số.</p>
+							</div>
+
+							<div class="login-form__field">
+								<label class="login-form__label" for="reg-password">Mật khẩu</label>
+								<input class="login-form__input" type="password" id="reg-password" name="password" placeholder="Ít nhất 6 ký tự" autocomplete="new-password" required minlength="6" pattern=".{6,}" title="Mật khẩu cần ít nhất 6 ký tự">
 								<p class="login-form__error">Mật khẩu cần ít nhất 6 ký tự.</p>
 							</div>
 
+							<div class="login-form__field">
+								<label class="login-form__label" for="reg-password2">Xác nhận mật khẩu</label>
+								<input class="login-form__input" type="password" id="reg-password2" name="password2" placeholder="Nhập lại mật khẩu" autocomplete="new-password" required minlength="6" pattern=".{6,}" title="Nhập lại mật khẩu giống ô trên">
+								<p class="login-form__error">Nhập lại mật khẩu (ít nhất 6 ký tự).</p>
+							</div>
+
 							<div class="login-form__row">
-								<label class="login-form__check"><input type="checkbox" id="login-remember" name="remember" value="1"> Duy trì đăng nhập</label>
-								<a href="#quen-mat-khau" class="login-form__link">Quên mật khẩu?</a>
+								<label class="login-form__check"><input type="checkbox" id="reg-terms" name="dong-y" value="1" required> Tôi đồng ý với điều khoản sử dụng</label>
+								<a href="../info/contact.html" class="login-form__link">Xem điều khoản</a>
 							</div>
 
 							<div class="login-form__cta">
-								<!-- Nút submit thật để HTML5 validation chạy trước -->
-								<button class="btn btn--primary btn--block" type="submit">Đăng nhập</button>
-								<a class="btn btn--ghost btn--block" href="./register.html">Tạo tài khoản mới</a>
+								<!-- Nút submit thật: HTML5 validation chạy trước khi gửi -->
+								<button class="btn btn--primary btn--block" type="submit">Tạo tài khoản</button>
+								<a class="btn btn--ghost btn--block" href="./login.html">Đã có tài khoản? Đăng nhập</a>
 							</div>
 
-						<p class="login__notice" id="da-dang-nhap">Đăng nhập thành công! Chào mừng bạn trở lại với Nhà Sách Skibidus.</p>
-						<p class="login__notice" id="quen-mat-khau">Để đặt lại mật khẩu, vui lòng gửi email tới <strong>hotro@nhasachskibidus.vn</strong>. Chúng tôi sẽ gửi link đặt mật khẩu mới cho bạn.</p>
+							<!-- Thông báo đăng ký thành công: hiện bằng CSS :target -->
+							<p class="login__notice" id="da-dang-ky-thanh-cong">Đăng ký thành công! Tài khoản <strong>Nguyễn Văn A</strong> đã được tạo. <a href="./login.html">Đăng nhập ngay</a> để bắt đầu mua sách.</p>
 						</form>
 
-						<p class="login__hint">Bạn là quản trị viên? <a href="../admin/admin-login.html">Mở trang quản trị</a>.</p>
+						<p class="login__hint">Mua sắm không cần tài khoản vẫn được — nhưng giỏ hàng và đơn hàng sẽ không được lưu.</p>
 					</div>
 				</div>
 			</section>
@@ -125,30 +143,13 @@
 		<footer class="site-footer" id="contact">
 			<div class="container site-footer__inner">
 				<div class="site-footer__col site-footer__col--brand">
-					<a class="logo logo--footer" href="../index.html#hero">
+					<a class="logo logo--footer" href="../index.html">
 						<span class="logo__mark" aria-hidden="true">
 							<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
 						</span>
 						<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 					</a>
 					<p class="site-footer__about">Nhà Sách Skibidus — nơi hội tụ tri thức và những trào lưu đọc sách bất tận. Sứ mệnh của chúng tôi là mang đến sách chất lượng, khơi gợi niềm vui khám phá mỗi ngày cho thế hệ trẻ.</p>
-					<ul class="social">
-						<li>
-							<a class="social__link" href="#chua-san-hang" aria-label="Facebook">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.5c0-.9.3-1.5 1.5-1.5h1.5V5.5c-.3 0-1.3-.1-2.3-.1-2.3 0-3.7 1.3-3.7 3.8v2.1H8v2.8h2.5V21"/></svg>
-							</a>
-						</li>
-						<li>
-							<a class="social__link" href="#chua-san-hang" aria-label="Instagram">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.8" cy="7.2" r="1"/></svg>
-							</a>
-						</li>
-						<li>
-							<a class="social__link" href="#chua-san-hang" aria-label="YouTube">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m11 9.6 4 2.4-4 2.4Z"/></svg>
-							</a>
-						</li>
-					</ul>
 				</div>
 
 				<nav class="site-footer__col" aria-label="Liên kết về chúng tôi">
@@ -166,8 +167,8 @@
 					<ul class="site-footer__links">
 						<li><a href="#chua-san-hang">Chính sách đổi trả</a></li>
 						<li><a href="#chua-san-hang">Chính sách vận chuyển</a></li>
-						<li><a href="#chua-san-hang">Câu hỏi thường gặp</a></li>
-						<li><a href="#chua-san-hang">Bảo mật thông tin</a></li>
+						<li><a href="../info/contact.html#faq">Câu hỏi thường gặp</a></li>
+						<li><a href="../info/contact.html">Bảo mật thông tin</a></li>
 					</ul>
 				</nav>
 
@@ -199,4 +200,3 @@
 		</footer>
 	</body>
 </html>
-

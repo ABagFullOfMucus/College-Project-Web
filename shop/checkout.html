@@ -106,8 +106,8 @@
 						<h2 class="checkout-notice__title">Đặt hàng thành công!</h2>
 						<p class="checkout-notice__text">Cảm ơn bạn đã mua sách tại Nhà Sách Skibidus. Mã đơn hàng của bạn là <strong>SKB-2026-0841</strong>. Chúng tôi sẽ gọi điện xác nhận và giao <strong>4 cuốn sách</strong> trong 2 – 4 ngày tới, tổng thu hộ <strong>342.000đ</strong>.</p>
 						<p class="checkout-notice__actions">
-							<a class="btn btn--primary btn--sm" href="../index.html#featured">Tiếp tục mua sắm</a>
-							<a class="btn btn--outline btn--sm" href="./cart.html">Quay lại giỏ hàng</a>
+							<a class="btn btn--primary btn--sm" href="./order-confirmation.html">Xem chi tiết đơn hàng</a>
+							<a class="btn btn--outline btn--sm" href="../account/orders.html">Lịch sử mua hàng</a>
 						</p>
 					</div>
 
@@ -116,6 +116,23 @@
 						<form class="checkout-form" action="#dat-hang-thanh-cong" method="get">
 							<fieldset class="checkout-block">
 								<legend class="checkout-block__title">1. Thông tin người nhận</legend>
+
+								<!-- Thông tin người đang đăng nhập: tự hiển thị khi vào thanh toán -->
+								<div class="cart-account">
+									<p class="cart-account__label">Đặt hàng với tài khoản</p>
+									<p class="cart-account__user">
+										<span class="cart-account__avatar" aria-hidden="true">NA</span>
+										<span>
+											<strong>Nguyễn Văn A</strong>
+											<span class="cart-account__email">nguyenvana@example.com · 0901 234 567</span>
+										</span>
+									</p>
+									<p class="cart-account__hint">Đơn hàng sẽ được lưu vào tài khoản này. <a href="../account/orders.html">Xem lịch sử mua hàng</a>.</p>
+									<div class="cart-account__actions">
+										<a class="cart-account__logout" href="../account/login.html">Đăng xuất</a>
+									</div>
+								</div>
+
 								<div class="field-grid">
 									<div class="field">
 										<label class="field__label" for="co-ten">Họ và tên <span class="field__required" aria-hidden="true">*</span></label>
@@ -125,13 +142,45 @@
 										<label class="field__label" for="co-dien-thoai">Số điện thoại <span class="field__required" aria-hidden="true">*</span></label>
 										<input class="field__input" id="co-dien-thoai" name="dien-thoai" type="tel" placeholder="0901 234 567" autocomplete="tel" inputmode="tel" pattern="[0-9 +.-]{9,15}" required>
 									</div>
-									<div class="field">
+									<div class="field field--full">
 										<label class="field__label" for="co-email">Email</label>
 										<input class="field__input" id="co-email" name="email" type="email" placeholder="ban@example.com" autocomplete="email">
 									</div>
+								</div>
+
+								<!-- Chọn địa chỉ: của tài khoản HOẶC nhập mới. Hai ô radio đứng trước
+								     các khối .address-saved / .address-new nên CSS dùng ~ để ẩn/hiện,
+								     hoàn toàn không cần JavaScript. -->
+								<p class="address-choice__label">Địa chỉ giao hàng <span class="field__required" aria-hidden="true">*</span></p>
+								<input class="address-choice__radio" type="radio" id="dia-chi-luu" name="kieu-dia-chi" value="luu" checked>
+								<input class="address-choice__radio" type="radio" id="dia-chi-moi" name="kieu-dia-chi" value="moi">
+								<div class="address-choice__tabs">
+									<label class="address-choice__tab" for="dia-chi-luu">Dùng địa chỉ của tài khoản</label>
+									<label class="address-choice__tab" for="dia-chi-moi">Nhập địa chỉ mới</label>
+								</div>
+
+								<div class="address-saved">
+									<label class="address-card" for="dc-luu-1">
+										<input class="field__radio" type="radio" id="dc-luu-1" name="dia-chi" value="nha" checked>
+										<span class="address-card__body">
+											<strong class="address-card__title">Nhà riêng</strong>
+											<span class="address-card__desc">123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh · 0901 234 567</span>
+										</span>
+									</label>
+									<label class="address-card" for="dc-luu-2">
+										<input class="field__radio" type="radio" id="dc-luu-2" name="dia-chi" value="van-phong">
+										<span class="address-card__body">
+											<strong class="address-card__title">Nơi làm việc</strong>
+											<span class="address-card__desc">Tầng 5, 45 Nguyễn Trãi, Phường Nguyễn Thái Bình, Quận 1, TP. Hồ Chí Minh · 0912 345 678</span>
+										</span>
+									</label>
+									<p class="field__hint">Địa chỉ lấy từ tài khoản của bạn, sửa trong trang tài khoản.</p>
+								</div>
+
+								<div class="address-new field-grid">
 									<div class="field">
-										<label class="field__label" for="co-thanh-pho">Tỉnh / Thành phố <span class="field__required" aria-hidden="true">*</span></label>
-										<select class="field__input" id="co-thanh-pho" name="thanh-pho" required>
+										<label class="field__label" for="co-thanh-pho">Tỉnh / Thành phố</label>
+										<select class="field__input" id="co-thanh-pho" name="thanh-pho">
 											<option value="" selected>Chọn tỉnh / thành phố</option>
 											<option value="hcm">TP. Hồ Chí Minh</option>
 											<option value="hn">Hà Nội</option>
@@ -142,14 +191,17 @@
 										</select>
 									</div>
 									<div class="field field--full">
-										<label class="field__label" for="co-dia-chi">Địa chỉ nhận hàng <span class="field__required" aria-hidden="true">*</span></label>
-										<input class="field__input" id="co-dia-chi" name="dia-chi" type="text" placeholder="Số nhà, tên đường, phường / xã" autocomplete="street-address" required>
+										<label class="field__label" for="co-dia-chi">Địa chỉ nhận hàng</label>
+										<input class="field__input" id="co-dia-chi" name="dia-chi-moi" type="text" placeholder="Số nhà, tên đường, phường / xã" autocomplete="street-address">
+										<p class="field__hint">Ô này chỉ dùng khi bạn chọn “Nhập địa chỉ mới”.</p>
 									</div>
 									<div class="field field--full">
 										<label class="field__label" for="co-ghi-chu">Ghi chú cho người giao hàng</label>
 										<textarea class="field__input field__input--area" id="co-ghi-chu" name="ghi-chu" rows="3" placeholder="Ví dụ: gọi trước khi giao, giao giờ hành chính..."></textarea>
 									</div>
 								</div>
+							</div>
+
 							</fieldset>
 
 							<fieldset class="checkout-block">
@@ -183,14 +235,14 @@
 							</fieldset>
 
 							<fieldset class="checkout-block">
-								<legend class="checkout-block__title">3. Phương thức thanh toán</legend>
+								<legend class="checkout-block__title">3. Hình thức chi trả: Trực tuyến hoặc Tiền mặt</legend>
 								<ul class="choice-list">
 									<li>
 										<input class="choice__input" type="radio" id="co-cod" name="thanh-toan" value="cod" checked>
 										<label class="choice" for="co-cod">
 
 											<span class="choice__body">
-												<strong class="choice__title">Thanh toán khi nhận hàng (COD)</strong>
+												<strong class="choice__title">Tiền mặt khi nhận hàng (COD)</strong>
 												<span class="choice__desc">Kiểm tra sách rồi mới trả tiền mặt cho người giao hàng.</span>
 											</span>
 										
@@ -201,7 +253,7 @@
 										<label class="choice" for="co-chuyen-khoan">
 
 											<span class="choice__body">
-												<strong class="choice__title">Chuyển khoản ngân hàng</strong>
+												<strong class="choice__title">Trực tuyến — Chuyển khoản ngân hàng</strong>
 												<span class="choice__desc">Nhận số tài khoản và mã đơn SKB-2026-0841 sau khi đặt hàng.</span>
 											</span>
 										
@@ -212,7 +264,7 @@
 										<label class="choice" for="co-vi-dien-tu">
 
 											<span class="choice__body">
-												<strong class="choice__title">Ví điện tử (MoMo / ZaloPay)</strong>
+												<strong class="choice__title">Trực tuyến — Ví điện tử (MoMo / ZaloPay)</strong>
 												<span class="choice__desc">Quét mã QR trên trang xác nhận để thanh toán ngay.</span>
 											</span>
 										

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Kết quả tìm kiếm - Nhà Sách Skibidus</title>
+		<title>Kết quả tìm kiếm “văn học” - Nhà Sách Skibidus</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Kết quả tìm kiếm sách theo tên, tác giả, thể loại. Lọc theo giá, đánh giá và tình trạng còn hàng tại Nhà Sách Skibidus.">
+		<meta name="description" content="Kết quả tìm kiếm “văn học” theo tên, tác giả, thể loại. Lọc theo giá, đánh giá và tình trạng còn hàng tại Nhà Sách Skibidus.">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
 		<link rel="icon" type="image/png" href="../assets/images/logo.png">
 		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
@@ -74,11 +74,11 @@
 					<!-- Ô nhập và bộ lọc giữ nguyên cho đúng thiết kế. Bấm "Tìm kiếm"
 					     sẽ gửi ?q=... lên chính trang này, nhưng vì không có backend nên
 					     danh sách không đổi. -->
-					<form class="search search-box" role="search" action="./search-kynangsong.html" method="get">
+					<form class="search search-box" role="search" action="./search.html" method="get">
 						<label class="visually-hidden" for="q">Từ khoá cần tìm</label>
 						<span class="search-box__field">
 							<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-							<input class="search__input" id="q" name="q" type="search" value="kỹ năng sống" placeholder="Ví dụ: Sapiens, Nguyễn Nhật Ánh, lập trình...">
+							<input class="search__input" id="q" name="q" type="search" value="văn học" placeholder="Ví dụ: Sapiens, Nguyễn Nhật Ánh, lập trình...">
 						</span>
 						<button class="btn btn--primary" type="submit">Tìm kiếm</button>
 					</form>
@@ -111,9 +111,9 @@
 				<aside class="filters" aria-labelledby="filters-title">
 					<h2 class="filters__title" id="filters-title">Bộ lọc</h2>
 
-					<form class="filters__form" action="./search-kynangsong.html" method="get">
+					<form class="filters__form" action="./search.html" method="get">
 						<label class="visually-hidden" for="filter-q">Từ khoá đang tìm</label>
-						<input id="filter-q" name="q" type="hidden" value="kỹ năng sống">
+						<input id="filter-q" name="q" type="hidden" value="văn học">
 
 						<!-- Khoảng giá: hai ô nhập, chưa áp dụng ngay vì cần backend -->
 						<details class="filter-group" open>
@@ -132,14 +132,14 @@
 							<ul class="filter-list">
 								<li>
 									<label class="filter-check">
-										<input type="checkbox" name="the-loai" value="ky-nang-song" checked>
+										<input type="checkbox" name="the-loai" value="ky-nang-song">
 										<span>Kỹ năng sống</span>
 										<span class="filter-check__count">590</span>
 									</label>
 								</li>
 								<li>
 									<label class="filter-check">
-										<input type="checkbox" name="the-loai" value="van-hoc">
+										<input type="checkbox" name="the-loai" value="van-hoc" checked>
 										<span>Văn học</span>
 										<span class="filter-check__count">1.420</span>
 									</label>
@@ -200,7 +200,7 @@
 							<ul class="filter-list">
 								<li>
 									<label class="filter-check">
-										<input type="checkbox" name="tinh-trang" value="con-hang" checked>
+										<input type="checkbox" name="tinh-trang" value="con-hang">
 										<span>Còn hàng</span>
 										<span class="filter-check__count">2.310</span>
 									</label>
@@ -234,7 +234,7 @@
 					<h2 class="visually-hidden" id="results-title">Kết quả tìm kiếm</h2>
 
 					<div class="results__head">
-						<p class="results__count">Tìm thấy <strong>24 kết quả</strong> cho từ khoá <strong>“kỹ năng sống”</strong></p>
+						<p class="results__count">Tìm thấy <strong>6 kết quả</strong> cho từ khoá <strong>“văn học”</strong></p>
 
 						<!-- Sắp xếp: chip trỏ tới chính nó, CSS :target tô đậm chip đang dùng -->
 						<nav class="results__sort" aria-label="Sắp xếp kết quả">
@@ -248,185 +248,143 @@
 					<ul class="result-list">
 						<li class="result">
 							<span class="result__media" aria-hidden="true">
-								<span class="tag tag--sale">-20%</span>
-								<img class="result__cover" src="../assets/images/books/book1.jpg" alt="" width="1352" height="2004" loading="lazy" decoding="async">
+								<span class="tag tag--sale">-19%</span>
+								<img class="result__cover" src="../assets/images/books/book7.jpg" alt="" width="781" height="1231" loading="lazy" decoding="async">
 							</span>
 							<div class="result__body">
-								<p class="result__category">Kỹ năng sống</p>
-								<h3 class="result__title"><a href="../books/book-dac-nhan-tam.html">Đắc Nhân Tâm</a></h3>
-								<p class="result__author">Tác giả: <mark>Dale Carnegie</mark></p>
-								<p class="result__desc">Cuốn sách kinh điển về nghệ thuật ứng xử, dạy bạn cách xây dựng quan hệ tốt đẹp bằng sự chân thành. Hợp với người đang muốn cải thiện <mark>kỹ năng sống</mark> và giao tiếp.</p>
-								<p class="result__meta">
-									<span class="stars">★★★★★</span>
-									<span>4.9 (2.845 đánh giá)</span>
-									<span aria-hidden="true">•</span>
-									<span>Bìa cứng</span>
-									<span aria-hidden="true">•</span>
-									<span>Còn hàng</span>
-								</p>
-								<p class="result__foot">
-									<span class="price price--sale">89.000đ</span>
-									<span class="price price--old">120.000đ</span>
+								<h3 class="result__title"><a href="../books/book-mat-biec.html">Mắt Biếc</a></h3>
+								<p class="result__author">Nguyễn Nhật Ánh</p>
+								<p class="result__desc"><strong>Văn học</strong> · Bìa mềm · 4,9 ★★★★★ (4.680 đánh giá). Giá 89.000đ, giảm 19% so với giá bìa 110.000đ.</p>
+								<div class="result__meta">
+									<span class="price">89.000đ <del class="price__old">110.000đ</del></span>
+									<span class="tag tag--soft">Văn học</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,9 trên 5, 4.680 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,9 (4.680)</span>
 									<span class="result__actions">
 										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-dac-nhan-tam.html">Chi tiết</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-mat-biec.html">Chi tiết</a>
 									</span>
-								</p>
+								</div>
 							</div>
 						</li>
-
-						<li class="result">
-							<span class="result__media" aria-hidden="true">
-								<span class="tag tag--sale">-10%</span>
-								<img class="result__cover" src="../assets/images/books/book6.jpeg" alt="" width="600" height="600" loading="lazy" decoding="async">
-							</span>
-							<div class="result__body">
-								<p class="result__category">Năng suất</p>
-								<h3 class="result__title"><a href="../books/book-atomic-habits.html">Atomic Habits: Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</a></h3>
-								<p class="result__author">Tác giả: <mark>James Clear</mark></p>
-								<p class="result__desc">Hướng dẫn xây dựng thói quen nhỏ để cải thiện <mark>kỹ năng sống</mark> và hiệu suất cá nhân: tập trung, lên lịch, bố trí môi trường và phản hồi.</p>
-								<p class="result__meta">
-									<span class="stars">★★★★★</span>
-									<span>4.7 (5.120 đánh giá)</span>
-									<span aria-hidden="true">•</span>
-									<span>Bìa mềm</span>
-									<span aria-hidden="true">•</span>
-									<span>Còn hàng</span>
-								</p>
-								<p class="result__foot">
-									<span class="price price--sale">151.200đ</span>
-									<span class="price price--old">189.000đ</span>
-									<span class="result__actions">
-										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-atomic-habits.html">Chi tiết</a>
-									</span>
-								</p>
-							</div>
-						</li>
-
-						<li class="result">
-							<span class="result__media" aria-hidden="true">
-								<span class="tag tag--soft">Mới</span>
-								<img class="result__cover" src="../assets/images/books/book2.jpg" alt="" width="2800" height="2800" loading="lazy" decoding="async">
-							</span>
-							<div class="result__body">
-								<p class="result__category">Văn học trẻ</p>
-								<h3 class="result__title"><a href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html">Tuổi Trẻ Đáng Giá Bao Nhiêu?</a></h3>
-								<p class="result__author">Tác giả: <mark>Rosie Nguyễn</mark></p>
-								<p class="result__desc">Tuyển tập những bài viết về <mark>kỹ năng sống</mark> dành cho người trẻ: quản lý thời gian, xây dựng thói quen và giữ bình tĩnh trong cuộc sống nhiều áp lực.</p>
-								<p class="result__meta">
-									<span class="stars">★★★★★</span>
-									<span>4.8 (3.150 đánh giá)</span>
-									<span aria-hidden="true">•</span>
-									<span>Bìa mềm</span>
-									<span aria-hidden="true">•</span>
-									<span>Còn hàng</span>
-								</p>
-								<p class="result__foot">
-									<span class="price price--sale">75.000đ</span>
-									<span class="price price--old">95.000đ</span>
-									<span class="result__actions">
-										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html">Chi tiết</a>
-									</span>
-								</p>
-							</div>
-						</li>
-<li class="result">
-							<span class="result__media" aria-hidden="true">
-								<span class="tag tag--soft">Bán chạy</span>
-								<img class="result__cover" src="../assets/images/books/book5.jpg" alt="" width="300" height="414" loading="lazy" decoding="async">
-							</span>
-							<div class="result__body">
-								<p class="result__category">Triết lý</p>
-								<h3 class="result__title"><a href="../books/book-muon-kiep-nhan-sinh.html">Muôn Kiếp Nhân Sinh</a></h3>
-								<p class="result__author">Tác giả: <mark>Nguyên Phong</mark></p>
-								<p class="result__desc">Những suy nghĩ về vũ trụ, ý nghĩa sống và cách sống hạnh phúc — món quà tinh thần cho người đang tìm lại sự bình yên giữa cuộc sống.</p>
-								<p class="result__meta">
-									<span class="stars">★★★★★</span>
-									<span>4.8 (2.910 đánh giá)</span>
-									<span aria-hidden="true">•</span>
-									<span>Bìa mềm</span>
-									<span aria-hidden="true">•</span>
-									<span>Còn hàng</span>
-								</p>
-								<p class="result__foot">
-									<span class="price price--sale">134.400đ</span>
-									<span class="price price--old">168.000đ</span>
-									<span class="result__actions">
-										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-muon-kiep-nhan-sinh.html">Chi tiết</a>
-									</span>
-								</p>
-							</div>
-						</li>
-
 						<li class="result">
 							<span class="result__media" aria-hidden="true">
 								<span class="tag tag--sale">-25%</span>
 								<img class="result__cover" src="../assets/images/books/book8.jpg" alt="" width="300" height="508" loading="lazy" decoding="async">
 							</span>
 							<div class="result__body">
-								<p class="result__category">Văn học Việt Nam</p>
 								<h3 class="result__title"><a href="../books/book-cho-toi-xin-mot-ve-di-tuoi-tho.html">Cho Tôi Xin Một Vé Đi Tuổi Thơ</a></h3>
-								<p class="result__author">Tác giả: <mark>Nguyễn Nhật Ánh</mark></p>
-								<p class="result__desc">Tái bản đặc biệt có lời dẫn cho người lớn: về ký ức, tuổi thơ và cách ta sống trọn vẹn hơn giữa guồng quay công việc.</p>
-								<p class="result__meta">
-									<span class="stars">★★★★★</span>
-									<span>4.8 (3.890 đánh giá)</span>
-									<span aria-hidden="true">•</span>
-									<span>Bìa cứng</span>
-									<span aria-hidden="true">•</span>
-									<span>Còn hàng</span>
-								</p>
-								<p class="result__foot">
-									<span class="price price--sale">90.000đ</span>
-									<span class="price price--old">120.000đ</span>
+								<p class="result__author">Nguyễn Nhật Ánh</p>
+								<p class="result__desc"><strong>Văn học</strong> · Bìa mềm · 4,8 ★★★★★ (5.210 đánh giá). Giá 78.000đ, giảm 25% so với giá bìa 104.000đ.</p>
+								<div class="result__meta">
+									<span class="price">78.000đ <del class="price__old">104.000đ</del></span>
+									<span class="tag tag--soft">Văn học</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,8 trên 5, 5.210 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,8 (5.210)</span>
 									<span class="result__actions">
 										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
 										<a class="btn btn--outline btn--sm" href="../books/book-cho-toi-xin-mot-ve-di-tuoi-tho.html">Chi tiết</a>
 									</span>
-								</p>
+								</div>
 							</div>
 						</li>
-
 						<li class="result">
 							<span class="result__media" aria-hidden="true">
-								<span class="tag tag--soft">Mới</span>
+								<span class="tag tag--sale">-24%</span>
+								<img class="result__cover" src="../assets/images/books/book3.jpg" alt="" width="663" height="984" loading="lazy" decoding="async">
+							</span>
+							<div class="result__body">
+								<h3 class="result__title"><a href="../books/book-cay-cam-ngot-cua-toi.html">Cây Cam Ngọt Của Tôi</a></h3>
+								<p class="result__author">José Mauro de Vasconcelos</p>
+								<p class="result__desc"><strong>Văn học</strong> · Bìa mềm · 4,7 ★★★★★ (4.210 đánh giá). Giá 89.000đ, giảm 24% so với giá bìa 118.000đ.</p>
+								<div class="result__meta">
+									<span class="price">89.000đ <del class="price__old">118.000đ</del></span>
+									<span class="tag tag--soft">Văn học</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,7 trên 5, 4.210 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,7 (4.210)</span>
+									<span class="result__actions">
+										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-cay-cam-ngot-cua-toi.html">Chi tiết</a>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li class="result">
+							<span class="result__media" aria-hidden="true">
+								<span class="tag tag--sale">-21%</span>
+								<img class="result__cover" src="../assets/images/books/book2.jpg" alt="" width="2800" height="2800" loading="lazy" decoding="async">
+							</span>
+							<div class="result__body">
+								<h3 class="result__title"><a href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html">Tuổi Trẻ Đáng Giá Bao Nhiêu?</a></h3>
+								<p class="result__author">Rosie Nguyễn</p>
+								<p class="result__desc"><strong>Văn học</strong> · Bìa mềm · 4,8 ★★★★★ (3.150 đánh giá). Giá 75.000đ, giảm 21% so với giá bìa 95.000đ.</p>
+								<div class="result__meta">
+									<span class="price">75.000đ <del class="price__old">95.000đ</del></span>
+									<span class="tag tag--soft">Văn học</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,8 trên 5, 3.150 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,8 (3.150)</span>
+									<span class="result__actions">
+										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html">Chi tiết</a>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li class="result">
+							<span class="result__media" aria-hidden="true">
+								<span class="tag tag--sale">-20%</span>
+								<img class="result__cover" src="../assets/images/books/book2.jpg" alt="" width="2800" height="2800" loading="lazy" decoding="async">
+							</span>
+							<div class="result__body">
+								<h3 class="result__title"><a href="../books/book-de-men-phieu-luu-ky.html">Dế Mèn Phiêu Lưu Ký</a></h3>
+								<p class="result__author">Khue Văn</p>
+								<p class="result__desc"><strong>Văn học</strong> · Bìa mềm · 4,6 ★★★★★ (2.140 đánh giá). Giá 68.000đ, giảm 20% so với giá bìa 85.000đ.</p>
+								<div class="result__meta">
+									<span class="price">68.000đ <del class="price__old">85.000đ</del></span>
+									<span class="tag tag--soft">Văn học</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,6 trên 5, 2.140 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,6 (2.140)</span>
+									<span class="result__actions">
+										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-de-men-phieu-luu-ky.html">Chi tiết</a>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li class="result">
+							<span class="result__media" aria-hidden="true">
+								<span class="tag tag--sale">-19%</span>
 								<img class="result__cover" src="../assets/images/books/book7.jpg" alt="" width="781" height="1231" loading="lazy" decoding="async">
 							</span>
 							<div class="result__body">
-								<p class="result__category">Văn học Việt Nam</p>
-								<h3 class="result__title"><a href="../books/book-mat-biec.html">Mắt Biếc</a></h3>
-								<p class="result__author">Tác giả: <mark>Nguyễn Nhật Ánh</mark></p>
-								<p class="result__desc">Ngôi trường và những đứa trẻ lớn lên cùng nhau giữa ký ức, nỗi buồn và hy vọng — bài học về <mark>kỹ năng sống</mark> của thiếu niên.</p>
-								<p class="result__meta">
-									<span class="stars">★★★★★</span>
-									<span>4.9 (4.680 đánh giá)</span>
-									<span aria-hidden="true">•</span>
-									<span>Bìa mềm</span>
-									<span aria-hidden="true">•</span>
-									<span>Còn hàng</span>
-								</p>
-								<p class="result__foot">
-									<span class="price price--sale">89.000đ</span>
-									<span class="price price--old">110.000đ</span>
+								<h3 class="result__title"><a href="../books/book-toi-thay-hoa-vang-tren-co-xanh.html">Tôi Thấy Hoa Vàng Trên Cỏ Xanh</a></h3>
+								<p class="result__author">Nguyễn Nhật Ánh</p>
+								<p class="result__desc"><strong>Văn học</strong> · Bìa mềm · 4,9 ★★★★★ (3.890 đánh giá). Giá 82.000đ, giảm 19% so với giá bìa 102.000đ.</p>
+								<div class="result__meta">
+									<span class="price">82.000đ <del class="price__old">102.000đ</del></span>
+									<span class="tag tag--soft">Văn học</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,9 trên 5, 3.890 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,9 (3.890)</span>
 									<span class="result__actions">
 										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-mat-biec.html">Chi tiết</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-toi-thay-hoa-vang-tren-co-xanh.html">Chi tiết</a>
 									</span>
-								</p>
+								</div>
 							</div>
 						</li>
 					</ul>
 					<nav class="pagination" aria-label="Phân trang kết quả">
 						<span class="pagination__link pagination__link--disabled" aria-hidden="true">Trước</span>
 						<span class="pagination__link" aria-current="page">1</span>
-						<a class="pagination__link" href="./search-kynangsong.html">2</a>
-						<a class="pagination__link" href="./search-vanhoc.html">3</a>
-						<a class="pagination__link" href="./search-nguyennhatanh.html">4</a>
-						<a class="pagination__link" href="./search-laptrinh.html">Sau</a>
+						<span class="pagination__link pagination__link--disabled" aria-hidden="true">Sau</span>
 					</nav>
+
 
 					<div class="search-tips">
 						<strong>Kết quả gợi ý theo truy vấn mẫu (bản tĩnh, không lọc thật)</strong>

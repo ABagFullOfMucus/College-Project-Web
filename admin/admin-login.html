@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<title>Đăng nhập quản trị - Quản trị Nhà Sách Skibidus</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Đăng nhập khu quản trị Nhà Sách Skibidus. Đây là URL riêng, khác với trang đăng nhập của người dùng cuối.">
+		<!-- Trang quản trị không cần cho máy tìm kiếm -->
+		<meta name="robots" content="noindex">
+		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
+		<link rel="icon" type="image/png" href="../assets/images/logo.png">
+		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
+		<link rel="stylesheet" href="../assets/css/reset.css">
+		<link rel="stylesheet" href="../assets/css/base.css">
+		<link rel="stylesheet" href="../assets/css/components.css">
+		<link rel="stylesheet" href="../assets/css/layout.css">
+		<link rel="stylesheet" href="../assets/css/login.css">
+		<link rel="stylesheet" href="../assets/css/compat.css">
+	</head>
+	<body>
+		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
+		<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+		<main id="main">
+			<!-- ==================== ĐĂNG NHẬP QUẢN TRỊ ==================== -->
+			<section class="login-section" aria-label="Đăng nhập khu quản trị">
+				<div class="container">
+					<div class="login-card">
+						<div class="login__brand">
+							<a class="logo" href="../index.html">
+								<span class="logo__mark" aria-hidden="true">
+									<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+								</span>
+							</a>
+							<span class="logo__text">Skibidus · Quản trị</span>
+						</div>
+
+						<h1 class="login__title">Đăng nhập quản trị</h1>
+						<p class="login__subtitle">Khu quản trị dùng <strong>URL riêng</strong> (<code>admin/admin-login.html</code>), khác với trang đăng nhập của người dùng cuối.</p>
+
+						<form class="login-form" id="admin-login-form" action="#da-dang-nhap-admin" method="get" autocomplete="on">
+							<div class="login-form__field">
+								<label class="login-form__label" for="admin-email">Email quản trị</label>
+								<input class="login-form__input" type="email" id="admin-email" name="email" placeholder="admin@nhasachskibidus.vn" value="admin@nhasachskibidus.vn" autocomplete="username" required>
+								<p class="login-form__error">Email chưa đúng định dạng, ví dụ: admin@nhasachskibidus.vn</p>
+							</div>
+
+							<div class="login-form__field">
+								<label class="login-form__label" for="admin-password">Mật khẩu</label>
+								<input class="login-form__input" type="password" id="admin-password" name="password" placeholder="Nhập mật khẩu quản trị" autocomplete="current-password" required minlength="6" pattern=".{6,}" title="Mật khẩu cần ít nhất 6 ký tự">
+								<p class="login-form__error">Mật khẩu cần ít nhất 6 ký tự.</p>
+							</div>
+
+							<div class="login-form__row">
+								<label class="login-form__check"><input type="checkbox" id="admin-remember" name="remember" value="1"> Duy trì đăng nhập trên máy này</label>
+							<a href="#quen-mat-khau-admin" class="login-form__link">Quên mật khẩu?</a>
+							</div>
+
+							<div class="login-form__cta">
+								<!-- Submit thật để HTML5 validation chạy trước -->
+								<button class="btn btn--primary btn--block" type="submit">Đăng nhập</button>
+							</div>
+
+							<!-- Thông báo đăng nhập thành công, hiện bằng CSS :target -->
+							<p class="login__notice" id="da-dang-nhap-admin">Đăng nhập thành công! Bạn đang đăng nhập với tư cách <strong>Quản trị A</strong>. <a href="./admin.html">Mở trang quản trị →</a></p>
+						<p class="login__notice" id="quen-mat-khau-admin">Để đặt lại mật khẩu, vui lòng gửi email tới <strong>hotro@nhasachskibidus.vn</strong>. Chúng tôi sẽ gửi link đặt mật khẩu mới cho bạn.</p>
+						</form>
+
+						<p class="login__hint">Đây không phải trang đăng nhập khách hàng? <a href="../account/login.html">Đăng nhập người mua</a>.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

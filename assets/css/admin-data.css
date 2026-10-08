@@ -561,3 +561,116 @@
 		padding: 18px 16px;
 	}
 }
+
+/* ==========================================================================
+   MỞ RỘNG CHO CÁC YÊU CẦU MỚI
+   ========================================================================== */
+
+/* --- Thanh lọc: số ô thay đổi theo trang nên dùng auto-fit thay vì cố định --- */
+.filter-bar {
+	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.filter-bar .btn {
+	justify-self: start;
+}
+
+/* --- Trạng thái đơn hàng chỉ được cập nhật xuôi ---
+   Trạng thái hiện tại và trạng thái chưa tới đều mang disabled nên
+   người dùng không thể chọn, kể cả khi rê chuột hay dùng bàn phím. */
+.status-flow {
+	display: grid;
+	gap: 8px;
+	margin: 0;
+	padding: 14px 16px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background-color: var(--color-bg);
+}
+
+.status-flow__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 8px 10px;
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	font-size: .9rem;
+	color: var(--color-text);
+	cursor: pointer;
+}
+
+.status-flow__item:hover {
+	background-color: var(--color-accent-soft);
+}
+
+.status-flow__item strong {
+	color: var(--color-ink);
+}
+
+/* Trạng thái hiện tại: tô nhấn để thấy ngay đơn đang ở bước nào */
+.status-flow__item--current {
+	background-color: var(--color-accent-soft);
+	border-color: var(--color-accent);
+}
+
+/* Trạng thái bị khoá: mờ đi và không bấm được */
+.status-flow__item--locked,
+.status-flow__item--locked strong {
+	opacity: .55;
+	cursor: not-allowed;
+}
+
+.status-flow__item--locked:hover {
+	background-color: transparent;
+}
+
+/* --- Liên kết xoá trong bảng dữ liệu --- */
+.admin-table__link--danger {
+	color: #a82c3c;
+}
+
+.admin-table__link--danger:hover,
+.admin-table__link--danger:focus-visible {
+	color: var(--color-sale);
+	text-decoration: underline;
+}
+
+/* --- Khung xem trước ảnh bìa ở trang thêm sách --- */
+.cover-preview {
+	display: grid;
+	gap: 8px;
+	justify-items: center;
+	padding: 16px;
+	background-color: var(--color-bg);
+	border: 1px dashed var(--color-border-strong);
+	border-radius: var(--radius-sm);
+}
+
+.cover-preview img {
+	width: 140px;
+	height: auto;
+	border: 1px solid var(--color-border);
+	border-radius: 6px;
+	box-shadow: var(--shadow-sm);
+}
+
+.cover-preview__caption {
+	margin: 0;
+	font-size: .78rem;
+	text-align: center;
+	color: var(--color-muted);
+}
+
+/* --- Thống kê khách hàng mua nhiều nhất --- */
+.stats-bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	gap: 12px;
+}
+
+.stats-bar .field {
+	flex: 1 1 160px;
+	max-width: 220px;
+}

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Tạo đơn mới - Quản trị Nhà Sách Skibidus</title>
+		<title>Sửa đơn hàng #SKB-1022 - Quản trị Nhà Sách Skibidus</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Tạo đơn hàng mới: chọn khách hàng, thêm sách cần giao và chốt tổng tiền.">
+		<meta name="description" content="Sửa đơn hàng SKB-1022 của khách Lê Hoàng Anh: sách trong đơn, trạng thái và tổng tiền.">
 		<!-- Trang quản trị không cần cho máy tìm kiếm -->
 		<meta name="robots" content="noindex">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
@@ -116,7 +116,7 @@
 				</header>
 
 				<main class="admin-content" id="main">
-					<h1 class="visually-hidden">Tạo đơn hàng mới</h1>
+					<h1 class="visually-hidden">Sửa đơn hàng SKB-1022</h1>
 
 					<!-- Đăng xuất không thể hoàn tác: bấm lần 1 mở khối xác nhận bên dưới,
 					     bấm “Đăng xuất” lần 2 mới thật sự rời trang. -->
@@ -124,28 +124,28 @@
 						<p class="confirm__title">Đăng xuất khỏi tài khoản?</p>
 						<p class="confirm__text">Bạn sẽ được đưa về trang đăng nhập. Những thay đổi chưa lưu sẽ bị bỏ.</p>
 						<div class="confirm__actions">
-							<a class="btn btn--danger btn--sm" href="../account/login.html">Đăng xuất</a>
+							<a class="btn btn--danger btn--sm" href="./admin-login.html">Đăng xuất</a>
 							<a class="btn btn--ghost btn--sm" href="#main">Ở lại</a>
 						</div>
 					</div>
 
 					<!-- ==================== TẠO ĐƠN MỚI ==================== -->
-					<div class="admin-view admin-view--tao-don">
+					<div class="admin-view admin-view--sua-don">
 						<div class="admin-head">
 							<div>
-								<p class="eyebrow">Bán hàng</p>
-								<h2 class="admin-head__title">Tạo đơn mới</h2>
-								<p class="admin-head__desc">Chọn khách hàng, thêm sách cần giao rồi chốt tổng tiền. Mã đơn sẽ được sinh tự động.</p>
+								<p class="eyebrow">Bán hàng · #SKB-1022</p>
+								<h2 class="admin-head__title">Sửa đơn hàng</h2>
+								<p class="admin-head__desc">Đơn <strong>#SKB-1022</strong> · đặt ngày <strong>20/09/2026</strong> · trạng thái hiện tại <strong>Chờ xử lý</strong>.</p>
 							</div>
 							<div class="admin-head__actions">
 								<a class="btn btn--ghost btn--sm" href="./admin.html#don-hang">Quay lại danh sách</a>
 							</div>
 						</div>
 
-						<!-- Gửi form tới chính id của thông báo: bấm "Tạo đơn" thì trình
-						     duyệt nhảy tới #da-tao-don và khối thông báo cuối trang hiện ra.
+						<!-- Gửi form tới chính id của thông báo: bấm "Lưu thay đổi" thì trình
+						     duyệt nhảy tới #da-sua-don và khối thông báo cuối trang hiện ra.
 						     Hoạt động nhờ CSS :target, không cần JavaScript. -->
-						<form action="#da-tao-don" method="get">
+						<form action="#da-sua-don" method="get">
 							<div class="admin-grid">
 								<!-- ---------- Cột trái: khách hàng + sách trong đơn ---------- -->
 								<div>
@@ -160,10 +160,10 @@
 											<div class="field field--full">
 												<label class="field__label" for="don-khach-hang">Khách hàng</label>
 												<select class="field__select" id="don-khach-hang" name="khach-hang" required>
-													<option value="" selected>Chọn khách hàng</option>
+													<option value="">Chọn khách hàng</option>
 													<option value="1">Nguyễn Thu Hà — thuha.nguyen@example.com</option>
 													<option value="2">Trần Minh Quân — minhquan.tran@example.com</option>
-													<option value="3">Lê Hoàng Anh — hoanganh.le@example.com</option>
+													<option value="3" selected>Lê Hoàng Anh — hoanganh.le@example.com</option>
 													<option value="4">Phạm Bảo Ngọc — baongoc.pham@example.com</option>
 													<option value="5">Vũ Đức Thịnh — ducthinh.vu@example.com</option>
 													<option value="khach-le">Khách lẻ — không lưu vào danh sách</option>
@@ -171,7 +171,7 @@
 											</div>
 											<div class="field">
 												<label class="field__label" for="don-dien-thoai">Số điện thoại</label>
-												<input class="field__input" id="don-dien-thoai" name="dien-thoai" type="tel" value="0901 234 567" pattern="[0-9 ]{9,15}">
+												<input class="field__input" id="don-dien-thoai" name="dien-thoai" type="tel" value="0938 765 432" pattern="[0-9 ]{9,15}">
 												<p class="field__hint">Chỉ gồm chữ số và dấu cách, từ 9 đến 15 ký tự.</p>
 											</div>
 											<div class="field">
@@ -186,7 +186,7 @@
 											</div>
 											<div class="field field--full">
 												<label class="field__label" for="don-dia-chi">Địa chỉ giao hàng</label>
-												<input class="field__input" id="don-dia-chi" name="dia-chi" type="text" value="123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh">
+												<input class="field__input" id="don-dia-chi" name="dia-chi" type="text" value="78 Lê Lợi, Quận 3, TP. Hồ Chí Minh">
 											</div>
 										</div>
 									</div>
@@ -221,7 +221,7 @@
 														</td>
 														<td class="admin-table__muted">42 cuốn</td>
 														<td class="admin-table__num">89.000đ</td>
-														<td><input class="field__input order-qty" id="sl-1" name="sl-1" type="number" value="2" min="0" max="42" step="1" inputmode="numeric" aria-label="Số lượng Đắc Nhân Tâm"></td>
+														<td><input class="field__input order-qty" id="sl-1" name="sl-1" type="number" value="0" min="0" max="42" step="1" inputmode="numeric" aria-label="Số lượng Đắc Nhân Tâm"></td>
 													</tr>
 													<tr>
 														<td>
@@ -235,7 +235,7 @@
 														</td>
 														<td class="admin-table__muted">36 cuốn</td>
 														<td class="admin-table__num">75.000đ</td>
-														<td><input class="field__input order-qty" id="sl-2" name="sl-2" type="number" value="1" min="0" max="36" step="1" inputmode="numeric" aria-label="Số lượng Tuổi Trẻ Đáng Giá Bao Nhiêu?"></td>
+														<td><input class="field__input order-qty" id="sl-2" name="sl-2" type="number" value="0" min="0" max="36" step="1" inputmode="numeric" aria-label="Số lượng Tuổi Trẻ Đáng Giá Bao Nhiêu?"></td>
 													</tr>
 													<tr>
 														<td>
@@ -263,7 +263,21 @@
 														</td>
 														<td class="admin-table__muted">9 cuốn</td>
 														<td class="admin-table__num">299.000đ</td>
-														<td><input class="field__input order-qty" id="sl-4" name="sl-4" type="number" value="0" min="0" max="9" step="1" inputmode="numeric" aria-label="Số lượng Sapiens"></td>
+														<td><input class="field__input order-qty" id="sl-4" name="sl-4" type="number" value="1" min="0" max="9" step="1" inputmode="numeric" aria-label="Số lượng Sapiens: Lược Sử Loài Người"></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="cell-book">
+																<img src="../assets/images/books/book5.jpg" alt="Bìa sách Muôn Kiếp Nhân Sinh" width="300" height="414" loading="lazy" decoding="async">
+																<div>
+																	<p class="cell-book__title">Muôn Kiếp Nhân Sinh</p>
+																	<p class="cell-book__meta">Nguyễn Phong</p>
+																</div>
+															</div>
+														</td>
+														<td class="admin-table__muted">12 cuốn</td>
+														<td class="admin-table__num">134.400đ</td>
+														<td><input class="field__input order-qty" id="sl-6" name="sl-6" type="number" value="1" min="0" max="12" step="1" inputmode="numeric" aria-label="Số lượng Muôn Kiếp Nhân Sinh"></td>
 													</tr>
 													<tr>
 														<td>
@@ -284,7 +298,7 @@
 										</div>
 
 										<div class="panel__foot">
-											<p>Tổng cộng 3 cuốn. Số lượng vượt quá tồn kho sẽ không được gửi đi.</p>
+											<p>Đơn hiện có <strong>2 cuốn</strong> (Sapiens × 1 · Muôn Kiếp Nhân Sinh × 1). Số lượng vượt quá tồn kho sẽ không được gửi đi.</p>
 										</div>
 									</div>
 								</div>
@@ -299,8 +313,8 @@
 										<div class="field">
 											<p class="field__label">Phương thức thanh toán</p>
 											<div class="field__options">
-												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="cod" checked> COD</label>
-												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="chuyen-khoan"> Chuyển khoản</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="cod"> COD</label>
+												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="chuyen-khoan" checked> Chuyển khoản</label>
 												<label class="field__radio-label"><input class="field__radio" type="radio" name="thanh-toan" value="vi-dien-tu"> Ví điện tử</label>
 											</div>
 										</div>
@@ -315,7 +329,34 @@
 
 										<div class="field">
 											<label class="field__label" for="don-ngay-giao">Ngày giao dự kiến</label>
-											<input class="field__input" id="don-ngay-giao" name="ngay-giao" type="date" value="2026-09-28">
+											<input class="field__input" id="don-ngay-giao" name="ngay-giao" type="date" value="2026-09-22">
+										</div>
+																				<div class="field">
+											<p class="field__label" id="don-trang-thai-label">Trạng thái đơn hàng — chỉ cập nhật xuôi</p>
+											<fieldset class="status-flow" aria-labelledby="don-trang-thai-label">
+												<legend class="visually-hidden">Chọn trạng thái kế tiếp của đơn hàng</legend>
+											<label class="status-flow__item status-flow__item--current">
+												<input class="field__radio" type="radio" name="trang-thai" value="wait" checked disabled>
+												<span><strong>Chưa xác nhận (Chờ xử lý)</strong> — trạng thái hiện tại — không thể quay lui</span>
+											</label>
+											<label class="status-flow__item">
+												<input class="field__radio" type="radio" name="trang-thai" value="confirm" >
+												<span><strong>Đã xác nhận</strong> — bước kế tiếp duy nhất được phép chọn</span>
+											</label>
+											<label class="status-flow__item">
+												<input class="field__radio" type="radio" name="trang-thai" value="cancel" >
+												<span><strong>Đã huỷ</strong> — huỷ được khi đơn chưa giao — đi xuôi, không quay lại</span>
+											</label>
+											<label class="status-flow__item status-flow__item--locked">
+												<input class="field__radio" type="radio" name="trang-thai" value="ship" disabled>
+												<span><strong>Đang giao</strong> — bị khoá: cần xác nhận trước</span>
+											</label>
+											<label class="status-flow__item status-flow__item--locked">
+												<input class="field__radio" type="radio" name="trang-thai" value="done" disabled>
+												<span><strong>Đã giao thành công</strong> — bị khoá: cần đi qua Đã xác nhận rồi Đang giao</span>
+											</label>
+											</fieldset>
+											<p class="field__hint">Trạng thái chỉ được chuyển xuôi: Chưa xác nhận → Đã xác nhận → Đang giao → Đã giao thành công. Trạng thái đã qua và trạng thái chưa tới đều bị khoá. </p>
 										</div>
 									</div>
 
@@ -326,69 +367,65 @@
 										</div>
 
 										<!-- Số tiền viết sẵn theo đúng số lượng ở bảng bên trái:
-										     2 × 89.000đ + 1 × 75.000đ = 253.000đ, cộng 30.000đ ship,
-										     trừ 10.000đ mã SACH10 = 273.000đ -->
+										     1 × 299.000đ + 1 × 134.400đ = 433.400đ, đơn chuyển khoản
+										     đã thanh toán, miễn phí vận chuyển -->
 										<dl class="order-sum">
 											<div class="order-sum__row">
 												<dt>Tạm tính</dt>
-												<dd>253.000đ</dd>
+												<dd>433.400đ</dd>
 											</div>
 											<div class="order-sum__row">
 												<dt>Phí vận chuyển</dt>
-												<dd>30.000đ</dd>
-											</div>
-											<div class="order-sum__row order-sum__row--minus">
-												<dt>Giảm giá</dt>
-												<dd>− 10.000đ</dd>
+												<dd>Miễn phí</dd>
 											</div>
 											<div class="order-sum__row order-sum__row--total">
 												<dt>Tổng cộng</dt>
-												<dd>273.000đ</dd>
+												<dd>433.400đ</dd>
 											</div>
 										</dl>
 
 										<div class="field">
 											<label class="field__label" for="don-ma-giam-gia">Mã giảm giá</label>
-											<input class="field__input" id="don-ma-giam-gia" name="ma-giam-gia" type="text" placeholder="Ví dụ: SACH10" autocomplete="off">
-											<p class="field__hint">Mã SACH10 giảm thêm 10.000đ cho đơn hàng này.</p>
+											<input class="field__input" id="don-ma-giam-gia" name="ma-giam-gia" type="text" value="" placeholder="Đơn này không dùng mã giảm giá" autocomplete="off">
+											<p class="field__hint">Đơn đã thanh toán 433.400đ bằng chuyển khoản.</p>
 										</div>
 
 										<div class="field">
 											<label class="field__label" for="don-tong-tien">Tổng tiền thu hộ</label>
-											<input class="field__input" id="don-tong-tien" name="tong-tien" type="text" value="273.000" inputmode="numeric">
+											<input class="field__input" id="don-tong-tien" name="tong-tien" type="text" value="433.400" inputmode="numeric">
 											<p class="field__hint">Sửa ô này nếu bạn đổi số lượng hoặc mã giảm giá.</p>
 										</div>
 
 										<div class="field">
 											<label class="field__label" for="don-ghi-chu">Ghi chú nội bộ</label>
-											<textarea class="field__textarea" id="don-ghi-chu" name="ghi-chu" rows="3" placeholder="Chỉ nhân viên nhìn thấy nội dung này."></textarea>
+											<textarea class="field__textarea" id="don-ghi-chu" name="ghi-chu" rows="3">Khách đã chuyển khoản đủ 433.400đ. Gọi xác nhận trước khi giao ngày 22/09.</textarea>
 										</div>
 
 										<div class="panel__foot">
-											<p>Sau khi tạo, đơn ở trạng thái <strong>Chờ xử lý</strong> và số lượng tồn kho sẽ được trừ đi.</p>
+											<p>Đơn đang ở trạng thái <strong>Chưa xác nhận</strong>. Chọn <strong>Đã xác nhận</strong> — chỉ được đi xuôi, không quay lui.</p>
 										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="form-actions">
-								<a class="btn btn--primary" href="#xac-nhan-tao-don">Tạo đơn hàng</a>
+								<a class="btn btn--primary" href="#xac-nhan-sua-don">Lưu thay đổi</a>
 								<a class="btn btn--ghost" href="./admin.html#don-hang">Huỷ</a>
 							</div>
 
-							<!-- Bước 2 của “Tạo đơn hàng”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
-							<div class="confirm" id="xac-nhan-tao-don" role="group" aria-label="Tạo đơn hàng này?">
-								<p class="confirm__title">Tạo đơn hàng này?</p>
-								<p class="confirm__text">Đơn sẽ được ghi vào hệ thống ở trạng thái Chờ xử lý và trừ tồn kho tương ứng.</p>
+							<!-- Bước 2 của “Sửa đơn hàng”: bấm lần 1 mở khối này, bấm lần 2 mới thật sự làm. -->
+							<div class="confirm" id="xac-nhan-sua-don" role="group" aria-label="Lưu thay đổi cho đơn hàng này?">
+								<p class="confirm__title">Lưu thay đổi cho đơn #SKB-1022?</p>
+								<p class="confirm__text">Sách trong đơn, trạng thái và tổng tiền mới sẽ được áp dụng ngay sau khi xác nhận.</p>
 								<div class="confirm__actions">
-									<button class="btn btn--primary btn--sm" type="submit">Xác nhận tạo đơn</button>
+									<button class="btn btn--primary btn--sm" type="submit">Xác nhận lưu</button>
 									<a class="btn btn--ghost btn--sm" href="#main">Huỷ</a>
 								</div>
 							</div>
 						</form>
 
-						<!-- Điểm neo của form: hiện ra khi bấm "Tạo đơn hàng" -->
-						<p class="admin-notice" id="da-tao-don" tabindex="-1">Đơn hàng <strong>#SKB-1025</strong> đã được tạo. Tổng tiền thu hộ <strong>273.000đ</strong>, trạng thái <strong>Chờ xử lý</strong>. <a href="./admin.html#don-hang">Xem trong danh sách đơn hàng</a>.</p>
+						<!-- Điểm neo của form: hiện ra khi bấm "Lưu thay đổi" -->
+						<p class="admin-notice" id="da-sua-don" tabindex="-1">Đã lưu thay đổi cho đơn hàng <strong>#SKB-1022</strong>: tổng tiền <strong>433.400đ</strong>, trạng thái <strong>Chờ xử lý</strong>. <a href="./admin.html#don-hang">Xem trong danh sách đơn hàng</a>.</p>
 
 						<p class="admin-notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể tìm theo mã đơn, tên sách hoặc tên khách hàng.</p>
 					</div>

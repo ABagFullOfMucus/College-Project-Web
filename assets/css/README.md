@@ -12,15 +12,17 @@ theo từng trang để dễ đọc, dễ sửa và dễ tìm kiếm.
 | 3 | `components.css` | 402 | `.container`, `.section`, `.btn`, `.tag`, khung ảnh, **thẻ sách** + responsive |
 | 4 | `layout.css` | 445 | Header, menu, ô tìm kiếm, footer + responsive của chúng |
 | 5 | `home.css` | 449 | Hero, thể loại, banner, vì sao chọn, đánh giá, nhận tin (chỉ trang chủ) |
-| 6 | `login.css` | 186 | Trang đăng nhập |
+| 6 | `login.css` | 186 | Trang đăng nhập và đăng ký (`account/login.html`, `account/register.html`, `admin/admin-login.html`) |
 | 7 | `book.css` | 435 | Trang chi tiết sách (chứa cả `.breadcrumb` và `.qty` dùng lại) |
-| 8 | `cart.css` | 414 | Trang giỏ hàng (chứa cả khối `.cart-summary` dùng lại) |
-| 9 | `admin.css` | 513 | Trang quản trị: bố cục, sidebar, thanh trên, thẻ số liệu, biểu đồ |
-| 10 | `admin-data.css` | 557 | Trang quản trị: danh sách, bảng dữ liệu, bộ lọc, phân trang |
-| 11 | `checkout.css` | 384 | Trang thanh toán |
-| 12 | `search.css` | 535 | Trang tìm kiếm: ô tìm kiếm lớn, bộ lọc, danh sách kết quả, thanh phân trang |
-| 13 | `category.css` | 195 | Trang thể loại: lưới thẻ thể loại, thanh phân trang, bảng liệt kê chức năng |
-| 14 | `compat.css` | 69 | Fallback cho trình duyệt cũ - **luôn nạp cuối cùng** |
+| 8 | `cart.css` | ~480 | Trang giỏ hàng (khối `.cart-summary` dùng lại + `.cart-account` “đang đăng nhập”) |
+| 9 | `orders.css` | ~230 | Trang lịch sử mua hàng: thẻ đơn, nhãn trạng thái, dòng sách trong đơn |
+| 10 | `admin.css` | ~850 | Trang quản trị: bố cục, sidebar, thanh trên, chuyển mục bằng `:target` |
+| 11 | `admin-data.css` | ~650 | Trang quản trị: bảng dữ liệu, bộ lọc, form, `.status-flow`, khung xem trước |
+| 12 | `checkout.css` | ~470 | Trang thanh toán + chọn địa chỉ (`.address-*`) |
+| 13 | `search.css` | 535 | Trang tìm kiếm: ô tìm kiếm lớn, bộ lọc, danh sách kết quả, thanh phân trang |
+| 14 | `category.css` | 195 | Trang thể loại: lưới thẻ thể loại, thanh phân trang, bảng liệt kê chức năng |
+| 15 | `contact.css` | 346 | Trang liên hệ + FAQ (chỉ trang `info/contact.html`) |
+| 16 | `compat.css` | 69 | Fallback cho trình duyệt cũ - **luôn nạp cuối cùng** |
 
 > Thứ tự trong bảng là thứ tự ưu tiên (cascade). Nếu thêm file mới, hãy chèn
 > đúng vị trí để các file sau vẫn được ghi đè lên file trước.
@@ -33,8 +35,12 @@ theo từng trang để dễ đọc, dễ sửa và dễ tìm kiếm.
 | `books/book-*.html` | base → components → layout → book → compat |
 | `shop/cart.html` | base → components → layout → **book** → cart → compat |
 | `shop/checkout.html` | base → components → layout → **book** → **cart** → checkout → compat |
+| `shop/order-confirmation.html` | như `shop/checkout.html` (trang xác nhận & lưu đơn) |
 | `account/login.html` | base → components → layout → login → compat |
-| `admin/admin*.html` | base → components → layout → admin → admin-data → compat |
+| `account/register.html` | như `account/login.html` (trang đăng ký người mua) |
+| `account/orders.html` | base → components → layout → **book** → **cart** → orders → compat |
+| `admin/admin*.html` (trừ `admin-login`) | base → components → layout → admin → admin-data → compat |
+| `admin/admin-login.html` | base → components → layout → login → compat (URL riêng, không nạp `admin.css`) |
 | `search/search.html` | base → components → layout → search → compat |
 | `categories/the-loai.html` | base → components → layout → **book** → category → compat |
 | `categories/the-loai-*.html` | như trên |

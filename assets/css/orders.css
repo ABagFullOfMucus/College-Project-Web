@@ -1,0 +1,208 @@
+/* ==========================================================================
+   ORDERS - LỊCH SỬ MUA HÀNG (nhóm theo từng đơn hàng)
+   Nạp sau cart.css (dùng .cart-account và .cart-summary__rows) và trước compat.css.
+   ========================================================================== */
+.orders-summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 32px;
+	margin-bottom: 8px;
+	padding: 16px 20px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.orders-summary__item {
+	margin: 0;
+}
+
+.orders-summary__label {
+	display: block;
+	font-size: .78rem;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	color: var(--color-muted);
+}
+
+.orders-summary__value {
+	font-family: var(--font-heading);
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+/* --- Danh sách đơn: mỗi đơn một thẻ, sách bên trong nhóm theo đơn đó --- */
+.order-list {
+	display: grid;
+	gap: 22px;
+	margin-top: 22px;
+}
+
+.order-card {
+	padding: 22px 24px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+}
+
+.order-card__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding-bottom: 14px;
+	margin-bottom: 16px;
+	border-bottom: 1px dashed var(--color-border);
+}
+
+.order-card__code {
+	margin: 0;
+	font-size: 1.2rem;
+}
+
+.order-card__code a:hover,
+.order-card__code a:focus-visible {
+	color: var(--color-accent-dark);
+}
+
+.order-card__date {
+	margin: 4px 0 0;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+/* Nhãn trạng thái riêng của trang lịch sử (trang người dùng không nạp admin-data.css) */
+.order-status {
+	margin: 0;
+	padding: 6px 14px;
+	border-radius: var(--radius-pill);
+	font-size: .8rem;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.order-status--wait {
+	background-color: var(--color-accent-soft);
+	color: var(--color-accent-dark);
+}
+
+.order-status--ship {
+	background-color: #e6f0fb;
+	color: #2f5d94;
+}
+
+.order-status--done {
+	background-color: #e7f4ec;
+	color: var(--color-success, #3f9c5a);
+}
+
+.order-status--cancel {
+	background-color: #fdeaed;
+	color: #a82c3c;
+}
+
+/* Sách nằm trong đơn đó */
+.order-books {
+	display: grid;
+	gap: 12px;
+	margin: 0 0 18px;
+	padding: 0;
+	list-style: none;
+}
+
+.order-book {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.order-book__thumb {
+	width: 48px;
+	height: auto;
+	border: 1px solid var(--color-border);
+	border-radius: 6px;
+	flex: 0 0 auto;
+}
+
+.order-book__info {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.order-book__title {
+	margin: 0;
+	font-size: .95rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.order-book__title a:hover,
+.order-book__title a:focus-visible {
+	color: var(--color-accent-dark);
+}
+
+.order-book__meta {
+	margin: 2px 0 0;
+	font-size: .82rem;
+	color: var(--color-muted);
+}
+
+.order-book__qty {
+	font-size: .85rem;
+	color: var(--color-muted);
+	white-space: nowrap;
+}
+
+.order-book__price {
+	font-weight: 700;
+	font-size: .92rem;
+	white-space: nowrap;
+}
+
+.order-card__foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding-top: 14px;
+	border-top: 1px dashed var(--color-border);
+}
+
+.order-card__pay {
+	flex: 1 1 280px;
+	margin: 0;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.order-card__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+@media (max-width: 640px) {
+	.order-card {
+		padding: 18px;
+	}
+
+	.order-card__head {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.order-book {
+		flex-wrap: wrap;
+	}
+}
+
+/* Ghi chú nhỏ dưới danh sách */
+.orders-note {
+	margin-top: 18px;
+	font-size: .82rem;
+	color: var(--color-muted);
+}
