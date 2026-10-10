@@ -58,8 +58,22 @@
 	color: var(--color-text);
 }
 
+/* Thông báo đầu tiên nằm ngay dưới .cart-toolbar (hoặc dưới thông báo khác):
+   cần margin-top để không dính sát vào khối phía trên. */
+.cart-notice + .cart-notice,
+.cart-toolbar + .cart-notice {
+	margin-top: 14px;
+}
+
 .cart-notice:target {
 	display: block;
+}
+
+/* Trong .cart-summary là lưới (display: grid + gap) nên bỏ margin của thông báo,
+   nếu không khoảng cách sẽ bị cộng dồn: gap 14px + margin 16px = 30px. */
+.cart-summary .cart-notice {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 /* --- Danh sách sản phẩm --- */

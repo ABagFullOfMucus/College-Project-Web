@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Kết quả tìm kiếm “lập trình” - Nhà Sách Skibidus</title>
+		<title>Kết quả tìm kiếm “chứng khoán” - Nhà Sách Skibidus</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Kết quả tìm kiếm “lập trình” theo tên, tác giả, thể loại. Lọc theo giá, đánh giá và tình trạng còn hàng tại Nhà Sách Skibidus.">
+		<meta name="description" content="Kết quả tìm kiếm “chứng khoán” theo tên, tác giả, thể loại. Lọc theo giá, đánh giá và tình trạng còn hàng tại Nhà Sách Skibidus.">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
 		<link rel="icon" type="image/png" href="../assets/images/logo.png">
 		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
@@ -78,7 +78,7 @@
 						<label class="visually-hidden" for="q">Từ khoá cần tìm</label>
 						<span class="search-box__field">
 							<svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-							<input class="search__input" id="q" name="q" type="search" value="lập trình" placeholder="Ví dụ: Sapiens, Nguyễn Nhật Ánh, lập trình...">
+							<input class="search__input" id="q" name="q" type="search" value="chứng khoán" placeholder="Ví dụ: Sapiens, Nguyễn Nhật Ánh, lập trình...">
 						</span>
 						<button class="btn btn--primary" type="submit">Tìm kiếm</button>
 					</form>
@@ -88,7 +88,7 @@
 						<a class="chip" href="./search-kynangsong.html">Kỹ năng sống</a>
 						<a class="chip" href="./search-vanhoc.html">Văn học</a>
 						<a class="chip" href="./search-nguyennhatanh.html">Nguyễn Nhật Ánh</a>
-						<a class="chip" href="./search-laptrinh.html">Lập trình</a>
+						<a class="chip" href="./search-chungkhoan.html">Chứng khoán</a>
 						<a class="chip" href="./search.html?q=sách+giảm+giá">Sách giảm giá</a>
 					</div>
 				</div>
@@ -113,7 +113,7 @@
 
 					<form class="filters__form" action="./search.html" method="get">
 						<label class="visually-hidden" for="filter-q">Từ khoá đang tìm</label>
-						<input id="filter-q" name="q" type="hidden" value="lập trình">
+						<input id="filter-q" name="q" type="hidden" value="chứng khoán">
 
 						<!-- Khoảng giá: hai ô nhập, chưa áp dụng ngay vì cần backend -->
 						<details class="filter-group" open>
@@ -123,7 +123,7 @@
 								<input class="search__input" id="price-min" name="gia-tu" type="number" min="0" step="1000" placeholder="Từ" value="100000">
 								<span aria-hidden="true">–</span>
 								<label class="visually-hidden" for="price-max">Giá cao nhất</label>
-								<input class="search__input" id="price-max" name="gia-den" type="number" min="0" step="1000" placeholder="Đến" value="150000">
+								<input class="search__input" id="price-max" name="gia-den" type="number" min="0" step="1000" placeholder="Đến" value="200000">
 							</div>
 						</details>
 
@@ -146,14 +146,14 @@
 								</li>
 								<li>
 									<label class="filter-check">
-										<input type="checkbox" name="the-loai" value="kinh-te">
+										<input type="checkbox" name="the-loai" value="kinh-te" checked>
 										<span>Kinh tế</span>
 										<span class="filter-check__count">1.780</span>
 									</label>
 								</li>
 								<li>
 									<label class="filter-check">
-										<input type="checkbox" name="the-loai" value="cong-nghe" checked>
+										<input type="checkbox" name="the-loai" value="cong-nghe">
 										<span>Công nghệ</span>
 										<span class="filter-check__count">570</span>
 									</label>
@@ -234,7 +234,7 @@
 					<h2 class="visually-hidden" id="results-title">Kết quả tìm kiếm</h2>
 
 					<div class="results__head">
-						<p class="results__count">Tìm thấy <strong>3 kết quả</strong> cho từ khoá <strong>“lập trình”</strong> (thể loại Công nghệ, giá 100.000đ – 150.000đ)</p>
+						<p class="results__count">Tìm thấy <strong>3 kết quả</strong> cho từ khoá <strong>“chứng khoán”</strong> (thể loại Kinh tế, giá 100.000đ – 200.000đ)</p>
 
 						<!-- Sắp xếp: chip trỏ tới chính nó, CSS :target tô đậm chip đang dùng -->
 						<nav class="results__sort" aria-label="Sắp xếp kết quả">
@@ -249,43 +249,21 @@
 						<li class="result">
 							<span class="result__media" aria-hidden="true">
 								<span class="tag tag--sale">-20%</span>
-								<img class="result__cover" src="../assets/images/books/book1.jpg" alt="" width="1352" height="2004" loading="lazy" decoding="async">
+								<img class="result__cover" src="../assets/images/books/book9.jpg" alt="" width="200" height="300" loading="lazy" decoding="async">
 							</span>
 							<div class="result__body">
-								<h3 class="result__title"><a href="../books/book-ky-thuat-phan-mem.html">Kỹ Thuật Phần Mềm Cơ Bản</a></h3>
-								<p class="result__author">Nguyễn Minh Hùng</p>
-								<p class="result__desc"><strong>Công nghệ</strong> · Bìa mềm · 4,7 ★★★★★ (1.520 đánh giá). Giá 142.000đ, giảm 20% so với giá bìa 178.000đ.</p>
+								<h3 class="result__title"><a href="../books/book-giao-dich-phu-thuy.html">Giao Dịch Như Một Phù Thủy Chứng Khoán</a></h3>
+								<p class="result__author">Mark Minervini</p>
+								<p class="result__desc"><strong>Kinh tế</strong> · Bìa mềm · 4,7 ★★★★★ (1.960. đánh giá). Giá 188.000đ, giảm 20% so với giá bìa 235.000đ.</p>
 								<div class="result__meta">
-									<span class="price">142.000đ <del class="price__old">178.000đ</del></span>
-									<span class="tag tag--soft">Công nghệ</span>
+									<span class="price">188.000đ <del class="price__old">235.000đ</del></span>
+									<span class="tag tag--soft">Kinh tế</span>
 								</div>
 								<div class="result__foot">
-									<span class="rating" aria-label="Đánh giá 4,7 trên 5, 1.520 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,7 (1.520)</span>
+									<span class="rating" aria-label="Đánh giá 4,7 trên 5, 1.960 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,7 (1.960)</span>
 									<span class="result__actions">
 										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-ky-thuat-phan-mem.html">Chi tiết</a>
-									</span>
-								</div>
-							</div>
-						</li>
-						<li class="result">
-							<span class="result__media" aria-hidden="true">
-								<span class="tag tag--sale">-19%</span>
-								<img class="result__cover" src="../assets/images/books/book4.jpg" alt="" width="304" height="472" loading="lazy" decoding="async">
-							</span>
-							<div class="result__body">
-								<h3 class="result__title"><a href="../books/book-co-so-du-lieu.html">Cơ Sở Dữ Liệu Ứng Dụng</a></h3>
-								<p class="result__author">Trần Kim Hải</p>
-								<p class="result__desc"><strong>Công nghệ</strong> · Bìa mềm · 4,6 ★★★★★ (1.240 đánh giá). Giá 126.000đ, giảm 19% so với giá bìa 157.000đ.</p>
-								<div class="result__meta">
-									<span class="price">126.000đ <del class="price__old">157.000đ</del></span>
-									<span class="tag tag--soft">Công nghệ</span>
-								</div>
-								<div class="result__foot">
-									<span class="rating" aria-label="Đánh giá 4,6 trên 5, 1.240 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,6 (1.240)</span>
-									<span class="result__actions">
-										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-co-so-du-lieu.html">Chi tiết</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-giao-dich-phu-thuy.html">Chi tiết</a>
 									</span>
 								</div>
 							</div>
@@ -293,21 +271,43 @@
 						<li class="result">
 							<span class="result__media" aria-hidden="true">
 								<span class="tag tag--sale">-20%</span>
-								<img class="result__cover" src="../assets/images/books/book5.jpg" alt="" width="300" height="414" loading="lazy" decoding="async">
+								<img class="result__cover" src="../assets/images/books/book11.jpg" alt="" width="200" height="300" loading="lazy" decoding="async">
 							</span>
 							<div class="result__body">
-								<h3 class="result__title"><a href="../books/book-an-minh-khong-mat.html">An Minh Không Mất</a></h3>
-								<p class="result__author">Nguyễn Hoàng Long</p>
-								<p class="result__desc"><strong>Công nghệ</strong> · Bìa mềm · 4,5 ★★★★ (1.080 đánh giá). Giá 98.000đ, giảm 20% so với giá bìa 123.000đ.</p>
+								<h3 class="result__title"><a href="../books/book-loi-the-bat-cong.html">Lợi Thế Bất Công</a></h3>
+								<p class="result__author">Robert T. Kiyosaki</p>
+								<p class="result__desc"><strong>Kinh tế</strong> · Bìa mềm · 4,7 ★★★★★ (2.340. đánh giá). Giá 152.000đ, giảm 20% so với giá bìa 190.000đ.</p>
 								<div class="result__meta">
-									<span class="price">98.000đ <del class="price__old">123.000đ</del></span>
-									<span class="tag tag--soft">Công nghệ</span>
+									<span class="price">152.000đ <del class="price__old">190.000đ</del></span>
+									<span class="tag tag--soft">Kinh tế</span>
 								</div>
 								<div class="result__foot">
-									<span class="rating" aria-label="Đánh giá 4,5 trên 5, 1.080 lượt đánh giá"><span aria-hidden="true">★★★★</span> 4,5 (1.080)</span>
+									<span class="rating" aria-label="Đánh giá 4,7 trên 5, 2.340 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,7 (2.340)</span>
 									<span class="result__actions">
 										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
-										<a class="btn btn--outline btn--sm" href="../books/book-an-minh-khong-mat.html">Chi tiết</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-loi-the-bat-cong.html">Chi tiết</a>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li class="result">
+							<span class="result__media" aria-hidden="true">
+								<span class="tag tag--sale">-20%</span>
+								<img class="result__cover" src="../assets/images/books/book10.jpg" alt="" width="200" height="300" loading="lazy" decoding="async">
+							</span>
+							<div class="result__body">
+								<h3 class="result__title"><a href="../books/book-dung-giao-no-cho-con-ban.html">Đừng Giao Nó Cho Con Bạn</a></h3>
+								<p class="result__author">Alan Crosbie</p>
+								<p class="result__desc"><strong>Kinh tế</strong> · Bìa mềm · 4,5 ★★★★ (1.120. đánh giá). Giá 134.000đ, giảm 20% so với giá bìa 168.000đ.</p>
+								<div class="result__meta">
+									<span class="price">134.000đ <del class="price__old">168.000đ</del></span>
+									<span class="tag tag--soft">Kinh tế</span>
+								</div>
+								<div class="result__foot">
+									<span class="rating" aria-label="Đánh giá 4,5 trên 5, 1.120 lượt đánh giá"><span aria-hidden="true">★★★★★</span> 4,5 (1.120)</span>
+									<span class="result__actions">
+										<a class="btn btn--primary btn--sm" href="../shop/cart.html">Thêm vào giỏ</a>
+										<a class="btn btn--outline btn--sm" href="../books/book-dung-giao-no-cho-con-ban.html">Chi tiết</a>
 									</span>
 								</div>
 							</div>
@@ -327,7 +327,7 @@
 							<li><a href="./search-kynangsong.html">Kỹ năng sống</a></li>
 							<li><a href="./search-vanhoc.html">Văn học</a></li>
 							<li><a href="./search-nguyennhatanh.html">Nguyễn Nhật Ánh</a></li>
-							<li><a href="./search-laptrinh.html">Lập trình (Công nghệ, 100.000đ – 150.000đ)</a></li>
+							<li><a href="./search-chungkhoan.html">Chứng khoán (Kinh tế, 100.000đ – 200.000đ)</a></li>
 						</ul>
 						<p>Xem sách theo thể loại với phân trang thật:</p>
 						<ul>
@@ -336,7 +336,7 @@
 							<li><a href="../categories/the-loai-ky-nang-song.html">Kỹ năng sống</a></li>
 							<li><a href="../categories/the-loai-thieu-nhi.html">Thiếu nhi</a></li>
 							<li><a href="../categories/the-loai-ngoai-ngu.html">Ngoại ngữ</a></li>
-							<li><a href="../categories/the-loai-cong-nghe.html">Công nghệ</a></li>
+							<li><a href="../categories/the-loai-kinh-te.html">Kinh tế</a></li>
 						</ul>
 					</div>
 

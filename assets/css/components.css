@@ -550,6 +550,96 @@
 }
 
 
+/* ==========================================================================
+   ĐƯỜNG DẪN (BREADCRUMB) & PHÂN TRANG — dùng chung nhiều trang
+   Trước đây hai khối này bị sao chép y hệt ở book.css / search.css /
+   contact.css / category.css. Nay gom về một chỗ duy nhất ở đây (mọi trang
+   đều nạp components.css) để sửa một nơi là áp dụng cho toàn site. Các khác
+   biệt theo từng trang (ví dụ margin-top của .pagination) vẫn để ở file trang.
+   ========================================================================== */
+.breadcrumb {
+	padding-block: 18px;
+	background-color: var(--color-surface-alt);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumb__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.breadcrumb__list li + li::before {
+	content: "/";
+	margin-right: 8px;
+	color: var(--color-border-strong);
+}
+
+.breadcrumb__list a:hover,
+.breadcrumb__list a:focus-visible {
+	color: var(--color-accent-dark);
+}
+
+.breadcrumb__list [aria-current="page"] {
+	color: var(--color-ink);
+	font-weight: 600;
+}
+
+/* --- Thanh phân trang (bản thương mại) --- */
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.pagination__link {
+	display: grid;
+	place-items: center;
+	min-width: 40px;
+	height: 40px;
+	padding-inline: 10px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-sm);
+	font-size: .9rem;
+	color: var(--color-text);
+	transition: color var(--transition), background-color var(--transition),
+		border-color var(--transition);
+}
+
+.pagination__link:hover,
+.pagination__link:focus-visible {
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+.pagination__link[aria-current="page"] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+	font-weight: 700;
+}
+
+.pagination__link--disabled {
+	color: var(--color-muted);
+	background-color: var(--color-surface-alt);
+}
+
+/* --- Bảng thông số ấn phẩm (trang chi tiết sách) ---
+   Thẻ <dl class="specs"> trước đây không có rule riêng, chỉ các con .specs__*
+   được style. Khai báo khung ở đây để các hàng .specs__row căn đều khoảng cách. */
+.specs {
+	display: grid;
+	gap: 12px;
+	margin: 0;
+}
+
+
 /* --- Tablet & mobile --- */
 @media (max-width: 900px) {
 	.section {

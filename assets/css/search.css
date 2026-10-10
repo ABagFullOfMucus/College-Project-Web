@@ -5,37 +5,7 @@
    Mọi trạng thái "đang lọc / sắp xếp" đều bật bằng CSS :target.
    ========================================================================== */
 
-/* --- Breadcrumb (khai báo lại vì trang này không nạp book.css/contact.css) --- */
-.breadcrumb {
-	padding-block: 18px;
-	background-color: var(--color-surface-alt);
-	border-bottom: 1px solid var(--color-border);
-}
-
-.breadcrumb__list {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 8px;
-	font-size: .85rem;
-	color: var(--color-muted);
-}
-
-.breadcrumb__list li + li::before {
-	content: "/";
-	margin-right: 8px;
-	color: var(--color-border-strong);
-}
-
-.breadcrumb__list a:hover,
-.breadcrumb__list a:focus-visible {
-	color: var(--color-accent-dark);
-}
-
-.breadcrumb__list [aria-current="page"] {
-	color: var(--color-ink);
-	font-weight: 600;
-}
+/* --- Breadcrumb: khai báo dùng chung ở components.css --- */
 
 /* --- Khối tìm kiếm đầu trang --- */
 .search-hero {
@@ -426,47 +396,10 @@ mark {
 	margin-left: auto;
 }
 
-/* --- Phân trang --- */
+/* --- Phân trang: khai báo dùng chung ở components.css.
+   Ở đây chỉ giữ khoảng cách trên riêng của trang kết quả tìm kiếm. --- */
 .pagination {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
 	margin-top: 30px;
-}
-
-.pagination__link {
-	display: grid;
-	place-items: center;
-	min-width: 40px;
-	height: 40px;
-	padding-inline: 10px;
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border-strong);
-	border-radius: var(--radius-sm);
-	font-size: .9rem;
-	color: var(--color-text);
-	transition: color var(--transition), border-color var(--transition),
-		background-color var(--transition);
-}
-
-.pagination__link:hover,
-.pagination__link:focus-visible {
-	border-color: var(--color-accent);
-	color: var(--color-accent-dark);
-}
-
-.pagination__link[aria-current="page"] {
-	background-color: var(--color-accent);
-	border-color: var(--color-accent);
-	color: #fff;
-	font-weight: 700;
-}
-
-.pagination__link--disabled {
-	color: var(--color-muted);
-	background-color: var(--color-surface-alt);
 }
 
 /* --- Gợi ý khi không có kết quả --- */

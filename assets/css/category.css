@@ -51,48 +51,10 @@
 	color: var(--color-muted);
 }
 
-/* --- Thanh phân trang ------------------------------------------------- */
-/* Khai báo lại vì trang này không nạp search.css (file chứa .pagination) */
+/* --- Thanh phân trang: khai báo dùng chung ở components.css.
+   Ở đây chỉ giữ khoảng cách trên riêng của trang thể loại. --- */
 .pagination {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
 	margin-top: 34px;
-}
-
-.pagination__link {
-	display: grid;
-	place-items: center;
-	min-width: 40px;
-	height: 40px;
-	padding-inline: 10px;
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border-strong);
-	border-radius: var(--radius-sm);
-	font-size: .9rem;
-	color: var(--color-text);
-	transition: color var(--transition), background-color var(--transition),
-		border-color var(--transition);
-}
-
-.pagination__link:hover,
-.pagination__link:focus-visible {
-	border-color: var(--color-accent);
-	color: var(--color-accent-dark);
-}
-
-.pagination__link[aria-current="page"] {
-	background-color: var(--color-accent);
-	border-color: var(--color-accent);
-	color: #fff;
-	font-weight: 700;
-}
-
-.pagination__link--disabled {
-	color: var(--color-muted);
-	background-color: var(--color-surface-alt);
 }
 
 /* --- Dòng thông báo số lượng ------------------------------------------ */

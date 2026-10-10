@@ -4,37 +4,7 @@
    Không dùng JavaScript: mọi thông báo và xác nhận đều bật bằng CSS :target.
    ========================================================================== */
 
-/* --- Đường dẫn (breadcrumb) --- */
-.breadcrumb {
-	padding-block: 18px;
-	background-color: var(--color-surface-alt);
-	border-bottom: 1px solid var(--color-border);
-}
-
-.breadcrumb__list {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 8px;
-	font-size: .85rem;
-	color: var(--color-muted);
-}
-
-.breadcrumb__list li + li::before {
-	content: "/";
-	margin-right: 8px;
-	color: var(--color-border-strong);
-}
-
-.breadcrumb__list a:hover,
-.breadcrumb__list a:focus-visible {
-	color: var(--color-accent-dark);
-}
-
-.breadcrumb__list [aria-current="page"] {
-	color: var(--color-ink);
-	font-weight: 600;
-}
+/* --- Đường dẫn (breadcrumb): khai báo dùng chung ở components.css --- */
 
 /* --- Bố cục: thông tin | biểu mẫu --- */
 .contact-grid {

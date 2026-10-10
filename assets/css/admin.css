@@ -230,6 +230,17 @@
 	animation: none;
 }
 
+/* Mở user: tương tự khóa, mục Khách hàng giữ active khi mỏ neo mo-user
+   được nhắm tới (bấm "Mở khóa") */
+#xac-nhan-mo-user:target ~ .admin .admin-sidebar .admin-nav__link--active,
+#da-mo-user:target ~ .admin .admin-sidebar .admin-nav__link--active {
+	background-color: transparent;
+	color: var(--color-text);
+	font-weight: 600;
+	box-shadow: none;
+	animation: none;
+}
+
 /* Mỏ neo .admin-target đứng trước sidebar nên dùng dấu ~ là tới được,
    không cần :has() (tương thích Firefox ESR 115) */
 #tong-quan:target ~ .admin .admin-sidebar .admin-nav__link[href="#tong-quan"],
@@ -274,6 +285,16 @@
 	background-color: var(--color-accent-soft);
 	color: var(--color-accent-dark);
 	/* Giống hệt .admin-nav__link--active: sọc trái + chữ đậm + nhún nhẹ */
+	font-weight: 700;
+	box-shadow: inset 3px 0 0 var(--color-accent);
+	animation: admin-nav-pop .3s ease;
+}
+
+/* Mở user: mục Khách hàng giữ active khi mỏ neo da-mo-user được nhắm tới */
+#xac-nhan-mo-user:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"],
+#da-mo-user:target ~ .admin .admin-sidebar .admin-nav__link[href="#khach-hang"] {
+	background-color: var(--color-accent-soft);
+	color: var(--color-accent-dark);
 	font-weight: 700;
 	box-shadow: inset 3px 0 0 var(--color-accent);
 	animation: admin-nav-pop .3s ease;
@@ -458,6 +479,8 @@
 #da-xoa-sach:target ~ .admin .admin-main .admin-view--kho-sach,
 #xac-nhan-khoa-user:target ~ .admin .admin-main .admin-view--khach-hang,
 #da-khoa-user:target ~ .admin .admin-main .admin-view--khach-hang,
+#xac-nhan-mo-user:target ~ .admin .admin-main .admin-view--khach-hang,
+#da-mo-user:target ~ .admin .admin-main .admin-view--khach-hang,
 #cai-dat-gioi-thieu:target ~ .admin .admin-main .admin-view--cai-dat {
 	display: block;
 }
@@ -499,6 +522,8 @@
 #da-xoa-sach:target ~ .admin .admin-main .admin-view--tong-quan,
 #xac-nhan-khoa-user:target ~ .admin .admin-main .admin-view--tong-quan,
 #da-khoa-user:target ~ .admin .admin-main .admin-view--tong-quan,
+#xac-nhan-mo-user:target ~ .admin .admin-main .admin-view--tong-quan,
+#da-mo-user:target ~ .admin .admin-main .admin-view--tong-quan,
 #cai-dat-gioi-thieu:target ~ .admin .admin-main .admin-view--tong-quan {
 	display: none;
 }
@@ -520,7 +545,8 @@
 #da-thong-ke:target ~ .admin .admin-main .admin-notice--da-thong-ke,
 #da-an-sach:target ~ .admin .admin-main .admin-notice--da-an-sach,
 #da-xoa-sach:target ~ .admin .admin-main .admin-notice--da-xoa-sach,
-#da-khoa-user:target ~ .admin .admin-main .admin-notice--da-khoa-user {
+#da-khoa-user:target ~ .admin .admin-main .admin-notice--da-khoa-user,
+#da-mo-user:target ~ .admin .admin-main .admin-notice--da-mo-user {
 	display: block;
 }
 
@@ -542,6 +568,7 @@
 #xac-nhan-an-sach:target ~ .admin .admin-main .confirm--xac-nhan-an-sach,
 #xac-nhan-xoa-sach:target ~ .admin .admin-main .confirm--xac-nhan-xoa-sach,
 #xac-nhan-khoa-user:target ~ .admin .admin-main .confirm--xac-nhan-khoa-user,
+#xac-nhan-mo-user:target ~ .admin .admin-main .confirm--xac-nhan-mo-user,
 #xac-nhan-xem-gian-sach:target ~ .admin .admin-main .confirm--xem-gian-sach {
 	display: block;
 	animation: confirm-flash .9s ease;

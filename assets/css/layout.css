@@ -375,10 +375,6 @@
 		gap: 36px;
 	}
 
-	.search__input {
-		width: 180px;
-	}
-
 	/* Font serif của menu rộng hơn chữ thường: ở màn hình vừa phải thu gap
 	   của menu và ô tìm kiếm lại để nút "Đăng nhập" không tràn ra ngoài. */
 	.main-nav__list {
