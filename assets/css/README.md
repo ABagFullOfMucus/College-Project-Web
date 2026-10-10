@@ -22,7 +22,9 @@ theo từng trang để dễ đọc, dễ sửa và dễ tìm kiếm.
 | 13 | `search.css` | 535 | Trang tìm kiếm: ô tìm kiếm lớn, bộ lọc, danh sách kết quả, thanh phân trang |
 | 14 | `category.css` | 195 | Trang thể loại: lưới thẻ thể loại, thanh phân trang, bảng liệt kê chức năng |
 | 15 | `contact.css` | 346 | Trang liên hệ + FAQ (chỉ trang `info/contact.html`) |
-| 16 | `compat.css` | 69 | Fallback cho trình duyệt cũ - **luôn nạp cuối cùng** |
+| 16 | `danh-gia.css` | ~490 | Trang đánh giá (`info/danh-gia.html`): điểm tổng kết, phân bố sao, lọc radio `:checked`, phân trang `:target`, biểu mẫu chấm sao |
+| 17 | `khuyen-mai.css` | ~480 | Trang khuyến mãi (`info/khuyen-mai.html`): dải số liệu, lọc radio `:checked`, thẻ mã giảm giá kiểu vé, cách dùng mã |
+| 18 | `compat.css` | 69 | Fallback cho trình duyệt cũ - **luôn nạp cuối cùng** |
 
 > Thứ tự trong bảng là thứ tự ưu tiên (cascade). Nếu thêm file mới, hãy chèn
 > đúng vị trí để các file sau vẫn được ghi đè lên file trước.
@@ -44,6 +46,13 @@ theo từng trang để dễ đọc, dễ sửa và dễ tìm kiếm.
 | `categories/the-loai.html` | base → components → layout → **book** → category → compat |
 | `categories/the-loai-*.html` | như trên |
 | `info/contact.html` | base → components → layout → contact → compat |
+| `info/danh-gia.html` | base → components → layout → **home** → **contact** → danh-gia → compat |
+| `info/khuyen-mai.html` | base → components → layout → **home** → **contact** → khuyen-mai → compat |
+
+`info/danh-gia.html` nạp thêm `home.css` (dùng lại `.review*`) và `contact.css`
+(dùng lại `.contact-*` và `.faq`); `info/khuyen-mai.html` nạp thêm `home.css`
+(dùng lại `.promo`) và `contact.css` (`.faq`) — cùng kiểu dùng lại như
+`shop/cart.html` / `shop/checkout.html` đã làm với `.breadcrumb` và `.cart-summary`.
 
 `index.html` là trang duy nhất ở thư mục gốc, các trang còn lại nằm trong thư mục
 theo nhóm (`books/`, `categories/`, `shop/`, `search/`, `account/`, `admin/`,

@@ -93,6 +93,13 @@
 	font-size: .9rem;
 }
 
+/* Bố cục cố định chia đều các cột, nhưng cột đầu (tên sách, mã đơn, tên khách)
+   luôn cần chỗ hơn các cột số. Nếu không chỉ định, tên sách dài sẽ tràn khỏi ô
+   và đè chữ lên cột "Thể loại" bên cạnh. */
+.admin-table th:first-child {
+	width: 34%;
+}
+
 .admin-table th {
 	padding: 13px 16px;
 	background-color: var(--color-surface-alt);
@@ -110,6 +117,9 @@
 	padding: 14px 16px;
 	border-bottom: 1px solid var(--color-border);
 	vertical-align: middle;
+	/* Chuỗi dài không có khoảng trắng (email, mã đơn...) không xuống dòng
+	   được sẽ tràn khỏi ô và đè lên cột bên cạnh — cho phép ngắt từ khi cần */
+	overflow-wrap: break-word;
 }
 
 .admin-table tbody tr:last-child td {
@@ -161,7 +171,9 @@
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	min-width: 220px;
+	/* min-width: 0 để khối co vừa ô bảng (bảng dùng table-layout: fixed);
+	   nếu đặt min-width cứng, tên sách dài sẽ tràn đè sang cột bên cạnh */
+	min-width: 0;
 }
 
 .cell-book img {
@@ -173,9 +185,17 @@
 	box-shadow: var(--shadow-sm);
 }
 
+/* Khối chữ bên trong flex: cho phép co lại để tên sách xuống dòng
+   thay vì tràn ra ngoài ô */
+.cell-book > div {
+	min-width: 0;
+}
+
 .cell-book__title {
 	font-weight: 700;
 	color: var(--color-ink);
+	/* Từ quá dài vẫn ngắt được, không phá vỡ hàng bảng */
+	overflow-wrap: break-word;
 }
 
 .cell-book__meta {
@@ -487,10 +507,6 @@
 		grid-template-columns: 1fr;
 	}
 
-	.filter-bar {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
 	.order-detail {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -549,7 +565,6 @@
 	}
 
 	.metric-grid,
-	.filter-bar,
 	.field-grid,
 	.order-detail {
 		grid-template-columns: 1fr;

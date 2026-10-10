@@ -1,0 +1,489 @@
+/* ==========================================================================
+   DANH GIA - TRANG ĐÁNH GIÁ KHÁCH HÀNG
+   Điểm tổng kết + phân bố sao, bộ lọc theo số sao (radio ẩn + :checked,
+   để vẫn kết hợp được với phân trang :target), danh sách 2 trang, biểu mẫu
+   chấm sao và câu hỏi thường gặp. Không dùng JavaScript.
+   Nạp sau contact.css và trước compat.css.
+   ========================================================================== */
+
+/* --- Đường dẫn (breadcrumb): khai báo dùng chung ở components.css --- */
+
+/* --- Điểm tổng kết ---------------------------------------------- */
+.rating-summary {
+	display: grid;
+	grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+	padding: 26px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+}
+
+.rating-score {
+	display: grid;
+	justify-items: center;
+	gap: 6px;
+	padding: 20px 18px;
+	text-align: center;
+	background-color: var(--color-surface-alt);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+}
+
+.rating-score__value {
+	font-family: var(--font-heading);
+	font-size: clamp(2.6rem, 6vw, 3.6rem);
+	font-weight: 700;
+	line-height: 1;
+	color: var(--color-ink);
+}
+
+.rating-score__stars {
+	font-size: 1.15rem;
+	letter-spacing: .1em;
+}
+
+.rating-score__total {
+	margin: 0;
+	font-size: .88rem;
+	color: var(--color-muted);
+}
+
+.rating-score__recommend {
+	margin-top: 4px;
+	padding: 6px 14px;
+	background-color: var(--color-accent-soft);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .82rem;
+	font-weight: 600;
+	color: var(--color-accent-dark);
+}
+
+/* --- Phân bố điểm: 5 dòng, thanh lấp theo tỉ lệ (biến --fill) --- */
+.rating-dist {
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	align-content: center;
+}
+
+.rating-row {
+	display: grid;
+	grid-template-columns: 46px minmax(0, 1fr) 82px;
+	gap: 12px;
+	align-items: center;
+	font-size: .85rem;
+}
+
+.rating-row__label {
+	color: var(--color-text);
+}
+
+.rating-row__count {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	color: var(--color-muted);
+}
+
+.rating-track {
+	height: 10px;
+	background-color: var(--color-surface-alt);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	overflow: hidden;
+}
+
+.rating-fill {
+	display: block;
+	height: 100%;
+	/* --fill đặt inline trên từng dòng, ví dụ style="--fill: 72%" */
+	width: var(--fill, 0%);
+	background-color: var(--color-accent);
+	border-radius: inherit;
+}
+
+.rating-row--top .rating-fill {
+	background-color: var(--color-accent-dark);
+}
+
+/* --- Khối danh sách: nút lọc radio đứng trước để dùng ~ (anh em chung) --- */
+.reviews-panel {
+	position: relative;
+	display: grid;
+	gap: 18px;
+}
+
+/* Radio ẩn nhưng vẫn focus được bằng bàn phím */
+.review-anchor {
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* --- Thanh lọc theo số sao --- */
+.review-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.review-filters__label {
+	font-size: .85rem;
+	font-weight: 600;
+	color: var(--color-ink);
+}
+
+.review-chip {
+	display: inline-block;
+	padding: 6px 14px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .82rem;
+	font-weight: 600;
+	color: var(--color-text);
+	cursor: pointer;
+	user-select: none;
+	transition: color var(--transition), border-color var(--transition),
+		background-color var(--transition);
+}
+
+.review-chip:hover {
+	background-color: var(--color-accent-soft);
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+/* Radio đang được tích → chip tương ứng nổi bật (tự loại trừ nên
+   không cần viết rule hạ cấp cho các chip khác) */
+#loc-tat-ca:checked ~ .review-filters label[for="loc-tat-ca"],
+#loc-5-sao:checked ~ .review-filters label[for="loc-5-sao"],
+#loc-4-sao:checked ~ .review-filters label[for="loc-4-sao"],
+#loc-3-sao:checked ~ .review-filters label[for="loc-3-sao"],
+#loc-2-sao:checked ~ .review-filters label[for="loc-2-sao"],
+#loc-1-sao:checked ~ .review-filters label[for="loc-1-sao"] {
+	background-color: var(--color-ink);
+	border-color: var(--color-ink);
+	color: #fff;
+}
+
+/* Viền tập trung cho bàn phím: chỉ chip của radio đang focus hiện viền */
+#loc-tat-ca:focus-visible ~ .review-filters label[for="loc-tat-ca"],
+#loc-5-sao:focus-visible ~ .review-filters label[for="loc-5-sao"],
+#loc-4-sao:focus-visible ~ .review-filters label[for="loc-4-sao"],
+#loc-3-sao:focus-visible ~ .review-filters label[for="loc-3-sao"],
+#loc-2-sao:focus-visible ~ .review-filters label[for="loc-2-sao"],
+#loc-1-sao:focus-visible ~ .review-filters label[for="loc-1-sao"] {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* --- Dòng đếm: đổi câu chữ theo bộ lọc đang chọn --- */
+.review-count {
+	margin: 0;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.review-count [data-count] {
+	display: none;
+}
+
+.review-count [data-count="all"] {
+	display: inline;
+}
+
+#loc-5-sao:checked ~ .review-count [data-count],
+#loc-4-sao:checked ~ .review-count [data-count],
+#loc-3-sao:checked ~ .review-count [data-count],
+#loc-2-sao:checked ~ .review-count [data-count],
+#loc-1-sao:checked ~ .review-count [data-count] {
+	display: none;
+}
+
+#loc-5-sao:checked ~ .review-count [data-count="5"],
+#loc-4-sao:checked ~ .review-count [data-count="4"],
+#loc-3-sao:checked ~ .review-count [data-count="3"],
+#loc-2-sao:checked ~ .review-count [data-count="2"],
+#loc-1-sao:checked ~ .review-count [data-count="1"] {
+	display: inline;
+}
+
+/* --- Lọc thẻ: ẩn hết, rồi hiện lại đúng data-stars --- */
+#loc-5-sao:checked ~ .review-grid .review { display: none; }
+#loc-5-sao:checked ~ .review-grid .review[data-stars="5"] { display: grid; }
+#loc-4-sao:checked ~ .review-grid .review { display: none; }
+#loc-4-sao:checked ~ .review-grid .review[data-stars="4"] { display: grid; }
+#loc-3-sao:checked ~ .review-grid .review { display: none; }
+#loc-3-sao:checked ~ .review-grid .review[data-stars="3"] { display: grid; }
+#loc-2-sao:checked ~ .review-grid .review { display: none; }
+#loc-2-sao:checked ~ .review-grid .review[data-stars="2"] { display: grid; }
+#loc-1-sao:checked ~ .review-grid .review { display: none; }
+#loc-1-sao:checked ~ .review-grid .review[data-stars="1"] { display: grid; }
+
+/* --- Thẻ đánh giá: mở rộng cho bản danh sách đầy đủ ---------------- */
+.review-grid--full {
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+/* Hàng trên: sao bên trái, nhãn "Đã mua hàng" bên phải */
+.review__top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin: 0;
+}
+
+.review__badge {
+	flex: 0 0 auto;
+	padding: 2px 10px;
+	background-color: var(--color-accent-soft);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .02em;
+	color: var(--color-accent-dark);
+}
+
+/* Dòng liên kết tới cuốn sách được đánh giá */
+.review__book {
+	margin: 0;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.review__book a {
+	font-weight: 600;
+	color: var(--color-accent-dark);
+}
+
+.review__book a:hover,
+.review__book a:focus-visible {
+	text-decoration: underline;
+}
+
+/* Chân thẻ: số hữu ích bên trái, ngày bên phải */
+.review__foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 0;
+	font-size: .78rem;
+	color: var(--color-muted);
+}
+
+.review__date {
+	flex: 0 0 auto;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+/* --- Phân trang: trang 2 ẩn mặc định, #trang-2:target mới hiện --- */
+.review-grid--page-2 {
+	display: none;
+}
+
+#trang-2:target ~ .review-grid--page-1 {
+	display: none;
+}
+
+#trang-2:target ~ .review-grid--page-2 {
+	display: grid;
+}
+
+#trang-1:target ~ .review-grid--page-2 {
+	display: none;
+}
+
+/* Trang đang xem: tô đậm số thứ tự tương ứng */
+a.pagination__page[href="#trang-1"] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+}
+
+#trang-2:target ~ .pagination a.pagination__page[href="#trang-1"] {
+	background-color: transparent;
+	border-color: var(--color-border-strong);
+	color: var(--color-text);
+}
+
+#trang-2:target ~ .pagination a.pagination__page[href="#trang-2"] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+}
+
+/* Nút Trước: tắt khi đang ở trang 1, bật khi ở trang 2 */
+.pagination .pagination__link--prev {
+	color: var(--color-muted);
+	background-color: var(--color-surface-alt);
+	border-color: var(--color-border);
+	pointer-events: none;
+}
+
+#trang-2:target ~ .pagination .pagination__link--prev {
+	color: inherit;
+	background-color: var(--color-surface);
+	border-color: var(--color-border-strong);
+	pointer-events: auto;
+}
+
+/* Nút Sau: ngược lại với Trước */
+#trang-2:target ~ .pagination .pagination__link--next {
+	color: var(--color-muted);
+	background-color: var(--color-surface-alt);
+	border-color: var(--color-border);
+	pointer-events: none;
+}
+
+/* --- Biểu mẫu chấm sao (radio thuần CSS) -------------------------- */
+.review-form {
+	gap: 18px;
+}
+
+.review-form__legend {
+	margin: 0 0 4px;
+	font-family: var(--font-heading);
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+/* fieldset ẩn mọi viền mặc định của trình duyệt */
+.star-picker {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.star-picker__hint {
+	margin: 0 0 8px;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+/* 5 radio xếp row-reverse: ô 5 nằm cuối DOM nhưng hiển thị ngoài cùng bên
+   phải, nên :checked ~ label tô vàng đúng các sao bên trái (điểm đã chọn) */
+.star-picker__stars {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	gap: 4px;
+}
+
+.star-picker__stars input {
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.star-picker__stars label {
+	font-size: 1.75rem;
+	line-height: 1;
+	color: var(--color-border-strong);
+	cursor: pointer;
+	transition: color var(--transition);
+}
+
+.star-picker__stars input:checked ~ label {
+	color: #e2a72e;
+}
+
+.star-picker__stars input:hover ~ label {
+	color: #e2a72e;
+}
+
+.star-picker__stars input:focus-visible + label {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* --- Câu hỏi thường gặp: dùng lại .faq (contact.css) --- */
+.review-faq {
+	margin-top: 8px;
+}
+
+/* --- Responsive ---------------------------------------------------- */
+@media (max-width: 1080px) {
+	.rating-summary {
+		grid-template-columns: 1fr;
+	}
+
+	.rating-score {
+		justify-items: start;
+		text-align: left;
+	}
+}
+
+@media (max-width: 640px) {
+	.rating-summary {
+		padding: 20px;
+	}
+
+	.rating-row {
+		grid-template-columns: 40px minmax(0, 1fr) 66px;
+		gap: 8px;
+		font-size: .8rem;
+	}
+
+	/* Thanh lọc cuộn ngang thay vì bóp chữ */
+	.review-filters {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		padding-bottom: 4px;
+	}
+
+	.review-filters__label {
+		flex: 0 0 auto;
+	}
+
+	.review-chip {
+		flex: 0 0 auto;
+	}
+
+	.review-grid--full {
+		grid-template-columns: 1fr;
+	}
+
+	.review__top {
+		flex-wrap: wrap;
+	}
+
+	.star-picker__stars label {
+		font-size: 1.5rem;
+	}
+}
+
+/* Tôn trọng cài đặt giảm chuyển động của người dùng */
+@media (prefers-reduced-motion: reduce) {
+	.review-chip,
+	.star-picker__stars label {
+		transition: none;
+	}
+}
+
+
+

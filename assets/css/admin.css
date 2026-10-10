@@ -368,11 +368,13 @@
 
 .admin-topbar__search {
 	flex: 1;
+	min-width: 0;
 	max-width: 420px;
 }
 
 .admin-topbar__search .search__input {
 	width: 100%;
+	min-width: 0;
 }
 
 .admin-topbar__actions {
@@ -391,6 +393,9 @@
 .admin-user__avatar {
 	display: grid;
 	place-items: center;
+	/* flex: 0 0 auto giữ khối đúng 38x38 khi chật chỗ — nếu không,
+	   avatar bị bóp méo thành hình ôvan lúc thu hẹp trình duyệt */
+	flex: 0 0 auto;
 	width: 38px;
 	height: 38px;
 	background-color: var(--color-ink);
@@ -414,6 +419,11 @@
 .admin-user__name {
 	font-size: .85rem;
 	color: var(--color-ink);
+	/* Tên dài không đẩy chồng các mục khác của thanh trên: cắt bằng dấu ba chấm */
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .admin-user__role {
@@ -900,3 +910,27 @@
 	flex: 1;
 	text-align: center;
 }
+
+/* --- Màn hình vừa: ô tìm kiếm của thanh trên rơi xuống hàng riêng ----
+   Trước đây thanh trên không xuống dòng nên ô tìm kiếm, nút hamburger và
+   khối người dùng đè lên nhau khi cửa sổ hẹp lại. */
+@media (max-width: 768px) {
+	.admin-topbar {
+		flex-wrap: wrap;
+		gap: 10px 16px;
+		padding-block: 12px;
+	}
+
+	/* Ô tìm kiếm chiếm trọn hàng thứ hai, đẩy xuống dưới nút menu */
+	.admin-topbar__search {
+		flex: 1 1 100%;
+		max-width: none;
+		order: 3;
+	}
+
+	/* Khối người dùng giữ nguyên bên phải nhưng không bị đẩy lệch */
+	.admin-topbar__actions {
+		margin-left: auto;
+	}
+}
+

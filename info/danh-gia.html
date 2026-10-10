@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Liên hệ - Nhà Sách Skibidus</title>
+		<title>Đánh giá khách hàng - Nhà Sách Skibidus</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Liên hệ với Nhà Sách Skibidus: hotline 0901 234 567, email hotro@nhasachskibidus.vn, cửa hàng tại 123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh.">
+		<meta name="description" content="Đánh giá khách hàng về Nhà Sách Skibidus: điểm số trung bình, phân bố theo từng số sao và hàng nghìn phản hồi thật từ độc giả trên toàn quốc.">
 		<!-- Favicon: dùng chính ảnh logo của thương hiệu -->
-		<link rel="icon" type="image/png" href="../assets/images/logo.png">
+		<link rel="icon" type="image/png" href="../assets/images/general/logo.png">
 		<!-- CSS: reset -> base -> components -> layout -> trang -> compat -->
 		<link rel="stylesheet" href="../assets/css/reset.css">
 		<link rel="stylesheet" href="../assets/css/base.css">
 		<link rel="stylesheet" href="../assets/css/components.css">
 		<link rel="stylesheet" href="../assets/css/layout.css">
+		<!-- Dùng lại thẻ đánh giá (.review) từ home.css, biểu mẫu liên hệ +
+		     khối FAQ từ contact.css (giống cách shop/checkout.html nạp thêm
+		     book.css / cart.css để dùng lại .breadcrumb và .cart-summary) -->
+		<link rel="stylesheet" href="../assets/css/home.css">
 		<link rel="stylesheet" href="../assets/css/contact.css">
+		<link rel="stylesheet" href="../assets/css/danh-gia.css">
 		<link rel="stylesheet" href="../assets/css/compat.css">
 	</head>
 	<body>
 		<!-- Cho phép người dùng bàn phím nhảy thẳng tới nội dung chính -->
 		<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
 
-<header class="site-header">
+		<!-- ==================== HEADER ==================== -->
+		<header class="site-header">
 			<div class="container site-header__inner">
 				<a class="logo" href="../index.html">
 					<span class="logo__mark" aria-hidden="true">
-						<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+						<img src="../assets/images/general/logo.png" alt="" width="96" height="96" decoding="async">
 					</span>
 					<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 				</a>
@@ -39,9 +45,9 @@
 						<li><a class="main-nav__link" href="../index.html#hero">Trang chủ</a></li>
 						<li><a class="main-nav__link" href="../index.html#featured">Sách mới</a></li>
 						<li><a class="main-nav__link" href="../categories/the-loai.html">Thể loại</a></li>
-						<li><a class="main-nav__link" href="../index.html#promo">Khuyến mãi</a></li>
-						<li><a class="main-nav__link" href="../index.html#reviews">Đánh giá</a></li>
-						<li><a class="main-nav__link main-nav__link--active" href="./contact.html" aria-current="page">Liên hệ</a></li>
+						<li><a class="main-nav__link" href="./khuyen-mai.html">Khuyến mãi</a></li>
+						<li><a class="main-nav__link main-nav__link--active" href="./danh-gia.html" aria-current="page">Đánh giá</a></li>
+						<li><a class="main-nav__link" href="./contact.html">Liên hệ</a></li>
 					</ul>
 				</nav>
 
@@ -61,232 +67,432 @@
 				</div>
 			</div>
 		</header>
-	<main id="main">
 
-		<!-- Thông báo chung: hiện bằng CSS :target, không cần JavaScript -->
-		<div class="container">
-			<p class="notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể thử tìm theo tên sách hoặc tác giả.</p>
-			<p class="notice" id="chua-san-hang" tabindex="-1">Trang này đang được xây dựng.</p>
-		</div>
+		<main id="main">
 
-		<!-- Đường dẫn tới trang đang xem -->
-		<nav class="breadcrumb" aria-label="Đường dẫn">
+			<!-- Thông báo chung: hiện bằng CSS :target, không cần JavaScript -->
 			<div class="container">
-				<ol class="breadcrumb__list">
-					<li><a href="../index.html">Trang chủ</a></li>
-					<li aria-current="page">Liên hệ</li>
-				</ol>
+				<p class="notice" id="tim-kiem-xong" tabindex="-1">Chức năng tìm kiếm sẽ hiện kết quả tại đây. Bạn có thể thử tìm theo tên sách hoặc tác giả.</p>
+				<p class="notice" id="chua-san-hang" tabindex="-1">Trang này đang được xây dựng.</p>
+				<p class="notice notice--success" id="da-gui-danh-gia" tabindex="-1">Cảm ơn bạn! Đánh giá của bạn đã được ghi nhận và sẽ hiển thị sau khi kiểm duyệt.</p>
 			</div>
-		</nav>
 
-		<!-- ==================== LIÊN HỆ ==================== -->
-		<section class="section" aria-labelledby="lien-he">
-			<div class="container">
-				<div class="section__head">
-					<p class="eyebrow">Chúng tôi luôn sẵn sàng</p>
-					<h1 class="section__title" id="lien-he">Liên hệ với Nhà Sách Skibidus</h1>
-					<p class="section__desc">Bạn cần tìm một cuốn sách, đổi trả đơn hàng hay hợp tác xuất bản? Gửi tin nhắn cho chúng tôi, đội ngũ tư vấn sẽ phản hồi trong vòng <strong>24 giờ</strong> làm việc.</p>
+			<!-- Đường dẫn tới trang đang xem -->
+			<nav class="breadcrumb" aria-label="Đường dẫn">
+				<div class="container">
+					<ol class="breadcrumb__list">
+						<li><a href="../index.html">Trang chủ</a></li>
+						<li aria-current="page">Đánh giá</li>
+					</ol>
 				</div>
+			</nav>
 
-				<div class="contact-grid">
-					<!-- ---------- Thông tin liên hệ ---------- -->
-					<div class="contact-info">
-						<div class="contact-card">
-							<h2 class="contact-card__title">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6.5h16v11H4z"/><path d="m4 7 8 6 8-6"/></svg>
-								Email
-							</h2>
-							<p class="contact-card__text">Gửi thư tới <a href="mailto:hotro@nhasachskibidus.vn">hotro@nhasachskibidus.vn</a>, chúng tôi trả lời trong 24 giờ làm việc.</p>
-						</div>
-
-						<div class="contact-card">
-							<h2 class="contact-card__title">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z"/></svg>
-								Hotline
-							</h2>
-							<p class="contact-card__text">Gọi <a href="tel:+84901234567">0901 234 567</a> (8:00 – 21:00) hoặc hotline <a href="tel:+841900686868">1900 6868</a>.</p>
-						</div>
-
-						<div class="contact-card">
-							<h2 class="contact-card__title">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-								Cửa hàng
-							</h2>
-							<p class="contact-card__text">123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh. Dừng chân mua sắm trực tiếp mỗi ngày.</p>
-							<dl class="contact-hours">
-								<dt>Thứ 2 – Thứ 6</dt>
-								<dd>8:00 – 21:00</dd>
-								<dt>Thứ 7</dt>
-								<dd>9:00 – 21:00</dd>
-								<dt>Chủ nhật</dt>
-								<dd class="is-closed">Nghỉ</dd>
-							</dl>
-						</div>
-
-						<div class="contact-card">
-							<h2 class="contact-card__title">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4.5" y="11" width="15" height="9.5" rx="2.2"/></svg>
-								Hợp tác xuất bản
-							</h2>
-							<p class="contact-card__text">Bạn là nhà xuất bản cần đưa sách lên Skibidus? Ghi rõ tên nhà xuất bản và số lượng đầu sách trong tin nhắn.</p>
-						</div>
+			<!-- ==================== TỔNG KẾT ĐIỂM ==================== -->
+			<section class="section" aria-labelledby="tieu-de-danh-gia">
+				<div class="container">
+					<div class="section__head">
+						<p class="eyebrow">Đánh giá</p>
+						<h1 class="section__title" id="tieu-de-danh-gia">Khách hàng nói gì về chúng tôi</h1>
+						<p class="section__desc">Hơn 50.000 độc giả trên khắp cả nước đã tin tưởng lựa chọn chúng tôi. Dưới đây là điểm số và những phản hồi mới nhất được kiểm duyệt từ người mua thật.</p>
 					</div>
 
-					<!-- ---------- Biểu mẫu gửi tin ---------- -->
-					<div>
-						<!-- Gửi form tới chính id của thông báo: bấm "Gửi tin nhắn" thì trình
-						     duyệt nhảy tới #da-gui-tin và khối thông báo hiện ra.
-						     Hoạt động nhờ CSS :target, không cần JavaScript. -->
-						<form class="contact-form" action="#da-gui-tin" method="get">
+					<!-- Điểm tổng kết + phân bố sao -->
+					<div class="rating-summary">
+						<div class="rating-score">
+							<p class="rating-score__value">4,8</p>
+							<p class="stars rating-score__stars" aria-label="Đánh giá trung bình 4,8 trên 5">★★★★★</p>
+							<p class="rating-score__total">Từ 12.480 lượt đánh giá</p>
+							<p class="rating-score__recommend">96% khách hàng giới thiệu cho bạn bè</p>
+						</div>
 
-							<div class="contact-done" id="da-gui-tin" tabindex="-1" role="status">
-								<h2 class="contact-done__title">Đã gửi tin nhắn!</h2>
-								<p class="contact-done__text">Cảm ơn bạn đã liên hệ với Nhà Sách Skibidus. Mã tiếp nhận <strong>LH-2026-0117</strong>, chúng tôi sẽ phản hồi tới <strong>ban@example.com</strong> trong vòng 24 giờ làm việc.</p>
-								<p class="contact-done__actions">
-									<a class="btn btn--primary btn--sm" href="../index.html#featured">Xem sách nổi bật</a>
-									<a class="btn btn--outline btn--sm" href="./contact.html">Gửi tin khác</a>
-								</p>
+						<dl class="rating-dist">
+							<div class="rating-row rating-row--top">
+								<dt class="rating-row__label">5 sao</dt>
+								<dd class="rating-track" style="--fill: 74%"><span class="rating-fill"></span></dd>
+								<dd class="rating-row__count">9.210</dd>
 							</div>
+							<div class="rating-row">
+								<dt class="rating-row__label">4 sao</dt>
+								<dd class="rating-track" style="--fill: 19%"><span class="rating-fill"></span></dd>
+								<dd class="rating-row__count">2.340</dd>
+							</div>
+							<div class="rating-row">
+								<dt class="rating-row__label">3 sao</dt>
+								<dd class="rating-track" style="--fill: 5%"><span class="rating-fill"></span></dd>
+								<dd class="rating-row__count">620</dd>
+							</div>
+							<div class="rating-row">
+								<dt class="rating-row__label">2 sao</dt>
+								<dd class="rating-track" style="--fill: 2%"><span class="rating-fill"></span></dd>
+								<dd class="rating-row__count">190</dd>
+							</div>
+							<div class="rating-row">
+								<dt class="rating-row__label">1 sao</dt>
+								<dd class="rating-track" style="--fill: 1%"><span class="rating-fill"></span></dd>
+								<dd class="rating-row__count">120</dd>
+							</div>
+						</dl>
+					</div>
+				</div>
+			</section>
 
-							<fieldset class="contact-block">
-								<legend class="contact-block__title">Thông tin của bạn</legend>
-								<div class="contact-fields">
-									<div class="contact-field">
-										<label class="contact-label" for="lh-ten">Họ và tên <span class="contact-label__required" aria-hidden="true">*</span></label>
-										<input class="contact-input" id="lh-ten" name="ten" type="text" placeholder="Nguyễn Văn A" autocomplete="name" required>
-									</div>
-									<div class="contact-field">
-										<label class="contact-label" for="lh-email">Email <span class="contact-label__required" aria-hidden="true">*</span></label>
-										<input class="contact-input" id="lh-email" name="email" type="email" placeholder="ban@example.com" autocomplete="email" required>
-									</div>
-									<div class="contact-field">
-										<label class="contact-label" for="lh-dien-thoai">Số điện thoại</label>
-										<input class="contact-input" id="lh-dien-thoai" name="dien-thoai" type="tel" placeholder="0901 234 567" autocomplete="tel" inputmode="tel" pattern="[0-9 +.-]{9,15}">
-									</div>
-									<div class="contact-field">
-										<label class="contact-label" for="lh-chu-de">Bạn cần hỗ trợ về</label>
-										<select class="contact-select" id="lh-chu-de" name="chu-de">
-											<option value="tim-sach">Tìm kiếm sách</option>
-											<option value="don-hang">Đơn hàng &amp; giao hàng</option>
-											<option value="doi-tra">Đổi trả / hoàn tiền</option>
-											<option value="hop-tac">Hợp tác xuất bản</option>
-											<option value="khac">Vấn đề khác</option>
-										</select>
-									</div>
-									<div class="contact-field contact-field--full">
-										<label class="contact-label" for="lh-noi-dung">Nội dung <span class="contact-label__required" aria-hidden="true">*</span></label>
-										<textarea class="contact-textarea" id="lh-noi-dung" name="noi-dung" rows="6" placeholder="Mô tả rõ bạn cần hỗ trợ gì, kèm mã đơn hàng nếu có." required></textarea>
-										<p class="contact-hint">Chúng tôi chỉ dùng thông tin này để trả lời bạn, không chia sẻ cho bên thứ ba.</p>
-									</div>
+			<!-- ==================== DANH SÁCH ĐÁNH GIÁ ==================== -->
+			<section class="section section--alt" aria-labelledby="danh-sach-danh-gia">
+				<div class="container">
+					<div class="section__head">
+						<p class="eyebrow">Phản hồi mới nhất</p>
+						<h2 class="section__title" id="danh-sach-danh-gia">Tất cả đánh giá của độc giả</h2>
+						<p class="section__desc">Lọc theo số sao hoặc chuyển trang để xem thêm. Mọi trạng thái đều chạy bằng CSS, không cần JavaScript.</p>
+					</div>
+
+					<!-- Khối cuộn: các input ẩn PHẢI đứng trước để bộ lọc,
+					     dòng đếm, lưới và phân trang dùng được cùng("~") -->
+					<div class="reviews-panel">
+						<input class="review-anchor" type="radio" name="loc-danh-gia" id="loc-tat-ca" checked>
+						<input class="review-anchor" type="radio" name="loc-danh-gia" id="loc-5-sao">
+						<input class="review-anchor" type="radio" name="loc-danh-gia" id="loc-4-sao">
+						<input class="review-anchor" type="radio" name="loc-danh-gia" id="loc-3-sao">
+						<input class="review-anchor" type="radio" name="loc-danh-gia" id="loc-2-sao">
+						<input class="review-anchor" type="radio" name="loc-danh-gia" id="loc-1-sao">
+						<!-- Mỏ neo phân trang: href="#trang-2" trong thanh phân trang
+						     nhắm vào hai thẻ này, nên lưới trang 2 mới hiện lên -->
+						<span class="review-anchor" id="trang-1" aria-hidden="true"></span>
+						<span class="review-anchor" id="trang-2" aria-hidden="true"></span>
+
+						<nav class="review-filters" aria-label="Lọc đánh giá theo số sao">
+							<span class="review-filters__label">Lọc theo số sao:</span>
+							<label class="review-chip" for="loc-tat-ca">Tất cả</label>
+							<label class="review-chip" for="loc-5-sao">5 sao</label>
+							<label class="review-chip" for="loc-4-sao">4 sao</label>
+							<label class="review-chip" for="loc-3-sao">3 sao</label>
+							<label class="review-chip" for="loc-2-sao">2 sao</label>
+							<label class="review-chip" for="loc-1-sao">1 sao</label>
+						</nav>
+
+						<p class="review-count">
+							<span data-count="all">Đang hiển thị 12 đánh giá mới nhất trong 12.480 phản hồi</span>
+							<span data-count="5">Đang hiển thị 9.210 đánh giá 5 sao</span>
+							<span data-count="4">Đang hiển thị 2.340 đánh giá 4 sao</span>
+							<span data-count="3">Đang hiển thị 620 đánh giá 3 sao</span>
+							<span data-count="2">Đang hiển thị 190 đánh giá 2 sao</span>
+							<span data-count="1">Đang hiển thị 120 đánh giá 1 sao</span>
+						</p>
+
+					<!-- ============ TRANG 1 ============ -->
+						<ul class="review-grid review-grid--full review-grid--page-1">
+							<li class="review" data-stars="5">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 5 trên 5">★★★★★</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Đặt tối hôm trước, chiều hôm sau đã nhận được sách. Bìa cứng đẹp, giấy dày không hề có vết gãy. Gói chống sốc cẩn thận lắm, sẽ tiếp tục ủng hộ.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-dac-nhan-tam.html">Đắc Nhân Tâm</a></p>
+								<p class="review__foot"><span>Hữu ích (48)</span><span class="review__date">01/10/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-1.png" alt="Ảnh đại diện của khách hàng Nguyễn Thị Lan" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Nguyễn Thị Lan</strong>
+										<span class="review__role">Giáo viên — Hà Nội</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="5">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 5 trên 5">★★★★★</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Bản tiếng Việt dịch rất mượt, in rõ từng nét. Mình đã áp dụng thói quen 1% mỗi ngày được ba tuần và thấy hiệu quả thật sự. Rất đáng đồng tiền.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-atomic-habits.html">Atomic Habits: Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</a></p>
+								<p class="review__foot"><span>Hữu ích (36)</span><span class="review__date">28/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-2.png" alt="Ảnh đại diện của khách hàng Trần Quốc Bảo" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Trần Quốc Bảo</strong>
+										<span class="review__role">Kỹ sư phần mềm — Đà Nẵng</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="4">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 4 trên 5">★★★★☆</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Cuốn sách truyền cảm hứng tốt, phù hợp cho tuổi học trò. Chỉ tiếc là bìa mềm nên hơi cong sau vài lần gấp. Sách giao nhanh, đóng gói ổn.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-tuoi-tre-dang-gia-bao-nhieu.html">Tuổi Trẻ Đáng Giá Bao Nhiêu?</a></p>
+								<p class="review__foot"><span>Hữu ích (24)</span><span class="review__date">26/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-3.png" alt="Ảnh đại diện của khách hàng Lê Thu Hà" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Lê Thu Hà</strong>
+										<span class="review__role">Sinh viên — TP. Hồ Chí Minh</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="5">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 5 trên 5">★★★★★</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Lần đầu đọc sách lịch sử mà không bị khô khan. Giao hàng đúng hẹn, nhân viên gọi xác nhận trước khi ship. Trải nghiệm mua sắm rất trơn tru.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-sapiens.html">Sapiens: Lược Sử Loài Người</a></p>
+								<p class="review__foot"><span>Hữu ích (19)</span><span class="review__date">24/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-4.png" alt="Ảnh đại diện của khách hàng Đỗ Minh Anh" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Đỗ Minh Anh</strong>
+										<span class="review__role">Kinh doanh — Bình Dương</span>
+									</span>
+								</div>
+							</li>
+
+							<li class="review" data-stars="3">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 3 trên 5">★★★☆☆</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Truyện hay nhưng bản in hơi nhỏ chữ, đọc lâu mỏi mắt. Giao hàng đúng trong 2 ngày, sách không hư hại gì. Đánh giá trung bình, vẫn ổn với mức giá này.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-mat-biec.html">Mắt Biếc</a></p>
+								<p class="review__foot"><span>Hữu ích (15)</span><span class="review__date">22/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-5.png" alt="Ảnh đại diện của khách hàng Phạm Ngọc Hân" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Phạm Ngọc Hân</strong>
+										<span class="review__role">Nhân viên văn phòng — Cần Thơ</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="5">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 5 trên 5">★★★★★</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Mua làm quà tặng cho em họ, bé thích lắm. Sách in màu đẹp, giấy chắc. Shop còn nhắn lời cảm ơn kèm bookmark nhỏ, chi tiết rất dễ thương.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-de-men-phieu-luu-ky.html">Dế Mèn Phiêu Lưu Ký</a></p>
+								<p class="review__foot"><span>Hữu ích (12)</span><span class="review__date">20/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-6.png" alt="Ảnh đại diện của khách hàng Võ Hưng Khanh" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Võ Hưng Khanh</strong>
+										<span class="review__role">Sinh viên — Huế</span>
+									</span>
+								</div>
+							</li>
+						</ul>
+
+						<!-- ============ TRANG 2 ============ -->
+						<ul class="review-grid review-grid--full review-grid--page-2">
+							<li class="review" data-stars="5">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 5 trên 5">★★★★★</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Đọc từ hồi lớp sáu, giờ mua lại cho em trai. Cuốn sách hồn nhiên và trong trẻo đến lạ. Đơn hàng đóng gói kỹ, nhận được nguyên vẹn.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-toi-thay-hoa-vang-tren-co-xanh.html">Tôi Thấy Hoa Vàng Trên Cỏ Xanh</a></p>
+								<p class="review__foot"><span>Hữu ích (31)</span><span class="review__date">18/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-7.png" alt="Ảnh đại diện của khách hàng Bùi Ngọc Ánh" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Bùi Ngọc Ánh</strong>
+										<span class="review__role">Designer — TP. Hồ Chí Minh</span>
+									</span>
+								</div>
+							</li>
+
+							<li class="review" data-stars="4">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 4 trên 5">★★★★☆</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Sách kinh điển, nội dung vẫn còn nguyên giá trị sau bao nhiêu năm. Bản in mới, giấy thơm. Thiếu một chút chú thích biên khảo nên chấm 4 sao.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-nghi-giau-lam-giau.html">Nghĩ Giàu Làm Giàu</a></p>
+								<p class="review__foot"><span>Hữu ích (17)</span><span class="review__date">16/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-8.png" alt="Ảnh đại diện của khách hàng Hoàng Tuấn Kiệt" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Hoàng Tuấn Kiệt</strong>
+										<span class="review__role">Freelancer — Đồng Nai</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="5">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 5 trên 5">★★★★★</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Tủ sách của mình thêm một tựa quốc dân nữa. Đặt buổi tối, sáng hôm sau shipper đã gọi. Giá lại còn đang khuyến mãi, hời quá!</blockquote>
+								<p class="review__book">Về: <a href="../books/book-song-thong-minh.html">Sống Thông Minh</a></p>
+								<p class="review__foot"><span>Hữu ích (11)</span><span class="review__date">14/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-1.png" alt="Ảnh đại diện của khách hàng Đặng Mỹ Linh" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Đặng Mỹ Linh</strong>
+										<span class="review__role">Marketing — Hải Phòng</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="2">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 2 trên 5">★★☆☆☆</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Nội dung sách ổn nhưng bản mình nhận bị lệch gáy nhẹ. Đã phản hồi với shop và được hỗ trợ đổi trả nhanh nên không phàn nàn nhiều.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-tu-duy-thiet-ke.html">Tư Duy Thiết Kế</a></p>
+								<p class="review__foot"><span>Hữu ích (9)</span><span class="review__date">12/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-2.png" alt="Ảnh đại diện của khách hàng Lưu Thành Đạt" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Lưu Thành Đạt</strong>
+										<span class="review__role">Kiến trúc sư — Quảng Nam</span>
+									</span>
+								</div>
+							</li>
+
+							<li class="review" data-stars="1">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 1 trên 5">★☆☆☆☆</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Đơn của mình giao trễ ba ngày, lại còn thiếu sổ tay đi kèm. Đã khiếu nại và được hoàn tiền phần thiếu. Hy vọng shop cải thiện khâu đóng gói.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-lang-anh-1.html">Luyện Thi HSK 1</a></p>
+								<p class="review__foot"><span>Hữu ích (7)</span><span class="review__date">10/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-3.png" alt="Ảnh đại diện của khách hàng Trịnh Hữu Duy" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Trịnh Hữu Duy</strong>
+										<span class="review__role">Sinh viên — Bình Định</span>
+									</span>
+								</div>
+							</li>
+							<li class="review" data-stars="4">
+								<p class="review__top">
+									<span class="stars" role="img" aria-label="Đánh giá 4 trên 5">★★★★☆</span>
+									<span class="review__badge">Đã mua hàng</span>
+								</p>
+								<blockquote class="review__quote">Sách thực tế, giúp mình hiểu khách hàng hơn khi đi phỏng vấn. In màu bắt mắt, chỉ tiếc là giá chưa kèm khuyến mãi cho khách mới.</blockquote>
+								<p class="review__book">Về: <a href="../books/book-trai-nghiem-khach-hang.html">Trải Nghiệm Khách Hàng</a></p>
+								<p class="review__foot"><span>Hữu ích (6)</span><span class="review__date">08/09/2026</span></p>
+								<div class="review__author">
+									<img class="review__avatar" src="../assets/images/general/customer-avatar-4.png" alt="Ảnh đại diện của khách hàng Vũ Thảo My" width="56" height="56" loading="lazy" decoding="async">
+									<span class="review__info">
+										<strong class="review__name">Vũ Thảo My</strong>
+										<span class="review__role">Chăm sóc khách hàng — Vĩnh Long</span>
+									</span>
+								</div>
+							</li>
+						</ul>
+
+						<!-- Phân trang: #trang-2:target mới chuyển sang lưới trang 2 -->
+						<nav class="pagination" aria-label="Phân trang đánh giá">
+							<a class="pagination__link pagination__link--prev" href="#trang-1">Trước</a>
+							<a class="pagination__link pagination__page" href="#trang-1">1</a>
+							<a class="pagination__link pagination__page" href="#trang-2">2</a>
+							<a class="pagination__link pagination__link--next" href="#trang-2">Sau</a>
+						</nav>
+					</div>
+				</div>
+			</section>
+
+			<!-- ==================== GỬI ĐÁNH GIÁ ==================== -->
+			<section class="section" aria-labelledby="gui-danh-gia">
+				<div class="container">
+					<div class="section__head">
+						<p class="eyebrow">Của bạn</p>
+						<h2 class="section__title" id="gui-danh-gia">Chia sẻ trải nghiệm mua sách</h2>
+						<p class="section__desc">Bạn đã từng mua sách tại Skibidus? Chấm sao và để lại cảm nhận — mỗi đánh giá đều giúp độc giả khác chọn được cuốn sách hợp gu.</p>
+					</div>
+
+					<div class="contact-block">
+						<!-- Gửi form tới id của thông báo success: bấm "Gửi đánh giá" thì
+						     trình duyệt nhảy tới #da-gui-danh-gia và khối thông báo
+						     trên đầu trang hiện ra. Hoạt động nhờ CSS :target. -->
+						<form class="contact-form review-form" action="#da-gui-danh-gia" method="get">
+							<fieldset class="star-picker">
+								<legend class="review-form__legend">Đánh giá của bạn</legend>
+								<p class="star-picker__hint">Chọn 1 đến 5 sao — rê chuột để xem trước, dùng phím Tab và phím mũi tên trên bàn phím cũng được.</p>
+								<div class="star-picker__stars">
+									<input type="radio" name="diem" id="sao-5" value="5" required><label for="sao-5" aria-label="5 sao">★</label>
+									<input type="radio" name="diem" id="sao-4" value="4"><label for="sao-4" aria-label="4 sao">★</label>
+									<input type="radio" name="diem" id="sao-3" value="3"><label for="sao-3" aria-label="3 sao">★</label>
+									<input type="radio" name="diem" id="sao-2" value="2"><label for="sao-2" aria-label="2 sao">★</label>
+									<input type="radio" name="diem" id="sao-1" value="1"><label for="sao-1" aria-label="1 sao">★</label>
 								</div>
 							</fieldset>
 
+							<div class="contact-fields">
+								<div class="contact-field">
+									<label class="contact-label" for="ten-khach">Họ và tên <span class="contact-label__required">*</span></label>
+									<input class="contact-input" id="ten-khach" name="ten" type="text" placeholder="Nguyễn Văn A" autocomplete="name" required>
+								</div>
+								<div class="contact-field">
+									<label class="contact-label" for="email-khach">Email <span class="contact-label__required">*</span></label>
+									<input class="contact-input" id="email-khach" name="email" type="email" placeholder="ban@example.com" autocomplete="email" required>
+								</div>
+								<div class="contact-field contact-field--full">
+									<label class="contact-label" for="sach-da-mua">Cuốn sách bạn đánh giá</label>
+									<select class="contact-select" id="sach-da-mua" name="sach">
+										<option>Đắc Nhân Tâm</option>
+										<option>Atomic Habits: Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</option>
+										<option>Sapiens: Lược Sử Loài Người</option>
+										<option>Mắt Biếc</option>
+										<option>Tôi Thấy Hoa Vàng Trên Cỏ Xanh</option>
+										<option>Khác (ghi rõ trong cảm nhận)</option>
+									</select>
+								</div>
+								<div class="contact-field contact-field--full">
+									<label class="contact-label" for="noi-dung-danh-gia">Cảm nhận của bạn <span class="contact-label__required">*</span></label>
+									<textarea class="contact-textarea" id="noi-dung-danh-gia" name="noi-dung" placeholder="Sách giao nhanh, đóng gói cẩn thận..." minlength="20" required></textarea>
+									<p class="contact-hint">Tối thiểu 20 ký tự. Đánh giá được kiểm duyệt trong 24 giờ làm việc.</p>
+								</div>
+							</div>
+
 							<div class="contact-actions">
-								<button class="btn btn--primary" type="submit">Gửi tin nhắn</button>
-								<a class="btn btn--outline" href="../index.html">Bỏ qua</a>
+								<button class="btn btn--primary" type="submit">Gửi đánh giá</button>
+								<a class="btn btn--ghost" href="#danh-sach-danh-gia">Quay lại danh sách</a>
 							</div>
 						</form>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- ==================== BẢN ĐỒ ==================== -->
-		<section class="section section--alt" aria-labelledby="ban-do">
-			<div class="container">
-				<div class="section__head">
-					<p class="eyebrow">Đường đến cửa hàng</p>
-					<h2 class="section__title" id="ban-do">Bản đồ</h2>
-					<p class="section__desc">Cửa hàng nằm trên đường Sách, cách chợ Bến Thành khoảng 5 phút đi bộ.</p>
-				</div>
-
-				<figure class="contact-map">
-					<div class="contact-map__frame">
-						<!-- Sơ đồ vẽ bằng SVG nội tuyến nên không tốn ảnh ngoài và không cần mạng -->
-						<svg viewBox="0 0 1120 420" role="img" aria-labelledby="ban-do-mo-ta">
-							<title id="ban-do-mo-ta">Sơ đồ vị trí cửa hàng Nhà Sách Skibidus</title>
-							<rect width="1120" height="420" fill="#f4ece0"/>
-
-							<!-- Các con đường -->
-							<g stroke="#e0d2bd" stroke-width="26" stroke-linecap="square">
-								<path d="M0 96h1120"/>
-								<path d="M0 300h1120"/>
-								<path d="M232 0v420"/>
-								<path d="M760 0v420"/>
-							</g>
-							<g stroke="#ffffff" stroke-width="16" stroke-linecap="square">
-								<path d="M0 96h1120"/>
-								<path d="M0 300h1120"/>
-								<path d="M232 0v420"/>
-								<path d="M760 0v420"/>
-							</g>
-
-							<!-- Vỉa hè và công viên -->
-							<rect x="792" y="112" width="270" height="172" rx="10" fill="#dce8d4"/>
-							<text x="927" y="204" text-anchor="middle" font-family="system-ui, sans-serif" font-size="19" fill="#6f8a63">Công viên</text>
-							<rect x="60" y="112" width="140" height="172" rx="10" fill="#e7e0d3"/>
-
-							<!-- Chợ Bến Thành làm mốc -->
-							<rect x="826" y="128" width="202" height="60" rx="8" fill="#cbb9a0"/>
-							<text x="927" y="166" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#5c4d3c">Chợ Bến Thành</text>
-
-							<!-- Cửa hàng: vị trí nổi bật nhất trên sơ đồ -->
-							<g>
-								<path d="M496 300 L496 262 A22 22 0 0 1 540 262 L540 300 Z" fill="#c8442f"/>
-								<circle cx="518" cy="248" r="11" fill="#c8442f"/>
-								<circle cx="518" cy="248" r="34" fill="none" stroke="#c8442f" stroke-width="3" opacity=".45"/>
-							</g>
-							<rect x="404" y="316" width="228" height="46" rx="12" fill="#1d1b16"/>
-							<text x="518" y="346" text-anchor="middle" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#ffffff">Nhà Sách Skibidus</text>
-
-							<!-- Nhãn đường -->
-							<text x="20" y="82" font-family="system-ui, sans-serif" font-size="16" fill="#8a7a66">Đường Sách</text>
-							<text x="770" y="82" font-family="system-ui, sans-serif" font-size="16" fill="#8a7a66">Đường Lê Thánh Tôn</text>
-						</svg>
+			<!-- ==================== CÂU HỎI THƯỜNG GẶP ==================== -->
+			<section class="section section--alt" aria-labelledby="faq-danh-gia">
+				<div class="container">
+					<div class="section__head">
+						<p class="eyebrow">Giải đáp nhanh</p>
+						<h2 class="section__title" id="faq-danh-gia">Câu hỏi về đánh giá</h2>
+						<p class="section__desc">Điểm số được tính thế nào và đánh giá của bạn được xử lý ra sao? Bấm vào câu hỏi để mở câu trả lời.</p>
 					</div>
-					<figcaption>123 Đường Sách, Phường Bến Thành, TP. Hồ Chí Minh · Điện thoại 0901 234 567</figcaption>
-				</figure>
-			</div>
-		</section>
 
-		<!-- ==================== CÂU HỎI THƯỜNG GẶP ==================== -->
-		<section class="section" aria-labelledby="faq">
-			<div class="container">
-				<div class="section__head">
-					<p class="eyebrow">Giải đáp nhanh</p>
-					<h2 class="section__title" id="faq">Câu hỏi thường gặp</h2>
-					<p class="section__desc">Một số câu hỏi tụng phổ biến nhất về giao hàng, đổi trả và thanh toán. Bấm vào câu hỏi để mở câu trả lời.</p>
+					<div class="faq review-faq">
+						<details class="faq__item">
+							<summary>Điểm trung bình 4,8 được tính như thế nào?</summary>
+							<p class="faq__answer">Điểm trung bình cộng có trọng số của toàn bộ 12.480 lượt đánh giá đã kiểm duyệt, làm tròn tới một chữ số thập phân. Mỗi lượt đánh giá đều tính ngang nhau, không phân biệt khách cũ hay khách mới.</p>
+						</details>
+						<details class="faq__item">
+							<summary>Ai được phép để lại đánh giá?</summary>
+							<p class="faq__answer">Chỉ những tài khoản đã hoàn tất đơn hàng mới được chấm sao cho cuốn sách tương ứng. Điều này giúp đánh giá luôn đi kèm trải nghiệm mua thật, bạn có thể nhận ra qua nhãn “Đã mua hàng”.</p>
+						</details>
+						<details class="faq__item">
+							<summary>Tôi sửa được cảm nhận sau khi gửi không?</summary>
+							<p class="faq__answer">Được. Trong vòng 24 giờ sau khi gửi, bạn trả lời email xác nhận để chỉnh sửa nội dung. Sau khi đã hiển thị công khai, phản hồi chỉ còn bị ẩn khi vi phạm quy định cộng đồng.</p>
+						</details>
+						<details class="faq__item">
+							<summary>Vì sao đánh giá của tôi chưa hiển thị?</summary>
+							<p class="faq__answer">Mọi phản hồi mới đều qua bước kiểm duyệt trong 24 giờ làm việc để lọc spam và ngôn từ không phù hợp. Nếu quá 48 giờ vẫn chưa thấy, hãy liên hệ hotline 0901 234 567 để được hỗ trợ.</p>
+						</details>
+					</div>
 				</div>
+			</section>
 
-				<div class="faq">
-					<details class="faq__item">
-						<summary>Phí giao hàng là bao nhiêu?</summary>
-						<p class="faq__answer">Đơn dưới 150.000đ được miễn phí giao hàng. Từ 150.000đ trở lên, phí cố định 30.000đ toàn quốc, giao trong 2 – 4 ngày làm việc.</p>
-					</details>
-					<details class="faq__item">
-						<summary>Tôi muốn đổi trả sách thì làm sao?</summary>
-						<p class="faq__answer">Bạn có 7 ngày kể từ ngày nhận hàng để đổi trả, miễn sách còn nguyên tem và bìa. Gửi tin nhắn kèm mã đơn, chúng tôi hướng dẫn các bước còn lại.</p>
-					</details>
-					<details class="faq__item">
-						<summary>Có nhận thanh toán qua ví điện tử không?</summary>
-						<p class="faq__answer">Có. Chúng tôi nhận Visa, Mastercard, COD và chuyển khoản qua ví MoMo, ZaloPay. Thanh toán chuyển khoản được xác nhận nhanh nhất.</p>
-					</details>
-					<details class="faq__item">
-						<summary>Sách trên website có bản quyền không?</summary>
-						<p class="faq__answer">Tất cả đầu sách tại Nhà Sách Skibidus đều là bản chính hãng, có tem bảo quyền của nhà xuất bản và giấy tờ bản quyền kèm theo.</p>
-					</details>
-				</div>
-			</div>
-		</section>
+		</main>
 
-	</main>
-
-<footer class="site-footer" id="contact">
+		<!-- ==================== FOOTER ==================== -->
+		<footer class="site-footer" id="contact">
 			<div class="container site-footer__inner">
 				<div class="site-footer__col site-footer__col--brand">
 					<a class="logo logo--footer" href="../index.html#hero">
 						<span class="logo__mark" aria-hidden="true">
-							<img src="../assets/images/logo.png" alt="" width="96" height="96" decoding="async">
+							<img src="../assets/images/general/logo.png" alt="" width="96" height="96" decoding="async">
 						</span>
 						<span class="logo__text">Nhà Sách <strong>Skibidus</strong></span>
 					</a>
@@ -358,3 +564,10 @@
 		</footer>
 	</body>
 </html>
+
+
+
+
+
+
+

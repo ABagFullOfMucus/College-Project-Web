@@ -1,0 +1,485 @@
+/* ==========================================================================
+   KHUYEN MAI - TRANG KHUYẾN MÃI
+   Banner ưu đãi (dùng lại .promo từ home.css), dải số liệu, khối lọc theo
+   loại ưu đãi (radio ẩn + :checked, kết hợp được với phân trang :target),
+   lưới thẻ khuyến mãi kiểu vé giảm giá, cách dùng mã và FAQ.
+   Không dùng JavaScript. Nạp sau contact.css và trước compat.css.
+   ========================================================================== */
+
+/* --- Đường dẫn (breadcrumb): khai báo dùng chung ở components.css --- */
+
+/* --- Dải số liệu nhanh -------------------------------------------- */
+.promo-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 18px;
+	margin-top: 26px;
+}
+
+.promo-stat {
+	display: grid;
+	gap: 4px;
+	padding: 20px 22px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+}
+
+.promo-stat__value {
+	font-family: var(--font-heading);
+	font-size: 1.7rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.promo-stat__label {
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+/* --- Khối danh sách ưu đãi: radio đứng trước để dùng ~ -------------- */
+.promo-panel {
+	position: relative;
+	display: grid;
+	gap: 18px;
+	margin-top: 8px;
+}
+
+/* Radio ẩn nhưng vẫn focus được bằng bàn phím */
+.promo-anchor {
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* --- Thanh lọc theo loại ưu đãi --- */
+.promo-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.promo-filters__label {
+	font-size: .85rem;
+	font-weight: 600;
+	color: var(--color-ink);
+}
+
+.promo-chip {
+	display: inline-block;
+	padding: 6px 14px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .82rem;
+	font-weight: 600;
+	color: var(--color-text);
+	cursor: pointer;
+	user-select: none;
+	transition: color var(--transition), border-color var(--transition),
+		background-color var(--transition);
+}
+
+.promo-chip:hover {
+	background-color: var(--color-accent-soft);
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+/* Radio đang tích → chip tương ứng nổi bật */
+#km-loc-tat-ca:checked ~ .promo-filters label[for="km-loc-tat-ca"],
+#km-loc-giam-gia:checked ~ .promo-filters label[for="km-loc-giam-gia"],
+#km-loc-van-chuyen:checked ~ .promo-filters label[for="km-loc-van-chuyen"],
+#km-loc-thanh-vien:checked ~ .promo-filters label[for="km-loc-thanh-vien"],
+#km-loc-combo:checked ~ .promo-filters label[for="km-loc-combo"] {
+	background-color: var(--color-ink);
+	border-color: var(--color-ink);
+	color: #fff;
+}
+
+/* Viền tập trung cho bàn phím */
+#km-loc-tat-ca:focus-visible ~ .promo-filters label[for="km-loc-tat-ca"],
+#km-loc-giam-gia:focus-visible ~ .promo-filters label[for="km-loc-giam-gia"],
+#km-loc-van-chuyen:focus-visible ~ .promo-filters label[for="km-loc-van-chuyen"],
+#km-loc-thanh-vien:focus-visible ~ .promo-filters label[for="km-loc-thanh-vien"],
+#km-loc-combo:focus-visible ~ .promo-filters label[for="km-loc-combo"] {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* --- Dòng đếm: đổi câu chữ theo bộ lọc đang chọn --- */
+.promo-count {
+	margin: 0;
+	font-size: .85rem;
+	color: var(--color-muted);
+}
+
+.promo-count [data-count] {
+	display: none;
+}
+
+.promo-count [data-count="all"] {
+	display: inline;
+}
+
+#km-loc-giam-gia:checked ~ .promo-count [data-count],
+#km-loc-van-chuyen:checked ~ .promo-count [data-count],
+#km-loc-thanh-vien:checked ~ .promo-count [data-count],
+#km-loc-combo:checked ~ .promo-count [data-count] {
+	display: none;
+}
+
+#km-loc-giam-gia:checked ~ .promo-count [data-count="giam-gia"],
+#km-loc-van-chuyen:checked ~ .promo-count [data-count="van-chuyen"],
+#km-loc-thanh-vien:checked ~ .promo-count [data-count="thanh-vien"],
+#km-loc-combo:checked ~ .promo-count [data-count="combo"] {
+	display: inline;
+}
+
+/* --- Lọc thẻ: ẩn hết, rồi hiện lại đúng data-type --- */
+#km-loc-giam-gia:checked ~ .promo-grid .promo-card { display: none; }
+#km-loc-giam-gia:checked ~ .promo-grid .promo-card[data-type="giam-gia"] { display: grid; }
+#km-loc-van-chuyen:checked ~ .promo-grid .promo-card { display: none; }
+#km-loc-van-chuyen:checked ~ .promo-grid .promo-card[data-type="van-chuyen"] { display: grid; }
+#km-loc-thanh-vien:checked ~ .promo-grid .promo-card { display: none; }
+#km-loc-thanh-vien:checked ~ .promo-grid .promo-card[data-type="thanh-vien"] { display: grid; }
+#km-loc-combo:checked ~ .promo-grid .promo-card { display: none; }
+#km-loc-combo:checked ~ .promo-grid .promo-card[data-type="combo"] { display: grid; }
+
+/* --- Lưới thẻ khuyến mãi --- */
+.promo-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 22px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.promo-card {
+	display: grid;
+	gap: 12px;
+	align-content: start;
+	padding: 24px 22px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+	transition: transform var(--transition), border-color var(--transition),
+		box-shadow var(--transition);
+}
+
+.promo-card:hover,
+.promo-card:focus-within {
+	transform: translateY(-4px);
+	border-color: var(--color-accent);
+	box-shadow: var(--shadow);
+}
+
+/* Hàng đầu: nhãn giảm giá bên trái, trạng thái bên phải */
+.promo-card__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.promo-card__status {
+	flex: 0 0 auto;
+	padding: 2px 10px;
+	background-color: var(--color-surface-alt);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	font-size: .72rem;
+	font-weight: 700;
+	color: var(--color-muted);
+}
+
+.promo-card__status--ending {
+	background-color: var(--color-accent-soft);
+	border-color: var(--color-accent);
+	color: var(--color-accent-dark);
+}
+
+.promo-card__title {
+	font-size: 1.2rem;
+	line-height: 1.3;
+}
+
+.promo-card__title a:hover,
+.promo-card__title a:focus-visible {
+	color: var(--color-accent-dark);
+}
+
+.promo-card__desc {
+	margin: 0;
+	font-size: .92rem;
+	line-height: 1.6;
+	color: var(--color-text);
+}
+
+/* Vé mã giảm giá: viền nét đứt như vé giấy */
+.promo-card__code {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin: 0;
+	padding: 9px 14px;
+	background-color: var(--color-accent-soft);
+	border: 1px dashed var(--color-accent);
+	border-radius: var(--radius-sm);
+	font-size: .9rem;
+	color: var(--color-accent-dark);
+}
+
+.promo-card__code strong {
+	letter-spacing: .12em;
+	color: var(--color-ink);
+}
+
+.promo-card__period {
+	margin: 0;
+	font-size: .8rem;
+	color: var(--color-muted);
+}
+
+/* Điều kiện: chi tiết xếp gọn bằng <details> */
+.promo-card__terms {
+	border-top: 1px solid var(--color-border);
+	padding-top: 10px;
+}
+
+.promo-card__terms summary {
+	cursor: pointer;
+	font-size: .85rem;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.promo-card__terms summary::after {
+	content: " +";
+	color: var(--color-accent-dark);
+}
+
+.promo-card__terms[open] summary::after {
+	content: " \2212";
+}
+
+.promo-card__terms summary:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+.promo-card__terms ul {
+	display: grid;
+	gap: 6px;
+	margin-top: 8px;
+	padding-left: 18px;
+	list-style: disc;
+	font-size: .84rem;
+	color: var(--color-text);
+}
+
+.promo-card__terms li::marker {
+	color: var(--color-accent);
+}
+
+/* Hàng nút + thông báo riêng của từng thẻ */
+.promo-card__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+/* Thông báo "đã nhận mã" nằm trong thẻ, ẩn tới khi được nhắm tới */
+.promo-card .notice {
+	margin: 0;
+}
+
+/* --- Thẻ đã kết thúc: mờ đi, không còn bấm được --- */
+.promo-card--ended {
+	background-color: var(--color-surface-alt);
+	opacity: .72;
+	filter: grayscale(.35);
+}
+
+.promo-card--ended:hover,
+.promo-card--ended:focus-within {
+	transform: none;
+	border-color: var(--color-border);
+	box-shadow: var(--shadow-sm);
+}
+
+.promo-card--ended .btn {
+	pointer-events: none;
+	color: var(--color-muted);
+}
+
+/* --- Phân trang: trang 2 ẩn mặc định, #km-trang-2:target mới hiện --- */
+.promo-grid--page-2 {
+	display: none;
+}
+
+#km-trang-2:target ~ .promo-grid--page-1 {
+	display: none;
+}
+
+#km-trang-2:target ~ .promo-grid--page-2 {
+	display: grid;
+}
+
+#km-trang-1:target ~ .promo-grid--page-2 {
+	display: none;
+}
+
+/* Trang đang xem: tô đậm số thứ tự tương ứng */
+a.pagination__page[href="#km-trang-1"] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+}
+
+#km-trang-2:target ~ .pagination a.pagination__page[href="#km-trang-1"] {
+	background-color: transparent;
+	border-color: var(--color-border-strong);
+	color: var(--color-text);
+}
+
+#km-trang-2:target ~ .pagination a.pagination__page[href="#km-trang-2"] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+}
+
+/* Nút Trước: tắt khi đang ở trang 1, bật khi ở trang 2 */
+.pagination .pagination__link--prev {
+	color: var(--color-muted);
+	background-color: var(--color-surface-alt);
+	border-color: var(--color-border);
+	pointer-events: none;
+}
+
+#km-trang-2:target ~ .pagination .pagination__link--prev {
+	color: inherit;
+	background-color: var(--color-surface);
+	border-color: var(--color-border-strong);
+	pointer-events: auto;
+}
+
+/* Nút Sau: ngược lại với Trước */
+#km-trang-2:target ~ .pagination .pagination__link--next {
+	color: var(--color-muted);
+	background-color: var(--color-surface-alt);
+	border-color: var(--color-border);
+	pointer-events: none;
+}
+
+/* --- Cách dùng mã: 4 bước --- */
+.how-to {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 20px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: how-to;
+}
+
+.how-to__step {
+	display: grid;
+	gap: 8px;
+	justify-items: start;
+	padding: 22px 20px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	counter-increment: how-to;
+}
+
+.how-to__num {
+	display: grid;
+	place-items: center;
+	width: 38px;
+	height: 38px;
+	background-color: var(--color-accent);
+	border-radius: 50%;
+	font-family: var(--font-heading);
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: #fff;
+}
+
+.how-to__num::before {
+	content: counter(how-to);
+}
+
+.how-to__title {
+	font-size: 1.05rem;
+}
+
+.how-to__desc {
+	margin: 0;
+	font-size: .88rem;
+	line-height: 1.6;
+	color: var(--color-text);
+}
+
+/* --- Câu hỏi thường gặp: dùng lại .faq (contact.css) --- */
+.promo-faq {
+	margin-top: 8px;
+}
+
+/* --- Responsive ---------------------------------------------------- */
+@media (max-width: 900px) {
+	.promo-filters {
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 640px) {
+	.promo-stats {
+		grid-template-columns: 1fr;
+	}
+
+	.promo-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.promo-card {
+		padding: 20px 18px;
+	}
+
+	.promo-card__code {
+		flex-wrap: wrap;
+	}
+
+	.how-to {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Tôn trọng cài đặt giảm chuyển động của người dùng */
+@media (prefers-reduced-motion: reduce) {
+	.promo-chip,
+	.promo-card {
+		transition: none;
+	}
+
+	.promo-card:hover,
+	.promo-card:focus-within {
+		transform: none;
+	}
+}
+
+

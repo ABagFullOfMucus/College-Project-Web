@@ -337,6 +337,11 @@
 	color: var(--color-muted);
 }
 
+/* Nút "Xem tất cả đánh giá" trong đầu mục đánh giá (trang chủ) */
+.section__more {
+	margin-top: 18px;
+}
+
 
 .newsletter {
 	display: grid;
